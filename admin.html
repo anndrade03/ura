@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Painel Casa Harmonia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --pri:#EE8471;--pri-esc:#D4614C;--pri-claro:#FCE6DF;--creme:#FFF8F3;--ouro:#C8A165;--vinho:#3A2329;
+  --texto:#2E2326;--suave:#76666A;--borda:#EEDDD6;--fundo:#FAF5F2;--verde:#1E8A4A;--verde-claro:#E3F5EA;
+  --amarelo:#A57A12;--amarelo-claro:#FCF1D3;--vermelho:#C0392B;--vermelho-claro:#FBE4E1;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Poppins',sans-serif;background:var(--fundo);color:var(--texto);font-size:14px;line-height:1.55}
+h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.25}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font-family:inherit;font-size:inherit}
+img{display:block;max-width:100%}
+
+/* Botões e campos */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 18px;border-radius:10px;border:1.5px solid var(--pri);background:var(--pri);color:#fff;font-weight:600;cursor:pointer;transition:.15s;white-space:nowrap;font-size:.86rem}
+.btn:hover{background:var(--pri-esc);border-color:var(--pri-esc)}
+.btn.sec{background:#fff;color:var(--pri-esc)}
+.btn.sec:hover{background:var(--pri-claro)}
+.btn.neutro{background:#fff;color:var(--texto);border-color:var(--borda)}
+.btn.neutro:hover{background:var(--creme)}
+.btn.perigo{background:#fff;color:var(--vermelho);border-color:#EBC1BB}
+.btn.perigo:hover{background:var(--vermelho-claro)}
+.btn.ok{background:var(--verde);border-color:var(--verde)}
+.btn.sm{padding:6px 11px;font-size:.78rem;border-radius:8px}
+.btn.ic{padding:7px 9px}
+.campo{display:flex;flex-direction:column;gap:5px}
+.campo label{font-weight:600;font-size:.8rem}
+.campo small{color:var(--suave);font-size:.74rem}
+input[type=text],input[type=url],input[type=number],input[type=password],input[type=email],input[type=search],select,textarea{width:100%;padding:10px 12px;border:1px solid var(--borda);border-radius:10px;background:#fff;color:var(--texto)}
+textarea{resize:vertical;min-height:70px}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--pri);border-color:transparent}
+.grid-campos{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.grid-campos .largo{grid-column:1/-1}
+.grid-campos.tres{grid-template-columns:repeat(3,1fr)}
+.chave{position:relative;display:inline-block;width:42px;height:24px;flex-shrink:0}
+.chave input{opacity:0;width:0;height:0}
+.chave span{position:absolute;inset:0;background:#D9CDC8;border-radius:30px;transition:.2s;cursor:pointer}
+.chave span::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.chave input:checked+span{background:var(--verde)}
+.chave input:checked+span::before{transform:translateX(18px)}
+
+/* Login */
+#login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;background:linear-gradient(135deg,var(--pri-claro),var(--creme))}
+.login-box{background:#fff;border-radius:22px;padding:40px 34px;max-width:400px;width:100%;box-shadow:0 20px 50px rgba(212,97,76,.15);text-align:center}
+.login-box .marca{width:64px;height:64px;border-radius:18px;background:var(--pri);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin:0 auto 16px}
+.login-box h1{font-size:1.6rem;margin-bottom:4px}
+.login-box p{color:var(--suave);margin-bottom:22px;font-size:.88rem}
+.login-box form{display:grid;gap:12px;text-align:left}
+.login-box .dica{font-size:.75rem;color:var(--suave);margin-top:16px;background:var(--creme);padding:8px 12px;border-radius:8px}
+.erro{color:var(--vermelho);font-size:.8rem;min-height:18px}
+
+/* Estrutura */
+#app{display:none;min-height:100vh}
+.lateral{position:fixed;top:0;left:0;bottom:0;width:250px;background:var(--vinho);color:#EAD7D2;display:flex;flex-direction:column;z-index:40;transition:transform .25s}
+.lateral .topo{padding:22px 20px;display:flex;gap:12px;align-items:center;border-bottom:1px solid rgba(255,255,255,.08)}
+.lateral .topo .marca{width:40px;height:40px;border-radius:12px;background:var(--pri);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.lateral .topo strong{font-family:'Playfair Display';color:#fff;font-size:1.05rem;display:block;line-height:1.1}
+.lateral .topo small{font-size:.68rem;opacity:.7;letter-spacing:1px;text-transform:uppercase}
+.lateral nav{flex:1;overflow:auto;padding:14px 12px}
+.lateral nav .grupo{font-size:.66rem;letter-spacing:1.5px;text-transform:uppercase;opacity:.5;padding:14px 10px 6px}
+.lateral nav a{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:10px;font-size:.87rem;opacity:.85;transition:.15s;margin-bottom:2px}
+.lateral nav a i{width:18px;text-align:center}
+.lateral nav a:hover{background:rgba(255,255,255,.06);opacity:1}
+.lateral nav a.ativo{background:var(--pri);color:#fff;opacity:1}
+.lateral nav a .badge{margin-left:auto;background:var(--ouro);color:#fff;font-size:.68rem;font-weight:700;padding:1px 8px;border-radius:20px}
+.lateral .rodape{padding:14px;border-top:1px solid rgba(255,255,255,.08);display:grid;gap:8px}
+.lateral .rodape .btn{width:100%}
+.lateral .rodape .btn.claro{background:rgba(255,255,255,.08);border-color:transparent;color:#fff}
+.conteudo{margin-left:250px;padding:28px 34px 60px;max-width:1300px}
+.barra-topo{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px;flex-wrap:wrap}
+.barra-topo h1{font-size:1.75rem}
+.barra-topo p{color:var(--suave);font-size:.88rem}
+.barra-topo .acoes{display:flex;gap:8px;flex-wrap:wrap}
+.hamb{display:none;background:#fff;border:1px solid var(--borda);border-radius:10px;width:42px;height:42px;font-size:1.1rem;color:var(--pri-esc);cursor:pointer}
+.view{display:none}
+.view.ativo{display:block;animation:surgir .25s}
+@keyframes surgir{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+.caixa{background:#fff;border:1px solid var(--borda);border-radius:16px;padding:22px;margin-bottom:20px}
+.caixa h2{font-size:1.15rem;margin-bottom:4px}
+.caixa>p.desc{color:var(--suave);font-size:.84rem;margin-bottom:16px}
+.cab-caixa{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.aviso{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border-radius:12px;font-size:.84rem;margin-bottom:20px}
+.aviso i{margin-top:3px}
+.aviso.info{background:#EEF4FB;color:#2D5684}
+.aviso.alerta{background:var(--amarelo-claro);color:#7A5A0E}
+.aviso.ok{background:var(--verde-claro);color:#185F36}
+
+/* Visão geral */
+.cards-num{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.num{background:#fff;border:1px solid var(--borda);border-radius:16px;padding:20px;display:flex;gap:14px;align-items:center;cursor:pointer;transition:.15s}
+.num:hover{border-color:var(--pri);box-shadow:0 8px 20px rgba(212,97,76,.1)}
+.num .ic{width:48px;height:48px;border-radius:14px;background:var(--pri-claro);color:var(--pri-esc);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.num strong{font-size:1.6rem;display:block;line-height:1}
+.num span{font-size:.78rem;color:var(--suave)}
+.atalhos{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.atalho{display:flex;gap:12px;align-items:center;padding:14px;border:1px solid var(--borda);border-radius:12px;cursor:pointer;background:#fff;text-align:left;transition:.15s}
+.atalho:hover{border-color:var(--pri);background:var(--creme)}
+.atalho i{color:var(--pri-esc);font-size:1.1rem;width:22px}
+.atalho b{display:block;font-size:.86rem}
+.atalho small{color:var(--suave);font-size:.75rem}
+.passos{counter-reset:p;display:grid;gap:10px}
+.passos li{list-style:none;display:flex;gap:12px;align-items:flex-start;font-size:.86rem}
+.passos li::before{counter-increment:p;content:counter(p);width:26px;height:26px;border-radius:50%;background:var(--pri);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.78rem;flex-shrink:0}
+
+/* Tabelas */
+.filtros-tab{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.filtros-tab input[type=search]{flex:1;min-width:200px}
+.filtros-tab select{width:auto;min-width:180px}
+.tabela-wrap{overflow-x:auto;border:1px solid var(--borda);border-radius:12px}
+table{width:100%;border-collapse:collapse;background:#fff}
+th{background:var(--creme);text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.8px;color:var(--suave);padding:11px 12px;white-space:nowrap}
+td{padding:10px 12px;border-top:1px solid var(--borda);vertical-align:middle;font-size:.85rem}
+tr:hover td{background:#FFFCFA}
+td .mini{width:52px;height:52px;border-radius:10px;overflow:hidden;background:var(--pri-claro)}
+td .mini img{width:100%;height:100%;object-fit:cover}
+td .nome{font-weight:600}
+td .sub{color:var(--suave);font-size:.75rem}
+td.acoes-td{white-space:nowrap;text-align:right}
+td.acoes-td .btn{margin-left:4px}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:.72rem;font-weight:600;padding:3px 10px;border-radius:20px;white-space:nowrap}
+.pill.verde{background:var(--verde-claro);color:var(--verde)}
+.pill.amarelo{background:var(--amarelo-claro);color:var(--amarelo)}
+.pill.vermelho{background:var(--vermelho-claro);color:var(--vermelho)}
+.pill.cinza{background:#F0EBE9;color:var(--suave)}
+.pill.salmao{background:var(--pri-claro);color:var(--pri-esc)}
+.vazio{text-align:center;padding:40px;color:var(--suave)}
+.vazio i{font-size:1.8rem;color:var(--pri);margin-bottom:8px;display:block}
+.abas{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px;border-bottom:1px solid var(--borda);padding-bottom:0}
+.abas button{background:none;border:none;padding:10px 16px;cursor:pointer;font-weight:500;color:var(--suave);border-bottom:2px solid transparent;margin-bottom:-1px}
+.abas button.ativo{color:var(--pri-esc);border-color:var(--pri);font-weight:600}
+.abas button .pill{margin-left:6px}
+
+/* Conteúdo (textos e seções) */
+.secao-ed{background:#fff;border:1px solid var(--borda);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.secao-ed.oculta{opacity:.6}
+.secao-ed>header{display:flex;align-items:center;gap:12px;padding:14px 18px;cursor:pointer;user-select:none}
+.secao-ed>header .tit{flex:1}
+.secao-ed>header b{display:block;font-size:.92rem}
+.secao-ed>header small{color:var(--suave);font-size:.74rem}
+.secao-ed>header .seta{transition:.2s;color:var(--suave)}
+.secao-ed.aberta>header .seta{transform:rotate(180deg)}
+.secao-ed .corpo{display:none;padding:4px 18px 18px;border-top:1px solid var(--borda)}
+.secao-ed.aberta .corpo{display:grid;gap:14px;padding-top:16px}
+.vis{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--suave)}
+.campo-texto label{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.campo-texto label .alt{font-size:.68rem;color:var(--pri-esc);background:var(--pri-claro);padding:1px 8px;border-radius:10px;font-weight:600}
+.campo-texto .restaurar{font-size:.72rem;color:var(--pri-esc);cursor:pointer;background:none;border:none;text-decoration:underline}
+
+/* Imagens */
+.grade-img{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.img-card{background:#fff;border:1px solid var(--borda);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.img-card .prev{height:140px;background:var(--pri-claro);position:relative}
+.img-card .prev img{width:100%;height:100%;object-fit:cover}
+.img-card .prev .pill{position:absolute;top:8px;left:8px}
+.img-card .info{padding:12px;display:grid;gap:8px;flex:1}
+.img-card b{font-size:.82rem}
+.img-card .bts{display:flex;gap:6px;flex-wrap:wrap}
+.ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:#B0705F;font-size:.72rem;text-align:center;padding:8px;flex-direction:column;gap:6px}
+
+/* Cores */
+.cores{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.cor{display:flex;gap:12px;align-items:center;padding:12px;border:1px solid var(--borda);border-radius:12px}
+.cor input[type=color]{width:52px;height:44px;border:none;border-radius:10px;cursor:pointer;background:none;padding:0}
+.cor b{display:block;font-size:.84rem}
+.cor small{color:var(--suave);font-size:.72rem}
+.presets{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.preset{display:flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid var(--borda);border-radius:10px;cursor:pointer;background:#fff;font-size:.8rem}
+.preset:hover{border-color:var(--pri)}
+.preset span{display:flex}
+.preset i{width:16px;height:16px;border-radius:50%;display:block;margin-left:-4px;border:2px solid #fff}
+.previa-cores{margin-top:18px;border-radius:14px;overflow:hidden;border:1px solid var(--borda)}
+.previa-cores .h{padding:18px;color:#fff;font-family:'Playfair Display';font-size:1.2rem}
+.previa-cores .m{padding:16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.previa-cores .f{padding:12px 16px;color:#fff;font-size:.78rem}
+.logo-prev{width:160px;height:90px;border:2px dashed var(--borda);border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--creme);overflow:hidden}
+.logo-prev img{max-height:80px;max-width:150px;object-fit:contain}
+
+/* Serviços */
+.serv-linha{display:grid;grid-template-columns:70px 200px 1fr 2fr auto;gap:10px;align-items:center;padding:10px;border:1px solid var(--borda);border-radius:12px;margin-bottom:8px;background:#fff}
+.serv-linha .mini{width:70px;height:56px;border-radius:8px;overflow:hidden;background:var(--pri-claro)}
+.serv-linha .mini img{width:100%;height:100%;object-fit:cover}
+
+/* Modal */
+.modal{position:fixed;inset:0;background:rgba(46,35,38,.55);display:none;align-items:flex-start;justify-content:center;z-index:100;padding:30px 16px;overflow:auto}
+.modal.ativo{display:flex}
+.modal-box{background:#fff;border-radius:18px;max-width:860px;width:100%;padding:26px;position:relative;animation:surgir .2s}
+.modal-box.peq{max-width:460px}
+.modal-box h2{font-size:1.3rem;margin-bottom:16px}
+.fechar{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;border:none;background:var(--creme);cursor:pointer;color:var(--suave)}
+.form-prod{display:grid;grid-template-columns:240px 1fr;gap:22px}
+.form-prod .foto-prev{height:200px;border-radius:12px;overflow:hidden;background:var(--pri-claro);margin-bottom:10px}
+.form-prod .foto-prev img{width:100%;height:100%;object-fit:cover}
+.form-prod .ft{display:grid;gap:8px}
+.sep{font-size:.72rem;text-transform:uppercase;letter-spacing:1px;color:var(--suave);font-weight:600;grid-column:1/-1;margin-top:6px;padding-top:12px;border-top:1px solid var(--borda)}
+.rodape-modal{display:flex;justify-content:flex-end;gap:10px;margin-top:22px;padding-top:16px;border-top:1px solid var(--borda)}
+.toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);background:var(--texto);color:#fff;padding:12px 20px;border-radius:30px;z-index:200;display:none;font-size:.85rem;max-width:90%;text-align:center;box-shadow:0 8px 20px rgba(0,0,0,.2)}
+.armazenamento{height:8px;background:var(--creme);border-radius:10px;overflow:hidden;margin:8px 0}
+.armazenamento div{height:100%;background:var(--pri);border-radius:10px}
+.veu-menu{display:none}
+
+@media(max-width:1100px){.cards-num{grid-template-columns:repeat(2,1fr)}.atalhos{grid-template-columns:1fr 1fr}.cores{grid-template-columns:1fr 1fr}.serv-linha{grid-template-columns:60px 1fr;}.serv-linha>*:nth-child(n+3){grid-column:1/-1}}
+@media(max-width:860px){
+  .lateral{transform:translateX(-100%)}
+  .lateral.aberta{transform:none}
+  .veu-menu.ativo{display:block;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:35}
+  .conteudo{margin-left:0;padding:18px 16px 60px}
+  .hamb{display:inline-flex;align-items:center;justify-content:center}
+  .barra-topo{gap:10px}
+  .barra-topo h1{font-size:1.4rem}
+  .grid-campos,.grid-campos.tres,.form-prod{grid-template-columns:1fr}
+  .atalhos,.cores{grid-template-columns:1fr}
+  .cards-num{grid-template-columns:1fr 1fr;gap:10px}
+  .num{padding:14px}
+  .num .ic{width:40px;height:40px}
+  .tabela-esconde{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<div id="login">
+  <div class="login-box">
+    <div class="marca"><i class="fa-solid fa-house-chimney"></i></div>
+    <h1>Painel Casa Harmonia</h1>
+    <p>Gerencie produtos, revendedores e o conteúdo do site.</p>
+    <form onsubmit="entrar(event)">
+      <div class="campo"><label>Usuário</label><input type="text" id="usuario" value="admin" autocomplete="username"></div>
+      <div class="campo"><label>Senha</label><input type="password" id="senha" autocomplete="current-password" required></div>
+      <div class="erro" id="erroLogin"></div>
+      <button class="btn" type="submit"><i class="fa-solid fa-right-to-bracket"></i> Entrar</button>
+    </form>
+    <div class="dica"><i class="fa-solid fa-circle-info"></i> Protótipo: senha inicial <b>admin123</b> (altere em Configurações).</div>
+  </div>
+</div>
+
+<!-- ============ PAINEL ============ -->
+<div id="app">
+  <div class="veu-menu" id="veuMenu" onclick="menu(false)"></div>
+  <aside class="lateral" id="lateral">
+    <div class="topo"><div class="marca"><i class="fa-solid fa-house-chimney"></i></div><div><strong>Casa Harmonia</strong><small>Painel administrativo</small></div></div>
+    <nav>
+      <a href="#geral" data-v="geral"><i class="fa-solid fa-gauge"></i> Visão geral</a>
+      <div class="grupo">Catálogo</div>
+      <a href="#produtos" data-v="produtos"><i class="fa-solid fa-box-open"></i> Produtos</a>
+      <a href="#categorias" data-v="categorias"><i class="fa-solid fa-tags"></i> Categorias</a>
+      <a href="#revendedores" data-v="revendedores"><i class="fa-solid fa-store"></i> Revendedores <span class="badge" id="badgePend" style="display:none"></span></a>
+      <div class="grupo">Site</div>
+      <a href="#conteudo" data-v="conteudo"><i class="fa-solid fa-pen-to-square"></i> Textos e seções</a>
+      <a href="#servicos" data-v="servicos"><i class="fa-solid fa-list"></i> Página Produtos</a>
+      <a href="#imagens" data-v="imagens"><i class="fa-solid fa-images"></i> Imagens</a>
+      <a href="#contato" data-v="contato"><i class="fa-solid fa-address-book"></i> Contato e redes</a>
+      <a href="#aparencia" data-v="aparencia"><i class="fa-solid fa-palette"></i> Cores e logo</a>
+      <div class="grupo">Sistema</div>
+      <a href="#publicar" data-v="publicar"><i class="fa-solid fa-cloud-arrow-up"></i> Publicar e backup</a>
+      <a href="#config" data-v="config"><i class="fa-solid fa-gear"></i> Configurações</a>
+    </nav>
+    <div class="rodape">
+      <a class="btn" href="index.html" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver site</a>
+      <button class="btn claro" onclick="sairPainel()"><i class="fa-solid fa-right-from-bracket"></i> Sair</button>
+    </div>
+  </aside>
+
+  <main class="conteudo">
+
+    <!-- VISÃO GERAL -->
+    <section class="view" id="v-geral">
+      <div class="barra-topo"><div style="display:flex;gap:12px;align-items:center"><button class="hamb" onclick="menu(true)"><i class="fa-solid fa-bars"></i></button><div><h1>Olá! 👋</h1><p>Resumo do site Casa Harmonia Decorações.</p></div></div></div>
+      <div class="cards-num" id="numeros"></div>
+      <div class="caixa" id="caixaPendentes"></div>
+      <div class="caixa">
+        <h2>Atalhos</h2><p class="desc">O que você mais vai usar no dia a dia.</p>
+        <div class="atalhos">
+          <button class="atalho" onclick="novoProduto()"><i class="fa-solid fa-plus"></i><div><b>Cadastrar produto</b><small>Adicionar ao catálogo</small></div></button>
+          <button class="atalho" onclick="document.getElementById('arqProdutos').click()"><i class="fa-solid fa-file-import"></i><div><b>Importar planilha</b><small>Vários produtos de uma vez</small></div></button>
+          <button class="atalho" onclick="ir('revendedores')"><i class="fa-solid fa-user-check"></i><div><b>Aprovar revendedores</b><small>Liberar acesso ao catálogo</small></div></button>
+          <button class="atalho" onclick="ir('conteudo')"><i class="fa-solid fa-pen"></i><div><b>Editar textos</b><small>Títulos, descrições e botões</small></div></button>
+          <button class="atalho" onclick="ir('imagens')"><i class="fa-solid fa-image"></i><div><b>Trocar imagens</b><small>Banner, galerias e produtos</small></div></button>
+          <button class="atalho" onclick="ir('publicar')"><i class="fa-solid fa-cloud-arrow-up"></i><div><b>Publicar alterações</b><small>Atualizar o site no ar</small></div></button>
+        </div>
+      </div>
+      <div class="caixa">
+        <h2>Como funciona</h2><p class="desc">Tudo o que você altera aqui aparece na hora no site aberto neste mesmo navegador.</p>
+        <ol class="passos">
+          <li>Faça as alterações nas seções do menu ao lado. Tudo é salvo automaticamente.</li>
+          <li>Clique em <b>Ver site</b> para conferir como ficou.</li>
+          <li>Em <b>Publicar e backup</b>, baixe o arquivo <b>dados.json</b> e envie para o GitHub junto com o site para todos os visitantes verem as mudanças.</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- PRODUTOS -->
+    <section class="view" id="v-produtos">
+      <div class="barra-topo">
+        <div style="display:flex;gap:12px;align-items:center"><button class="hamb" onclick="menu(true)"><i class="fa-solid fa-bars"></i></button><div><h1>Produtos</h1><p>Catálogo exibido na área Seja um Revendedor.</p></div></div>
+        <div class="acoes">
+          <button class="btn neutro" onclick="document.getElementById('arqProdutos').click()"><i class="fa-solid fa-file-import"></i> Importar</button>
+          <button class="btn neutro" onclick="abrirModal('mExportar')"><i class="fa-solid fa-file-export"></i> Exportar</button>
+          <button class="btn" onclick="novoProduto()"><i class="fa-solid fa-plus"></i> Novo produto</button>
+        </div>
+      </div>
+      <div class="caixa">
+        <div class="filtros-tab">
+          <input type="search" id="buscaProd" placeholder="Buscar por nome ou SKU...">
+          <select id="catProd"></select>
+          <select id="statusProd"><option value="">Todos</option><option value="ativo">Ativos</option><option value="inativo">Ocultos</option><option value="sempreco">Sem preço</option></select>
+        </div>
+        <div class="tabela-wrap"><table>
+          <thead><tr><th></th><th>Produto</th><th class="tabela-esconde">Categoria</th><th>Revenda</th><th class="tabela-esconde">Sugerido</th><th>No site</th><th></th></tr></thead>
+          <tbody id="tbProdutos"></tbody>
+        </table></div>
+        <div style="margin-top:12px;color:var(--suave);font-size:.8rem" id="rodProdutos"></div>
+      </div>
+    </section>
+
+    <!-- CATEGORIAS -->
+    <section class="view" id="v-categorias">
+      <div class="barra-topo">
+        <div style="display:flex;gap:12px;align-items:center"><button class="hamb" onclick="menu(true)"><i class="fa-solid fa-bars"></i></button><div><h1>Categorias</h1><p>Usadas nos filtros do catálogo e na exportação de planilhas.</p></div></div>
+      </div>
+      <div class="caixa">
+        <div class="filtros-tab"><input type="text" id="novaCat" placeholder="Nome da nova categoria" style="flex:1"><button class="btn" onclick="addCategoria()"><i class="fa-solid fa-plus"></i> Adicionar</button></div>
+        <div class="tabela-wrap"><table><thead><tr><th>Categoria</th><th>Produtos</th><th></th></tr></thead><tbody id="tbCats"></tbody></table></div>
+      </div>
+    </section>
+
+    <!-- REVENDEDORES -->
+    <section class="view" id="v-revendedores">
+      <div class="barra-topo">
+        <div style="display:flex;gap:12px;align-items:center"><button class="hamb" onclick="menu(true)"><i class="fa-solid fa-bars"></i></button><div><h1>Revendedores</h1><p>Cadastros feitos na área Seja um Revendedor.</p></div></div>
+        <div class="acoes"><button class="btn neutro" onclick="exportarRevendedores()"><i class="fa-solid fa-file-export"></i> Exportar lista</button></div>
+      </div>
+      <div class="caixa">
+        <div class="cab-caixa">
+          <div><h2>Aprovação de cadastros</h2><p class="desc" style="margin:0">Escolha se o acesso é liberado na hora ou só depois da sua aprovação.</p></div>
+          <label class="vis" style="font-size:.86rem;color:var(--texto)"><span>Manual</span><span class="chave"><input type="checkbox" id="aprovAuto" onchange="mudarAprovacao(this.checked)"><span></span></span><span>Automática</span></label>
+        </div>
+      </div>
+      <div class="caixa">
+        <div class="abas" id="abasRev"></div>
+        <div class="filtros-tab"><input type="search" id="buscaRev" placeholder="Buscar por nome, empresa, e-mail ou documento..."></div>
+        <div class="tabela-wrap"><table>
+          <thead><tr><th>Revendedor</th><th class="tabela-esconde">Documento</th><th>Contato</th><th class="tabela-esconde">Cadastro</th><th>Status</th><th></th></tr></thead>
+          <tbody id="tbRev"></tbody>
+        </table></div>
+      </div>
+    </section>
+
+    <!-- TEXTOS E SEÇÕES -->
+    <section class="view" id="v-conteudo">
+      <div class="barra-topo">
+        <div style="display:flex;gap:12px;align-items:center"><button class="hamb" onclick="menu(true)"><i class="fa-solid fa-bars"></i></button><div><h1>Textos e seções</h1><p>Edite os textos de cada página e escolha quais seções aparecem.</p></div></div>
+        <div class="acoes"><input type="search" id="buscaTexto" placeholder="Buscar texto..." style="width:240px"></div>
+      </div>
+      <div class="abas" id="abasPag"></div>
+      <div id="listaSecoes"></div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="view" id="v-servicos">
+      <div class="barra-topo">
+        <div style="display:flex;gap:12px;align-items:center"><button class="hamb" onclick="menu(true)"><i class="fa-solid fa-bars"></i></button><div><h1>Página Produtos</h1><p>Lista de produtos e serviços exibida na página Produtos (com botão de orçamento).</p></div></div>
+        <div class="acoes"><button class="btn" onclick="addServico()"><i class="fa-solid fa-plus"></i> Adicionar item</button></div>
+      </div>
+      <div id="listaServ"></div>
+    </section>
+
+    <!-- IMAGENS -->
+    <section class="view" id="v-imagens">
+      <div class="barra-topo">
+        <div style="display:flex;gap:12px;align-items:center"><button class="hamb" onclick="menu(true)"><i class="fa-solid fa-bars"></i></button><div><h1>Imagens</h1><p>Troque as fotos demonstrativas pelas fotos reais da empresa.</p></div></div>
+      </div>
+      <div class="aviso info"><i class="fa-solid fa-circle-info"></i><div>Cada imagem aparece em um ou mais lugares do site. Envie uma foto do computador ou cole o link de uma imagem. As fotos enviadas são reduzidas automaticamente para o site carregar rápido.</div></div>
+      <div class="grade-img" id="gradeImg"></div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="view" id="v-contato">
+      <div class="barra-topo">
+        <div style="display:flex;gap:12px;align-items:center"><button class="hamb" onclick="menu(true)"><i class="fa-solid fa-bars"></i></button><div><h1>Contato e redes</h1><p>Usados em todos os botões, no rodapé, na página Contato e nos mapas.</p></div></div>
+        <div class="acoes"><button class="btn" onclick="salvarContato()"><i class="fa-solid fa-floppy-disk"></i> Salvar</button></div>
+      </div>
+      <div class="caixa"><div class="grid-campos" id="formContato"></div></div>
+    </section>
+
+    <!-- APARÊNCIA -->
+    <section class="view" id="v-aparencia">
+      <div class="barra-topo">
+        <div style="display:flex;gap:12px;align-items:center"><button class="hamb" onclick="menu(true)"><i class="fa-solid fa-bars"></i></button><div><h1>Cores e logo</h1><p>Identidade visual aplicada em todo o site.</p></div></div>
+      </div>
+      <div class="caixa">
+        <h2>Logo</h2><p class="desc">Use PNG com fundo transparente. Aparece no topo do site.</p>
+        <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+          <div class="logo-prev" id="logoPrev"></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn" onclick="document.getElementById('arqLogo').click()"><i class="fa-solid fa-upload"></i> Enviar logo</button><button class="btn perigo" onclick="removerLogo()"><i class="fa-solid fa-trash"></i> Remover</button></div>
+        </div>
+      </div>
+      <div class="caixa">
+        <h2>Cores</h2><p class="desc">Clique em uma cor para trocar. A prévia abaixo mostra o resultado.</p>
+        <div class="cores" id="cores"></div>
+        <div class="presets" id="presets"></div>
+        <div class="previa-cores" id="previaCores"></div>
+      </div>
+    </section>
+
+    <!-- PUBLICAR -->
+    <section class="view" id="v-publicar">
+      <div class="barra-topo">
+        <div style="display:flex;gap:12px;align-items:center"><button class="hamb" onclick="menu(true)"><i class="fa-solid fa-bars"></i></button><div><h1>Publicar e backup</h1><p>Leve as alterações para o site no ar e guarde cópias de segurança.</p></div></div>
+      </div>
+      <div class="caixa">
+        <h2><i class="fa-solid fa-cloud-arrow-up" style="color:var(--pri)"></i> Publicar no site</h2>
+        <p class="desc">As alterações ficam salvas neste navegador. Para todos os visitantes verem:</p>
+        <ol class="passos" style="margin-bottom:18px">
+          <li>Clique em <b>Baixar dados.json</b>.</li>
+          <li>No repositório do site no GitHub, envie o arquivo <b>dados.json</b> (substituindo o anterior, se houver), na mesma pasta do index.html.</li>
+          <li>Aguarde de 1 a 2 minutos e atualize o site.</li>
+        </ol>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn" onclick="baixarDados()"><i class="fa-solid fa-download"></i> Baixar dados.json</button><button class="btn neutro" onclick="document.getElementById('arqDados').click()"><i class="fa-solid fa-upload"></i> Carregar um dados.json</button></div>
+        <p style="font-size:.78rem;color:var(--suave);margin-top:12px" id="ultimaAlt"></p>
+      </div>
+      <div class="caixa">
+        <h2><i class="fa-solid fa-shield-halved" style="color:var(--pri)"></i> Backup completo</h2>
+        <p class="desc">Inclui também a lista de revendedores (que não vai para o dados.json público).</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn neutro" onclick="baixarBackup()"><i class="fa-solid fa-download"></i> Baixar backup</button><button class="btn neutro" onclick="document.getElementById('arqBackup').click()"><i class="fa-solid fa-rotate-left"></i> Restaurar backup</button></div>
+        <div style="margin-top:18px"><small style="color:var(--suave)">Espaço usado no navegador</small><div class="armazenamento"><div id="barraEspaco"></div></div><small style="color:var(--suave)" id="txtEspaco"></small></div>
+      </div>
+      <div class="caixa">
+        <h2 style="color:var(--vermelho)">Zona de cuidado</h2>
+        <p class="desc">Volta todo o conteúdo do site para o original. Os revendedores não são apagados.</p>
+        <button class="btn perigo" onclick="restaurarTudo()"><i class="fa-solid fa-triangle-exclamation"></i> Restaurar conteúdo original</button>
+      </div>
+    </section>
+
+    <!-- CONFIGURAÇÕES -->
+    <section class="view" id="v-config">
+      <div class="barra-topo">
+        <div style="display:flex;gap:12px;align-items:center"><button class="hamb" onclick="menu(true)"><i class="fa-solid fa-bars"></i></button><div><h1>Configurações</h1><p>Acesso ao painel.</p></div></div>
+      </div>
+      <div class="caixa">
+        <h2>Senha do painel</h2><p class="desc">Troque a senha inicial antes de passar o painel para a equipe.</p>
+        <div class="grid-campos"><div class="campo"><label>Nova senha</label><input type="password" id="novaSenha"></div><div class="campo"><label>Repita a nova senha</label><input type="password" id="novaSenha2"></div></div>
+        <button class="btn" style="margin-top:14px" onclick="trocarSenha()"><i class="fa-solid fa-key"></i> Salvar nova senha</button>
+      </div>
+      <div class="aviso alerta"><i class="fa-solid fa-triangle-exclamation"></i><div><b>Importante para a versão final:</b> neste protótipo a senha e os dados ficam no navegador. No site em produção, o login, os produtos e os cadastros de revendedores devem ficar num servidor com banco de dados, para que a equipe da URA veja os cadastros de qualquer computador e a senha fique protegida.</div></div>
+    </section>
+  </main>
+</div>
+
+<!-- Modal produto -->
+<div class="modal" id="mProduto">
+  <div class="modal-box">
+    <button class="fechar" onclick="fecharModal('mProduto')"><i class="fa-solid fa-xmark"></i></button>
+    <h2 id="tituloProd">Novo produto</h2>
+    <form id="formProd" onsubmit="salvarProduto(event)">
+      <div class="form-prod">
+        <div class="ft">
+          <div class="foto-prev" id="fotoProdPrev"></div>
+          <select id="fotoProdSel" onchange="mudarFotoProd(this.value)"></select>
+          <button type="button" class="btn neutro sm" onclick="document.getElementById('arqFotoProd').click()"><i class="fa-solid fa-upload"></i> Enviar foto</button>
+          <input type="url" id="fotoProdUrl" placeholder="ou cole o link da imagem" onchange="mudarFotoProd(this.value)">
+          <label class="vis" style="margin-top:8px;color:var(--texto)"><span class="chave"><input type="checkbox" name="ativo" checked><span></span></span> Exibir no site</label>
+        </div>
+        <div class="grid-campos">
+          <div class="campo largo"><label>Nome do produto *</label><input type="text" name="nome" required></div>
+          <div class="campo"><label>Código (SKU) *</label><input type="text" name="sku" required></div>
+          <div class="campo"><label>Categoria *</label><select name="categoria" id="selCatProd" required></select></div>
+          <div class="campo"><label>Ambiente indicado</label><select name="ambiente" id="selAmbProd"></select></div>
+          <div class="campo"><label>NCM</label><input type="text" name="ncm" placeholder="0000.00.00"></div>
+          <div class="campo largo"><label>Descrição</label><textarea name="descricao" rows="3"></textarea></div>
+          <div class="sep">Características</div>
+          <div class="campo"><label>Material</label><input type="text" name="material"></div>
+          <div class="campo"><label>Acabamento</label><input type="text" name="acabamento"></div>
+          <div class="sep">Medidas e envio</div>
+          <div class="campo"><label>Largura (cm)</label><input type="text" name="largura_cm" inputmode="decimal"></div>
+          <div class="campo"><label>Altura / comprimento (cm)</label><input type="text" name="altura_cm" inputmode="decimal"></div>
+          <div class="campo"><label>Espessura (mm)</label><input type="text" name="espessura_mm" inputmode="decimal"></div>
+          <div class="campo"><label>Peso (g)</label><input type="text" name="peso_g" inputmode="decimal"></div>
+          <div class="campo"><label>Prazo de produção (dias úteis)</label><input type="text" name="prazo_producao_dias" inputmode="numeric"></div>
+          <div class="sep">Preços para o revendedor</div>
+          <div class="campo"><label>Preço para revenda (R$)</label><input type="text" name="preco_revenda" inputmode="decimal" placeholder="Vazio = sob consulta"></div>
+          <div class="campo"><label>Preço sugerido de venda (R$)</label><input type="text" name="preco_sugerido" inputmode="decimal"></div>
+        </div>
+      </div>
+      <div class="rodape-modal"><button type="button" class="btn neutro" onclick="fecharModal('mProduto')">Cancelar</button><button class="btn" type="submit"><i class="fa-solid fa-floppy-disk"></i> Salvar produto</button></div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal exportar -->
+<div class="modal" id="mExportar">
+  <div class="modal-box peq">
+    <button class="fechar" onclick="fecharModal('mExportar')"><i class="fa-solid fa-xmark"></i></button>
+    <h2>Exportar produtos</h2>
+    <div class="campo" style="margin-bottom:12px"><label>O que exportar</label><select id="expCatAdm"></select></div>
+    <label class="vis" style="margin-bottom:16px;color:var(--texto)"><input type="checkbox" id="expInativos"> Incluir produtos ocultos</label>
+    <div style="display:grid;gap:8px">
+      <button class="btn" onclick="exportarAdm()"><i class="fa-solid fa-download"></i> Baixar planilha (.csv)</button>
+      <button class="btn neutro" onclick="baixarModeloAdm()"><i class="fa-solid fa-table"></i> Baixar modelo vazio</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal importar -->
+<div class="modal" id="mImportar">
+  <div class="modal-box peq">
+    <button class="fechar" onclick="fecharModal('mImportar')"><i class="fa-solid fa-xmark"></i></button>
+    <h2>Importar planilha</h2>
+    <p id="resumoImport" style="margin-bottom:14px;color:var(--suave);font-size:.88rem"></p>
+    <label class="vis" style="margin-bottom:10px;color:var(--texto)"><input type="radio" name="modoImp" value="mesclar" checked> Adicionar novos e atualizar existentes (pelo SKU)</label>
+    <label class="vis" style="margin-bottom:18px;color:var(--texto)"><input type="radio" name="modoImp" value="substituir"> Substituir todo o catálogo pela planilha</label>
+    <div class="rodape-modal" style="margin-top:0"><button class="btn neutro" onclick="fecharModal('mImportar')">Cancelar</button><button class="btn" onclick="confirmarImport()"><i class="fa-solid fa-check"></i> Importar</button></div>
+  </div>
+</div>
+
+<input type="file" id="arqProdutos" accept=".csv,text/csv" hidden onchange="lerPlanilha(this)">
+<input type="file" id="arqFotoProd" accept="image/*" hidden onchange="enviarFotoProd(this)">
+<input type="file" id="arqImg" accept="image/*" hidden onchange="enviarImagem(this)">
+<input type="file" id="arqLogo" accept="image/*" hidden onchange="enviarLogo(this)">
+<input type="file" id="arqServ" accept="image/*" hidden onchange="enviarFotoServ(this)">
+<input type="file" id="arqDados" accept=".json,application/json" hidden onchange="carregarDados(this,false)">
+<input type="file" id="arqBackup" accept=".json,application/json" hidden onchange="carregarDados(this,true)">
+<div class="toast" id="toast"></div>
+
+<script src="dados-padrao.js"></script>
+<script>
+const P=window.CH_PADRAO, esc=CH.esc;
+let D=CH.montar(CH.salvos());
+
+/* ============ Utilidades ============ */
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.style.display='block';clearTimeout(e._t);e._t=setTimeout(()=>e.style.display='none',2600)}
+function abrirModal(id){document.getElementById(id).classList.add('ativo')}
+function fecharModal(id){document.getElementById(id).classList.remove('ativo')}
+document.querySelectorAll('.modal').forEach(m=>m.addEventListener('mousedown',e=>{if(e.target===m)fecharModal(m.id)}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal.ativo').forEach(m=>fecharModal(m.id))});
+function salvar(msg){
+  if(!CH.salvar(D)){alert('Não foi possível salvar: o espaço do navegador está cheio. Use links de imagem em vez de enviar fotos grandes, ou remova algumas imagens enviadas.');return false}
+  if(msg!==false)toast(msg||'Alterações salvas');
+  atualizarBadges();return true;
+}
+function foto(key,w){return CH.urlFoto(key,w||300,7,D.fotos)}
+function imgTag(key,alt){return `<img src="${esc(foto(key))}" alt="${esc(alt||'')}" onerror="this.outerHTML='<div class=ph><i class=\\'fa-regular fa-image\\'></i>Imagem</div>'">`}
+function opcoesFotos(sel){return Object.entries(P.fotos).map(([k,f])=>`<option value="${k}" ${k===sel?'selected':''}>${esc(f.nome)}</option>`).join('')}
+/* reduz imagem enviada */
+function reduzirImagem(arquivo,max,formato){
+  return new Promise((ok,erro)=>{
+    const r=new FileReader();
+    r.onload=()=>{const img=new Image();img.onload=()=>{
+      const esc2=Math.min(1,max/Math.max(img.width,img.height));
+      const c=document.createElement('canvas');c.width=Math.round(img.width*esc2);c.height=Math.round(img.height*esc2);
+      c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+      ok(c.toDataURL(formato||'image/jpeg',.8));
+    };img.onerror=erro;img.src=r.result};
+    r.onerror=erro;r.readAsDataURL(arquivo);
+  });
+}
+
+/* ============ Login ============ */
+function entrar(e){
+  e.preventDefault();
+  if(document.getElementById('usuario').value.trim()==='admin'&&document.getElementById('senha').value===D.config.senhaAdmin){
+    sessionStorage.setItem('ch_admin','1');abrirPainel();
+  }else document.getElementById('erroLogin').textContent='Usuário ou senha incorretos.';
+}
+function sairPainel(){sessionStorage.removeItem('ch_admin');location.hash='';location.reload()}
+function abrirPainel(){
+  document.getElementById('login').style.display='none';document.getElementById('app').style.display='block';
+  const iniciar=()=>{renderTudo();rota()};
+  if(CH.salvos())return iniciar();
+  /* primeiro acesso neste navegador: parte do dados.json publicado, se existir */
+  fetch('dados.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{if(j){const s=D.config.senhaAdmin;D=CH.montar(j);D.config.senhaAdmin=s}}).catch(()=>{}).finally(iniciar);
+}
+
+/* ============ Navegação ============ */
+const VIEWS=['geral','produtos','categorias','revendedores','conteudo','servicos','imagens','contato','aparencia','publicar','config'];
+function rota(){
+  let v=(location.hash||'#geral').slice(1);if(!VIEWS.includes(v))v='geral';
+  document.querySelectorAll('.view').forEach(s=>s.classList.toggle('ativo',s.id==='v-'+v));
+  document.querySelectorAll('.lateral nav a').forEach(a=>a.classList.toggle('ativo',a.dataset.v===v));
+  menu(false);window.scrollTo(0,0);
+  if(v==='geral')renderGeral();if(v==='revendedores')renderRev();if(v==='publicar')renderPublicar();
+}
+function ir(v){location.hash=v}
+window.addEventListener('hashchange',()=>{if(sessionStorage.getItem('ch_admin'))rota()});
+function menu(abrir){document.getElementById('lateral').classList.toggle('aberta',abrir);document.getElementById('veuMenu').classList.toggle('ativo',abrir)}
+/* cadastros novos feitos no site (outra aba) */
+window.addEventListener('storage',e=>{if(e.key===CH.CHAVE_REV){atualizarBadges();renderRev();renderGeral()}});
+
+function renderTudo(){renderGeral();renderProdutos();renderCats();renderRev();renderConteudo();renderServ();renderImgs();renderContato();renderAparencia();renderPublicar();atualizarBadges()}
+function atualizarBadges(){
+  const n=CH.revendedores().filter(r=>r.status==='pendente').length,b=document.getElementById('badgePend');
+  b.textContent=n;b.style.display=n?'':'none';
+}
+
+/* ============ Visão geral ============ */
+function renderGeral(){
+  const revs=CH.revendedores(),pend=revs.filter(r=>r.status==='pendente');
+  const ativos=D.produtos.filter(CH.ativo).length;
+  const cards=[
+    ['fa-box-open',ativos,`produtos no site${D.produtos.length>ativos?' · '+(D.produtos.length-ativos)+' ocultos':''}`,'produtos'],
+    ['fa-tags',new Set(D.produtos.map(p=>p.categoria)).size,'categorias em uso','categorias'],
+    ['fa-store',revs.filter(r=>r.status==='aprovado').length,'revendedores aprovados','revendedores'],
+    ['fa-hourglass-half',pend.length,'cadastros aguardando','revendedores']
+  ];
+  document.getElementById('numeros').innerHTML=cards.map(c=>`<div class="num" onclick="ir('${c[3]}')"><div class="ic"><i class="fa-solid ${c[0]}"></i></div><div><strong>${c[1]}</strong><span>${c[2]}</span></div></div>`).join('');
+  const cx=document.getElementById('caixaPendentes');
+  if(D.config.aprovacao!=='manual'){
+    cx.innerHTML=`<div class="cab-caixa" style="margin:0"><div><h2>Aprovação automática ativada</h2><p class="desc" style="margin:0">Quem se cadastra no site recebe acesso na hora. Últimos cadastros: ${revs.slice(-3).reverse().map(r=>esc(r.empresa)).join(', ')||'nenhum ainda'}.</p></div><button class="btn sec" onclick="ir('revendedores')">Ver revendedores</button></div>`;
+  }else if(!pend.length){
+    cx.innerHTML=`<h2>Nenhum cadastro aguardando</h2><p class="desc" style="margin:0">Quando alguém se cadastrar como revendedor, aparece aqui para você aprovar.</p>`;
+  }else{
+    cx.innerHTML=`<div class="cab-caixa"><div><h2>${pend.length} cadastro${pend.length>1?'s':''} aguardando aprovação</h2><p class="desc" style="margin:0">Aprove para liberar preços, fichas e planilhas.</p></div><button class="btn sec" onclick="ir('revendedores')">Ver todos</button></div>
+      <div class="tabela-wrap"><table><tbody>${pend.slice(0,5).map(linhaRev).join('')}</tbody></table></div>`;
+  }
+}
+
+/* ============ Produtos ============ */
+let editIdx=null,fotoProdAtual='';
+function renderProdutos(){
+  const cats=[...new Set([...D.categorias,...D.produtos.map(p=>p.categoria)])].filter(Boolean).sort((a,b)=>a.localeCompare(b,'pt-BR'));
+  const sel=document.getElementById('catProd'),v=sel.value;
+  sel.innerHTML='<option value="">Todas as categorias</option>'+cats.map(c=>`<option ${c===v?'selected':''}>${esc(c)}</option>`).join('');
+  const busca=document.getElementById('buscaProd').value.toLowerCase().trim(),st=document.getElementById('statusProd').value;
+  const lista=D.produtos.map((p,i)=>({p,i})).filter(({p})=>(!v||p.categoria===v)&&(!busca||(p.nome+' '+p.sku).toLowerCase().includes(busca))&&
+    (!st||(st==='ativo'&&CH.ativo(p))||(st==='inativo'&&!CH.ativo(p))||(st==='sempreco'&&CH.num(p.preco_revenda)===null))).sort((a,b)=>a.p.nome.localeCompare(b.p.nome,'pt-BR'));
+  document.getElementById('tbProdutos').innerHTML=lista.length?lista.map(({p,i})=>`<tr>
+    <td style="width:66px"><div class="mini">${imgTag(p.imagem,p.nome)}</div></td>
+    <td><div class="nome">${esc(p.nome)}</div><div class="sub">${esc(p.sku)} · NCM ${esc(p.ncm)||'—'}</div></td>
+    <td class="tabela-esconde"><span class="pill salmao">${esc(p.categoria)}</span></td>
+    <td>${CH.num(p.preco_revenda)!==null?'<b>'+CH.moeda(p.preco_revenda)+'</b>':'<span class="pill cinza">Sob consulta</span>'}</td>
+    <td class="tabela-esconde">${CH.moeda(p.preco_sugerido)||'—'}</td>
+    <td><label class="chave" title="Exibir no site"><input type="checkbox" ${CH.ativo(p)?'checked':''} onchange="alternarAtivo(${i},this.checked)"><span></span></label></td>
+    <td class="acoes-td"><button class="btn neutro sm ic" title="Editar" onclick="editarProduto(${i})"><i class="fa-solid fa-pen"></i></button><button class="btn neutro sm ic" title="Duplicar" onclick="duplicarProduto(${i})"><i class="fa-regular fa-copy"></i></button><button class="btn perigo sm ic" title="Excluir" onclick="excluirProduto(${i})"><i class="fa-solid fa-trash"></i></button></td>
+  </tr>`).join(''):`<tr><td colspan="7"><div class="vazio"><i class="fa-solid fa-box-open"></i>Nenhum produto encontrado.</div></td></tr>`;
+  document.getElementById('rodProdutos').textContent=`${lista.length} de ${D.produtos.length} produtos`;
+  const exp=document.getElementById('expCatAdm');
+  exp.innerHTML=`<option value="">Todos os produtos (${D.produtos.length})</option>`+cats.map(c=>`<option value="${esc(c)}">${esc(c)} (${D.produtos.filter(p=>p.categoria===c).length})</option>`).join('');
+}
+['buscaProd','catProd','statusProd'].forEach(id=>document.getElementById(id).addEventListener('input',renderProdutos));
+function alternarAtivo(i,v){D.produtos[i].ativo=v?'sim':'não';salvar(v?'Produto visível no site':'Produto oculto do site');renderGeral()}
+function prepararForm(p){
+  const cats=[...new Set([...D.categorias,...D.produtos.map(x=>x.categoria)])].filter(Boolean).sort((a,b)=>a.localeCompare(b,'pt-BR'));
+  document.getElementById('selCatProd').innerHTML='<option value="">Escolha...</option>'+cats.map(c=>`<option>${esc(c)}</option>`).join('');
+  document.getElementById('selAmbProd').innerHTML='<option value="">—</option>'+[...new Set([...P.ambientes,...D.produtos.map(x=>x.ambiente).filter(Boolean)])].map(a=>`<option>${esc(a)}</option>`).join('');
+  const f=document.getElementById('formProd');f.reset();
+  P.colunas.forEach(c=>{const el=f.elements[c];if(!el)return;if(c==='ativo')el.checked=CH.ativo(p);else el.value=p[c]||''});
+  fotoProdAtual=p.imagem||'sala';
+  document.getElementById('fotoProdSel').innerHTML='<option value="">Banco de imagens...</option>'+opcoesFotos(P.fotos[fotoProdAtual]?fotoProdAtual:'');
+  document.getElementById('fotoProdUrl').value=/^https?:/.test(fotoProdAtual)?fotoProdAtual:'';
+  mostrarFotoProd();
+}
+function mostrarFotoProd(){document.getElementById('fotoProdPrev').innerHTML=imgTag(fotoProdAtual,'Foto do produto')}
+function mudarFotoProd(v){if(!v)return;fotoProdAtual=v;mostrarFotoProd()}
+async function enviarFotoProd(inp){const f=inp.files[0];inp.value='';if(!f)return;fotoProdAtual=await reduzirImagem(f,900);document.getElementById('fotoProdSel').value='';mostrarFotoProd()}
+function novoProduto(){editIdx=null;document.getElementById('tituloProd').textContent='Novo produto';prepararForm({ativo:'sim',sku:'CH-'+String(Date.now()).slice(-5)});if(location.hash!=='#produtos')ir('produtos');abrirModal('mProduto')}
+function editarProduto(i){editIdx=i;document.getElementById('tituloProd').textContent='Editar produto';prepararForm(D.produtos[i]);abrirModal('mProduto')}
+function duplicarProduto(i){const p={...D.produtos[i],sku:D.produtos[i].sku+'-COPIA',nome:D.produtos[i].nome+' (cópia)'};D.produtos.push(p);salvar('Produto duplicado');renderProdutos();editarProduto(D.produtos.length-1)}
+function excluirProduto(i){if(!confirm(`Excluir "${D.produtos[i].nome}"?`))return;D.produtos.splice(i,1);salvar('Produto excluído');renderProdutos();renderCats()}
+function salvarProduto(e){
+  e.preventDefault();const f=e.target,p={};
+  P.colunas.forEach(c=>{const el=f.elements[c];if(c==='ativo')p.ativo=el.checked?'sim':'não';else if(el)p[c]=el.value.trim()});
+  p.imagem=fotoProdAtual;
+  const dup=D.produtos.findIndex((x,i)=>x.sku===p.sku&&i!==editIdx);
+  if(dup>=0){alert('Já existe um produto com o SKU '+p.sku+'.');return}
+  if(editIdx===null)D.produtos.push(p);else D.produtos[editIdx]=p;
+  if(!salvar(editIdx===null?'Produto cadastrado':'Produto atualizado'))return;
+  fecharModal('mProduto');renderProdutos();renderCats();renderGeral();
+}
+/* importar / exportar */
+let importPendente=[];
+function lerPlanilha(inp){
+  const f=inp.files[0];inp.value='';if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{try{
+    importPendente=CH.produtosDoCSV(r.result);
+    const novos=importPendente.filter(p=>!D.produtos.some(x=>x.sku&&x.sku===p.sku)).length;
+    document.getElementById('resumoImport').innerHTML=`Arquivo <b>${esc(f.name)}</b>: ${importPendente.length} produtos encontrados (${novos} novos, ${importPendente.length-novos} já existentes).`;
+    abrirModal('mImportar');
+  }catch(err){alert(err.message)}};
+  r.readAsText(f,'UTF-8');
+}
+function confirmarImport(){
+  const modo=document.querySelector('input[name=modoImp]:checked').value;
+  if(modo==='substituir'){if(!confirm('Substituir todos os '+D.produtos.length+' produtos atuais pelos da planilha?'))return;D.produtos=importPendente}
+  else importPendente.forEach(p=>{const i=p.sku?D.produtos.findIndex(x=>x.sku===p.sku):-1;if(i>=0)D.produtos[i]={...D.produtos[i],...Object.fromEntries(Object.entries(p).filter(([k,v])=>v!==''))};else D.produtos.push(p)});
+  importPendente.forEach(p=>{if(p.categoria&&!D.categorias.includes(p.categoria))D.categorias.push(p.categoria)});
+  salvar('Planilha importada');fecharModal('mImportar');renderProdutos();renderCats();renderGeral();
+}
+function exportarAdm(){
+  const c=document.getElementById('expCatAdm').value,inat=document.getElementById('expInativos').checked;
+  const l=D.produtos.filter(p=>(!c||p.categoria===c)&&(inat||CH.ativo(p)));
+  CH.baixar(`produtos-${c?CH.slug(c):'todos'}.csv`,CH.gerarCSV(l,D.fotos));toast(`${l.length} produtos exportados`);fecharModal('mExportar');
+}
+function baixarModeloAdm(){CH.baixar('modelo-produtos-casa-harmonia.csv',P.colunas.join(';')+'\r\nCH-XX-001;Nome do produto;Categoria;Sala;Descrição;Vinil autoadesivo;Fosco;0000.00.00;50;100;0.10;300;3;49.90;89.90;https://link-da-imagem.jpg;sim')}
+
+/* ============ Categorias ============ */
+function renderCats(){
+  const cats=[...new Set([...D.categorias,...D.produtos.map(p=>p.categoria)])].filter(Boolean).sort((a,b)=>a.localeCompare(b,'pt-BR'));
+  D.categorias=cats;
+  document.getElementById('tbCats').innerHTML=cats.map((c,idx)=>{const n=D.produtos.filter(p=>p.categoria===c).length;return `<tr>
+    <td><b>${esc(c)}</b></td><td>${n} produto${n===1?'':'s'}</td>
+    <td class="acoes-td"><button class="btn neutro sm" onclick="renomearCat(D.categorias[${idx}])"><i class="fa-solid fa-pen"></i> Renomear</button><button class="btn perigo sm" onclick="excluirCat(D.categorias[${idx}])"><i class="fa-solid fa-trash"></i></button></td></tr>`}).join('')||`<tr><td colspan="3"><div class="vazio">Nenhuma categoria.</div></td></tr>`;
+}
+function addCategoria(){const i=document.getElementById('novaCat'),n=i.value.trim();if(!n)return;if(D.categorias.includes(n)){toast('Essa categoria já existe');return}D.categorias.push(n);i.value='';salvar('Categoria adicionada');renderCats();renderProdutos()}
+function renomearCat(c){const n=(prompt('Novo nome para a categoria:',c)||'').trim();if(!n||n===c)return;D.produtos.forEach(p=>{if(p.categoria===c)p.categoria=n});D.categorias=D.categorias.map(x=>x===c?n:x);salvar('Categoria renomeada');renderCats();renderProdutos()}
+function excluirCat(c){const n=D.produtos.filter(p=>p.categoria===c).length;if(n){alert(`Esta categoria tem ${n} produto(s). Mude a categoria deles ou exclua os produtos antes.`);return}D.categorias=D.categorias.filter(x=>x!==c);salvar('Categoria excluída');renderCats();renderProdutos()}
+
+/* ============ Revendedores ============ */
+let abaRev='todos';
+const ST={pendente:['amarelo','Aguardando','fa-hourglass-half'],aprovado:['verde','Aprovado','fa-circle-check'],recusado:['vermelho','Recusado','fa-circle-xmark']};
+function linhaRev(r){
+  const s=ST[r.status]||ST.pendente,d=new Date(r.data),wpp=String(r.whats||'').replace(/\D/g,'');
+  return `<tr>
+    <td><div class="nome">${esc(r.nome)}</div><div class="sub">${esc(r.empresa)}</div></td>
+    <td class="tabela-esconde">${esc(r.doc)}</td>
+    <td><div class="sub" style="color:var(--texto)">${esc(r.email)}</div>${wpp?`<a class="sub" style="color:var(--verde)" target="_blank" href="https://wa.me/${wpp.length<=11?'55'+wpp:wpp}"><i class="fa-brands fa-whatsapp"></i> ${esc(r.whats)}</a>`:''}</td>
+    <td class="tabela-esconde"><div class="sub">${isNaN(d)?'':d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}</div></td>
+    <td><span class="pill ${s[0]}"><i class="fa-solid ${s[2]}"></i> ${s[1]}</span></td>
+    <td class="acoes-td">
+      ${r.status!=='aprovado'?`<button class="btn ok sm" onclick="statusRev('${r.id}','aprovado')"><i class="fa-solid fa-check"></i> Aprovar</button>`:''}
+      ${r.status!=='recusado'?`<button class="btn perigo sm" onclick="statusRev('${r.id}','recusado')">${r.status==='aprovado'?'Bloquear':'Recusar'}</button>`:''}
+      <button class="btn neutro sm ic" title="Excluir" onclick="excluirRev('${r.id}')"><i class="fa-solid fa-trash"></i></button>
+    </td></tr>`;
+}
+function renderRev(){
+  document.getElementById('aprovAuto').checked=D.config.aprovacao!=='manual';
+  const revs=CH.revendedores(),c=s=>revs.filter(r=>s==='todos'||r.status===s).length;
+  document.getElementById('abasRev').innerHTML=[['todos','Todos'],['pendente','Aguardando'],['aprovado','Aprovados'],['recusado','Recusados']].map(([k,n])=>`<button class="${k===abaRev?'ativo':''}" onclick="abaRev='${k}';renderRev()">${n}<span class="pill ${k==='pendente'&&c(k)?'amarelo':'cinza'}">${c(k)}</span></button>`).join('');
+  const b=document.getElementById('buscaRev').value.toLowerCase().trim();
+  const l=revs.filter(r=>(abaRev==='todos'||r.status===abaRev)&&(!b||[r.nome,r.empresa,r.email,r.doc].join(' ').toLowerCase().includes(b))).reverse();
+  document.getElementById('tbRev').innerHTML=l.length?l.map(linhaRev).join(''):`<tr><td colspan="6"><div class="vazio"><i class="fa-solid fa-store"></i>Nenhum revendedor ${abaRev==='todos'?'cadastrado ainda. Os cadastros feitos no site aparecem aqui.':'nesta lista.'}</div></td></tr>`;
+}
+document.getElementById('buscaRev').addEventListener('input',renderRev);
+function statusRev(id,st){const l=CH.revendedores(),r=l.find(x=>x.id===id);if(!r)return;r.status=st;r.atualizado=new Date().toISOString();CH.salvarRevendedores(l);toast(st==='aprovado'?'Revendedor aprovado: o acesso foi liberado':'Acesso do revendedor bloqueado');renderRev();renderGeral();atualizarBadges()}
+function excluirRev(id){if(!confirm('Excluir este cadastro?'))return;CH.salvarRevendedores(CH.revendedores().filter(r=>r.id!==id));toast('Cadastro excluído');renderRev();renderGeral();atualizarBadges()}
+function mudarAprovacao(auto){D.config.aprovacao=auto?'automatica':'manual';salvar(auto?'Aprovação automática: acesso liberado na hora':'Aprovação manual: cada cadastro precisa ser aprovado');renderGeral()}
+function exportarRevendedores(){
+  const cols=['nome','empresa','doc','whats','email','data','status'],rot=['Nome','Empresa','CNPJ/CPF','WhatsApp','E-mail','Data do cadastro','Status'];
+  CH.baixar('revendedores-casa-harmonia.csv',[rot.join(';'),...CH.revendedores().map(r=>cols.map(c=>CH.csvCampo(c==='data'?new Date(r.data).toLocaleString('pt-BR'):c==='status'?(ST[r.status]||ST.pendente)[1]:r[c])).join(';'))].join('\r\n'));
+}
+
+/* ============ Textos e seções ============ */
+let pagAtual='inicio';
+function renderConteudo(){
+  const busca=document.getElementById('buscaTexto').value.toLowerCase().trim();
+  const pags=Object.entries(P.paginas);
+  document.getElementById('abasPag').innerHTML=pags.map(([k,n])=>`<button class="${k===pagAtual&&!busca?'ativo':''}" onclick="pagAtual='${k}';document.getElementById('buscaTexto').value='';renderConteudo()">${n}</button>`).join('');
+  const secs=P.secoes.filter(s=>busca?true:s.page===pagAtual);
+  const html=secs.map(s=>{
+    let campos=P.textos.filter(t=>t.sec===s.key);
+    if(busca)campos=campos.filter(t=>(D.textos[t.key]??t.valor).toLowerCase().includes(busca));
+    if(busca&&!campos.length)return '';
+    const oculta=!!D.ocultas[s.key];
+    const alterados=campos.filter(t=>D.textos[t.key]!==undefined).length;
+    return `<div class="secao-ed ${oculta?'oculta':''} ${busca?'aberta':''}" data-s="${s.key}">
+      <header onclick="this.parentElement.classList.toggle('aberta')">
+        <div class="tit"><b>${esc(s.label)}</b><small>${busca?esc(P.paginas[s.page])+' · ':''}${campos.length} texto${campos.length===1?'':'s'}${alterados?' · '+alterados+' alterado'+(alterados>1?'s':''):''}</small></div>
+        ${s.fixa?'':`<label class="vis" onclick="event.stopPropagation()">${oculta?'Oculta':'Visível'} <span class="chave"><input type="checkbox" ${oculta?'':'checked'} onchange="alternarSecao('${s.key}',this.checked)"><span></span></span></label>`}
+        <i class="fa-solid fa-chevron-down seta"></i>
+      </header>
+      <div class="corpo">${campos.map(t=>{const v=D.textos[t.key]??t.valor,alt=D.textos[t.key]!==undefined;const longo=v.length>70||t.mode==='html';
+        return `<div class="campo campo-texto"><label>${esc(t.label)} ${alt?'<span class="alt">Alterado</span>':''}</label>
+        ${longo?`<textarea rows="${Math.min(6,Math.ceil(v.length/90)+1)}" data-k="${t.key}">${esc(v)}</textarea>`:`<input type="text" data-k="${t.key}" value="${esc(v)}">`}
+        ${t.mode==='html'?'<small>Use &lt;span&gt;…&lt;/span&gt; para destacar uma parte do título na cor de destaque.</small>':''}
+        ${alt?`<button class="restaurar" onclick="restaurarTexto('${t.key}')">Restaurar texto original</button>`:''}</div>`}).join('')}</div>
+    </div>`;
+  }).join('');
+  document.getElementById('listaSecoes').innerHTML=html||'<div class="caixa vazio"><i class="fa-solid fa-magnifying-glass"></i>Nenhum texto encontrado.</div>';
+  document.querySelectorAll('#listaSecoes [data-k]').forEach(el=>el.addEventListener('input',()=>{
+    const t=P.textos.find(x=>x.key===el.dataset.k);
+    if(el.value===t.valor)delete D.textos[t.key];else D.textos[t.key]=el.value;
+    clearTimeout(el._t);el._t=setTimeout(()=>salvar('Texto salvo'),600);
+  }));
+}
+document.getElementById('buscaTexto').addEventListener('input',renderConteudo);
+function alternarSecao(k,vis){if(vis)delete D.ocultas[k];else D.ocultas[k]=true;salvar(vis?'Seção visível no site':'Seção ocultada do site');const el=document.querySelector(`.secao-ed[data-s="${k}"]`);el.classList.toggle('oculta',!vis);el.querySelector('.vis').firstChild.textContent=vis?'Visível ':'Oculta '}
+function restaurarTexto(k){delete D.textos[k];salvar('Texto restaurado');const aberta=[...document.querySelectorAll('.secao-ed.aberta')].map(e=>e.dataset.s);renderConteudo();aberta.forEach(s=>document.querySelector(`.secao-ed[data-s="${s}"]`)?.classList.add('aberta'))}
+
+/* ============ Página Produtos (serviços) ============ */
+let servFotoIdx=null;
+function renderServ(){
+  document.getElementById('listaServ').innerHTML=D.servicos.map((s,i)=>`<div class="serv-linha">
+    <div class="mini">${imgTag(s.foto,s.nome)}</div>
+    <div style="display:grid;gap:6px"><select onchange="D.servicos[${i}].foto=this.value;salvar();renderServ()"><option value="">Banco de imagens...</option>${opcoesFotos(s.foto)}</select><button class="btn neutro sm" onclick="servFotoIdx=${i};document.getElementById('arqServ').click()"><i class="fa-solid fa-upload"></i> Enviar foto</button></div>
+    <input type="text" value="${esc(s.nome)}" placeholder="Nome" onchange="D.servicos[${i}].nome=this.value;salvar()">
+    <input type="text" value="${esc(s.descricao)}" placeholder="Descrição" onchange="D.servicos[${i}].descricao=this.value;salvar()">
+    <div style="display:flex;gap:4px"><button class="btn neutro sm ic" title="Subir" onclick="moverServ(${i},-1)"><i class="fa-solid fa-arrow-up"></i></button><button class="btn neutro sm ic" title="Descer" onclick="moverServ(${i},1)"><i class="fa-solid fa-arrow-down"></i></button><button class="btn perigo sm ic" title="Remover" onclick="if(confirm('Remover este item?')){D.servicos.splice(${i},1);salvar();renderServ()}"><i class="fa-solid fa-trash"></i></button></div>
+  </div>`).join('')||'<div class="caixa vazio">Nenhum item. Clique em Adicionar item.</div>';
+}
+function addServico(){D.servicos.push({foto:'sala',nome:'Novo item',descricao:'Descrição do item'});salvar('Item adicionado');renderServ()}
+function moverServ(i,d){const j=i+d;if(j<0||j>=D.servicos.length)return;[D.servicos[i],D.servicos[j]]=[D.servicos[j],D.servicos[i]];salvar(false);renderServ()}
+async function enviarFotoServ(inp){const f=inp.files[0];inp.value='';if(!f||servFotoIdx===null)return;D.servicos[servFotoIdx].foto=await reduzirImagem(f,900);salvar('Foto atualizada');renderServ()}
+
+/* ============ Imagens ============ */
+let imgChave=null;
+function renderImgs(){
+  document.getElementById('gradeImg').innerHTML=Object.entries(P.fotos).map(([k,f])=>{const alt=!!D.fotos[k];return `<div class="img-card">
+    <div class="prev">${imgTag(k,f.nome)}<span class="pill ${alt?'verde':'cinza'}">${alt?'Personalizada':'Demonstrativa'}</span></div>
+    <div class="info"><b>${esc(f.nome)}</b>
+      <input type="url" placeholder="Colar link da imagem" value="${alt&&!/^data:/.test(D.fotos[k])?esc(D.fotos[k]):''}" onchange="if(this.value.trim()){D.fotos['${k}']=this.value.trim();salvar('Imagem atualizada');renderImgs()}">
+      <div class="bts"><button class="btn sm" onclick="imgChave='${k}';document.getElementById('arqImg').click()"><i class="fa-solid fa-upload"></i> Enviar</button>${alt?`<button class="btn neutro sm" onclick="delete D.fotos['${k}'];salvar('Imagem restaurada');renderImgs()"><i class="fa-solid fa-rotate-left"></i> Restaurar</button>`:''}</div>
+    </div></div>`}).join('');
+}
+async function enviarImagem(inp){const f=inp.files[0];inp.value='';if(!f||!imgChave)return;const max=['hero','fabrica','entrega','sala3','sala2'].includes(imgChave)?1600:1000;D.fotos[imgChave]=await reduzirImagem(f,max);if(salvar('Imagem enviada'))renderImgs();else delete D.fotos[imgChave]}
+
+/* ============ Contato ============ */
+const CAMPOS_CONTATO=[
+  ['whatsapp_numero','WhatsApp (só números, com DDI e DDD)','Usado em todos os botões de WhatsApp. Ex.: 5514996058087'],
+  ['whatsapp_txt','WhatsApp (como aparece no site)','Ex.: (14) 99605-8087'],
+  ['telefone_numero','Telefone principal (só números)','Usado no botão de ligar. Ex.: 551434254843'],
+  ['telefone_txt','Telefone principal (como aparece)','Exibido no rodapé'],
+  ['telefones_txt','Todos os telefones (como aparecem)','Exibido na página Contato'],
+  ['instagram_url','Link do Instagram',''],
+  ['instagram_txt','Instagram (como aparece)','Ex.: @casaharmoniadecor'],
+  ['endereco_txt','Endereço completo','Exibido no rodapé, Sobre e Contato'],
+  ['mapa_busca','Endereço para o mapa','Usado nos mapas e no botão "como chegar"'],
+  ['jota_url','Link "Desenvolvido por Jota Solutions"','Endereço do site da Jota Solutions']
+];
+function renderContato(){document.getElementById('formContato').innerHTML=CAMPOS_CONTATO.map(([k,l,d])=>`<div class="campo ${['endereco_txt','mapa_busca'].includes(k)?'largo':''}"><label>${l}</label><input type="text" data-ct="${k}" value="${esc(D.contato[k])}">${d?`<small>${d}</small>`:''}</div>`).join('')}
+function salvarContato(){document.querySelectorAll('[data-ct]').forEach(i=>D.contato[i.dataset.ct]=i.value.trim());D.contato.whatsapp_numero=D.contato.whatsapp_numero.replace(/\D/g,'');D.contato.telefone_numero=D.contato.telefone_numero.replace(/\D/g,'');salvar('Contato salvo');renderContato()}
+
+/* ============ Aparência ============ */
+const CORES=[['pri','Cor principal','Botões e destaques'],['priEsc','Principal escura','Botão ao passar o mouse, títulos'],['priClaro','Principal clara','Fundos suaves e etiquetas'],['creme','Fundo creme','Fundo das seções alternadas'],['ouro','Detalhe dourado','Pequenos destaques'],['rodape','Rodapé','Fundo do rodapé e faixa do revendedor']];
+const PRESETS=[
+  ['Salmão clássico',{pri:'#EE8471',priEsc:'#D4614C',priClaro:'#FCE6DF',creme:'#FFF8F3',ouro:'#C8A165',rodape:'#3A2329'}],
+  ['Rosé chique',{pri:'#E58C8A',priEsc:'#C2606A',priClaro:'#FBE7E8',creme:'#FFF9F8',ouro:'#B9975B',rodape:'#2F2430'}],
+  ['Terracota',{pri:'#E07A5F',priEsc:'#B8573F',priClaro:'#F9E3DA',creme:'#FDF7F2',ouro:'#C9A227',rodape:'#33261F'}],
+  ['Salmão e verde-oliva',{pri:'#EF8F78',priEsc:'#D06A54',priClaro:'#FCE7E0',creme:'#FAF8F2',ouro:'#8A9A5B',rodape:'#2E3528'}]
+];
+function renderAparencia(){
+  document.getElementById('cores').innerHTML=CORES.map(([k,n,d])=>`<label class="cor"><input type="color" value="${D.cores[k]}" oninput="D.cores['${k}']=this.value;previaCores()" onchange="salvar('Cor salva')"><div><b>${n}</b><small>${d}</small></div></label>`).join('');
+  document.getElementById('presets').innerHTML='<span style="font-size:.8rem;color:var(--suave);align-self:center">Combinações prontas:</span>'+PRESETS.map((p,i)=>`<button class="preset" onclick="usarPreset(${i})"><span>${['pri','priEsc','ouro','rodape'].map(k=>`<i style="background:${p[1][k]}"></i>`).join('')}</span>${p[0]}</button>`).join('')+`<button class="preset" onclick="D.cores={...P.cores};salvar('Cores originais restauradas');renderAparencia()"><i class="fa-solid fa-rotate-left" style="border:none;width:auto;height:auto;margin:0"></i> Original</button>`;
+  previaCores();
+  document.getElementById('logoPrev').innerHTML=D.logo?`<img src="${esc(D.logo)}" alt="Logo">`:'<div class="ph"><i class="fa-regular fa-image"></i>Sem logo</div>';
+}
+function usarPreset(i){D.cores={...PRESETS[i][1]};salvar('Combinação aplicada');renderAparencia()}
+function previaCores(){const c=D.cores;document.getElementById('previaCores').innerHTML=`<div class="h" style="background:linear-gradient(135deg,${c.pri},${c.priEsc})">Transforme seus espaços</div><div class="m" style="background:${c.creme}"><span style="background:${c.pri};color:#fff;padding:8px 16px;border-radius:30px;font-size:.8rem;font-weight:600">Botão</span><span style="background:${c.priClaro};color:${c.priEsc};padding:5px 12px;border-radius:30px;font-size:.72rem;font-weight:600">ETIQUETA</span><span style="color:${c.ouro}"><i class="fa-solid fa-star"></i> Destaque</span></div><div class="f" style="background:${c.rodape}">Rodapé · Desenvolvido por Jota Solutions</div>`}
+async function enviarLogo(inp){const f=inp.files[0];inp.value='';if(!f)return;D.logo=await reduzirImagem(f,400,'image/png');salvar('Logo atualizado');renderAparencia()}
+function removerLogo(){D.logo='';salvar('Logo removido');renderAparencia()}
+
+/* ============ Publicar e backup ============ */
+function dadosPublicos(){const d=CH.clone(D);delete d.config.senhaAdmin;return d}
+function baixarDados(){CH.baixar('dados.json',JSON.stringify(dadosPublicos(),null,1),'application/json');toast('dados.json baixado: envie para o GitHub')}
+function baixarBackup(){CH.baixar(`backup-casa-harmonia-${new Date().toISOString().slice(0,10)}.json`,JSON.stringify({dados:D,revendedores:CH.revendedores()},null,1),'application/json')}
+function carregarDados(inp,backup){
+  const f=inp.files[0];inp.value='';if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{try{
+    const j=JSON.parse(r.result),dados=j.dados||j;
+    if(!dados.produtos)throw 0;
+    if(!confirm('Substituir o conteúdo atual do painel por este arquivo?'))return;
+    const senha=D.config.senhaAdmin;D=CH.montar(dados);D.config.senhaAdmin=dados.config&&dados.config.senhaAdmin||senha;
+    if(j.revendedores&&confirm('O arquivo tem '+j.revendedores.length+' revendedores. Restaurar a lista também?'))CH.salvarRevendedores(j.revendedores);
+    salvar('Dados carregados');renderTudo();
+  }catch(e){alert('Arquivo inválido.')}};
+  r.readAsText(f,'UTF-8');
+}
+function restaurarTudo(){if(!confirm('Voltar todo o conteúdo para o original? Produtos, textos, imagens e cores alterados serão perdidos.'))return;const senha=D.config.senhaAdmin;D=CH.montar(null);D.config.senhaAdmin=senha;salvar('Conteúdo original restaurado');renderTudo()}
+function renderPublicar(){
+  const salvo=CH.salvos();
+  document.getElementById('ultimaAlt').textContent=salvo&&salvo.atualizado?'Última alteração no painel: '+new Date(salvo.atualizado).toLocaleString('pt-BR'):'Nenhuma alteração feita ainda.';
+  let total=0;try{for(const k in localStorage)if(localStorage.hasOwnProperty(k))total+=(localStorage[k].length+k.length)*2}catch(e){}
+  const pct=Math.min(100,total/(5*1024*1024)*100);
+  document.getElementById('barraEspaco').style.width=pct.toFixed(1)+'%';
+  document.getElementById('txtEspaco').textContent=`${(total/1024/1024).toFixed(2)} MB de cerca de 5 MB`;
+}
+
+/* ============ Configurações ============ */
+function trocarSenha(){const a=document.getElementById('novaSenha').value,b=document.getElementById('novaSenha2').value;if(a.length<6){alert('A senha precisa ter pelo menos 6 caracteres.');return}if(a!==b){alert('As senhas não conferem.');return}D.config.senhaAdmin=a;salvar('Senha alterada');document.getElementById('novaSenha').value=document.getElementById('novaSenha2').value=''}
+
+/* Início */
+if(sessionStorage.getItem('ch_admin'))abrirPainel();
+</script>
+</body>
+</html>
