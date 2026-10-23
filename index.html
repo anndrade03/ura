@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Casa Harmonia Decorações</title>
+<meta name="description" content="Casa Harmonia Decorações: papéis de parede, revestimentos adesivos e soluções decorativas personalizadas. Marília/SP.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root{
+  --pri:#EE8471;        /* salmão coral */
+  --pri-esc:#D4614C;    /* salmão profundo */
+  --pri-claro:#FCE6DF;  /* blush */
+  --creme:#FFF8F3;      /* off-white quente */
+  --ouro:#C8A165;       /* champanhe */
+  --texto:#2E2326;
+  --suave:#76666A;
+  --borda:#F1DCD4;
+  --rodape:#3A2329;     /* vinho rosado */
+  --verde-wpp:#25D366;
+  --sombra:0 10px 30px rgba(212,97,76,.14);
+  --raio:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;color:var(--texto);background:#fff;line-height:1.65;font-size:15px}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;line-height:1.25;font-weight:700}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+button{font-family:inherit}
+.container{width:100%;max-width:1200px;margin:0 auto;padding:0 20px}
+section{padding:80px 0}
+.sec-creme{background:var(--creme)}
+.sec-blush{background:var(--pri-claro)}
+.titulo-sec{text-align:center;margin-bottom:44px;max-width:720px;margin-left:auto;margin-right:auto}
+.titulo-sec h2{font-size:2.1rem;margin-bottom:10px}
+.titulo-sec p{color:var(--suave)}
+.tag{display:inline-flex;align-items:center;gap:8px;background:var(--pri-claro);color:var(--pri-esc);font-weight:600;font-size:.75rem;padding:6px 14px;border-radius:30px;margin-bottom:14px;letter-spacing:1px;text-transform:uppercase}
+.tag.ouro{background:rgba(200,161,101,.15);color:#9C7A43}
+.txt-suave{color:var(--suave)}
+.mb{margin-bottom:14px}
+
+/* Botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 26px;border-radius:40px;font-weight:600;font-size:.92rem;cursor:pointer;border:2px solid var(--pri);background:var(--pri);color:#fff;transition:.2s}
+.btn:hover{background:var(--pri-esc);border-color:var(--pri-esc);transform:translateY(-1px)}
+.btn-outline{background:transparent;color:var(--pri-esc)}
+.btn-outline:hover{background:var(--pri);color:#fff}
+.btn-branco{background:#fff;color:var(--pri-esc);border-color:#fff}
+.btn-branco:hover{background:var(--pri-claro);border-color:var(--pri-claro)}
+.btn-vazado{background:transparent;color:#fff;border-color:rgba(255,255,255,.8)}
+.btn-vazado:hover{background:#fff;color:var(--pri-esc);border-color:#fff}
+.btn-wpp{background:var(--verde-wpp);border-color:var(--verde-wpp)}
+.btn-wpp:hover{background:#1DA851;border-color:#1DA851}
+.btn-sm{padding:8px 16px;font-size:.82rem}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+
+/* Fotos */
+.foto{position:relative;overflow:hidden;border-radius:var(--raio);background:var(--pri-claro)}
+.foto img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.foto::after{content:'Foto ilustrativa';position:absolute;left:10px;bottom:10px;background:rgba(46,35,38,.6);color:#fff;font-size:.62rem;padding:3px 9px;border-radius:20px;letter-spacing:.5px}
+.foto.sem-selo::after{display:none}
+.ph{background:var(--pri-claro);border:2px dashed #E7B4A6;color:#B0705F;display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center;text-align:center;font-weight:600;font-size:.8rem;letter-spacing:.5px;text-transform:uppercase;padding:16px;width:100%;height:100%;min-height:160px}
+.ph i{font-size:1.6rem}
+.foto:has(.ph)::after{display:none}
+.bg .ph,.video .ph{font-size:0;border:none}
+.bg .ph i,.video .ph i{display:none}
+
+/* Header */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--borda)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
+.logo{display:flex;align-items:center;gap:11px}
+.logo-ph{width:48px;height:48px;border-radius:50%;border:2px dashed #E7B4A6;background:var(--pri-claro);display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;color:#B0705F;text-align:center;line-height:1.1;flex-shrink:0}
+.logo strong{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--pri-esc);line-height:1.1;display:block}
+.logo small{display:block;font-size:.66rem;color:var(--suave);letter-spacing:2.5px;text-transform:uppercase}
+.menu{display:flex;align-items:center;gap:24px}
+.menu a{font-weight:500;font-size:.9rem;position:relative}
+.menu a:not(.btn).ativo,.menu a:not(.btn):hover{color:var(--pri-esc)}
+.menu a:not(.btn).ativo::after{content:'';position:absolute;left:0;right:0;bottom:-6px;height:2px;background:var(--pri);border-radius:2px}
+.menu .btn.ativo{background:var(--pri-esc);border-color:var(--pri-esc)}
+.hamb{display:none;background:none;border:none;font-size:1.5rem;color:var(--pri-esc);cursor:pointer}
+
+/* Páginas */
+.page{display:none}
+.page.ativo{display:block;animation:surgir .35s ease}
+@keyframes surgir{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* Hero com foto */
+.hero{position:relative;min-height:620px;display:flex;align-items:center;color:#fff;overflow:hidden}
+.hero .bg{position:absolute;inset:0;border-radius:0}
+.hero .bg::after{left:auto;right:16px;bottom:16px}
+.hero .bg img{height:100%}
+.hero .veu{position:absolute;inset:0;background:linear-gradient(90deg,rgba(46,35,38,.82) 0%,rgba(46,35,38,.55) 45%,rgba(238,132,113,.15) 100%)}
+.hero .container{position:relative;z-index:2}
+.hero-txt{max-width:600px}
+.hero .tag{background:rgba(255,255,255,.18);color:#fff}
+.hero h1{font-size:3.2rem;margin-bottom:12px}
+.hero h1 span{color:#FFC7B8}
+.hero .sub{font-size:1.15rem;font-weight:600;margin-bottom:12px;color:#FFE3DA}
+.hero p{opacity:.92;margin-bottom:28px}
+.acoes{display:flex;gap:12px;flex-wrap:wrap}
+.hero-selos{display:flex;gap:26px;margin-top:34px;flex-wrap:wrap}
+.hero-selos div{display:flex;align-items:center;gap:10px;font-size:.85rem}
+.hero-selos i{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:#FFC7B8}
+
+.page-head{position:relative;color:#fff;text-align:center;padding:90px 20px;overflow:hidden}
+.page-head .bg{position:absolute;inset:0;border-radius:0}
+.page-head .bg img{height:100%}
+.page-head .bg::after{display:none}
+.page-head .veu{position:absolute;inset:0;background:linear-gradient(135deg,rgba(212,97,76,.88),rgba(58,35,41,.8))}
+.page-head .conteudo{position:relative;z-index:2;max-width:700px;margin:0 auto}
+.page-head h1{font-size:2.6rem;margin-bottom:10px}
+.page-head p{opacity:.95}
+.page-head .tag{background:rgba(255,255,255,.2);color:#fff}
+.migalha{font-size:.8rem;opacity:.85;margin-top:14px}
+.migalha a{text-decoration:underline}
+
+/* Grids */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:54px;align-items:center}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.numeros{display:flex;gap:34px;margin-top:26px;flex-wrap:wrap}
+.numeros strong{display:block;font-family:'Playfair Display';font-size:2.1rem;color:var(--pri-esc);line-height:1}
+.numeros span{font-size:.8rem;color:var(--suave)}
+.destaque{display:flex;gap:12px;align-items:flex-start;background:var(--pri-claro);border-left:4px solid var(--pri);padding:14px 18px;border-radius:10px;margin-top:20px;font-weight:500}
+.destaque i{color:var(--pri-esc);margin-top:4px}
+.foto-alta{height:460px}
+.foto-media{height:380px}
+.foto-dupla{position:relative}
+.foto-dupla .menor{position:absolute;width:45%;height:200px;right:-20px;bottom:-30px;border:6px solid #fff;box-shadow:var(--sombra)}
+
+/* Cards */
+.card{background:#fff;border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;transition:.25s;display:flex;flex-direction:column}
+.card:hover{box-shadow:var(--sombra);transform:translateY(-4px)}
+.card:hover .foto img{transform:scale(1.05)}
+.card .foto{border-radius:0;height:210px}
+.card-corpo{padding:20px;display:flex;flex-direction:column;flex:1}
+.card-corpo h3{font-size:1.08rem;margin-bottom:6px}
+.card-corpo p{color:var(--suave);font-size:.88rem;margin-bottom:14px;flex:1}
+.card-icone{padding:28px}
+.ic{font-size:1.35rem;width:56px;height:56px;border-radius:16px;background:var(--pri-claro);color:var(--pri-esc);display:flex;align-items:center;justify-content:center;margin-bottom:16px;flex-shrink:0}
+.card-icone h3{font-size:1.05rem;margin-bottom:6px}
+.card-icone p{color:var(--suave);font-size:.88rem}
+
+/* Carrossel com setas */
+.carrossel{position:relative}
+.trilho{display:flex;gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:6px 2px 14px}
+.trilho::-webkit-scrollbar{display:none}
+.trilho>*{flex:0 0 calc((100% - 66px)/4);scroll-snap-align:start}
+.trilho.tres>*{flex-basis:calc((100% - 44px)/3)}
+.trilho .foto{height:280px}
+.seta{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:48px;height:48px;border-radius:50%;border:none;background:#fff;color:var(--pri-esc);box-shadow:0 6px 18px rgba(0,0,0,.15);cursor:pointer;font-size:1rem;transition:.2s;display:flex;align-items:center;justify-content:center}
+.seta:hover{background:var(--pri);color:#fff}
+.seta.esq{left:-22px}
+.seta.dir{right:-22px}
+
+/* Faixa revendedor */
+.faixa-rev{display:grid;grid-template-columns:1.1fr 1fr;border-radius:26px;overflow:hidden;background:var(--rodape);color:#fff}
+.faixa-rev .txt{padding:54px 50px}
+.faixa-rev h2{font-size:2.1rem;margin-bottom:12px}
+.faixa-rev h2 span{color:#FFC7B8}
+.faixa-rev p{opacity:.88;margin-bottom:22px}
+.faixa-rev ul{list-style:none;margin-bottom:26px;display:grid;gap:8px}
+.faixa-rev li{display:flex;gap:10px;align-items:center;font-size:.92rem}
+.faixa-rev li i{color:var(--ouro)}
+.faixa-rev .foto{border-radius:0;min-height:100%}
+
+.video{position:relative;height:500px;border-radius:24px;overflow:hidden}
+.video .foto{position:absolute;inset:0;border-radius:0}
+.video .foto::after{display:none}
+.video .veu{position:absolute;inset:0;background:rgba(46,35,38,.55);display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;gap:16px;padding:20px}
+.play{width:88px;height:88px;border-radius:50%;background:var(--pri);display:flex;align-items:center;justify-content:center;font-size:1.8rem;box-shadow:0 0 0 14px rgba(238,132,113,.3)}
+.video small{border:2px dashed rgba(255,255,255,.7);padding:8px 16px;border-radius:10px;text-transform:uppercase;letter-spacing:1px;font-size:.75rem;font-weight:600}
+
+.logos{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.logos .ph{min-height:96px;border-radius:14px;font-size:.68rem}
+
+/* CTA */
+.cta{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--pri),var(--pri-esc));color:#fff;text-align:center;border-radius:28px;padding:64px 30px}
+.cta::before{content:'';position:absolute;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.08);top:-140px;right:-80px}
+.cta h2{font-size:2.2rem;margin-bottom:12px;position:relative}
+.cta p{max-width:640px;margin:0 auto 28px;opacity:.95;position:relative}
+.cta .acoes{justify-content:center;position:relative}
+
+/* Sobre */
+.mvv{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+.mvv .card{padding:32px;flex-direction:row;gap:20px;align-items:flex-start}
+.mvv h3{margin-bottom:8px;color:var(--pri-esc)}
+.valores{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.valores .card{padding:22px;flex-direction:row;gap:14px;align-items:flex-start}
+.valores .ic{width:44px;height:44px;font-size:1rem;margin:0;border-radius:12px}
+.valores h4{margin-bottom:2px;font-size:1rem}
+.valores p{font-size:.85rem;color:var(--suave)}
+.linha-tempo{display:flex;gap:0;margin-top:26px}
+.linha-tempo div{flex:1;border-top:3px solid var(--pri);padding-top:12px;position:relative;padding-right:10px}
+.linha-tempo div::before{content:'';position:absolute;top:-9px;left:0;width:15px;height:15px;border-radius:50%;background:var(--pri);border:3px solid #fff;box-shadow:0 0 0 2px var(--pri)}
+.linha-tempo strong{display:block;color:var(--pri-esc);font-family:'Playfair Display'}
+.linha-tempo span{font-size:.8rem;color:var(--suave)}
+
+.mapa{width:100%;height:400px;border:0;border-radius:var(--raio)}
+.end-box{display:flex;gap:16px;align-items:center;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+
+/* ===== Seja um Revendedor ===== */
+.fluxo{display:grid;grid-template-columns:repeat(4,1fr);gap:34px;position:relative}
+.passo-fluxo{text-align:center;position:relative}
+.passo-fluxo .circ{width:96px;height:96px;border-radius:50%;background:#fff;border:2px solid var(--borda);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:1.9rem;color:var(--pri-esc);box-shadow:var(--sombra);position:relative}
+.passo-fluxo .circ b{position:absolute;top:-4px;right:-4px;width:30px;height:30px;border-radius:50%;background:var(--pri);color:#fff;font-size:.8rem;display:flex;align-items:center;justify-content:center;font-family:'Poppins'}
+.passo-fluxo h4{font-size:1.02rem;margin-bottom:4px}
+.passo-fluxo p{font-size:.85rem;color:var(--suave)}
+.passo-fluxo:not(:last-child)::after{content:'\f061';font-family:'Font Awesome 6 Free';font-weight:900;position:absolute;top:36px;right:-28px;color:var(--pri);font-size:1.2rem}
+.quem{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}
+.quem .card{padding:26px;flex-direction:row;gap:18px}
+.quem h4{margin-bottom:6px}
+.quem ul{list-style:none;font-size:.88rem;color:var(--suave);display:grid;gap:6px}
+.quem li i{color:var(--pri);margin-right:8px}
+
+.status{display:flex;align-items:center;gap:18px;flex-wrap:wrap;justify-content:space-between;border-radius:var(--raio);padding:22px 26px;margin-bottom:26px;border:1px solid var(--borda)}
+.status.bloqueado{background:linear-gradient(135deg,var(--pri-claro),#fff)}
+.status.liberado{background:linear-gradient(135deg,#E9F8EE,#fff);border-color:#BFE6CC}
+.status .txt{display:flex;gap:16px;align-items:center}
+.status .ic{margin:0}
+.status.liberado .ic{background:#D6F2DF;color:#1E8A4A}
+.status h3{font-size:1.1rem}
+.status p{font-size:.86rem;color:var(--suave)}
+
+.cat-layout{display:grid;grid-template-columns:270px 1fr;gap:30px;align-items:start}
+.filtros{position:sticky;top:96px;background:#fff;border:1px solid var(--borda);border-radius:var(--raio);padding:22px}
+.filtros h4{font-family:'Poppins';font-size:.82rem;text-transform:uppercase;letter-spacing:1px;color:var(--suave);margin:18px 0 10px}
+.filtros h4:first-child{margin-top:0}
+.filtro-cat{display:flex;justify-content:space-between;align-items:center;width:100%;padding:9px 12px;border-radius:10px;border:none;background:none;cursor:pointer;font-size:.88rem;color:var(--texto);text-align:left}
+.filtro-cat:hover{background:var(--creme)}
+.filtro-cat.ativo{background:var(--pri-claro);color:var(--pri-esc);font-weight:600}
+.filtro-cat span{font-size:.75rem;background:#fff;border:1px solid var(--borda);border-radius:20px;padding:1px 8px;color:var(--suave)}
+.bloco-trava{position:relative}
+.bloco-trava.travado .opcoes{opacity:.4;pointer-events:none;filter:blur(.5px)}
+.trava-msg{display:none;font-size:.78rem;color:var(--pri-esc);background:var(--pri-claro);border-radius:8px;padding:8px 10px;margin-top:8px;gap:6px;align-items:center}
+.bloco-trava.travado .trava-msg{display:flex}
+.opcoes label{display:flex;gap:8px;align-items:center;font-size:.88rem;margin-bottom:8px;cursor:pointer}
+.opcoes input[type=checkbox],.opcoes input[type=radio]{accent-color:var(--pri)}
+.opcoes select,.barra select{width:100%;padding:9px 12px;border:1px solid var(--borda);border-radius:10px;font-family:inherit;font-size:.86rem;background:#fff}
+.barra{display:flex;gap:12px;margin-bottom:18px;flex-wrap:wrap;align-items:center}
+.busca{flex:1;min-width:200px;position:relative}
+.busca i{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--suave)}
+.busca input{width:100%;padding:12px 16px 12px 42px;border-radius:40px;border:1px solid var(--borda);font-size:.9rem;font-family:inherit}
+.barra select{width:auto;border-radius:40px;padding:11px 16px}
+.contagem{font-size:.85rem;color:var(--suave);margin-bottom:14px}
+.btn-filtros{display:none}
+
+.grid-prod{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
+.prod .foto{height:200px}
+.prod .cat{font-size:.68rem;font-weight:600;color:var(--pri-esc);text-transform:uppercase;letter-spacing:.8px}
+.prod h3{font-size:1rem;margin:4px 0 8px;font-family:'Poppins';font-weight:600}
+.prod .desc{font-size:.84rem;color:var(--suave);margin-bottom:10px}
+.precos{display:flex;justify-content:space-between;align-items:flex-end;gap:8px;margin:6px 0 10px;padding:10px 12px;background:var(--creme);border-radius:10px}
+.precos small{display:block;font-size:.68rem;color:var(--suave);text-transform:uppercase;letter-spacing:.5px}
+.precos strong{font-size:1.15rem;color:var(--pri-esc)}
+.precos .sug{text-align:right}
+.precos .sug strong{font-size:.95rem;color:var(--texto)}
+.consulta{display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--creme);border-radius:10px;font-weight:600;font-size:.86rem;color:var(--suave);margin:6px 0 10px}
+.mini-ficha{font-size:.78rem;color:var(--suave);display:grid;gap:3px;margin-bottom:12px}
+.mini-ficha div{display:flex;justify-content:space-between;gap:8px}
+.mini-ficha b{color:var(--texto);font-weight:600}
+.trancado{position:relative;margin:4px 0 12px;border-radius:10px;overflow:hidden}
+.trancado .borrado{filter:blur(4px);user-select:none;padding:10px 12px;background:var(--creme);font-size:.82rem;color:var(--suave);line-height:1.8}
+.trancado .cadeado{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:8px;font-size:.8rem;font-weight:600;color:var(--pri-esc);background:rgba(255,248,243,.55)}
+.selo-cat{position:absolute;top:10px;left:10px;background:#fff;color:var(--pri-esc);font-size:.68rem;font-weight:600;padding:4px 10px;border-radius:20px;z-index:2}
+.vazio{text-align:center;padding:50px 20px;color:var(--suave);grid-column:1/-1}
+.vazio i{font-size:2rem;color:var(--pri);margin-bottom:10px}
+
+.planilhas{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;position:relative}
+.planilhas .card{padding:26px}
+.planilhas h3{font-size:1.1rem;margin-bottom:6px}
+.planilhas p{font-size:.86rem;color:var(--suave);margin-bottom:16px}
+.planilhas select{width:100%;padding:11px 14px;border:1px solid var(--borda);border-radius:10px;font-family:inherit;margin-bottom:10px}
+.planilhas .info{font-size:.8rem;color:var(--suave);margin-bottom:14px}
+.colunas{display:flex;flex-wrap:wrap;gap:6px;margin-top:22px}
+.colunas span{font-size:.72rem;background:#fff;border:1px solid var(--borda);border-radius:20px;padding:3px 10px;color:var(--suave)}
+.planilhas-trava{display:none;position:absolute;inset:-10px;z-index:3;background:rgba(255,248,243,.82);backdrop-filter:blur(3px);border-radius:var(--raio);align-items:center;justify-content:center;text-align:center;flex-direction:column;gap:12px;padding:20px}
+.travado .planilhas-trava{display:flex}
+.planilhas-trava i{font-size:2rem;color:var(--pri-esc)}
+
+.faq{max-width:820px;margin:0 auto;display:grid;gap:12px}
+.faq details{background:#fff;border:1px solid var(--borda);border-radius:14px;padding:18px 22px}
+.faq summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'\f078';font-family:'Font Awesome 6 Free';font-weight:900;color:var(--pri);transition:.2s}
+.faq details[open] summary::after{transform:rotate(180deg)}
+.faq details p{color:var(--suave);font-size:.9rem;margin-top:10px}
+
+/* Formulários */
+.form{display:grid;gap:14px}
+.form label{font-weight:600;font-size:.84rem;display:block;margin-bottom:5px}
+.form input,.form textarea{width:100%;padding:12px 14px;border:1px solid var(--borda);border-radius:10px;font-family:inherit;font-size:.92rem;background:#fff}
+.form input:focus,.form textarea:focus{outline:2px solid var(--pri);border-color:transparent}
+.form-2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.canais{display:grid;gap:14px}
+.canal{display:flex;gap:16px;align-items:center;background:#fff;border:1px solid var(--borda);border-radius:16px;padding:18px 20px;transition:.2s}
+.canal:hover{box-shadow:var(--sombra);transform:translateX(4px)}
+.canal .ic{margin:0;color:#fff;font-size:1.4rem}
+.canal small{color:var(--suave);display:block;font-size:.84rem}
+.canal .fa-arrow-right{margin-left:auto;color:var(--pri)}
+.ic.wpp{background:var(--verde-wpp)}
+.ic.insta{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.ic.local{background:#EA4335}
+.ic.tel{background:var(--pri)}
+
+/* Modal */
+.modal{position:fixed;inset:0;background:rgba(46,35,38,.6);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+.modal.ativo{display:flex}
+.modal-box{background:#fff;border-radius:24px;max-width:560px;width:100%;max-height:92vh;overflow:auto;padding:32px;position:relative;animation:surgir .25s}
+.modal-box.largo{max-width:920px}
+.fechar{position:absolute;top:14px;right:16px;background:var(--creme);border:none;width:38px;height:38px;border-radius:50%;font-size:1rem;cursor:pointer;color:var(--suave);z-index:3}
+.modal-box h2{margin-bottom:6px}
+.modal-box>p{color:var(--suave);margin-bottom:18px;font-size:.9rem}
+.beneficios-modal{display:flex;gap:14px;flex-wrap:wrap;font-size:.8rem;color:var(--suave);margin-bottom:18px}
+.beneficios-modal span{display:flex;gap:6px;align-items:center}
+.beneficios-modal i{color:var(--pri)}
+.det-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:28px}
+.galeria-prod .principal{height:340px;position:relative}
+.galeria-prod .seta{width:38px;height:38px;font-size:.85rem}
+.galeria-prod .seta.esq{left:10px}
+.galeria-prod .seta.dir{right:10px}
+.miniaturas{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.miniaturas button{border:2px solid transparent;border-radius:12px;padding:0;overflow:hidden;height:74px;cursor:pointer;background:none}
+.miniaturas button.ativo{border-color:var(--pri)}
+.miniaturas .foto{height:100%;border-radius:0}
+.miniaturas .foto::after{display:none}
+.tabela{width:100%;border-collapse:collapse;font-size:.86rem;margin-top:12px}
+.tabela td{padding:8px 4px;border-bottom:1px solid var(--borda)}
+.tabela td:first-child{color:var(--suave)}
+.tabela td:last-child{font-weight:600;text-align:right}
+.margem{display:inline-flex;gap:6px;align-items:center;background:#E9F8EE;color:#1E8A4A;font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:20px}
+
+/* Navegação entre páginas */
+.pag-nav{display:flex;justify-content:space-between;gap:16px;padding:30px 0 60px}
+.pag-nav a{display:flex;align-items:center;gap:14px;padding:16px 22px;border:1px solid var(--borda);border-radius:16px;transition:.2s;flex:1;max-width:360px}
+.pag-nav a:hover{border-color:var(--pri);box-shadow:var(--sombra)}
+.pag-nav a.prox{margin-left:auto;justify-content:flex-end;text-align:right}
+.pag-nav i{width:40px;height:40px;border-radius:50%;background:var(--pri-claro);color:var(--pri-esc);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pag-nav small{display:block;color:var(--suave);font-size:.74rem;text-transform:uppercase;letter-spacing:1px}
+.pag-nav strong{font-family:'Playfair Display'}
+
+/* Rodapé */
+footer{background:var(--rodape);color:#EAD7D2;padding:64px 0 22px}
+.foot{display:grid;grid-template-columns:1.3fr .8fr 1.1fr;gap:36px;margin-bottom:34px}
+footer h4{color:#fff;margin-bottom:14px;font-size:1.1rem}
+footer a{display:flex;align-items:center;gap:10px;margin-bottom:9px;opacity:.85;font-size:.9rem}
+footer a:hover{opacity:1;color:#FFC7B8}
+footer p{opacity:.85;font-size:.9rem;margin-bottom:8px}
+footer .contato-rod a i,footer .contato-rod p i{width:18px;color:var(--pri)}
+footer .contato-rod p{display:flex;gap:10px;align-items:flex-start}
+.redes{display:flex;gap:10px;margin-top:16px}
+.redes a{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.08);justify-content:center;margin:0;font-size:1.1rem;opacity:1}
+.redes a:hover{background:var(--pri);color:#fff}
+.rodape-mapa{margin-bottom:34px}
+.rodape-mapa iframe{width:100%;height:240px;border:0;border-radius:16px;filter:saturate(.9)}
+.copy{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid rgba(255,255,255,.12);padding-top:20px;font-size:.8rem;opacity:.8}
+.copy a{display:inline;margin:0;font-weight:600;color:#FFC7B8;opacity:1;font-size:.8rem}
+.copy a:hover{text-decoration:underline}
+
+/* Flutuantes */
+.flutuantes{position:fixed;right:20px;bottom:20px;display:flex;flex-direction:column;gap:12px;z-index:60}
+.flutuantes a,.flutuantes button{width:58px;height:58px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.75rem;box-shadow:0 6px 20px rgba(0,0,0,.25);transition:.2s;border:none;cursor:pointer}
+.flutuantes a:hover,.flutuantes button:hover{transform:scale(1.08)}
+.f-wpp{background:var(--verde-wpp)}
+.f-insta{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+.f-topo{background:#fff!important;color:var(--pri-esc)!important;font-size:1.1rem!important;width:46px!important;height:46px!important;align-self:center;opacity:0;pointer-events:none}
+.f-topo.ver{opacity:1;pointer-events:auto}
+.f-wpp{animation:pulso 2.5s infinite}
+@keyframes pulso{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+.toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);background:var(--texto);color:#fff;padding:13px 22px;border-radius:30px;z-index:200;display:none;font-size:.88rem;max-width:90%;text-align:center}
+
+/* Responsivo */
+@media(max-width:1024px){
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .trilho>*{flex-basis:calc((100% - 44px)/3)}
+  .cat-layout{grid-template-columns:230px 1fr}
+  .planilhas{grid-template-columns:1fr 1fr}
+  .seta.esq{left:4px}.seta.dir{right:4px}
+}
+@media(max-width:860px){
+  .hamb{display:block}
+  .menu{position:absolute;top:76px;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:8px 20px 20px;border-bottom:1px solid var(--borda);display:none;box-shadow:0 10px 20px rgba(0,0,0,.06)}
+  .menu.aberto{display:flex}
+  .menu a{padding:13px 0;border-bottom:1px solid var(--borda)}
+  .menu a.btn{margin-top:14px;border-bottom:2px solid var(--pri)}
+  .menu a:not(.btn).ativo::after{display:none}
+  .grid-2,.mvv,.det-grid,.foot,.form-2,.faixa-rev,.quem{grid-template-columns:1fr}
+  .grid-2{gap:34px}
+  .grid-3,.valores,.planilhas{grid-template-columns:1fr 1fr}
+  .hero{min-height:560px}
+  .hero h1{font-size:2.3rem}
+  section{padding:56px 0}
+  .titulo-sec h2{font-size:1.75rem}
+  .page-head{padding:64px 20px}
+  .page-head h1{font-size:2rem}
+  .foto-alta,.foto-media{height:300px}
+  .foto-dupla .menor{display:none}
+  .trilho>*,.trilho.tres>*{flex-basis:72%}
+  .seta{width:40px;height:40px}
+  .fluxo{grid-template-columns:1fr 1fr;row-gap:40px}
+  .passo-fluxo:nth-child(2)::after{display:none}
+  .cat-layout{grid-template-columns:1fr}
+  .filtros{position:static;display:none}
+  .filtros.aberto{display:block}
+  .btn-filtros{display:inline-flex}
+  .faixa-rev .txt{padding:40px 28px}
+  .faixa-rev .foto{height:260px}
+  .video{height:320px}
+  .logos{grid-template-columns:repeat(3,1fr)}
+  .cta{padding:48px 22px}
+  .cta h2{font-size:1.7rem}
+  .linha-tempo{flex-wrap:wrap;row-gap:20px}
+  .linha-tempo div{flex:1 1 45%}
+}
+@media(max-width:540px){
+  body{font-size:14.5px}
+  .grid-4,.grid-3,.valores,.planilhas,.fluxo{grid-template-columns:1fr}
+  .passo-fluxo::after{display:none}
+  .hero h1{font-size:2rem}
+  .acoes .btn{width:100%}
+  .hero-selos{gap:14px}
+  .logos{grid-template-columns:repeat(2,1fr)}
+  .trilho>*,.trilho.tres>*{flex-basis:85%}
+  .pag-nav{flex-direction:column}
+  .pag-nav a{max-width:none}
+  .status{padding:18px}
+  .mvv .card{flex-direction:column}
+  .galeria-prod .principal{height:260px}
+  .modal-box{padding:24px 18px}
+  .copy{justify-content:center;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#inicio" class="logo">
+      <div class="logo-ph">LOGO<br>AQUI</div>
+      <div><strong>Casa Harmonia</strong><small>Decorações</small></div>
+    </a>
+    <button class="hamb" aria-label="Abrir menu" onclick="document.querySelector('.menu').classList.toggle('aberto')"><i class="fa-solid fa-bars"></i></button>
+    <nav class="menu">
+      <a href="#inicio">Início</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#produtos">Produtos</a>
+      <a href="#contato">Contato</a>
+      <a href="#revendedor" class="btn btn-sm"><i class="fa-solid fa-store"></i> Seja um Revendedor</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<!-- ======================= INÍCIO ======================= -->
+<div class="page" id="p-inicio">
+  <!-- Banner principal -->
+  <section class="hero">
+    <div class="foto bg"><img data-foto="hero" alt="Sala decorada com papel de parede"></div>
+    <div class="veu"></div>
+    <div class="container">
+      <div class="hero-txt">
+        <span class="tag"><i class="fa-solid fa-award"></i> Desde 1993 · +30 anos de experiência</span>
+        <h1>Transforme seus espaços, <span>inspire sua vida!</span></h1>
+        <p class="sub">Decoração, beleza e personalidade para cada ambiente.</p>
+        <p>Na Casa Harmonia, você encontra papéis de parede, revestimentos adesivos e soluções decorativas que transformam seus espaços com praticidade, qualidade e estilo.</p>
+        <div class="acoes">
+          <a href="#contato" class="btn">Fale Conosco <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="#" data-wpp="Olá! Gostaria de solicitar uma amostra." target="_blank" class="btn btn-vazado"><i class="fa-brands fa-whatsapp"></i> Solicite uma amostra</a>
+        </div>
+        <div class="hero-selos">
+          <div><i class="fa-solid fa-wand-magic-sparkles"></i> 100% personalizável</div>
+          <div><i class="fa-solid fa-industry"></i> Produção própria</div>
+          <div><i class="fa-solid fa-certificate"></i> ISO 9001:2015</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Resumo da empresa -->
+  <section>
+    <div class="container grid-2">
+      <div class="foto-dupla">
+        <div class="foto foto-alta"><img data-foto="sala" alt="Ambiente decorado"></div>
+        <div class="foto menor"><img data-foto="papel" alt="Detalhe de papel de parede"></div>
+      </div>
+      <div>
+        <span class="tag">Quem somos</span>
+        <h2 style="font-size:2.1rem" class="mb">Mais de 30 anos levando harmonia para cada espaço</h2>
+        <p class="txt-suave">A Casa Harmonia Decorações atua há mais de 30 anos no mercado de adesivos e soluções decorativas, unindo experiência, qualidade e inovação. Somos especializados em papéis de parede, revestimentos adesivos e produtos personalizados que transformam ambientes com praticidade, beleza e criatividade. Nossa missão é levar harmonia, estilo e personalidade para cada espaço.</p>
+        <div class="destaque"><i class="fa-solid fa-wand-magic-sparkles"></i> Foco em personalização: tudo pode ser feito sob medida para o seu ambiente.</div>
+        <div class="numeros">
+          <div><strong>30+</strong><span>anos de mercado</span></div>
+          <div><strong>100%</strong><span>produção própria</span></div>
+          <div><strong>ISO</strong><span>9001:2015</span></div>
+        </div>
+        <a href="#sobre" class="btn btn-outline" style="margin-top:26px">Conheça nossa história <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Produtos em destaque (carrossel) -->
+  <section class="sec-creme">
+    <div class="container">
+      <div class="titulo-sec">
+        <span class="tag">Produtos em destaque</span>
+        <h2>Soluções para cada ambiente</h2>
+        <p>Tudo pode ser personalizado: cores, medidas, estampas e acabamentos.</p>
+      </div>
+      <div class="carrossel">
+        <button class="seta esq" aria-label="Anterior" onclick="rolar(this,-1)"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="trilho">
+          <div class="card"><div class="foto"><img data-foto="papel" alt="Papel de parede"></div><div class="card-corpo"><h3>Papel de Parede</h3><p>Estampas exclusivas, texturas e medidas sob encomenda.</p><a href="#produtos" class="btn btn-sm btn-outline">Saiba mais</a></div></div>
+          <div class="card"><div class="foto"><img data-foto="etiqueta" alt="Etiquetas personalizadas"></div><div class="card-corpo"><h3>Etiquetas Personalizadas</h3><p>Sua marca com acabamento profissional.</p><a href="#produtos" class="btn btn-sm btn-outline">Saiba mais</a></div></div>
+          <div class="card"><div class="foto"><img data-foto="marmore" alt="Mármore adesivo"></div><div class="card-corpo"><h3>Mármores e Granitos</h3><p>O visual sofisticado da pedra, sem obra.</p><a href="#produtos" class="btn btn-sm btn-outline">Saiba mais</a></div></div>
+          <div class="card"><div class="foto"><img data-foto="refletivo" alt="Adesivo refletivo"></div><div class="card-corpo"><h3>Refletivos</h3><p>Visibilidade e segurança com acabamento durável.</p><a href="#produtos" class="btn btn-sm btn-outline">Saiba mais</a></div></div>
+          <div class="card"><div class="foto"><img data-foto="resinado" alt="Adesivo resinado"></div><div class="card-corpo"><h3>Resinados</h3><p>Relevo e brilho que valorizam sua marca.</p><a href="#produtos" class="btn btn-sm btn-outline">Saiba mais</a></div></div>
+        </div>
+        <button class="seta dir" aria-label="Próximo" onclick="rolar(this,1)"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+      <div style="text-align:center;margin-top:30px"><a href="#produtos" class="btn">Ver todos os produtos <i class="fa-solid fa-arrow-right"></i></a></div>
+    </div>
+  </section>
+
+  <!-- Faixa Seja um Revendedor -->
+  <section>
+    <div class="container">
+      <div class="faixa-rev">
+        <div class="txt">
+          <span class="tag ouro"><i class="fa-solid fa-store"></i> Novo · Seja um Revendedor</span>
+          <h2>Venda nossos produtos <span>sem ter estoque</span></h2>
+          <p>Você anuncia na sua loja, nós produzimos e enviamos direto para o seu cliente, em todo o Brasil.</p>
+          <ul>
+            <li><i class="fa-solid fa-circle-check"></i> Sem investimento em estoque</li>
+            <li><i class="fa-solid fa-circle-check"></i> Catálogo com fotos, NCM e medidas prontas</li>
+            <li><i class="fa-solid fa-circle-check"></i> Planilha para importar tudo na sua loja</li>
+          </ul>
+          <a href="#revendedor" class="btn">Quero ser revendedor <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="foto"><img data-foto="entrega" alt="Pacotes prontos para envio"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galeria (carrossel) -->
+  <section class="sec-creme">
+    <div class="container">
+      <div class="titulo-sec"><span class="tag">Galeria</span><h2>Projetos realizados</h2><p>Ambientes reais transformados com nossas soluções.</p></div>
+      <div class="carrossel">
+        <button class="seta esq" aria-label="Anterior" onclick="rolar(this,-1)"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="trilho tres">
+          <div class="foto"><img data-foto="sala2" alt="Projeto 1"></div>
+          <div class="foto"><img data-foto="quarto" alt="Projeto 2"></div>
+          <div class="foto"><img data-foto="cozinha" alt="Projeto 3"></div>
+          <div class="foto"><img data-foto="sala3" alt="Projeto 4"></div>
+          <div class="foto"><img data-foto="escritorio" alt="Projeto 5"></div>
+          <div class="foto"><img data-foto="quarto2" alt="Projeto 6"></div>
+        </div>
+        <button class="seta dir" aria-label="Próximo" onclick="rolar(this,1)"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vídeo -->
+  <section>
+    <div class="container">
+      <div class="titulo-sec"><span class="tag">Vídeo</span><h2>Veja como funciona</h2><p>Aplicação prática, rápida e sem grandes reformas.</p></div>
+      <div class="video">
+        <div class="foto"><img data-foto="sala4" alt="Capa do vídeo"></div>
+        <div class="veu"><div class="play"><i class="fa-solid fa-play"></i></div><small>Vídeo institucional / demonstrativo aqui</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prova social -->
+  <section class="sec-creme">
+    <div class="container">
+      <div class="titulo-sec"><span class="tag">Quem confia na gente</span><h2>Atendimentos especiais</h2><p>Já atendemos diversos famosos, empresas e clientes em todo o Brasil.</p></div>
+      <div class="logos">
+        <div class="ph"><i class="fa-regular fa-image"></i>Logo cliente</div><div class="ph"><i class="fa-regular fa-user"></i>Foto famoso</div><div class="ph"><i class="fa-regular fa-image"></i>Logo cliente</div><div class="ph"><i class="fa-regular fa-user"></i>Foto famoso</div><div class="ph"><i class="fa-regular fa-image"></i>Logo cliente</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final -->
+  <section>
+    <div class="container">
+      <div class="cta">
+        <h2>Quer renovar seu ambiente?</h2>
+        <p>Nossa equipe está pronta para ajudar você a encontrar a solução ideal. Entre em contato, tire suas dúvidas e solicite um orçamento personalizado.</p>
+        <div class="acoes"><a href="#contato" class="btn btn-branco">Entrar em contato <i class="fa-solid fa-arrow-right"></i></a></div>
+      </div>
+    </div>
+  </section>
+  <div class="container pag-nav" data-pag="inicio"></div>
+</div>
+
+<!-- ======================= SOBRE ======================= -->
+<div class="page" id="p-sobre">
+  <div class="page-head">
+    <div class="foto bg"><img data-foto="fabrica" alt=""></div><div class="veu"></div>
+    <div class="conteudo">
+      <span class="tag">Sobre nós</span>
+      <h1>Sobre a Casa Harmonia Decorações</h1>
+      <p>Há mais de 30 anos transformando ambientes e realizando ideias.</p>
+      <div class="migalha"><a href="#inicio">Início</a> › Sobre</div>
+    </div>
+  </div>
+
+  <!-- 1. História -->
+  <section>
+    <div class="container grid-2">
+      <div>
+        <span class="tag">Nossa história</span>
+        <h2 style="font-size:2.1rem" class="mb">Tradição desde 1993</h2>
+        <p class="txt-suave mb">A Casa Harmonia Decorações nasceu da experiência e tradição de uma empresa que atua desde 1993 no segmento de adesivos e soluções personalizadas.</p>
+        <p class="txt-suave mb">Ao longo dessa trajetória, evoluímos constantemente, acompanhando as tendências do mercado e investindo em tecnologia, qualidade e inovação. Hoje, oferecemos uma ampla variedade de produtos, como papéis de parede, revestimentos adesivos, adesivos decorativos, placas decorativas e soluções personalizadas para ambientes residenciais e comerciais.</p>
+        <p class="txt-suave">Nossa paixão é transformar espaços, oferecendo produtos que unem beleza, praticidade e personalidade.</p>
+        <div class="destaque"><i class="fa-solid fa-star"></i> Já realizamos diversos atendimentos para famosos.</div>
+        <div class="linha-tempo">
+          <div><strong>1993</strong><span>Início no segmento de adesivos</span></div>
+          <div><strong>ISO 9001</strong><span>Qualidade certificada</span></div>
+          <div><strong>Hoje</strong><span>Linha completa de decoração</span></div>
+        </div>
+      </div>
+      <div class="foto foto-alta"><img data-foto="fabrica" alt="Produção da empresa"></div>
+    </div>
+  </section>
+
+  <!-- 2. Missão, Visão e Valores -->
+  <section class="sec-creme">
+    <div class="container">
+      <div class="titulo-sec"><span class="tag">Propósito</span><h2>Missão, Visão e Valores</h2></div>
+      <div class="mvv">
+        <div class="card"><div class="ic"><i class="fa-solid fa-bullseye"></i></div><div><h3>Missão</h3><p>Transformar ambientes por meio de soluções decorativas criativas, acessíveis e de qualidade, proporcionando beleza, conforto e satisfação aos nossos clientes.</p></div></div>
+        <div class="card"><div class="ic"><i class="fa-solid fa-binoculars"></i></div><div><h3>Visão</h3><p>Ser referência nacional em adesivos e decoração, reconhecida pela inovação, excelência dos produtos, confiança e compromisso com nossos clientes.</p></div></div>
+      </div>
+      <div class="valores">
+        <div class="card"><div class="ic"><i class="fa-solid fa-gem"></i></div><div><h4>Qualidade</h4><p>Compromisso com materiais, acabamentos e produtos de excelência.</p></div></div>
+        <div class="card"><div class="ic"><i class="fa-solid fa-lightbulb"></i></div><div><h4>Inovação</h4><p>Busca constante por novas tendências, tecnologias e soluções.</p></div></div>
+        <div class="card"><div class="ic"><i class="fa-solid fa-handshake"></i></div><div><h4>Comprometimento</h4><p>Respeito, responsabilidade e dedicação em cada pedido.</p></div></div>
+        <div class="card"><div class="ic"><i class="fa-solid fa-palette"></i></div><div><h4>Criatividade</h4><p>Soluções que valorizam a personalidade de cada ambiente.</p></div></div>
+        <div class="card"><div class="ic"><i class="fa-solid fa-eye"></i></div><div><h4>Transparência</h4><p>Relacionamentos baseados na honestidade e confiança.</p></div></div>
+        <div class="card"><div class="ic"><i class="fa-solid fa-heart"></i></div><div><h4>Satisfação do cliente</h4><p>Atendimento próximo, personalizado e focado nas necessidades de cada pessoa.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Diferenciais -->
+  <section>
+    <div class="container">
+      <div class="titulo-sec"><span class="tag">Diferenciais</span><h2>O que nos destaca</h2></div>
+      <div class="grid-3">
+        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-trophy"></i></div><h3>Mais de 30 anos de experiência</h3><p>Tradição e conhecimento no segmento de adesivos e soluções decorativas.</p></div>
+        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-industry"></i></div><h3>Produção própria e personalizada</h3><p>Flexibilidade para desenvolver produtos que atendam a diferentes estilos, projetos e necessidades.</p></div>
+        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-print"></i></div><h3>Qualidade e tecnologia</h3><p>Impressão com cores vivas, definição e excelente acabamento. Certificação ISO 9001:2015.</p></div>
+        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-layer-group"></i></div><h3>Variedade de produtos</h3><p>Soluções para paredes, móveis, portas, cozinhas, quartos, espaços comerciais e outros ambientes.</p></div>
+        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-bolt"></i></div><h3>Praticidade e versatilidade</h3><p>Renove a decoração sem a necessidade de grandes reformas.</p></div>
+        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-comments"></i></div><h3>Atendimento humanizado</h3><p>Cada cliente é único: atenção, confiança e cuidado em todas as etapas da compra.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Equipe -->
+  <section class="sec-creme">
+    <div class="container grid-2">
+      <div class="foto foto-media"><img data-foto="equipe" alt="Equipe"></div>
+      <div>
+        <span class="tag">Equipe</span>
+        <h2 style="font-size:2.1rem" class="mb">Pessoas que transformam ideias</h2>
+        <p class="txt-suave mb">Por trás de cada produto existe uma equipe comprometida com a qualidade, a criatividade e a satisfação dos nossos clientes.</p>
+        <p class="txt-suave mb">Contamos com profissionais nas áreas de criação, produção, impressão, acabamento, vendas e atendimento, trabalhando juntos para transformar ideias em produtos que fazem a diferença.</p>
+        <p class="txt-suave">Nossa equipe compartilha o mesmo propósito: oferecer soluções decorativas com dedicação, responsabilidade e atenção aos detalhes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Galeria -->
+  <section>
+    <div class="container">
+      <div class="titulo-sec"><span class="tag">Galeria</span><h2>Nossa estrutura e projetos</h2></div>
+      <div class="carrossel">
+        <button class="seta esq" aria-label="Anterior" onclick="rolar(this,-1)"><i class="fa-solid fa-chevron-left"></i></button>
+        <div class="trilho tres">
+          <div class="foto"><img data-foto="impressao" alt="Impressão"></div>
+          <div class="foto"><img data-foto="sala" alt="Projeto"></div>
+          <div class="foto"><img data-foto="fabrica" alt="Produção"></div>
+          <div class="foto"><img data-foto="quarto" alt="Projeto"></div>
+          <div class="foto"><img data-foto="loja" alt="Espaço comercial"></div>
+        </div>
+        <button class="seta dir" aria-label="Próximo" onclick="rolar(this,1)"><i class="fa-solid fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Localização -->
+  <section class="sec-creme">
+    <div class="container">
+      <div class="titulo-sec"><span class="tag"><i class="fa-solid fa-location-dot"></i> Localização</span><h2>Onde estamos</h2><p>Av. Yusaburo Sasazaki, 1870 · Distrito Industrial · Marília/SP · CEP 17512-031</p></div>
+      <iframe class="mapa" loading="lazy" title="Mapa da Casa Harmonia" src="https://maps.google.com/maps?q=Av.%20Yusaburo%20Sasazaki%2C%201870%2C%20Mar%C3%ADlia%20-%20SP&z=15&output=embed"></iframe>
+    </div>
+  </section>
+  <div class="container pag-nav" data-pag="sobre"></div>
+</div>
+
+<!-- ======================= PRODUTOS ======================= -->
+<div class="page" id="p-produtos">
+  <div class="page-head">
+    <div class="foto bg"><img data-foto="sala3" alt=""></div><div class="veu"></div>
+    <div class="conteudo">
+      <span class="tag">Produtos e Serviços</span>
+      <h1>Soluções decorativas para cada ambiente</h1>
+      <p>Tudo pode ser personalizado em tamanho, formato e estilo.</p>
+      <div class="migalha"><a href="#inicio">Início</a> › Produtos</div>
+    </div>
+  </div>
+
+  <section>
+    <div class="container grid-3" id="listaServicos"></div>
+  </section>
+
+  <section class="sec-creme">
+    <div class="container">
+      <div class="titulo-sec"><span class="tag">Diferenciais</span><h2>Por que escolher a Casa Harmonia</h2><p>Características presentes em todos os nossos produtos.</p></div>
+      <div class="grid-3">
+        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-trophy"></i></div><h3>Experiência e tradição</h3><p>Mais de 30 anos de conhecimento no segmento de adesivos e soluções personalizadas.</p></div>
+        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-industry"></i></div><h3>Produção própria</h3><p>Maior flexibilidade para projetos em diferentes tamanhos, formatos e estilos.</p></div>
+        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-print"></i></div><h3>Impressão de qualidade</h3><p>Impressão digital com boa definição, cores vivas e acabamento profissional.</p></div>
+        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-wand-magic-sparkles"></i></div><h3>Personalização</h3><p>Produtos adaptados às necessidades de cada cliente.</p></div>
+        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-layer-group"></i></div><h3>Variedade</h3><p>Amplo catálogo de produtos decorativos e soluções para diferentes ambientes.</p></div>
+        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-ruler-combined"></i></div><h3>Atendimento especializado</h3><p>Orientação na escolha de materiais, medidas e soluções adequadas.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta">
+        <h2>Quer revender nossos produtos?</h2>
+        <p>Tenha acesso ao catálogo completo com preços, fichas técnicas e planilha para importar na sua loja. Nós produzimos e enviamos direto para o seu cliente.</p>
+        <div class="acoes"><a href="#revendedor" class="btn btn-branco"><i class="fa-solid fa-store"></i> Seja um Revendedor</a></div>
+      </div>
+    </div>
+  </section>
+  <div class="container pag-nav" data-pag="produtos"></div>
+</div>
+
+<!-- ======================= CONTATO ======================= -->
+<div class="page" id="p-contato">
+  <div class="page-head">
+    <div class="foto bg"><img data-foto="sala2" alt=""></div><div class="veu"></div>
+    <div class="conteudo">
+      <span class="tag">Contato</span>
+      <h1>Vamos transformar seu espaço juntos!</h1>
+      <p>Fale com a nossa equipe e solicite um orçamento personalizado.</p>
+      <div class="migalha"><a href="#inicio">Início</a> › Contato</div>
+    </div>
+  </div>
+
+  <section>
+    <div class="container grid-2" style="align-items:start">
+      <div class="card" style="padding:32px">
+        <h2 style="font-size:1.6rem" class="mb">Envie sua mensagem</h2>
+        <form class="form" onsubmit="enviarContato(event)">
+          <div><label>Nome</label><input required name="nome"></div>
+          <div class="form-2">
+            <div><label>Telefone</label><input required name="tel" type="tel" placeholder="(00) 00000-0000"></div>
+            <div><label>E-mail</label><input required name="email" type="email"></div>
+          </div>
+          <div><label>Assunto</label><input required name="assunto"></div>
+          <div><label>Mensagem</label><textarea required name="msg" rows="5"></textarea></div>
+          <button class="btn" type="submit"><i class="fa-solid fa-paper-plane"></i> Enviar mensagem</button>
+        </form>
+      </div>
+      <div class="canais">
+        <a class="canal" href="#" data-wpp="Olá! Gostaria de tirar uma dúvida." target="_blank"><div class="ic wpp"><i class="fa-brands fa-whatsapp"></i></div><div><strong>WhatsApp</strong><small>(14) 99605-8087</small></div><i class="fa-solid fa-arrow-right"></i></a>
+        <a class="canal" href="tel:+551434254843"><div class="ic tel"><i class="fa-solid fa-phone"></i></div><div><strong>Telefone</strong><small>(14) 3425-4843 · (14) 3425-3931</small></div><i class="fa-solid fa-arrow-right"></i></a>
+        <a class="canal" href="https://www.instagram.com/casaharmoniadecor/" target="_blank"><div class="ic insta"><i class="fa-brands fa-instagram"></i></div><div><strong>Instagram</strong><small>@casaharmoniadecor</small></div><i class="fa-solid fa-arrow-right"></i></a>
+        <a class="canal" href="https://www.google.com/maps/search/?api=1&query=Av.+Yusaburo+Sasazaki,+1870,+Mar%C3%ADlia+-+SP" target="_blank"><div class="ic local"><i class="fa-solid fa-location-dot"></i></div><div><strong>Endereço</strong><small>Av. Yusaburo Sasazaki, 1870 · Distrito Industrial · Marília/SP · CEP 17512-031</small></div><i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec-creme">
+    <div class="container">
+      <div class="titulo-sec"><span class="tag"><i class="fa-solid fa-location-dot"></i> Localização</span><h2>Como chegar</h2></div>
+      <iframe class="mapa" loading="lazy" title="Mapa da Casa Harmonia" src="https://maps.google.com/maps?q=Av.%20Yusaburo%20Sasazaki%2C%201870%2C%20Mar%C3%ADlia%20-%20SP&z=15&output=embed"></iframe>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta">
+        <h2>Quer renovar seu ambiente com beleza, criatividade e personalidade?</h2>
+        <p>Nossa equipe está pronta para ajudar você a encontrar a solução ideal. Entre em contato, tire suas dúvidas e solicite um orçamento personalizado. Vamos transformar seu espaço juntos!</p>
+        <div class="acoes"><a href="#" data-wpp="Olá! Gostaria de um orçamento personalizado." target="_blank" class="btn btn-branco"><i class="fa-brands fa-whatsapp"></i> Entre em contato</a></div>
+      </div>
+    </div>
+  </section>
+  <div class="container pag-nav" data-pag="contato"></div>
+</div>
+
+<!-- ======================= SEJA UM REVENDEDOR ======================= -->
+<div class="page" id="p-revendedor">
+  <div class="page-head">
+    <div class="foto bg"><img data-foto="entrega" alt=""></div><div class="veu"></div>
+    <div class="conteudo">
+      <span class="tag"><i class="fa-solid fa-store"></i> Seja um Revendedor</span>
+      <h1>Venda nossos produtos sem ter estoque</h1>
+      <p>Você vende na sua loja, a Casa Harmonia produz e envia direto para o seu cliente, em todo o Brasil.</p>
+      <div class="acoes" style="justify-content:center;margin-top:24px">
+        <a href="#catalogo-rev" class="btn btn-branco" onclick="irPara(event,'catalogo-rev')"><i class="fa-solid fa-book-open"></i> Ver catálogo</a>
+        <a href="#como-funciona" class="btn btn-vazado" onclick="irPara(event,'como-funciona')">Como funciona</a>
+      </div>
+      <div class="migalha"><a href="#inicio">Início</a> › Seja um Revendedor</div>
+    </div>
+  </div>
+
+  <!-- O que é -->
+  <section id="como-funciona">
+    <div class="container">
+      <div class="titulo-sec">
+        <span class="tag">O que é a revenda sem estoque?</span>
+        <h2>Você vende. Nós produzimos e entregamos.</h2>
+        <p>Nesse modelo, também chamado de <strong>dropshipping</strong>, você anuncia nossos produtos na sua loja virtual, marketplace ou redes sociais sem comprar nada antes. Quando o seu cliente compra, você repassa o pedido para nós e a gente cuida da produção e do envio.</p>
+      </div>
+      <div class="fluxo">
+        <div class="passo-fluxo"><div class="circ"><i class="fa-solid fa-cart-shopping"></i><b>1</b></div><h4>Seu cliente compra</h4><p>Ele faz o pedido na sua loja, pelo preço que você definiu.</p></div>
+        <div class="passo-fluxo"><div class="circ"><i class="fa-solid fa-paper-plane"></i><b>2</b></div><h4>Você repassa o pedido</h4><p>Envia para a Casa Harmonia com os dados de entrega.</p></div>
+        <div class="passo-fluxo"><div class="circ"><i class="fa-solid fa-industry"></i><b>3</b></div><h4>Nós produzimos</h4><p>Produção própria, com o padrão de qualidade da marca.</p></div>
+        <div class="passo-fluxo"><div class="circ"><i class="fa-solid fa-truck-fast"></i><b>4</b></div><h4>Enviamos ao cliente</h4><p>Entrega direto no endereço do seu cliente, em todo o Brasil.</p></div>
+      </div>
+      <div class="quem">
+        <div class="card"><div class="ic"><i class="fa-solid fa-user-tie"></i></div><div><h4>O que fica com você</h4><ul><li><i class="fa-solid fa-check"></i>Divulgar e vender os produtos</li><li><i class="fa-solid fa-check"></i>Definir o seu preço de venda</li><li><i class="fa-solid fa-check"></i>Atender o seu cliente</li></ul></div></div>
+        <div class="card"><div class="ic"><i class="fa-solid fa-house-chimney"></i></div><div><h4>O que fica com a Casa Harmonia</h4><ul><li><i class="fa-solid fa-check"></i>Produção e personalização</li><li><i class="fa-solid fa-check"></i>Embalagem e envio</li><li><i class="fa-solid fa-check"></i>Fotos, fichas técnicas e NCM</li></ul></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Vantagens -->
+  <section class="sec-creme">
+    <div class="container">
+      <div class="titulo-sec"><span class="tag">Vantagens</span><h2>Por que revender Casa Harmonia</h2></div>
+      <div class="grid-3">
+        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-boxes-stacked"></i></div><h3>Zero estoque</h3><p>Nada de capital parado: você só paga quando vende.</p></div>
+        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-industry"></i></div><h3>Fabricante direto</h3><p>Produção própria há mais de 30 anos, com certificação ISO 9001:2015.</p></div>
+        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-wand-magic-sparkles"></i></div><h3>Produtos personalizáveis</h3><p>Medidas e estampas sob encomenda: um diferencial para a sua loja.</p></div>
+        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-file-csv"></i></div><h3>Planilha pronta</h3><p>Exporte nome, descrição, NCM, medidas e preços para cadastrar tudo de uma vez.</p></div>
+        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-map-location-dot"></i></div><h3>Envio nacional</h3><p>Venda para clientes de qualquer estado do Brasil.</p></div>
+        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-headset"></i></div><h3>Suporte ao revendedor</h3><p>Atendimento dedicado pelo WhatsApp para tirar dúvidas e acompanhar pedidos.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catálogo -->
+  <section id="catalogo-rev">
+    <div class="container">
+      <div class="titulo-sec"><span class="tag"><i class="fa-solid fa-book-open"></i> Catálogo do revendedor</span><h2>Conheça os produtos</h2><p>Sem cadastro você vê a foto e o nome. Cadastre-se para liberar descrição, preços, NCM, medidas e planilhas.</p></div>
+      <div class="status" id="statusBox"></div>
+
+      <div class="cat-layout">
+        <aside class="filtros" id="painelFiltros">
+          <h4>Categorias</h4>
+          <div id="filtroCats"></div>
+
+          <div class="bloco-trava" id="travaFiltros">
+            <h4>Preço para revenda</h4>
+            <div class="opcoes">
+              <label><input type="radio" name="faixa" value="todas" checked> Todas as faixas</label>
+              <label><input type="radio" name="faixa" value="0-50"> Até R$ 50</label>
+              <label><input type="radio" name="faixa" value="50-100"> R$ 50 a R$ 100</label>
+              <label><input type="radio" name="faixa" value="100-9999"> Acima de R$ 100</label>
+            </div>
+            <h4>Disponibilidade de preço</h4>
+            <div class="opcoes">
+              <label><input type="checkbox" id="soComPreco"> Somente com preço definido</label>
+            </div>
+            <h4>Ambiente</h4>
+            <div class="opcoes">
+              <select id="filtroAmbiente">
+                <option value="">Todos os ambientes</option>
+                <option>Sala</option><option>Quarto</option><option>Cozinha</option><option>Banheiro</option><option>Comercial</option><option>Náutico</option>
+              </select>
+            </div>
+            <div class="trava-msg"><i class="fa-solid fa-lock"></i> Filtros liberados após o cadastro</div>
+          </div>
+          <button class="btn btn-sm btn-outline" style="width:100%;margin-top:18px" onclick="limparFiltros()"><i class="fa-solid fa-rotate-left"></i> Limpar filtros</button>
+        </aside>
+
+        <div>
+          <div class="barra">
+            <button class="btn btn-sm btn-outline btn-filtros" onclick="document.getElementById('painelFiltros').classList.toggle('aberto')"><i class="fa-solid fa-sliders"></i> Filtros</button>
+            <div class="busca"><i class="fa-solid fa-magnifying-glass"></i><input id="busca" type="search" placeholder="Buscar produto..."></div>
+            <select id="ordenar">
+              <option value="nome">Ordenar: nome A-Z</option>
+              <option value="menor">Menor preço</option>
+              <option value="maior">Maior preço</option>
+            </select>
+          </div>
+          <div class="contagem" id="contagem"></div>
+          <div class="grid-prod" id="gridProdutos"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Planilhas -->
+  <section class="sec-creme" id="planilhas-rev">
+    <div class="container">
+      <div class="titulo-sec"><span class="tag"><i class="fa-solid fa-file-csv"></i> Planilhas</span><h2>Exporte e importe produtos</h2><p>Leve o catálogo para a sua loja em poucos cliques. Os arquivos abrem no Excel e no Google Planilhas.</p></div>
+      <div class="planilhas" id="blocoPlanilhas">
+        <div class="card">
+          <div class="ic"><i class="fa-solid fa-file-export"></i></div>
+          <h3>Exportar catálogo</h3>
+          <p>Escolha uma categoria ou baixe todos os produtos de uma vez.</p>
+          <select id="expCat"></select>
+          <div class="info" id="expInfo"></div>
+          <button class="btn btn-sm" style="width:100%" onclick="exportarSelecionado()"><i class="fa-solid fa-download"></i> Exportar planilha</button>
+        </div>
+        <div class="card">
+          <div class="ic"><i class="fa-solid fa-file-import"></i></div>
+          <h3>Importar produtos</h3>
+          <p>Envie uma planilha no formato do modelo para adicionar ou atualizar produtos pelo código (SKU).</p>
+          <button class="btn btn-sm" style="width:100%" onclick="document.getElementById('arqImport').click()"><i class="fa-solid fa-upload"></i> Importar planilha</button>
+        </div>
+        <div class="card">
+          <div class="ic"><i class="fa-solid fa-table"></i></div>
+          <h3>Modelo de planilha</h3>
+          <p>Baixe o modelo com todas as colunas já organizadas e um exemplo preenchido.</p>
+          <button class="btn btn-sm btn-outline" style="width:100%" onclick="baixarModelo()"><i class="fa-solid fa-download"></i> Baixar modelo</button>
+        </div>
+        <div class="planilhas-trava"><i class="fa-solid fa-lock"></i><strong>Planilhas disponíveis para revendedores</strong><span class="txt-suave">Cadastre-se para exportar e importar o catálogo.</span><button class="btn btn-sm" onclick="abrirModal('mCadastro')">Fazer cadastro</button></div>
+      </div>
+      <div class="colunas" id="colunasInfo"></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section>
+    <div class="container">
+      <div class="titulo-sec"><span class="tag">Dúvidas</span><h2>Perguntas frequentes</h2></div>
+      <div class="faq">
+        <details><summary>Preciso ter CNPJ para revender?</summary><p>Não é obrigatório. O cadastro aceita CNPJ ou CPF.</p></details>
+        <details><summary>Preciso comprar estoque antes de vender?</summary><p>Não. Você só faz o pedido para a Casa Harmonia depois que o seu cliente compra.</p></details>
+        <details><summary>Quem define o preço de venda?</summary><p>Você. No catálogo mostramos o preço para revenda e um preço sugerido, mas a decisão final é sua.</p></details>
+        <details><summary>Como cadastro os produtos na minha loja?</summary><p>Exporte a planilha com as informações dos produtos (nome, descrição, NCM, medidas, peso e preço) e importe na sua plataforma de vendas.</p></details>
+        <details><summary>Para onde vocês enviam?</summary><p>Para todo o Brasil, direto no endereço do seu cliente.</p></details>
+        <details><summary>Posso vender produtos personalizados?</summary><p>Sim. Fale com nossa equipe pelo WhatsApp para alinhar medidas e estampas sob encomenda.</p></details>
+      </div>
+      <div style="text-align:center;margin-top:30px"><a href="#" data-wpp="Olá! Tenho interesse em ser revendedor Casa Harmonia." target="_blank" class="btn btn-wpp"><i class="fa-brands fa-whatsapp"></i> Falar com o setor de revenda</a></div>
+    </div>
+  </section>
+
+  <div class="container" style="padding-bottom:20px">
+    <div class="destaque" style="background:#FFF6DE;border-color:#E2B84B"><i class="fa-solid fa-flask" style="color:#B8891F"></i><span style="font-size:.85rem">Demonstração: o acesso é liberado na hora e os dados ficam salvos só neste navegador. No site final, o cadastro vai para um painel onde a equipe da URA aprova cada revendedor.</span></div>
+  </div>
+  <div class="container pag-nav" data-pag="revendedor"></div>
+</div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot">
+      <div>
+        <h4>Casa Harmonia Decorações</h4>
+        <p>Decoração, beleza e personalidade para cada ambiente. Papéis de parede, revestimentos adesivos e soluções personalizadas desde 1993.</p>
+        <div class="redes">
+          <a href="#" data-wpp="Olá! Tenho interesse em seus produtos." target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="https://www.instagram.com/casaharmoniadecor/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Av.+Yusaburo+Sasazaki,+1870,+Mar%C3%ADlia+-+SP" target="_blank" aria-label="Localização"><i class="fa-solid fa-location-dot"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Navegação</h4>
+        <a href="#inicio"><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i> Início</a>
+        <a href="#sobre"><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i> Sobre</a>
+        <a href="#produtos"><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i> Produtos</a>
+        <a href="#contato"><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i> Contato</a>
+        <a href="#revendedor"><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i> Seja um Revendedor</a>
+      </div>
+      <div class="contato-rod">
+        <h4>Contato</h4>
+        <a href="#" data-wpp="Olá! Tenho interesse em seus produtos." target="_blank"><i class="fa-brands fa-whatsapp"></i> (14) 99605-8087</a>
+        <a href="tel:+551434254843"><i class="fa-solid fa-phone"></i> (14) 3425-4843</a>
+        <a href="https://www.instagram.com/casaharmoniadecor/" target="_blank"><i class="fa-brands fa-instagram"></i> @casaharmoniadecor</a>
+        <p><i class="fa-solid fa-location-dot"></i> Av. Yusaburo Sasazaki, 1870 · Distrito Industrial · Marília/SP · CEP 17512-031</p>
+      </div>
+    </div>
+    <div class="rodape-mapa" id="rodapeMapa">
+      <iframe loading="lazy" title="Mapa" src="https://maps.google.com/maps?q=Av.%20Yusaburo%20Sasazaki%2C%201870%2C%20Mar%C3%ADlia%20-%20SP&z=15&output=embed"></iframe>
+    </div>
+    <div class="copy">
+      <span>© 2026 Casa Harmonia Decorações. Todos os direitos reservados.</span>
+      <!-- Troque o href abaixo pelo endereço do site da Jota Solutions -->
+      <span>Desenvolvido por <a id="linkJota" href="https://www.jotasolutions.com.br" target="_blank" rel="noopener">Jota Solutions</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="flutuantes">
+  <button class="f-topo" id="btnTopo" aria-label="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-arrow-up"></i></button>
+  <a class="f-insta" href="https://www.instagram.com/casaharmoniadecor/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+  <a class="f-wpp" href="#" data-wpp="Olá! Tenho interesse em seus produtos." target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+</div>
+<div class="toast" id="toast"></div>
+
+<!-- Modal: cadastro -->
+<div class="modal" id="mCadastro">
+  <div class="modal-box">
+    <button class="fechar" aria-label="Fechar" onclick="fecharModal('mCadastro')"><i class="fa-solid fa-xmark"></i></button>
+    <span class="tag"><i class="fa-solid fa-store"></i> Seja um Revendedor</span>
+    <h2>Cadastro de revendedor</h2>
+    <p>Preencha seus dados para liberar preços, fichas técnicas, filtros e planilhas.</p>
+    <div class="beneficios-modal"><span><i class="fa-solid fa-tag"></i> Preços de revenda</span><span><i class="fa-solid fa-file-lines"></i> Fichas técnicas e NCM</span><span><i class="fa-solid fa-file-csv"></i> Planilhas</span></div>
+    <form class="form" onsubmit="enviarCadastro(event)">
+      <div><label>Nome completo</label><input required name="nome"></div>
+      <div><label>Empresa / Loja</label><input required name="empresa"></div>
+      <div><label>CNPJ ou CPF</label><input required name="doc" placeholder="00.000.000/0000-00 ou 000.000.000-00"></div>
+      <div class="form-2">
+        <div><label>WhatsApp</label><input required name="whats" type="tel" placeholder="(00) 00000-0000"></div>
+        <div><label>E-mail</label><input required name="email" type="email"></div>
+      </div>
+      <button class="btn" type="submit"><i class="fa-solid fa-unlock"></i> Liberar meu acesso</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: produto -->
+<div class="modal" id="mProduto">
+  <div class="modal-box largo">
+    <button class="fechar" aria-label="Fechar" onclick="fecharModal('mProduto')"><i class="fa-solid fa-xmark"></i></button>
+    <div id="detalhe"></div>
+  </div>
+</div>
+
+<input type="file" id="arqImport" accept=".csv,text/csv" style="display:none" onchange="importarCSV(this)">
+
+<script>
+/* ========= Configurações ========= */
+const WHATS='5514996058087';
+
+/* Fotos demonstrativas: u = foto do Unsplash, k = palavras-chave de reserva */
+const FOTOS={
+  hero:{u:'1586023492125-27b2c045efd7',k:'livingroom,interior'},
+  sala:{u:'1618221195710-dd6b41faaea6',k:'interior,design'},
+  sala2:{u:'1513694203232-719a280e022f',k:'livingroom'},
+  sala3:{u:'1600210492486-724fe5c67fb0',k:'interior'},
+  sala4:{u:'1616486338812-3dadae4b4ace',k:'livingroom'},
+  quarto:{u:'1505691938895-1758d7feb511',k:'bedroom'},
+  quarto2:{u:'1560448204-e02f11c3d0e2',k:'bedroom'},
+  cozinha:{u:'1556909114-f6e7ad7d3136',k:'kitchen'},
+  escritorio:{u:'1497366216548-37526070297c',k:'office'},
+  loja:{u:'1524758631624-e2822e304c36',k:'office,plants'},
+  papel:{k:'wallpaper,pattern'},
+  papel2:{k:'wallpaper,floral'},
+  marmore:{k:'marble,texture'},
+  pvc:{k:'brickwall'},
+  adesivo:{k:'wallsticker,wall'},
+  vidro:{k:'stainedglass'},
+  quadro:{k:'wallart,frame'},
+  etiqueta:{k:'sticker,label'},
+  refletivo:{k:'reflective,sign'},
+  resinado:{k:'sticker,logo'},
+  nautico:{k:'boat,yacht'},
+  impressao:{k:'printing,printer'},
+  equipe:{k:'team,workshop'},
+  fabrica:{k:'printing,factory'},
+  entrega:{k:'package,delivery'}
+};
+function urlLF(k,w,lock){return `https://loremflickr.com/${w}/${Math.round(w*.72)}/${k}?lock=${lock}`}
+function urlFoto(key,w,lock){
+  if(/^https?:\/\//.test(key))return key;
+  const f=FOTOS[key]||{k:'interior'};
+  return f.u?`https://images.unsplash.com/photo-${f.u}?auto=format&fit=crop&w=${w}&q=70`:urlLF(f.k,w,lock);
+}
+let lockSeq=1;
+function carregarFoto(img){
+  const key=img.dataset.foto,w=img.closest('.hero,.page-head')?1600:800,lock=lockSeq++;
+  img.loading='lazy';
+  img.onerror=()=>{
+    if(!img.dataset.t&&!/^https?:/.test(key)){img.dataset.t='1';img.src=urlLF((FOTOS[key]||{k:'interior'}).k,w,lock);return}
+    const ph=document.createElement('div');ph.className='ph';ph.innerHTML=`<i class="fa-regular fa-image"></i>${img.alt||'Imagem aqui'}`;
+    img.replaceWith(ph);
+  };
+  img.src=urlFoto(key,w,lock);
+}
+function ativarFotos(raiz){(raiz||document).querySelectorAll('img[data-foto]:not([src])').forEach(carregarFoto)}
+
+/* Links de WhatsApp */
+function linkWpp(msg){return `https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`}
+function ativarWpp(raiz){(raiz||document).querySelectorAll('[data-wpp]').forEach(a=>a.href=linkWpp(a.dataset.wpp))}
+
+/* ========= Produtos e serviços (página Produtos) ========= */
+const SERVICOS=[
+  ['papel','Papéis de Parede','Estampas exclusivas, texturas e medidas sob encomenda.'],
+  ['pvc','Placas Decorativas de PVC Adesivadas','Leves, resistentes e fáceis de aplicar.'],
+  ['adesivo','Adesivos Decorativos Personalizados','Para paredes, móveis, portas e cozinhas.'],
+  ['vidro','Adesivos para Vidros e Vitrais','Privacidade e decoração com efeito jateado ou vitral.'],
+  ['quadro','Quadros e Painéis Decorativos','Peças exclusivas para destacar qualquer ambiente.'],
+  ['nautico','Adesivos Náuticos e Embarcações','Personalização de embarcações com alta resistência.'],
+  ['marmore','Mármores e Granitos Adesivos','O visual sofisticado da pedra, sem obra.'],
+  ['etiqueta','Etiquetas, Refletivos e Resinados','Acabamento em relevo, brilho e durabilidade.'],
+  ['impressao','Impressão Digital e Projetos Personalizados','Do seu projeto à peça pronta.']
+];
+document.getElementById('listaServicos').innerHTML=SERVICOS.map(([f,n,d])=>`
+  <div class="card"><div class="foto"><img data-foto="${f}" alt="${n}"></div><div class="card-corpo"><h3>${n}</h3><p>${d}</p>
+  <div class="acoes"><a class="btn btn-sm btn-wpp" target="_blank" data-wpp="Olá! Quero um orçamento de ${n}."><i class="fa-brands fa-whatsapp"></i> Orçamento</a>
+  <a class="btn btn-sm btn-outline" href="#revendedor">Revender</a></div></div></div>`).join('');
+
+/* ========= Catálogo do revendedor ========= */
+const COLS=['sku','nome','categoria','ambiente','descricao','material','acabamento','ncm','largura_cm','altura_cm','espessura_mm','peso_g','prazo_producao_dias','preco_revenda','preco_sugerido','imagem'];
+const ROTULOS={sku:'Código (SKU)',nome:'Nome',categoria:'Categoria',ambiente:'Ambiente indicado',descricao:'Descrição',material:'Material',acabamento:'Acabamento',ncm:'NCM',largura_cm:'Largura (cm)',altura_cm:'Altura / comprimento (cm)',espessura_mm:'Espessura (mm)',peso_g:'Peso (g)',prazo_producao_dias:'Prazo de produção (dias úteis)',preco_revenda:'Preço para revenda (R$)',preco_sugerido:'Preço sugerido de venda (R$)',imagem:'Imagem (link)'};
+const P=(sku,nome,categoria,ambiente,descricao,material,acabamento,ncm,l,a,e,peso,prazo,pr,ps,imagem)=>({sku,nome,categoria,ambiente,descricao,material,acabamento,ncm,largura_cm:l,altura_cm:a,espessura_mm:e,peso_g:peso,prazo_producao_dias:prazo,preco_revenda:pr,preco_sugerido:ps,imagem});
+const PADRAO=[
+  P('CH-PP-001','Papel de Parede Floral Rosé','Papéis de Parede','Quarto','Papel de parede vinílico com estampa floral em tons rosé. Lavável e fácil de aplicar.','Vinil autoadesivo','Fosco','4814.90.00','53','1000','0.15','900','3','89.90','159.90','papel2'),
+  P('CH-PP-002','Papel de Parede Linho Natural','Papéis de Parede','Sala','Textura que imita linho, ideal para salas e quartos com estilo aconchegante.','Vinil autoadesivo','Texturizado','4814.90.00','53','1000','0.15','900','3','94.90','169.90','papel'),
+  P('CH-PP-003','Papel de Parede Geométrico Off-White','Papéis de Parede','Comercial','Estampa geométrica discreta para escritórios, lojas e consultórios.','Vinil autoadesivo','Acetinado','4814.90.00','53','1000','0.15','900','3','92.90','164.90','sala3'),
+  P('CH-MG-001','Adesivo Mármore Carrara','Mármores e Granitos','Cozinha','Revestimento adesivo com efeito mármore para bancadas, mesas e móveis.','Vinil laminado','Brilho','3919.90.00','61','200','0.10','350','2','69.90','119.90','marmore'),
+  P('CH-MG-002','Adesivo Granito Preto São Gabriel','Mármores e Granitos','Cozinha','Efeito granito escuro para renovar bancadas sem obra.','Vinil laminado','Brilho','3919.90.00','61','200','0.10','350','2','72.90','124.90','cozinha'),
+  P('CH-PV-001','Placa PVC Adesivada Tijolinho','Placas de PVC','Sala','Placa decorativa leve com efeito tijolinho, autoadesiva.','PVC expandido','Fosco','3921.90.19','30','30','3','180','4','24.90','44.90','pvc'),
+  P('CH-AD-001','Adesivo de Parede Frase Personalizada','Adesivos Decorativos','Sala','Adesivo de recorte em vinil, com frase e cor à escolha do cliente.','Vinil de recorte','Fosco','3919.90.00','90','30','0.08','120','2','39.90','69.90','adesivo'),
+  P('CH-AD-002','Adesivo Infantil Nuvens e Estrelas','Adesivos Decorativos','Quarto','Kit de adesivos para quarto infantil, com cores personalizáveis.','Vinil de recorte','Fosco','3919.90.00','100','60','0.08','150','2','44.90','79.90','quarto2'),
+  P('CH-VD-001','Adesivo Jateado para Vidro','Vidros e Vitrais','Banheiro','Película com efeito jateado para privacidade em boxes, portas e janelas.','Vinil jateado','Translúcido','3919.90.00','100','100','0.08','200','3','','','vidro'),
+  P('CH-QD-001','Quadro Decorativo Abstrato','Quadros e Painéis','Sala','Quadro em MDF com impressão digital de alta definição.','MDF 3 mm','Acetinado','4421.99.00','40','60','3','700','5','119.90','199.90','quadro'),
+  P('CH-QD-002','Painel Decorativo Paisagem','Quadros e Painéis','Comercial','Painel de grande formato para recepções e espaços comerciais.','MDF 6 mm','Fosco','4421.99.00','120','80','6','4200','7','','','sala4'),
+  P('CH-RS-001','Etiqueta Resinada Personalizada','Etiquetas e Resinados','Comercial','Etiqueta com resina em relevo e brilho, alta durabilidade. Pedido mínimo sob consulta.','Vinil + resina poliuretano','Resinado brilho','3919.90.00','5','5','2','5','5','2.90','5.90','resinado'),
+  P('CH-RF-001','Adesivo Refletivo Personalizado','Refletivos','Comercial','Adesivo refletivo para sinalização e identificação com alta visibilidade.','Vinil refletivo','Refletivo','3919.90.00','30','10','0.12','20','4','14.90','27.90','refletivo'),
+  P('CH-NA-001','Kit Adesivo Náutico','Adesivos Náuticos','Náutico','Adesivos resistentes à água salgada e ao sol para embarcações.','Vinil náutico','Brilho UV','3919.90.00','120','40','0.10','250','5','','','nautico')
+];
+const AMBIENTE_EXTRA={Sala:'sala',Quarto:'quarto',Cozinha:'cozinha',Banheiro:'sala3',Comercial:'loja','Náutico':'nautico'};
+
+function ler(k,p){try{const v=localStorage.getItem(k);return v===null?p:JSON.parse(v)}catch(e){return p}}
+function gravar(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+let produtos=ler('ch2_produtos',null)||PADRAO.map(p=>({...p}));
+let acesso=ler('ch2_acesso','bloqueado');
+let cadastro=ler('ch2_cadastro',null);
+const filtro={cat:'Todas',busca:'',faixa:'todas',soComPreco:false,ambiente:'',ordem:'nome'};
+
+function salvar(){gravar('ch2_produtos',produtos);gravar('ch2_acesso',acesso);gravar('ch2_cadastro',cadastro)}
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.style.display='block';clearTimeout(e._t);e._t=setTimeout(()=>e.style.display='none',3200)}
+function abrirModal(id){document.getElementById(id).classList.add('ativo');document.body.style.overflow='hidden'}
+function fecharModal(id){document.getElementById(id).classList.remove('ativo');document.body.style.overflow=''}
+document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)fecharModal(m.id)}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal.ativo').forEach(m=>fecharModal(m.id))});
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function num(v){const n=parseFloat(String(v??'').replace(/\./g,m=>m).replace(',','.'));return isNaN(n)?null:n}
+function moeda(v){const n=num(v);return n===null?'':n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
+function temPreco(p){return num(p.preco_revenda)!==null}
+const liberado=()=>acesso==='liberado';
+
+/* Navegação entre páginas */
+const ORDEM=[['inicio','Início'],['sobre','Sobre'],['produtos','Produtos'],['contato','Contato'],['revendedor','Seja um Revendedor']];
+function montarPagNav(){
+  document.querySelectorAll('.pag-nav').forEach(el=>{
+    const i=ORDEM.findIndex(o=>o[0]===el.dataset.pag);
+    const ant=ORDEM[i-1],prox=ORDEM[i+1];
+    el.innerHTML=(ant?`<a href="#${ant[0]}"><i class="fa-solid fa-arrow-left"></i><div><small>Anterior</small><strong>${ant[1]}</strong></div></a>`:'')+
+      (prox?`<a class="prox" href="#${prox[0]}"><div><small>Próxima</small><strong>${prox[1]}</strong></div><i class="fa-solid fa-arrow-right"></i></a>`:'');
+  });
+}
+function rota(){
+  let h=(location.hash||'#inicio').slice(1);
+  if(!document.getElementById('p-'+h))h='inicio';
+  document.querySelectorAll('.page').forEach(p=>p.classList.toggle('ativo',p.id==='p-'+h));
+  document.querySelectorAll('.menu a').forEach(a=>a.classList.toggle('ativo',a.getAttribute('href')==='#'+h));
+  document.querySelector('.menu').classList.remove('aberto');
+  document.getElementById('rodapeMapa').style.display=(h==='sobre'||h==='contato')?'none':'block';
+  window.scrollTo(0,0);
+}
+window.addEventListener('hashchange',rota);
+function irPara(e,id){e.preventDefault();document.getElementById(id).scrollIntoView({behavior:'smooth'})}
+function rolar(btn,d){const t=btn.parentElement.querySelector('.trilho');t.scrollBy({left:d*t.clientWidth*.85,behavior:'smooth'})}
+window.addEventListener('scroll',()=>document.getElementById('btnTopo').classList.toggle('ver',scrollY>500));
+
+/* Status e travas */
+function renderStatus(){
+  const s=document.getElementById('statusBox');
+  if(!liberado()){
+    s.className='status bloqueado';
+    s.innerHTML=`<div class="txt"><div class="ic"><i class="fa-solid fa-lock"></i></div><div><h3>Preços, fichas técnicas e planilhas bloqueados</h3><p>Faça o cadastro gratuito para liberar o acesso completo ao catálogo.</p></div></div>
+      <button class="btn" onclick="abrirModal('mCadastro')"><i class="fa-solid fa-unlock"></i> Quero ser revendedor</button>`;
+  }else{
+    s.className='status liberado';
+    s.innerHTML=`<div class="txt"><div class="ic"><i class="fa-solid fa-circle-check"></i></div><div><h3>Olá${cadastro?', '+esc(cadastro.nome.split(' ')[0]):''}! Seu acesso está liberado</h3><p>${cadastro?esc(cadastro.empresa)+' · ':''}Preços, fichas técnicas, filtros e planilhas disponíveis.</p></div></div>
+      <div class="acoes"><a href="#planilhas-rev" class="btn btn-sm" onclick="irPara(event,'planilhas-rev')"><i class="fa-solid fa-file-csv"></i> Planilhas</a><button class="btn btn-sm btn-outline" onclick="sairDemo()"><i class="fa-solid fa-right-from-bracket"></i> Sair (demo)</button></div>`;
+  }
+  document.getElementById('travaFiltros').classList.toggle('travado',!liberado());
+  document.getElementById('blocoPlanilhas').classList.toggle('travado',!liberado());
+  document.getElementById('travaFiltros').querySelectorAll('input,select').forEach(i=>i.disabled=!liberado());
+  document.getElementById('ordenar').querySelectorAll('option').forEach(o=>{if(o.value!=='nome')o.disabled=!liberado()});
+}
+
+/* Filtros */
+function categorias(){return [...new Set(produtos.map(p=>p.categoria).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'pt-BR'))}
+function renderCats(){
+  const cats=categorias();if(filtro.cat!=='Todas'&&!cats.includes(filtro.cat))filtro.cat='Todas';
+  const cont=c=>c==='Todas'?produtos.length:produtos.filter(p=>p.categoria===c).length;
+  document.getElementById('filtroCats').innerHTML=['Todas',...cats].map(c=>`<button class="filtro-cat ${c===filtro.cat?'ativo':''}" data-c="${esc(c)}">${c==='Todas'?'Todas as categorias':esc(c)}<span>${cont(c)}</span></button>`).join('');
+  document.querySelectorAll('#filtroCats .filtro-cat').forEach(b=>b.onclick=()=>{filtro.cat=b.dataset.c;renderCats();renderGrid();sincronizarExport()});
+  const sel=document.getElementById('expCat'),atual=sel.value;
+  sel.innerHTML=`<option value="Todas">Todos os produtos (${produtos.length})</option>`+cats.map(c=>`<option value="${esc(c)}">${esc(c)} (${cont(c)})</option>`).join('');
+  sel.value=[...sel.options].some(o=>o.value===atual)?atual:'Todas';
+  atualizarExpInfo();
+}
+function produtosFiltrados(){
+  let l=produtos.filter(p=>(filtro.cat==='Todas'||p.categoria===filtro.cat)&&(!filtro.busca||(p.nome+' '+p.categoria).toLowerCase().includes(filtro.busca)));
+  if(liberado()){
+    if(filtro.soComPreco)l=l.filter(temPreco);
+    if(filtro.ambiente)l=l.filter(p=>p.ambiente===filtro.ambiente);
+    if(filtro.faixa!=='todas'){const[a,b]=filtro.faixa.split('-').map(Number);l=l.filter(p=>{const n=num(p.preco_revenda);return n!==null&&n>=a&&n<=b})}
+    if(filtro.ordem!=='nome'){const m=filtro.ordem==='menor'?1:-1;return l.sort((x,y)=>{const a=num(x.preco_revenda),b=num(y.preco_revenda);if(a===null)return 1;if(b===null)return -1;return(a-b)*m})}
+  }
+  return l.sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR'));
+}
+function limparFiltros(){
+  Object.assign(filtro,{cat:'Todas',busca:'',faixa:'todas',soComPreco:false,ambiente:'',ordem:'nome'});
+  document.getElementById('busca').value='';document.getElementById('ordenar').value='nome';
+  document.getElementById('soComPreco').checked=false;document.getElementById('filtroAmbiente').value='';
+  document.querySelector('input[name=faixa][value=todas]').checked=true;
+  renderCats();renderGrid();sincronizarExport();
+}
+
+/* Cards */
+function renderGrid(){
+  const lista=produtosFiltrados(),g=document.getElementById('gridProdutos');
+  document.getElementById('contagem').textContent=`${lista.length} produto${lista.length===1?'':'s'} encontrado${lista.length===1?'':'s'}${filtro.cat!=='Todas'?' em '+filtro.cat:''}`;
+  if(!lista.length){g.innerHTML='<div class="vazio"><i class="fa-solid fa-magnifying-glass"></i><p>Nenhum produto encontrado com esses filtros.</p></div>';return}
+  g.innerHTML=lista.map(p=>{
+    const i=produtos.indexOf(p);
+    const foto=`<div class="foto"><img data-foto="${esc(p.imagem||'interior')}" alt="${esc(p.nome)}"></div>`;
+    if(!liberado()){
+      return `<div class="card prod">${foto}<div class="card-corpo">
+        <h3>${esc(p.nome)}</h3>
+        <div class="trancado"><div class="borrado">Preço revenda R$ 00,00<br>NCM 0000.00.00 · 00 × 00 cm</div><div class="cadeado"><i class="fa-solid fa-lock"></i> Cadastre-se para ver</div></div>
+        <button class="btn btn-sm btn-outline" onclick="abrirModal('mCadastro')"><i class="fa-solid fa-unlock"></i> Liberar informações</button>
+      </div></div>`;
+    }
+    return `<div class="card prod"><div style="position:relative"><span class="selo-cat">${esc(p.categoria)}</span>${foto}</div><div class="card-corpo">
+      <h3>${esc(p.nome)}</h3>
+      <p class="desc">${esc(p.descricao)}</p>
+      ${temPreco(p)?`<div class="precos"><div><small>Revenda</small><strong>${moeda(p.preco_revenda)}</strong></div>${num(p.preco_sugerido)!==null?`<div class="sug"><small>Sugerido</small><strong>${moeda(p.preco_sugerido)}</strong></div>`:''}</div>`:`<div class="consulta"><i class="fa-regular fa-comment-dots"></i> Preço sob consulta</div>`}
+      <div class="mini-ficha"><div><span>SKU</span><b>${esc(p.sku)}</b></div><div><span>NCM</span><b>${esc(p.ncm)}</b></div><div><span>Medidas</span><b>${esc(p.largura_cm)} × ${esc(p.altura_cm)} cm</b></div></div>
+      <button class="btn btn-sm" onclick="verProduto(${i})"><i class="fa-solid fa-circle-info"></i> Ver ficha completa</button>
+    </div></div>`;
+  }).join('');
+  ativarFotos(g);
+}
+
+/* Ficha do produto */
+let galeriaAtual=[],galeriaIdx=0;
+function verProduto(i){
+  const p=produtos[i];
+  galeriaAtual=[p.imagem||'interior',AMBIENTE_EXTRA[p.ambiente]||'sala',p.imagem&&!/^https?:/.test(p.imagem)?'sala2':'sala'];
+  galeriaIdx=0;
+  const linhas=['sku','categoria','ambiente','material','acabamento','ncm'].map(c=>`<tr><td>${ROTULOS[c]}</td><td>${esc(p[c])||'—'}</td></tr>`).join('')+
+    `<tr><td>Dimensões (L × A)</td><td>${esc(p.largura_cm)} × ${esc(p.altura_cm)} cm</td></tr>
+     <tr><td>Espessura</td><td>${esc(p.espessura_mm)} mm</td></tr>
+     <tr><td>Peso</td><td>${esc(p.peso_g)} g</td></tr>
+     <tr><td>Prazo de produção</td><td>${esc(p.prazo_producao_dias)} dias úteis</td></tr>`;
+  const pr=num(p.preco_revenda),ps=num(p.preco_sugerido);
+  const margem=pr!==null&&ps!==null&&ps>pr?Math.round((ps-pr)/ps*100):null;
+  document.getElementById('detalhe').innerHTML=`<div class="det-grid">
+    <div class="galeria-prod">
+      <div class="foto principal" id="fotoPrincipal"></div>
+      <div class="miniaturas" id="miniaturas"></div>
+    </div>
+    <div>
+      <span class="tag">${esc(p.categoria)}</span>
+      <h2>${esc(p.nome)}</h2>
+      <p class="txt-suave" style="margin:8px 0 14px">${esc(p.descricao)}</p>
+      ${pr!==null?`<div class="precos" style="padding:14px 16px"><div><small>Preço para revenda</small><strong style="font-size:1.5rem">${moeda(pr)}</strong></div>${ps!==null?`<div class="sug"><small>Preço sugerido</small><strong>${moeda(ps)}</strong></div>`:''}</div>${margem!==null?`<span class="margem"><i class="fa-solid fa-arrow-trend-up"></i> Margem estimada de ${margem}%</span>`:''}`:`<div class="consulta"><i class="fa-regular fa-comment-dots"></i> Preço sob consulta: fale com o setor de revenda</div>`}
+      <table class="tabela">${linhas}</table>
+      <div class="acoes" style="margin-top:18px">
+        <button class="btn btn-sm" onclick="exportarCSV([produtos[${i}]],'${esc(p.sku)}.csv')"><i class="fa-solid fa-download"></i> Exportar ficha</button>
+        <a class="btn btn-sm btn-wpp" target="_blank" href="${linkWpp('Olá! Sou revendedor e tenho uma dúvida sobre o produto '+p.sku+' - '+p.nome+'.')}"><i class="fa-brands fa-whatsapp"></i> Tirar dúvida</a>
+      </div>
+    </div></div>`;
+  mostrarFotoGaleria();
+  abrirModal('mProduto');
+}
+function mostrarFotoGaleria(){
+  const pr=document.getElementById('fotoPrincipal');
+  pr.innerHTML=`<img data-foto="${esc(galeriaAtual[galeriaIdx])}" alt="Foto ${galeriaIdx+1}">
+    <button class="seta esq" aria-label="Foto anterior" onclick="mudarFoto(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="seta dir" aria-label="Próxima foto" onclick="mudarFoto(1)"><i class="fa-solid fa-chevron-right"></i></button>`;
+  document.getElementById('miniaturas').innerHTML=galeriaAtual.map((f,i)=>`<button class="${i===galeriaIdx?'ativo':''}" onclick="galeriaIdx=${i};mostrarFotoGaleria()"><div class="foto"><img data-foto="${esc(f)}" alt="Miniatura ${i+1}"></div></button>`).join('');
+  ativarFotos(document.getElementById('detalhe'));
+}
+function mudarFoto(d){galeriaIdx=(galeriaIdx+d+galeriaAtual.length)%galeriaAtual.length;mostrarFotoGaleria()}
+
+/* Cadastro (demo: libera na hora) */
+function enviarCadastro(e){
+  e.preventDefault();
+  cadastro=Object.fromEntries(new FormData(e.target));
+  acesso='liberado';salvar();fecharModal('mCadastro');e.target.reset();
+  renderStatus();renderGrid();
+  toast('Acesso liberado! Agora você vê preços, fichas e planilhas.');
+  document.getElementById('catalogo-rev').scrollIntoView({behavior:'smooth'});
+}
+function sairDemo(){
+  if(!confirm('Sair e voltar a demonstração ao estado inicial?'))return;
+  acesso='bloqueado';cadastro=null;produtos=PADRAO.map(p=>({...p}));salvar();limparFiltros();renderStatus();
+}
+
+/* Planilhas */
+function sincronizarExport(){document.getElementById('expCat').value=filtro.cat;atualizarExpInfo()}
+function atualizarExpInfo(){
+  const c=document.getElementById('expCat').value;
+  const n=c==='Todas'?produtos.length:produtos.filter(p=>p.categoria===c).length;
+  document.getElementById('expInfo').innerHTML=`<i class="fa-solid fa-circle-info"></i> ${n} produto${n===1?'':'s'} · ${COLS.length} colunas`;
+}
+document.getElementById('expCat').addEventListener('change',atualizarExpInfo);
+document.getElementById('colunasInfo').innerHTML='<span style="border:none;background:none;font-weight:600">Colunas da planilha:</span>'+COLS.map(c=>`<span>${ROTULOS[c]}</span>`).join('');
+function csvCampo(v){v=String(v??'');return /[;"\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}
+function baixar(nome,texto){
+  const blob=new Blob(['﻿'+texto],{type:'text/csv;charset=utf-8'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=nome;document.body.appendChild(a);a.click();a.remove();
+}
+function exportarCSV(lista,nome){
+  if(!liberado()){abrirModal('mCadastro');return}
+  const linhas=[COLS.join(';'),...lista.map(p=>COLS.map(c=>csvCampo(c==='imagem'&&p.imagem&&!/^https?:/.test(p.imagem)?urlFoto(p.imagem,1200,1):p[c])).join(';'))];
+  baixar(nome,linhas.join('\r\n'));toast(`Planilha exportada com ${lista.length} produto${lista.length===1?'':'s'}.`);
+}
+function slug(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
+function exportarSelecionado(){
+  const c=document.getElementById('expCat').value;
+  const lista=c==='Todas'?produtos:produtos.filter(p=>p.categoria===c);
+  exportarCSV(lista,`casa-harmonia-${c==='Todas'?'todos-os-produtos':slug(c)}.csv`);
+}
+function baixarModelo(){
+  if(!liberado()){abrirModal('mCadastro');return}
+  baixar('modelo-importacao-casa-harmonia.csv',COLS.join(';')+'\r\n'+'CH-XX-001;Nome do produto;Categoria;Sala;Descrição do produto;Vinil autoadesivo;Fosco;0000.00.00;50;100;0.10;300;3;49.90;89.90;https://link-da-imagem.jpg');
+}
+function parseCSV(txt){
+  txt=txt.replace(/^﻿/,'');
+  const l0=txt.split('\n')[0];
+  const sep=(l0.match(/;/g)||[]).length>=(l0.match(/,/g)||[]).length?';':',';
+  const rows=[];let row=[],cur='',q=false;
+  for(let i=0;i<txt.length;i++){
+    const ch=txt[i];
+    if(q){if(ch==='"'){if(txt[i+1]==='"'){cur+='"';i++}else q=false}else cur+=ch}
+    else if(ch==='"')q=true;
+    else if(ch===sep){row.push(cur);cur=''}
+    else if(ch==='\n'){row.push(cur);rows.push(row);row=[];cur=''}
+    else if(ch!=='\r')cur+=ch;
+  }
+  if(cur||row.length){row.push(cur);rows.push(row)}
+  return rows.filter(r=>r.some(c=>c.trim()!==''));
+}
+function importarCSV(inp){
+  const f=inp.files[0];if(!f)return;
+  const r=new FileReader();
+  r.onload=()=>{
+    const rows=parseCSV(r.result);inp.value='';
+    if(rows.length<2){toast('Planilha vazia ou inválida.');return}
+    const head=rows[0].map(h=>h.trim().toLowerCase());
+    if(!head.includes('nome')){toast('A planilha precisa ter a coluna "nome". Use o modelo.');return}
+    let novos=0,atual=0;
+    rows.slice(1).forEach(cols=>{
+      const p={};COLS.forEach(c=>{const k=head.indexOf(c);p[c]=k>=0?(cols[k]||'').trim():''});
+      if(!p.nome)return;
+      const ix=p.sku?produtos.findIndex(x=>x.sku===p.sku):-1;
+      if(ix>=0){produtos[ix]=p;atual++}else{produtos.push(p);novos++}
+    });
+    salvar();renderCats();renderGrid();
+    toast(`Importação concluída: ${novos} novo${novos===1?'':'s'}, ${atual} atualizado${atual===1?'':'s'}.`);
+  };
+  r.readAsText(f,'UTF-8');
+}
+
+/* Contato */
+function enviarContato(e){
+  e.preventDefault();
+  const d=Object.fromEntries(new FormData(e.target));
+  window.open(linkWpp(`Olá! Meu nome é ${d.nome}.\nTelefone: ${d.tel}\nE-mail: ${d.email}\nAssunto: ${d.assunto}\n\n${d.msg}`),'_blank');
+  e.target.reset();toast('Mensagem preparada no WhatsApp.');
+}
+
+/* Eventos dos filtros */
+document.getElementById('busca').addEventListener('input',e=>{filtro.busca=e.target.value.toLowerCase().trim();renderGrid()});
+document.getElementById('ordenar').addEventListener('change',e=>{filtro.ordem=e.target.value;renderGrid()});
+document.getElementById('soComPreco').addEventListener('change',e=>{filtro.soComPreco=e.target.checked;renderGrid()});
+document.getElementById('filtroAmbiente').addEventListener('change',e=>{filtro.ambiente=e.target.value;renderGrid()});
+document.querySelectorAll('input[name=faixa]').forEach(r=>r.addEventListener('change',e=>{filtro.faixa=e.target.value;renderGrid()}));
+
+/* Início */
+montarPagNav();ativarWpp();renderStatus();renderCats();renderGrid();ativarFotos();rota();
+</script>
+</body>
+</html>
