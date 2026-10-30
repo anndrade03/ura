@@ -97,7 +97,7 @@ input:focus,select:focus,textarea:focus{outline:2px solid var(--pri);border-colo
 .aviso.ok{background:var(--verde-claro);color:#185F36}
 
 /* Visão geral */
-.cards-num{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.cards-num{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:20px}
 .num{background:#fff;border:1px solid var(--borda);border-radius:16px;padding:20px;display:flex;gap:14px;align-items:center;cursor:pointer;transition:.15s}
 .num:hover{border-color:var(--pri);box-shadow:0 8px 20px rgba(212,97,76,.1)}
 .num .ic{width:48px;height:48px;border-radius:14px;background:var(--pri-claro);color:var(--pri-esc);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
@@ -208,9 +208,24 @@ td.acoes-td .btn{margin-left:4px}
 .armazenamento{height:8px;background:var(--creme);border-radius:10px;overflow:hidden;margin:8px 0}
 .armazenamento div{height:100%;background:var(--pri);border-radius:10px}
 .veu-menu{display:none}
+.usuario-atual{display:flex;gap:10px;align-items:center;padding:4px 4px 10px;font-size:.8rem}
+.usuario-atual .av{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;flex-shrink:0}
+.usuario-atual b{display:block;color:#fff;font-size:.84rem}
+.usuario-atual small{opacity:.7}
+.perfis{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px}
+.perfil{border:1px solid var(--borda);border-radius:14px;padding:18px;background:#fff}
+.perfil h3{font-size:1.02rem;margin:8px 0 6px}
+.perfil ul{list-style:none;font-size:.8rem;color:var(--suave);display:grid;gap:4px}
+.perfil li i{width:16px;color:var(--verde)}
+.perfil li.nao i{color:#C9B8B2}
+.perfil li.nao{opacity:.45;text-decoration:line-through}
+.senha-box{display:flex;gap:8px}
+.senha-box input{font-family:monospace;font-size:1rem;letter-spacing:1px}
+.msg-login{background:var(--creme);border:1px dashed var(--borda);border-radius:10px;padding:12px 14px;font-size:.82rem;white-space:pre-line;color:var(--texto);margin-top:12px}
 
 @media(max-width:1100px){.cards-num{grid-template-columns:repeat(2,1fr)}.atalhos{grid-template-columns:1fr 1fr}.cores{grid-template-columns:1fr 1fr}.serv-linha{grid-template-columns:60px 1fr;}.serv-linha>*:nth-child(n+3){grid-column:1/-1}}
 @media(max-width:860px){
+  .perfis{grid-template-columns:1fr}
   .lateral{transform:translateX(-100%)}
   .lateral.aberta{transform:none}
   .veu-menu.ativo{display:block;position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:35}
@@ -236,12 +251,12 @@ td.acoes-td .btn{margin-left:4px}
     <h1>Painel Casa Harmonia</h1>
     <p>Gerencie produtos, revendedores e o conteúdo do site.</p>
     <form onsubmit="entrar(event)">
-      <div class="campo"><label>Usuário</label><input type="text" id="usuario" value="admin" autocomplete="username"></div>
-      <div class="campo"><label>Senha</label><input type="password" id="senha" autocomplete="current-password" required></div>
+      <div class="campo"><label>Usuário</label><input type="text" id="usuario" placeholder="admin, comercial ou cadastros" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false"></div>
+      <div class="campo"><label>Senha</label><input type="password" id="senha" autocomplete="new-password" autocapitalize="off" autocorrect="off" spellcheck="false" required></div>
       <div class="erro" id="erroLogin"></div>
       <button class="btn" type="submit"><i class="fa-solid fa-right-to-bracket"></i> Entrar</button>
     </form>
-    <div class="dica"><i class="fa-solid fa-circle-info"></i> Protótipo: senha inicial <b>admin123</b> (altere em Configurações).</div>
+    <div class="dica"><i class="fa-solid fa-circle-info"></i> Protótipo · usuários de teste:<br><b>admin</b> / admin123 (acesso total)<br><b>comercial</b> / comercial123 · <b>cadastros</b> / cadastros123</div>
   </div>
 </div>
 
@@ -264,9 +279,12 @@ td.acoes-td .btn{margin-left:4px}
       <a href="#aparencia" data-v="aparencia"><i class="fa-solid fa-palette"></i> Cores e logo</a>
       <div class="grupo">Sistema</div>
       <a href="#publicar" data-v="publicar"><i class="fa-solid fa-cloud-arrow-up"></i> Publicar e backup</a>
-      <a href="#config" data-v="config"><i class="fa-solid fa-gear"></i> Configurações</a>
+      <a href="#rastreamento" data-v="rastreamento"><i class="fa-solid fa-chart-line"></i> Rastreamento</a>
+      <a href="#usuarios" data-v="usuarios"><i class="fa-solid fa-users-gear"></i> Usuários e permissões</a>
+      <a href="#config" data-v="config"><i class="fa-solid fa-user-gear"></i> Minha conta</a>
     </nav>
     <div class="rodape">
+      <div class="usuario-atual" id="usuarioAtual"></div>
       <a class="btn" href="index.html" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i> Ver site</a>
       <button class="btn claro" onclick="sairPainel()"><i class="fa-solid fa-right-from-bracket"></i> Sair</button>
     </div>
@@ -282,15 +300,15 @@ td.acoes-td .btn{margin-left:4px}
       <div class="caixa">
         <h2>Atalhos</h2><p class="desc">O que você mais vai usar no dia a dia.</p>
         <div class="atalhos">
-          <button class="atalho" onclick="novoProduto()"><i class="fa-solid fa-plus"></i><div><b>Cadastrar produto</b><small>Adicionar ao catálogo</small></div></button>
-          <button class="atalho" onclick="document.getElementById('arqProdutos').click()"><i class="fa-solid fa-file-import"></i><div><b>Importar planilha</b><small>Vários produtos de uma vez</small></div></button>
-          <button class="atalho" onclick="ir('revendedores')"><i class="fa-solid fa-user-check"></i><div><b>Aprovar revendedores</b><small>Liberar acesso ao catálogo</small></div></button>
-          <button class="atalho" onclick="ir('conteudo')"><i class="fa-solid fa-pen"></i><div><b>Editar textos</b><small>Títulos, descrições e botões</small></div></button>
-          <button class="atalho" onclick="ir('imagens')"><i class="fa-solid fa-image"></i><div><b>Trocar imagens</b><small>Banner, galerias e produtos</small></div></button>
-          <button class="atalho" onclick="ir('publicar')"><i class="fa-solid fa-cloud-arrow-up"></i><div><b>Publicar alterações</b><small>Atualizar o site no ar</small></div></button>
+          <button class="atalho" data-p="produtos" onclick="novoProduto()"><i class="fa-solid fa-plus"></i><div><b>Cadastrar produto</b><small>Adicionar ao catálogo</small></div></button>
+          <button class="atalho" data-p="produtos" onclick="document.getElementById('arqProdutos').click()"><i class="fa-solid fa-file-import"></i><div><b>Importar planilha</b><small>Vários produtos de uma vez</small></div></button>
+          <button class="atalho" data-p="revendedores" onclick="ir('revendedores')"><i class="fa-solid fa-user-check"></i><div><b>Aprovar revendedores</b><small>Liberar acesso ao catálogo</small></div></button>
+          <button class="atalho" data-p="conteudo" onclick="ir('conteudo')"><i class="fa-solid fa-pen"></i><div><b>Editar textos</b><small>Títulos, descrições e botões</small></div></button>
+          <button class="atalho" data-p="imagens" onclick="ir('imagens')"><i class="fa-solid fa-image"></i><div><b>Trocar imagens</b><small>Banner, galerias e produtos</small></div></button>
+          <button class="atalho" data-p="publicar" onclick="ir('publicar')"><i class="fa-solid fa-cloud-arrow-up"></i><div><b>Publicar alterações</b><small>Atualizar o site no ar</small></div></button>
         </div>
       </div>
-      <div class="caixa">
+      <div class="caixa" data-p="publicar">
         <h2>Como funciona</h2><p class="desc">Tudo o que você altera aqui aparece na hora no site aberto neste mesmo navegador.</p>
         <ol class="passos">
           <li>Faça as alterações nas seções do menu ao lado. Tudo é salvo automaticamente.</li>
@@ -314,10 +332,10 @@ td.acoes-td .btn{margin-left:4px}
         <div class="filtros-tab">
           <input type="search" id="buscaProd" placeholder="Buscar por nome ou SKU...">
           <select id="catProd"></select>
-          <select id="statusProd"><option value="">Todos</option><option value="ativo">Ativos</option><option value="inativo">Ocultos</option><option value="sempreco">Sem preço</option></select>
+          <select id="statusProd"><option value="">Todos</option><option value="ativo">Ativos</option><option value="inativo">Ocultos</option><option value="sempreco">Sem preço (atacado ou drop)</option></select>
         </div>
         <div class="tabela-wrap"><table>
-          <thead><tr><th></th><th>Produto</th><th class="tabela-esconde">Categoria</th><th>Revenda</th><th class="tabela-esconde">Sugerido</th><th>No site</th><th></th></tr></thead>
+          <thead><tr><th></th><th>Produto</th><th class="tabela-esconde">Categoria</th><th>Atacado</th><th>Dropshipping</th><th class="tabela-esconde">Sugerido</th><th>No site</th><th></th></tr></thead>
           <tbody id="tbProdutos"></tbody>
         </table></div>
         <div style="margin-top:12px;color:var(--suave);font-size:.8rem" id="rodProdutos"></div>
@@ -338,20 +356,25 @@ td.acoes-td .btn{margin-left:4px}
     <!-- REVENDEDORES -->
     <section class="view" id="v-revendedores">
       <div class="barra-topo">
-        <div style="display:flex;gap:12px;align-items:center"><button class="hamb" onclick="menu(true)"><i class="fa-solid fa-bars"></i></button><div><h1>Revendedores</h1><p>Cadastros feitos na área Seja um Revendedor.</p></div></div>
-        <div class="acoes"><button class="btn neutro" onclick="exportarRevendedores()"><i class="fa-solid fa-file-export"></i> Exportar lista</button></div>
+        <div style="display:flex;gap:12px;align-items:center"><button class="hamb" onclick="menu(true)"><i class="fa-solid fa-bars"></i></button><div><h1>Revendedores</h1><p>Cadastros da Revenda Atacado e do Dropshipping. Aqui você aprova e cria o login de cada revendedor.</p></div></div>
+        <div class="acoes"><button class="btn neutro" onclick="exportarRevendedores()"><i class="fa-solid fa-file-export"></i> Exportar lista</button><button class="btn" onclick="novoRevendedor()"><i class="fa-solid fa-user-plus"></i> Novo revendedor</button></div>
       </div>
       <div class="caixa">
         <div class="cab-caixa">
           <div><h2>Aprovação de cadastros</h2><p class="desc" style="margin:0">Escolha se o acesso é liberado na hora ou só depois da sua aprovação.</p></div>
           <label class="vis" style="font-size:.86rem;color:var(--texto)"><span>Manual</span><span class="chave"><input type="checkbox" id="aprovAuto" onchange="mudarAprovacao(this.checked)"><span></span></span><span>Automática</span></label>
         </div>
+        <div class="aviso info" style="margin:14px 0 0"><i class="fa-solid fa-circle-info"></i><div><b>Manual (recomendado no site real):</b> o cadastro fica aguardando, o comercial aprova e cria o login (e-mail + senha) e envia ao revendedor pelo WhatsApp. <b>Automática:</b> usada na demonstração, libera o acesso na hora e gera a senha sozinha.</div></div>
+        <div class="cab-caixa" style="margin:18px 0 0;padding-top:16px;border-top:1px solid var(--borda)">
+          <div><h2>Pedido mínimo da Revenda Atacado</h2><p class="desc" style="margin:0">Valor mínimo do pedido para o botão de envio ser liberado no site.</p></div>
+          <div style="display:flex;gap:8px;align-items:center"><span>R$</span><input type="text" id="pedMin" inputmode="decimal" style="width:120px"><button class="btn sm" onclick="salvarMinimo()">Salvar</button></div>
+        </div>
       </div>
       <div class="caixa">
         <div class="abas" id="abasRev"></div>
-        <div class="filtros-tab"><input type="search" id="buscaRev" placeholder="Buscar por nome, empresa, e-mail ou documento..."></div>
+        <div class="filtros-tab"><input type="search" id="buscaRev" placeholder="Buscar por nome, empresa, e-mail ou documento..."><select id="modRev"><option value="">Todas as modalidades</option><option value="atacado">Revenda Atacado</option><option value="dropshipping">Dropshipping</option></select></div>
         <div class="tabela-wrap"><table>
-          <thead><tr><th>Revendedor</th><th class="tabela-esconde">Documento</th><th>Contato</th><th class="tabela-esconde">Cadastro</th><th>Status</th><th></th></tr></thead>
+          <thead><tr><th>Revendedor</th><th>Modalidade</th><th class="tabela-esconde">Documento</th><th>Contato</th><th class="tabela-esconde">Cadastro</th><th>Status</th><th></th></tr></thead>
           <tbody id="tbRev"></tbody>
         </table></div>
       </div>
@@ -443,17 +466,58 @@ td.acoes-td .btn{margin-left:4px}
       </div>
     </section>
 
-    <!-- CONFIGURAÇÕES -->
-    <section class="view" id="v-config">
+    <!-- RASTREAMENTO -->
+    <section class="view" id="v-rastreamento">
       <div class="barra-topo">
-        <div style="display:flex;gap:12px;align-items:center"><button class="hamb" onclick="menu(true)"><i class="fa-solid fa-bars"></i></button><div><h1>Configurações</h1><p>Acesso ao painel.</p></div></div>
+        <div style="display:flex;gap:12px;align-items:center"><button class="hamb" onclick="menu(true)"><i class="fa-solid fa-bars"></i></button><div><h1>Rastreamento</h1><p>Google Analytics, Google Tag Manager e Pixel da Meta.</p></div></div>
+        <div class="acoes"><button class="btn" onclick="salvarRastreamento()"><i class="fa-solid fa-floppy-disk"></i> Salvar</button></div>
+      </div>
+      <div class="aviso alerta"><i class="fa-solid fa-clock"></i><div><b>Configurar depois da aprovação do wireframe.</b> Os códigos só começam a funcionar quando o rastreamento estiver ativado e o site publicado no domínio oficial.</div></div>
+      <div class="caixa">
+        <div class="cab-caixa"><div><h2>Ativar rastreamento</h2><p class="desc" style="margin:0">Quando ativado, o site carrega os códigos abaixo em todas as páginas.</p></div>
+          <label class="chave"><input type="checkbox" id="rsAtivo"><span></span></label></div>
+        <div class="grid-campos">
+          <div class="campo"><label>Google Analytics 4 (ID de medição)</label><input type="text" id="rsGa4" placeholder="G-XXXXXXXXXX"><small>Em Analytics: Administrador › Fluxos de dados.</small></div>
+          <div class="campo"><label>Google Tag Manager (opcional)</label><input type="text" id="rsGtm" placeholder="GTM-XXXXXXX"><small>Use só se a equipe de marketing gerenciar as tags por lá.</small></div>
+          <div class="campo"><label>Pixel da Meta (Facebook e Instagram)</label><input type="text" id="rsPixel" placeholder="Somente números"><small>No Gerenciador de Eventos da Meta.</small></div>
+        </div>
       </div>
       <div class="caixa">
-        <h2>Senha do painel</h2><p class="desc">Troque a senha inicial antes de passar o painel para a equipe.</p>
+        <h2>Eventos enviados pelo site</h2><p class="desc">Ações dos visitantes que viram eventos para medir campanhas.</p>
+        <div class="tabela-wrap"><table><thead><tr><th>Evento</th><th>Quando acontece</th></tr></thead><tbody>
+          <tr><td><b>cadastro_revendedor</b></td><td>Alguém envia o cadastro do atacado ou do dropshipping</td></tr>
+          <tr><td><b>pedido_atacado</b></td><td>Revendedor envia um pedido do atacado pelo WhatsApp</td></tr>
+          <tr><td><b>orcamento_corporativo</b></td><td>Empresa envia o formulário de pedidos corporativos</td></tr>
+          <tr><td><b>contato</b></td><td>Formulário da página Contato</td></tr>
+          <tr><td><b>whatsapp_atacado / whatsapp_dropshipping</b></td><td>Clique nos botões de WhatsApp de cada modalidade</td></tr>
+          <tr><td><b>exportar_planilha</b></td><td>Revendedor baixa a planilha de produtos</td></tr>
+        </tbody></table></div>
+      </div>
+    </section>
+
+    <!-- USUÁRIOS -->
+    <section class="view" id="v-usuarios">
+      <div class="barra-topo">
+        <div style="display:flex;gap:12px;align-items:center"><button class="hamb" onclick="menu(true)"><i class="fa-solid fa-bars"></i></button><div><h1>Usuários e permissões</h1><p>Quem acessa o painel e o que cada perfil pode fazer.</p></div></div>
+        <div class="acoes"><button class="btn" onclick="editarUsuario(null)"><i class="fa-solid fa-user-plus"></i> Novo usuário</button></div>
+      </div>
+      <div class="perfis" id="perfis"></div>
+      <div class="caixa">
+        <div class="tabela-wrap"><table><thead><tr><th>Nome</th><th>Usuário</th><th>Perfil</th><th></th></tr></thead><tbody id="tbUsu"></tbody></table></div>
+      </div>
+    </section>
+
+    <!-- MINHA CONTA -->
+    <section class="view" id="v-config">
+      <div class="barra-topo">
+        <div style="display:flex;gap:12px;align-items:center"><button class="hamb" onclick="menu(true)"><i class="fa-solid fa-bars"></i></button><div><h1>Minha conta</h1><p id="contaDesc"></p></div></div>
+      </div>
+      <div class="caixa">
+        <h2>Trocar minha senha</h2><p class="desc">Troque a senha inicial no primeiro acesso.</p>
         <div class="grid-campos"><div class="campo"><label>Nova senha</label><input type="password" id="novaSenha"></div><div class="campo"><label>Repita a nova senha</label><input type="password" id="novaSenha2"></div></div>
         <button class="btn" style="margin-top:14px" onclick="trocarSenha()"><i class="fa-solid fa-key"></i> Salvar nova senha</button>
       </div>
-      <div class="aviso alerta"><i class="fa-solid fa-triangle-exclamation"></i><div><b>Importante para a versão final:</b> neste protótipo a senha e os dados ficam no navegador. No site em produção, o login, os produtos e os cadastros de revendedores devem ficar num servidor com banco de dados, para que a equipe da URA veja os cadastros de qualquer computador e a senha fique protegida.</div></div>
+      <div class="aviso alerta"><i class="fa-solid fa-triangle-exclamation"></i><div><b>Importante para a versão final:</b> neste protótipo os usuários, senhas e cadastros ficam no navegador. No site em produção, tudo isso fica no banco de dados (Supabase), com login seguro, para que a equipe acesse de qualquer computador.</div></div>
     </section>
   </main>
 </div>
@@ -488,12 +552,62 @@ td.acoes-td .btn{margin-left:4px}
           <div class="campo"><label>Espessura (mm)</label><input type="text" name="espessura_mm" inputmode="decimal"></div>
           <div class="campo"><label>Peso (g)</label><input type="text" name="peso_g" inputmode="decimal"></div>
           <div class="campo"><label>Prazo de produção (dias úteis)</label><input type="text" name="prazo_producao_dias" inputmode="numeric"></div>
-          <div class="sep">Preços para o revendedor</div>
+          <div class="sep">Preço Revenda Atacado</div>
+          <div class="campo"><label>Preço atacado (R$)</label><input type="text" name="preco_atacado" inputmode="decimal" placeholder="Vazio = sob consulta"></div>
+          <div class="campo"><small style="margin-top:22px">Preço por unidade para quem compra no atacado (pedido mínimo do atacado vale para o total do pedido).</small></div>
+          <div class="sep">Preços Dropshipping</div>
           <div class="campo"><label>Preço para revenda (R$)</label><input type="text" name="preco_revenda" inputmode="decimal" placeholder="Vazio = sob consulta"></div>
           <div class="campo"><label>Preço sugerido de venda (R$)</label><input type="text" name="preco_sugerido" inputmode="decimal"></div>
         </div>
       </div>
       <div class="rodape-modal"><button type="button" class="btn neutro" onclick="fecharModal('mProduto')">Cancelar</button><button class="btn" type="submit"><i class="fa-solid fa-floppy-disk"></i> Salvar produto</button></div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal liberar acesso / criar login do revendedor -->
+<div class="modal" id="mLiberar">
+  <div class="modal-box peq">
+    <button class="fechar" onclick="fecharModal('mLiberar')"><i class="fa-solid fa-xmark"></i></button>
+    <h2 id="tituloLiberar">Liberar acesso</h2>
+    <p class="desc" id="descLiberar" style="color:var(--suave);font-size:.86rem;margin-bottom:14px"></p>
+    <div class="campo" style="margin-bottom:12px"><label>Login (e-mail do revendedor)</label><input type="email" id="libEmail"></div>
+    <div class="campo"><label>Senha</label><div class="senha-box"><input type="text" id="libSenha"><button class="btn neutro" title="Gerar outra" onclick="document.getElementById('libSenha').value=gerarSenha();msgLogin()"><i class="fa-solid fa-rotate"></i></button></div></div>
+    <div class="msg-login" id="msgLogin"></div>
+    <div class="rodape-modal" style="flex-wrap:wrap"><button class="btn neutro" onclick="fecharModal('mLiberar')">Cancelar</button><button class="btn ok" onclick="confirmarLiberar(false)"><i class="fa-solid fa-check"></i> Salvar</button><button class="btn" style="background:#25D366;border-color:#25D366" onclick="confirmarLiberar(true)"><i class="fa-brands fa-whatsapp"></i> Salvar e enviar</button></div>
+  </div>
+</div>
+
+<!-- Modal novo revendedor -->
+<div class="modal" id="mNovoRev">
+  <div class="modal-box">
+    <button class="fechar" onclick="fecharModal('mNovoRev')"><i class="fa-solid fa-xmark"></i></button>
+    <h2>Novo revendedor</h2>
+    <form id="formNovoRev" onsubmit="salvarNovoRev(event)">
+      <div class="grid-campos">
+        <div class="campo largo"><label>Modalidade</label><select name="tipo"><option value="atacado">Revenda Atacado</option><option value="dropshipping">Dropshipping</option></select></div>
+        <div class="campo"><label>Nome completo *</label><input type="text" name="nome" required></div>
+        <div class="campo"><label>Empresa / Loja *</label><input type="text" name="empresa" required></div>
+        <div class="campo"><label>CNPJ ou CPF *</label><input type="text" name="doc" required></div>
+        <div class="campo"><label>WhatsApp *</label><input type="text" name="whats" required></div>
+        <div class="campo largo"><label>E-mail (será o login) *</label><input type="email" name="email" required></div>
+      </div>
+      <div class="rodape-modal"><button type="button" class="btn neutro" onclick="fecharModal('mNovoRev')">Cancelar</button><button class="btn" type="submit"><i class="fa-solid fa-arrow-right"></i> Continuar para o login</button></div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal usuário do painel -->
+<div class="modal" id="mUsuario">
+  <div class="modal-box peq">
+    <button class="fechar" onclick="fecharModal('mUsuario')"><i class="fa-solid fa-xmark"></i></button>
+    <h2 id="tituloUsu">Novo usuário</h2>
+    <form onsubmit="salvarUsuario(event)" style="display:grid;gap:12px">
+      <div class="campo"><label>Nome</label><input type="text" name="nome" required></div>
+      <div class="campo"><label>Usuário (para entrar)</label><input type="text" name="usuario" required autocapitalize="off"></div>
+      <div class="campo"><label>Perfil</label><select name="perfil"><option value="admin">Administrador</option><option value="comercial">Comercial</option><option value="cadastros">Time de cadastros</option></select></div>
+      <div class="campo"><label>Senha</label><input type="text" name="senha" placeholder="Deixe vazio para manter a atual"><small>Mínimo de 6 caracteres.</small></div>
+      <div class="rodape-modal" style="margin-top:6px"><button type="button" class="btn neutro" onclick="fecharModal('mUsuario')">Cancelar</button><button class="btn" type="submit"><i class="fa-solid fa-floppy-disk"></i> Salvar</button></div>
     </form>
   </div>
 </div>
@@ -535,6 +649,7 @@ td.acoes-td .btn{margin-left:4px}
 
 <script src="dados-padrao.js"></script>
 <script>
+if(!window.CH_PADRAO){document.getElementById('erroLogin').textContent='Arquivo dados-padrao.js não encontrado. Ele precisa estar na mesma pasta do admin.html.';document.querySelector('#login form').onsubmit=e=>e.preventDefault();throw new Error('dados-padrao.js ausente')}
 const P=window.CH_PADRAO, esc=CH.esc;
 let D=CH.montar(CH.salvos());
 
@@ -566,30 +681,49 @@ function reduzirImagem(arquivo,max,formato){
   });
 }
 
-/* ============ Login ============ */
+/* ============ Login e permissões ============ */
+const PERFIS={
+  admin:{nome:'Administrador',desc:'Acesso total ao painel.',views:['geral','produtos','categorias','revendedores','conteudo','servicos','imagens','contato','aparencia','publicar','rastreamento','usuarios','config']},
+  comercial:{nome:'Comercial',desc:'Aprova revendedores, vê os cadastros e cria o login de cada revendedor.',views:['geral','revendedores','config']},
+  cadastros:{nome:'Time de cadastros',desc:'Edita textos, imagens e produtos.',views:['geral','produtos','categorias','conteudo','servicos','imagens','config']}
+};
+const NOMES_VIEWS={geral:'Visão geral',produtos:'Produtos',categorias:'Categorias',revendedores:'Revendedores',conteudo:'Textos e seções',servicos:'Página Produtos',imagens:'Imagens',contato:'Contato e redes',aparencia:'Cores e logo',publicar:'Publicar e backup',rastreamento:'Rastreamento',usuarios:'Usuários e permissões'};
+let EU=null;
+const pode=v=>!!EU&&PERFIS[EU.perfil].views.includes(v);
 function entrar(e){
   e.preventDefault();
-  if(document.getElementById('usuario').value.trim()==='admin'&&document.getElementById('senha').value===D.config.senhaAdmin){
-    sessionStorage.setItem('ch_admin','1');abrirPainel();
-  }else document.getElementById('erroLogin').textContent='Usuário ou senha incorretos.';
+  const u=document.getElementById('usuario').value.trim().toLowerCase(),s=document.getElementById('senha').value.trim();
+  const usu=CH.usuarios().find(x=>x.usuario.toLowerCase()===u&&String(x.senha)===s);
+  if(usu){sessionStorage.setItem('ch_admin',usu.id);abrirPainel()}
+  else document.getElementById('erroLogin').textContent='Usuário ou senha incorretos.';
 }
 function sairPainel(){sessionStorage.removeItem('ch_admin');location.hash='';location.reload()}
 function abrirPainel(){
+  EU=CH.usuarios().find(x=>x.id===sessionStorage.getItem('ch_admin'));
+  if(!EU){sessionStorage.removeItem('ch_admin');return}
   document.getElementById('login').style.display='none';document.getElementById('app').style.display='block';
+  aplicarPermissoes();
   const iniciar=()=>{renderTudo();rota()};
   if(CH.salvos())return iniciar();
   /* primeiro acesso neste navegador: parte do dados.json publicado, se existir */
-  fetch('dados.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{if(j){const s=D.config.senhaAdmin;D=CH.montar(j);D.config.senhaAdmin=s}}).catch(()=>{}).finally(iniciar);
+  fetch('dados.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{if(j)D=CH.montar(j)}).catch(()=>{}).finally(iniciar);
+}
+function aplicarPermissoes(){
+  document.querySelectorAll('.lateral nav a').forEach(a=>a.style.display=pode(a.dataset.v)?'':'none');
+  document.querySelectorAll('.lateral nav .grupo').forEach(g=>{let n=g.nextElementSibling,vis=false;while(n&&!n.classList.contains('grupo')){if(n.style.display!=='none')vis=true;n=n.nextElementSibling}g.style.display=vis?'':'none'});
+  document.querySelectorAll('[data-p]').forEach(el=>el.style.display=pode(el.dataset.p)?'':'none');
+  document.getElementById('usuarioAtual').innerHTML=`<div class="av">${esc(EU.nome.charAt(0).toUpperCase())}</div><div><b>${esc(EU.nome)}</b><small>${PERFIS[EU.perfil].nome}</small></div>`;
+  document.getElementById('contaDesc').textContent=`${EU.nome} · usuário "${EU.usuario}" · perfil ${PERFIS[EU.perfil].nome}`;
 }
 
 /* ============ Navegação ============ */
-const VIEWS=['geral','produtos','categorias','revendedores','conteudo','servicos','imagens','contato','aparencia','publicar','config'];
+const VIEWS=['geral','produtos','categorias','revendedores','conteudo','servicos','imagens','contato','aparencia','publicar','rastreamento','usuarios','config'];
 function rota(){
-  let v=(location.hash||'#geral').slice(1);if(!VIEWS.includes(v))v='geral';
+  let v=(location.hash||'#geral').slice(1);if(!VIEWS.includes(v)||!pode(v))v='geral';
   document.querySelectorAll('.view').forEach(s=>s.classList.toggle('ativo',s.id==='v-'+v));
   document.querySelectorAll('.lateral nav a').forEach(a=>a.classList.toggle('ativo',a.dataset.v===v));
   menu(false);window.scrollTo(0,0);
-  if(v==='geral')renderGeral();if(v==='revendedores')renderRev();if(v==='publicar')renderPublicar();
+  if(v==='geral')renderGeral();if(v==='revendedores')renderRev();if(v==='publicar')renderPublicar();if(v==='usuarios')renderUsuarios();
 }
 function ir(v){location.hash=v}
 window.addEventListener('hashchange',()=>{if(sessionStorage.getItem('ch_admin'))rota()});
@@ -597,7 +731,7 @@ function menu(abrir){document.getElementById('lateral').classList.toggle('aberta
 /* cadastros novos feitos no site (outra aba) */
 window.addEventListener('storage',e=>{if(e.key===CH.CHAVE_REV){atualizarBadges();renderRev();renderGeral()}});
 
-function renderTudo(){renderGeral();renderProdutos();renderCats();renderRev();renderConteudo();renderServ();renderImgs();renderContato();renderAparencia();renderPublicar();atualizarBadges()}
+function renderTudo(){renderGeral();renderProdutos();renderCats();renderRev();renderConteudo();renderServ();renderImgs();renderContato();renderAparencia();renderPublicar();renderRastreamento();renderUsuarios();atualizarBadges()}
 function atualizarBadges(){
   const n=CH.revendedores().filter(r=>r.status==='pendente').length,b=document.getElementById('badgePend');
   b.textContent=n;b.style.display=n?'':'none';
@@ -610,11 +744,13 @@ function renderGeral(){
   const cards=[
     ['fa-box-open',ativos,`produtos no site${D.produtos.length>ativos?' · '+(D.produtos.length-ativos)+' ocultos':''}`,'produtos'],
     ['fa-tags',new Set(D.produtos.map(p=>p.categoria)).size,'categorias em uso','categorias'],
-    ['fa-store',revs.filter(r=>r.status==='aprovado').length,'revendedores aprovados','revendedores'],
+    ['fa-boxes-stacked',revs.filter(r=>r.status==='aprovado'&&r.tipo==='atacado').length,'revendedores atacado','revendedores'],
+    ['fa-truck-fast',revs.filter(r=>r.status==='aprovado'&&r.tipo==='dropshipping').length,'revendedores dropshipping','revendedores'],
     ['fa-hourglass-half',pend.length,'cadastros aguardando','revendedores']
-  ];
+  ].filter(c=>pode(c[3]));
   document.getElementById('numeros').innerHTML=cards.map(c=>`<div class="num" onclick="ir('${c[3]}')"><div class="ic"><i class="fa-solid ${c[0]}"></i></div><div><strong>${c[1]}</strong><span>${c[2]}</span></div></div>`).join('');
   const cx=document.getElementById('caixaPendentes');
+  cx.style.display=pode('revendedores')?'':'none';
   if(D.config.aprovacao!=='manual'){
     cx.innerHTML=`<div class="cab-caixa" style="margin:0"><div><h2>Aprovação automática ativada</h2><p class="desc" style="margin:0">Quem se cadastra no site recebe acesso na hora. Últimos cadastros: ${revs.slice(-3).reverse().map(r=>esc(r.empresa)).join(', ')||'nenhum ainda'}.</p></div><button class="btn sec" onclick="ir('revendedores')">Ver revendedores</button></div>`;
   }else if(!pend.length){
@@ -633,16 +769,17 @@ function renderProdutos(){
   sel.innerHTML='<option value="">Todas as categorias</option>'+cats.map(c=>`<option ${c===v?'selected':''}>${esc(c)}</option>`).join('');
   const busca=document.getElementById('buscaProd').value.toLowerCase().trim(),st=document.getElementById('statusProd').value;
   const lista=D.produtos.map((p,i)=>({p,i})).filter(({p})=>(!v||p.categoria===v)&&(!busca||(p.nome+' '+p.sku).toLowerCase().includes(busca))&&
-    (!st||(st==='ativo'&&CH.ativo(p))||(st==='inativo'&&!CH.ativo(p))||(st==='sempreco'&&CH.num(p.preco_revenda)===null))).sort((a,b)=>a.p.nome.localeCompare(b.p.nome,'pt-BR'));
+    (!st||(st==='ativo'&&CH.ativo(p))||(st==='inativo'&&!CH.ativo(p))||(st==='sempreco'&&(CH.num(p.preco_revenda)===null||CH.num(p.preco_atacado)===null)))).sort((a,b)=>a.p.nome.localeCompare(b.p.nome,'pt-BR'));
   document.getElementById('tbProdutos').innerHTML=lista.length?lista.map(({p,i})=>`<tr>
     <td style="width:66px"><div class="mini">${imgTag(p.imagem,p.nome)}</div></td>
     <td><div class="nome">${esc(p.nome)}</div><div class="sub">${esc(p.sku)} · NCM ${esc(p.ncm)||'—'}</div></td>
     <td class="tabela-esconde"><span class="pill salmao">${esc(p.categoria)}</span></td>
+    <td>${CH.num(p.preco_atacado)!==null?'<b>'+CH.moeda(p.preco_atacado)+'</b>':'<span class="pill cinza">Sob consulta</span>'}</td>
     <td>${CH.num(p.preco_revenda)!==null?'<b>'+CH.moeda(p.preco_revenda)+'</b>':'<span class="pill cinza">Sob consulta</span>'}</td>
     <td class="tabela-esconde">${CH.moeda(p.preco_sugerido)||'—'}</td>
     <td><label class="chave" title="Exibir no site"><input type="checkbox" ${CH.ativo(p)?'checked':''} onchange="alternarAtivo(${i},this.checked)"><span></span></label></td>
     <td class="acoes-td"><button class="btn neutro sm ic" title="Editar" onclick="editarProduto(${i})"><i class="fa-solid fa-pen"></i></button><button class="btn neutro sm ic" title="Duplicar" onclick="duplicarProduto(${i})"><i class="fa-regular fa-copy"></i></button><button class="btn perigo sm ic" title="Excluir" onclick="excluirProduto(${i})"><i class="fa-solid fa-trash"></i></button></td>
-  </tr>`).join(''):`<tr><td colspan="7"><div class="vazio"><i class="fa-solid fa-box-open"></i>Nenhum produto encontrado.</div></td></tr>`;
+  </tr>`).join(''):`<tr><td colspan="8"><div class="vazio"><i class="fa-solid fa-box-open"></i>Nenhum produto encontrado.</div></td></tr>`;
   document.getElementById('rodProdutos').textContent=`${lista.length} de ${D.produtos.length} produtos`;
   const exp=document.getElementById('expCatAdm');
   exp.innerHTML=`<option value="">Todos os produtos (${D.produtos.length})</option>`+cats.map(c=>`<option value="${esc(c)}">${esc(c)} (${D.produtos.filter(p=>p.categoria===c).length})</option>`).join('');
@@ -702,7 +839,7 @@ function exportarAdm(){
   const l=D.produtos.filter(p=>(!c||p.categoria===c)&&(inat||CH.ativo(p)));
   CH.baixar(`produtos-${c?CH.slug(c):'todos'}.csv`,CH.gerarCSV(l,D.fotos));toast(`${l.length} produtos exportados`);fecharModal('mExportar');
 }
-function baixarModeloAdm(){CH.baixar('modelo-produtos-casa-harmonia.csv',P.colunas.join(';')+'\r\nCH-XX-001;Nome do produto;Categoria;Sala;Descrição;Vinil autoadesivo;Fosco;0000.00.00;50;100;0.10;300;3;49.90;89.90;https://link-da-imagem.jpg;sim')}
+function baixarModeloAdm(){CH.baixar('modelo-produtos-casa-harmonia.csv',P.colunas.join(';')+'\r\nCH-XX-001;Nome do produto;Categoria;Sala;Descrição;Vinil autoadesivo;Fosco;0000.00.00;50;100;0.10;300;3;39.90;49.90;89.90;https://link-da-imagem.jpg;sim')}
 
 /* ============ Categorias ============ */
 function renderCats(){
@@ -719,35 +856,77 @@ function excluirCat(c){const n=D.produtos.filter(p=>p.categoria===c).length;if(n
 /* ============ Revendedores ============ */
 let abaRev='todos';
 const ST={pendente:['amarelo','Aguardando','fa-hourglass-half'],aprovado:['verde','Aprovado','fa-circle-check'],recusado:['vermelho','Recusado','fa-circle-xmark']};
+const MODS={atacado:['Revenda Atacado','fa-boxes-stacked'],dropshipping:['Dropshipping','fa-truck-fast']};
 function linhaRev(r){
-  const s=ST[r.status]||ST.pendente,d=new Date(r.data),wpp=String(r.whats||'').replace(/\D/g,'');
+  const s=ST[r.status]||ST.pendente,d=new Date(r.data),wpp=String(r.whats||'').replace(/\D/g,''),m=MODS[r.tipo]||MODS.dropshipping;
   return `<tr>
     <td><div class="nome">${esc(r.nome)}</div><div class="sub">${esc(r.empresa)}</div></td>
+    <td><span class="pill salmao"><i class="fa-solid ${m[1]}"></i> ${m[0]}</span></td>
     <td class="tabela-esconde">${esc(r.doc)}</td>
     <td><div class="sub" style="color:var(--texto)">${esc(r.email)}</div>${wpp?`<a class="sub" style="color:var(--verde)" target="_blank" href="https://wa.me/${wpp.length<=11?'55'+wpp:wpp}"><i class="fa-brands fa-whatsapp"></i> ${esc(r.whats)}</a>`:''}</td>
     <td class="tabela-esconde"><div class="sub">${isNaN(d)?'':d.toLocaleDateString('pt-BR')+' '+d.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'})}</div></td>
-    <td><span class="pill ${s[0]}"><i class="fa-solid ${s[2]}"></i> ${s[1]}</span></td>
+    <td><span class="pill ${s[0]}"><i class="fa-solid ${s[2]}"></i> ${s[1]}</span>${r.status==='aprovado'?`<div class="sub" style="margin-top:4px">${r.senha?'<i class="fa-solid fa-key"></i> Login criado':'<i class="fa-solid fa-triangle-exclamation" style="color:var(--amarelo)"></i> Sem login'}</div>`:''}</td>
     <td class="acoes-td">
-      ${r.status!=='aprovado'?`<button class="btn ok sm" onclick="statusRev('${r.id}','aprovado')"><i class="fa-solid fa-check"></i> Aprovar</button>`:''}
+      ${r.status!=='aprovado'?`<button class="btn ok sm" onclick="abrirLiberar('${r.id}')"><i class="fa-solid fa-check"></i> Aprovar</button>`:`<button class="btn neutro sm" onclick="abrirLiberar('${r.id}')"><i class="fa-solid fa-key"></i> ${r.senha?'Login':'Criar login'}</button>`}
       ${r.status!=='recusado'?`<button class="btn perigo sm" onclick="statusRev('${r.id}','recusado')">${r.status==='aprovado'?'Bloquear':'Recusar'}</button>`:''}
       <button class="btn neutro sm ic" title="Excluir" onclick="excluirRev('${r.id}')"><i class="fa-solid fa-trash"></i></button>
     </td></tr>`;
 }
 function renderRev(){
   document.getElementById('aprovAuto').checked=D.config.aprovacao!=='manual';
-  const revs=CH.revendedores(),c=s=>revs.filter(r=>s==='todos'||r.status===s).length;
+  document.getElementById('pedMin').value=String(D.config.pedidoMinimoAtacado||1000).replace('.',',');
+  const mod=document.getElementById('modRev').value;
+  const revs=CH.revendedores().filter(r=>!mod||r.tipo===mod),c=s=>revs.filter(r=>s==='todos'||r.status===s).length;
   document.getElementById('abasRev').innerHTML=[['todos','Todos'],['pendente','Aguardando'],['aprovado','Aprovados'],['recusado','Recusados']].map(([k,n])=>`<button class="${k===abaRev?'ativo':''}" onclick="abaRev='${k}';renderRev()">${n}<span class="pill ${k==='pendente'&&c(k)?'amarelo':'cinza'}">${c(k)}</span></button>`).join('');
   const b=document.getElementById('buscaRev').value.toLowerCase().trim();
   const l=revs.filter(r=>(abaRev==='todos'||r.status===abaRev)&&(!b||[r.nome,r.empresa,r.email,r.doc].join(' ').toLowerCase().includes(b))).reverse();
-  document.getElementById('tbRev').innerHTML=l.length?l.map(linhaRev).join(''):`<tr><td colspan="6"><div class="vazio"><i class="fa-solid fa-store"></i>Nenhum revendedor ${abaRev==='todos'?'cadastrado ainda. Os cadastros feitos no site aparecem aqui.':'nesta lista.'}</div></td></tr>`;
+  document.getElementById('tbRev').innerHTML=l.length?l.map(linhaRev).join(''):`<tr><td colspan="7"><div class="vazio"><i class="fa-solid fa-store"></i>Nenhum revendedor ${abaRev==='todos'&&!mod?'cadastrado ainda. Os cadastros feitos no site aparecem aqui.':'nesta lista.'}</div></td></tr>`;
 }
 document.getElementById('buscaRev').addEventListener('input',renderRev);
+document.getElementById('modRev').addEventListener('change',renderRev);
 function statusRev(id,st){const l=CH.revendedores(),r=l.find(x=>x.id===id);if(!r)return;r.status=st;r.atualizado=new Date().toISOString();CH.salvarRevendedores(l);toast(st==='aprovado'?'Revendedor aprovado: o acesso foi liberado':'Acesso do revendedor bloqueado');renderRev();renderGeral();atualizarBadges()}
 function excluirRev(id){if(!confirm('Excluir este cadastro?'))return;CH.salvarRevendedores(CH.revendedores().filter(r=>r.id!==id));toast('Cadastro excluído');renderRev();renderGeral();atualizarBadges()}
 function mudarAprovacao(auto){D.config.aprovacao=auto?'automatica':'manual';salvar(auto?'Aprovação automática: acesso liberado na hora':'Aprovação manual: cada cadastro precisa ser aprovado');renderGeral()}
+function salvarMinimo(){const v=CH.num(document.getElementById('pedMin').value);if(v===null||v<0){alert('Informe um valor válido.');return}D.config.pedidoMinimoAtacado=v;salvar('Pedido mínimo do atacado: '+CH.moeda(v))}
+/* liberar acesso e criar login */
+let liberarId=null;
+function gerarSenha(){const c='abcdefghjkmnpqrstuvwxyz23456789';let s='';for(let i=0;i<6;i++)s+=c[Math.floor(Math.random()*c.length)];return s}
+function abrirLiberar(id){
+  const r=CH.revendedores().find(x=>x.id===id);if(!r)return;liberarId=id;
+  const outro=CH.revendedores().find(x=>x.id!==id&&String(x.email).toLowerCase()===String(r.email).toLowerCase()&&x.senha);
+  document.getElementById('tituloLiberar').textContent=r.status==='aprovado'?'Login do revendedor':'Aprovar e criar login';
+  document.getElementById('descLiberar').innerHTML=`<b>${esc(r.nome)}</b> · ${esc(r.empresa)} · ${(MODS[r.tipo]||MODS.dropshipping)[0]}${outro?'<br>Este e-mail já tem login em outra modalidade: a mesma senha vale para as duas.':''}`;
+  document.getElementById('libEmail').value=r.email||'';
+  document.getElementById('libSenha').value=r.senha||(outro&&outro.senha)||gerarSenha();
+  msgLogin();abrirModal('mLiberar');
+}
+function textoLogin(){
+  const r=CH.revendedores().find(x=>x.id===liberarId)||{};
+  return `Olá, ${String(r.nome||'').split(' ')[0]}! Seu acesso à ${(MODS[r.tipo]||MODS.dropshipping)[0]} da Casa Harmonia foi liberado.\n\nAcesse o site, clique em "Área do revendedor" e entre com:\nLogin: ${document.getElementById('libEmail').value.trim()}\nSenha: ${document.getElementById('libSenha').value.trim()}`;
+}
+function msgLogin(){document.getElementById('msgLogin').textContent=textoLogin()}
+['libEmail','libSenha'].forEach(id=>document.getElementById(id).addEventListener('input',msgLogin));
+function confirmarLiberar(enviar){
+  const email=document.getElementById('libEmail').value.trim().toLowerCase(),senha=document.getElementById('libSenha').value.trim();
+  if(!email||senha.length<4){alert('Informe o e-mail e uma senha com pelo menos 4 caracteres.');return}
+  const l=CH.revendedores(),r=l.find(x=>x.id===liberarId);if(!r)return;
+  r.email=email;r.senha=senha;r.status='aprovado';r.senhaAuto=false;r.atualizado=new Date().toISOString();
+  l.forEach(x=>{if(String(x.email).toLowerCase()===email&&x.status==='aprovado')x.senha=senha});
+  CH.salvarRevendedores(l);
+  if(enviar){const w=String(r.whats||'').replace(/\D/g,'');window.open(`https://wa.me/${w.length<=11?'55'+w:w}?text=${encodeURIComponent(textoLogin())}`,'_blank')}
+  fecharModal('mLiberar');toast('Acesso liberado e login salvo');renderRev();renderGeral();atualizarBadges();
+}
+function novoRevendedor(){document.getElementById('formNovoRev').reset();abrirModal('mNovoRev')}
+function salvarNovoRev(e){
+  e.preventDefault();const d=Object.fromEntries(new FormData(e.target));d.email=d.email.trim().toLowerCase();
+  const l=CH.revendedores();
+  if(l.some(r=>String(r.email).toLowerCase()===d.email&&r.tipo===d.tipo)){alert('Já existe um revendedor com este e-mail nesta modalidade.');return}
+  const r={id:'r'+Date.now().toString(36),...d,data:new Date().toISOString(),status:'pendente',senha:'',criadoPor:EU.usuario};
+  l.push(r);CH.salvarRevendedores(l);fecharModal('mNovoRev');renderRev();abrirLiberar(r.id);
+}
 function exportarRevendedores(){
-  const cols=['nome','empresa','doc','whats','email','data','status'],rot=['Nome','Empresa','CNPJ/CPF','WhatsApp','E-mail','Data do cadastro','Status'];
-  CH.baixar('revendedores-casa-harmonia.csv',[rot.join(';'),...CH.revendedores().map(r=>cols.map(c=>CH.csvCampo(c==='data'?new Date(r.data).toLocaleString('pt-BR'):c==='status'?(ST[r.status]||ST.pendente)[1]:r[c])).join(';'))].join('\r\n'));
+  const cols=['nome','empresa','tipo','doc','whats','email','data','status'],rot=['Nome','Empresa','Modalidade','CNPJ/CPF','WhatsApp','E-mail (login)','Data do cadastro','Status'];
+  CH.baixar('revendedores-casa-harmonia.csv',[rot.join(';'),...CH.revendedores().map(r=>cols.map(c=>CH.csvCampo(c==='data'?new Date(r.data).toLocaleString('pt-BR'):c==='status'?(ST[r.status]||ST.pendente)[1]:c==='tipo'?(MODS[r.tipo]||MODS.dropshipping)[0]:r[c])).join(';'))].join('\r\n'));
 }
 
 /* ============ Textos e seções ============ */
@@ -816,8 +995,8 @@ async function enviarImagem(inp){const f=inp.files[0];inp.value='';if(!f||!imgCh
 
 /* ============ Contato ============ */
 const CAMPOS_CONTATO=[
-  ['whatsapp_numero','WhatsApp (só números, com DDI e DDD)','Usado em todos os botões de WhatsApp. Ex.: 5514996058087'],
-  ['whatsapp_txt','WhatsApp (como aparece no site)','Ex.: (14) 99605-8087'],
+  ['whatsapp_numero','WhatsApp (só números, com DDI e DDD)','Usado em todos os botões de WhatsApp. Ex.: 5514996969391'],
+  ['whatsapp_txt','WhatsApp (como aparece no site)','Ex.: (14) 99696-9391'],
   ['telefone_numero','Telefone principal (só números)','Usado no botão de ligar. Ex.: 551434254843'],
   ['telefone_txt','Telefone principal (como aparece)','Exibido no rodapé'],
   ['telefones_txt','Todos os telefones (como aparecem)','Exibido na página Contato'],
@@ -825,9 +1004,13 @@ const CAMPOS_CONTATO=[
   ['instagram_txt','Instagram (como aparece)','Ex.: @casaharmoniadecor'],
   ['endereco_txt','Endereço completo','Exibido no rodapé, Sobre e Contato'],
   ['mapa_busca','Endereço para o mapa','Usado nos mapas e no botão "como chegar"'],
-  ['jota_url','Link "Desenvolvido por Jota Solutions"','Endereço do site da Jota Solutions']
+  ['jota_url','Link "Desenvolvido por Jota Solutions"','Endereço do site da Jota Solutions'],
+  ['msg_geral','Mensagem do WhatsApp: geral','Botão flutuante e rodapé'],
+  ['msg_atacado','Mensagem do WhatsApp: Revenda Atacado','Botões da página Revenda Atacado'],
+  ['msg_dropshipping','Mensagem do WhatsApp: Dropshipping','Botões da página Dropshipping'],
+  ['msg_corporativo','Mensagem do WhatsApp: pedidos corporativos','Início da mensagem do formulário corporativo']
 ];
-function renderContato(){document.getElementById('formContato').innerHTML=CAMPOS_CONTATO.map(([k,l,d])=>`<div class="campo ${['endereco_txt','mapa_busca'].includes(k)?'largo':''}"><label>${l}</label><input type="text" data-ct="${k}" value="${esc(D.contato[k])}">${d?`<small>${d}</small>`:''}</div>`).join('')}
+function renderContato(){document.getElementById('formContato').innerHTML=CAMPOS_CONTATO.map(([k,l,d])=>`<div class="campo ${['endereco_txt','mapa_busca'].includes(k)||k.startsWith('msg_')?'largo':''}"><label>${l}</label><input type="text" data-ct="${k}" value="${esc(D.contato[k])}">${d?`<small>${d}</small>`:''}</div>`).join('')}
 function salvarContato(){document.querySelectorAll('[data-ct]').forEach(i=>D.contato[i.dataset.ct]=i.value.trim());D.contato.whatsapp_numero=D.contato.whatsapp_numero.replace(/\D/g,'');D.contato.telefone_numero=D.contato.telefone_numero.replace(/\D/g,'');salvar('Contato salvo');renderContato()}
 
 /* ============ Aparência ============ */
@@ -845,14 +1028,14 @@ function renderAparencia(){
   document.getElementById('logoPrev').innerHTML=D.logo?`<img src="${esc(D.logo)}" alt="Logo">`:'<div class="ph"><i class="fa-regular fa-image"></i>Sem logo</div>';
 }
 function usarPreset(i){D.cores={...PRESETS[i][1]};salvar('Combinação aplicada');renderAparencia()}
-function previaCores(){const c=D.cores;document.getElementById('previaCores').innerHTML=`<div class="h" style="background:linear-gradient(135deg,${c.pri},${c.priEsc})">Transforme seus espaços</div><div class="m" style="background:${c.creme}"><span style="background:${c.pri};color:#fff;padding:8px 16px;border-radius:30px;font-size:.8rem;font-weight:600">Botão</span><span style="background:${c.priClaro};color:${c.priEsc};padding:5px 12px;border-radius:30px;font-size:.72rem;font-weight:600">ETIQUETA</span><span style="color:${c.ouro}"><i class="fa-solid fa-star"></i> Destaque</span></div><div class="f" style="background:${c.rodape}">Rodapé · Desenvolvido por Jota Solutions</div>`}
+function previaCores(){const c=D.cores;document.getElementById('previaCores').innerHTML=`<div class="h" style="background:linear-gradient(135deg,${c.pri},${c.priEsc})">Transforme seus espaços</div><div class="m" style="background:${c.creme}"><span style="background:${c.pri};color:#fff;padding:8px 16px;border-radius:30px;font-size:.8rem;font-weight:600">Botão</span><span style="background:${c.priClaro};color:${c.priEsc};padding:5px 12px;border-radius:30px;font-size:.72rem;font-weight:600">ETIQUETA</span><span style="color:${c.ouro}"><i class="fa-solid fa-star"></i> Destaque</span></div><div class="f" style="background:${c.rodape}">Marketing: Inteligência Digital Mind Marketing · Desenvolvido por Jota Solutions</div>`}
 async function enviarLogo(inp){const f=inp.files[0];inp.value='';if(!f)return;D.logo=await reduzirImagem(f,400,'image/png');salvar('Logo atualizado');renderAparencia()}
 function removerLogo(){D.logo='';salvar('Logo removido');renderAparencia()}
 
 /* ============ Publicar e backup ============ */
-function dadosPublicos(){const d=CH.clone(D);delete d.config.senhaAdmin;return d}
+function dadosPublicos(){return CH.clone(D)}
 function baixarDados(){CH.baixar('dados.json',JSON.stringify(dadosPublicos(),null,1),'application/json');toast('dados.json baixado: envie para o GitHub')}
-function baixarBackup(){CH.baixar(`backup-casa-harmonia-${new Date().toISOString().slice(0,10)}.json`,JSON.stringify({dados:D,revendedores:CH.revendedores()},null,1),'application/json')}
+function baixarBackup(){CH.baixar(`backup-casa-harmonia-${new Date().toISOString().slice(0,10)}.json`,JSON.stringify({dados:D,revendedores:CH.revendedores(),usuarios:CH.usuarios()},null,1),'application/json')}
 function carregarDados(inp,backup){
   const f=inp.files[0];inp.value='';if(!f)return;
   const r=new FileReader();
@@ -860,13 +1043,14 @@ function carregarDados(inp,backup){
     const j=JSON.parse(r.result),dados=j.dados||j;
     if(!dados.produtos)throw 0;
     if(!confirm('Substituir o conteúdo atual do painel por este arquivo?'))return;
-    const senha=D.config.senhaAdmin;D=CH.montar(dados);D.config.senhaAdmin=dados.config&&dados.config.senhaAdmin||senha;
+    D=CH.montar(dados);
+    if(j.usuarios&&EU.perfil==='admin'&&confirm('O arquivo tem '+j.usuarios.length+' usuários do painel. Restaurar também?'))CH.salvarUsuarios(j.usuarios);
     if(j.revendedores&&confirm('O arquivo tem '+j.revendedores.length+' revendedores. Restaurar a lista também?'))CH.salvarRevendedores(j.revendedores);
     salvar('Dados carregados');renderTudo();
   }catch(e){alert('Arquivo inválido.')}};
   r.readAsText(f,'UTF-8');
 }
-function restaurarTudo(){if(!confirm('Voltar todo o conteúdo para o original? Produtos, textos, imagens e cores alterados serão perdidos.'))return;const senha=D.config.senhaAdmin;D=CH.montar(null);D.config.senhaAdmin=senha;salvar('Conteúdo original restaurado');renderTudo()}
+function restaurarTudo(){if(!confirm('Voltar todo o conteúdo para o original? Produtos, textos, imagens e cores alterados serão perdidos.'))return;D=CH.montar(null);salvar('Conteúdo original restaurado');renderTudo()}
 function renderPublicar(){
   const salvo=CH.salvos();
   document.getElementById('ultimaAlt').textContent=salvo&&salvo.atualizado?'Última alteração no painel: '+new Date(salvo.atualizado).toLocaleString('pt-BR'):'Nenhuma alteração feita ainda.';
@@ -876,8 +1060,54 @@ function renderPublicar(){
   document.getElementById('txtEspaco').textContent=`${(total/1024/1024).toFixed(2)} MB de cerca de 5 MB`;
 }
 
-/* ============ Configurações ============ */
-function trocarSenha(){const a=document.getElementById('novaSenha').value,b=document.getElementById('novaSenha2').value;if(a.length<6){alert('A senha precisa ter pelo menos 6 caracteres.');return}if(a!==b){alert('As senhas não conferem.');return}D.config.senhaAdmin=a;salvar('Senha alterada');document.getElementById('novaSenha').value=document.getElementById('novaSenha2').value=''}
+/* ============ Minha conta ============ */
+function trocarSenha(){
+  const a=document.getElementById('novaSenha').value,b=document.getElementById('novaSenha2').value;
+  if(a.length<6){alert('A senha precisa ter pelo menos 6 caracteres.');return}if(a!==b){alert('As senhas não conferem.');return}
+  const l=CH.usuarios(),u=l.find(x=>x.id===EU.id);u.senha=a;CH.salvarUsuarios(l);EU=u;
+  toast('Senha alterada');document.getElementById('novaSenha').value=document.getElementById('novaSenha2').value='';
+}
+
+/* ============ Rastreamento ============ */
+function renderRastreamento(){const r=D.rastreamento;document.getElementById('rsAtivo').checked=!!r.ativo;document.getElementById('rsGa4').value=r.ga4||'';document.getElementById('rsGtm').value=r.gtm||'';document.getElementById('rsPixel').value=r.pixel||''}
+function salvarRastreamento(){
+  const r={ativo:document.getElementById('rsAtivo').checked,ga4:document.getElementById('rsGa4').value.trim().toUpperCase(),gtm:document.getElementById('rsGtm').value.trim().toUpperCase(),pixel:document.getElementById('rsPixel').value.replace(/\D/g,'')};
+  if(r.ga4&&!/^G-[A-Z0-9]+$/.test(r.ga4)){alert('O ID do Google Analytics começa com G- (ex.: G-AB12CD34EF).');return}
+  if(r.gtm&&!/^GTM-[A-Z0-9]+$/.test(r.gtm)){alert('O ID do Tag Manager começa com GTM- (ex.: GTM-AB12CD3).');return}
+  D.rastreamento=r;salvar(r.ativo?'Rastreamento salvo e ativado':'Rastreamento salvo (desativado)');renderRastreamento();
+}
+
+/* ============ Usuários e permissões ============ */
+let usuEdit=null;
+function renderUsuarios(){
+  document.getElementById('perfis').innerHTML=Object.entries(PERFIS).map(([k,p])=>`<div class="perfil"><span class="pill ${k==='admin'?'salmao':k==='comercial'?'verde':'amarelo'}">${p.nome}</span><h3>${p.desc}</h3><ul>${Object.entries(NOMES_VIEWS).map(([v,n])=>`<li class="${p.views.includes(v)?'':'nao'}"><i class="fa-solid ${p.views.includes(v)?'fa-check':'fa-xmark'}"></i> ${n}</li>`).join('')}</ul></div>`).join('');
+  document.getElementById('tbUsu').innerHTML=CH.usuarios().map(u=>`<tr><td><div class="nome">${esc(u.nome)}</div>${u.id===EU.id?'<div class="sub">Você</div>':''}</td><td>${esc(u.usuario)}</td><td><span class="pill ${u.perfil==='admin'?'salmao':u.perfil==='comercial'?'verde':'amarelo'}">${PERFIS[u.perfil].nome}</span></td>
+    <td class="acoes-td"><button class="btn neutro sm" onclick="editarUsuario('${u.id}')"><i class="fa-solid fa-pen"></i> Editar</button>${u.id===EU.id?'':`<button class="btn perigo sm ic" title="Excluir" onclick="excluirUsuario('${u.id}')"><i class="fa-solid fa-trash"></i></button>`}</td></tr>`).join('');
+}
+function editarUsuario(id){
+  usuEdit=id;const f=document.querySelector('#mUsuario form');f.reset();
+  const u=id?CH.usuarios().find(x=>x.id===id):null;
+  document.getElementById('tituloUsu').textContent=u?'Editar usuário':'Novo usuário';
+  f.elements.senha.placeholder=u?'Deixe vazio para manter a atual':'Senha inicial';f.elements.senha.required=!u;
+  if(u){f.elements.nome.value=u.nome;f.elements.usuario.value=u.usuario;f.elements.perfil.value=u.perfil}
+  f.elements.perfil.disabled=!!u&&u.id===EU.id;
+  abrirModal('mUsuario');
+}
+function salvarUsuario(e){
+  e.preventDefault();const f=e.target,l=CH.usuarios();
+  const d={nome:f.elements.nome.value.trim(),usuario:f.elements.usuario.value.trim().toLowerCase(),perfil:f.elements.perfil.value,senha:f.elements.senha.value.trim()};
+  if(l.some(u=>u.usuario===d.usuario&&u.id!==usuEdit)){alert('Já existe um usuário com esse nome de acesso.');return}
+  if(d.senha&&d.senha.length<6){alert('A senha precisa ter pelo menos 6 caracteres.');return}
+  if(usuEdit){const u=l.find(x=>x.id===usuEdit);u.nome=d.nome;u.usuario=d.usuario;if(u.id!==EU.id)u.perfil=d.perfil;if(d.senha)u.senha=d.senha;if(u.id===EU.id){EU=u;aplicarPermissoes()}}
+  else l.push({id:'u'+Date.now().toString(36),...d});
+  CH.salvarUsuarios(l);fecharModal('mUsuario');renderUsuarios();toast('Usuário salvo');
+}
+function excluirUsuario(id){
+  const l=CH.usuarios(),u=l.find(x=>x.id===id);
+  if(u.perfil==='admin'&&l.filter(x=>x.perfil==='admin').length<2){alert('É preciso ter pelo menos um administrador.');return}
+  if(!confirm('Excluir o usuário '+u.nome+'?'))return;
+  CH.salvarUsuarios(l.filter(x=>x.id!==id));renderUsuarios();toast('Usuário excluído');
+}
 
 /* Início */
 if(sessionStorage.getItem('ch_admin'))abrirPainel();

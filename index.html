@@ -1,13 +1,14 @@
 <!DOCTYPE html>
+
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
 <title>Casa Harmonia Decorações</title>
-<meta name="description" content="Casa Harmonia Decorações: papéis de parede, revestimentos adesivos e soluções decorativas personalizadas. Marília/SP.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<meta content="Casa Harmonia Decorações: papéis de parede, revestimentos adesivos e soluções decorativas personalizadas. Marília/SP." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&amp;family=Poppins:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
 <style>
 :root{
   --pri:#EE8471;        /* salmão coral */
@@ -371,6 +372,86 @@ footer .contato-rod p{display:flex;gap:10px;align-items:flex-start}
 @keyframes pulso{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 .toast{position:fixed;left:50%;bottom:30px;transform:translateX(-50%);background:var(--texto);color:#fff;padding:13px 22px;border-radius:30px;z-index:200;display:none;font-size:.88rem;max-width:90%;text-align:center}
 
+
+/* Modalidades de revenda */
+.modalidades{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+.mod-card{border-radius:24px;overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--borda);background:#fff;transition:.25s}
+.mod-card:hover{box-shadow:var(--sombra);transform:translateY(-4px)}
+.mod-card .foto{height:230px;border-radius:0}
+.mod-card .corpo{padding:30px;display:flex;flex-direction:column;flex:1}
+.mod-card h3{font-size:1.5rem;margin-bottom:8px}
+.mod-card p{color:var(--suave);margin-bottom:16px}
+.mod-card ul{list-style:none;display:grid;gap:9px;margin-bottom:24px}
+.mod-card li{display:flex;gap:10px;align-items:center;font-size:.92rem}
+.mod-card li i{color:var(--pri)}
+.mod-card .acoes{margin-top:auto}
+.mod-card .tag{align-self:flex-start}
+.mod-card.escuro{background:var(--rodape);color:#fff;border-color:var(--rodape)}
+.mod-card.escuro p{color:rgba(255,255,255,.8)}
+.mod-card.escuro li i{color:var(--ouro)}
+/* Comparativo */
+.comparativo{border:1px solid var(--borda);border-radius:var(--raio);overflow:hidden;background:#fff;max-width:980px;margin:0 auto}
+.comp-linha{display:grid;grid-template-columns:.9fr 1.3fr 1.3fr}
+.comp-linha>p{padding:14px 20px;border-top:1px solid var(--borda);font-size:.9rem}
+.comp-linha:first-child>p{border-top:none;background:var(--creme);font-weight:700;font-family:'Playfair Display',serif;font-size:1.08rem;color:var(--texto)}
+.comp-linha>p:first-child{font-weight:600;color:var(--suave);font-size:.78rem;text-transform:uppercase;letter-spacing:.6px}
+.foco-atacado .comp-linha>p:nth-child(2),.foco-dropshipping .comp-linha>p:nth-child(3){background:rgba(238,132,113,.08)}
+.foco-atacado .comp-linha:first-child>p:nth-child(2),.foco-dropshipping .comp-linha:first-child>p:nth-child(3){background:var(--pri);color:#fff}
+/* Pedidos corporativos */
+.corp-usos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:26px}
+.corp-uso{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--borda);border-radius:14px;padding:16px}
+.corp-uso .ic{width:44px;height:44px;font-size:1rem;margin:0;border-radius:12px}
+.corp-uso h4{font-size:.98rem;margin-bottom:2px}
+.corp-uso p{font-size:.82rem;color:var(--suave)}
+.form-corp{padding:30px}
+.form-corp:hover{transform:none}
+.form select{width:100%;padding:12px 14px;border:1px solid var(--borda);border-radius:10px;font-family:inherit;font-size:.92rem;background:#fff}
+/* Pedido do atacado */
+.linha-compra{display:flex;gap:8px;align-items:center;margin-bottom:10px}
+.linha-compra .btn{flex:1;padding:8px 10px}
+.qtd{display:flex;align-items:center;border:1px solid var(--borda);border-radius:40px;overflow:hidden;height:38px;flex-shrink:0;background:#fff}
+.qtd button{width:34px;height:100%;border:none;background:var(--creme);color:var(--pri-esc);cursor:pointer;font-size:.8rem}
+.qtd button:hover{background:var(--pri-claro)}
+.qtd input{width:46px;height:100%;border:none;text-align:center;font-family:inherit;font-weight:600;font-size:.9rem;-moz-appearance:textfield;background:#fff}
+.qtd input::-webkit-inner-spin-button,.qtd input::-webkit-outer-spin-button{-webkit-appearance:none;margin:0}
+.no-pedido{font-size:.75rem;color:#1E8A4A;font-weight:600;margin:-4px 0 8px}
+.pedido-bar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);width:min(780px,calc(100% - 120px));background:#fff;border:1px solid var(--borda);border-radius:20px;box-shadow:0 14px 40px rgba(46,35,38,.2);padding:14px 18px;display:none;align-items:center;gap:16px;z-index:55}
+.pedido-bar.ver{display:flex}
+.pedido-bar .resumo{flex:1;min-width:0}
+.pedido-bar strong{font-size:1.02rem}
+.pedido-bar small{color:var(--suave);font-size:.78rem;display:block}
+.barra-min{height:7px;background:var(--pri-claro);border-radius:6px;overflow:hidden;margin:6px 0 4px}
+.barra-min div{height:100%;background:var(--pri);border-radius:6px;transition:width .3s}
+.barra-min.ok div{background:#1E8A4A}
+.pedido-bar .acoes{flex-wrap:nowrap}
+body.com-pedido .flutuantes{bottom:118px}
+body.com-pedido main{padding-bottom:110px}
+.tab-pedido{width:100%;border-collapse:collapse;font-size:.88rem;margin-top:10px}
+.tab-pedido th{text-align:left;font-size:.7rem;text-transform:uppercase;letter-spacing:.6px;color:var(--suave);padding:8px 6px;border-bottom:1px solid var(--borda)}
+.tab-pedido td{padding:10px 6px;border-bottom:1px solid var(--borda);vertical-align:middle}
+.tab-pedido td small{display:block;color:var(--suave);font-size:.74rem}
+.tab-pedido .qtd{height:32px}
+.tab-pedido .rem{background:none;border:none;color:var(--suave);cursor:pointer;font-size:.95rem}
+.tab-pedido .rem:hover{color:#C0392B}
+.total-pedido{display:flex;justify-content:space-between;align-items:center;padding:16px 0 6px;font-size:1.15rem}
+.total-pedido strong{color:var(--pri-esc);font-size:1.4rem}
+.aviso-min{display:flex;gap:10px;align-items:center;border-radius:10px;padding:10px 14px;font-size:.84rem;margin:8px 0 14px}
+.aviso-min.falta{background:#FFF6DE;color:#7A5A0E}
+.aviso-min.ok{background:#E9F8EE;color:#185F36}
+/* Status extra, login e cadastro */
+.status.pendente{background:linear-gradient(135deg,#FFF6DE,#fff);border-color:#F0D58E}
+.status.pendente .ic{background:#FCEBC0;color:#A57A12}
+.status.aprovado{background:linear-gradient(135deg,#EEF4FB,#fff);border-color:#C8DAEE}
+.status.aprovado .ic{background:#DCE8F6;color:#2D5684}
+.status .acoes{gap:8px}
+.planilhas.dois{grid-template-columns:repeat(2,1fr);max-width:860px;margin:0 auto}
+.cad-tipo{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;background:var(--rodape);color:#fff;padding:5px 12px;border-radius:20px;margin:2px 0 10px}
+.cad-tipo:empty{display:none}
+.alterna{text-align:center;font-size:.85rem;color:var(--suave);margin-top:16px;line-height:2}
+.link-sec{background:none;border:none;color:var(--pri-esc);text-decoration:underline;cursor:pointer;font-weight:600;font-size:.85rem}
+.erro-login{color:#C0392B;font-size:.82rem;min-height:18px}
+.creditos a{font-weight:600}
+
 /* Responsivo */
 @media(max-width:1024px){
   .grid-4{grid-template-columns:repeat(2,1fr)}
@@ -431,726 +512,879 @@ footer .contato-rod p{display:flex;gap:10px;align-items:flex-start}
   .modal-box{padding:24px 18px}
   .copy{justify-content:center;text-align:center}
 }
+
+@media(max-width:1120px){
+  .hamb{display:block}
+  .menu{position:absolute;top:76px;left:0;right:0;background:#fff;flex-direction:column;align-items:stretch;gap:0;padding:8px 20px 20px;border-bottom:1px solid var(--borda);display:none;box-shadow:0 10px 20px rgba(0,0,0,.06);max-height:calc(100vh - 76px);overflow:auto}
+  .menu.aberto{display:flex}
+  .menu a{padding:13px 0;border-bottom:1px solid var(--borda)}
+  .menu a.btn{margin-top:14px;border-bottom:2px solid var(--pri)}
+  .menu a:not(.btn).ativo::after{display:none}
+}
+@media(max-width:860px){
+  .modalidades,.planilhas.dois{grid-template-columns:1fr}
+  .pedido-bar{left:12px;right:12px;transform:none;width:auto;flex-direction:column;align-items:stretch;bottom:12px;gap:10px;padding:12px 14px}
+  .pedido-bar .acoes .btn{flex:1}
+  body.com-pedido .flutuantes{bottom:170px}
+}
+@media(max-width:540px){
+  .corp-usos{grid-template-columns:1fr}
+  .comp-linha{grid-template-columns:1fr 1fr}
+  .comp-linha>p:first-child{grid-column:1/-1;padding-bottom:4px}
+  .comp-linha>p:not(:first-child){border-top:none;padding-top:4px}
+  .comp-linha:first-child>p:first-child{display:none}
+  .comp-linha:first-child>p{padding:12px 14px}
+  .mod-card .corpo{padding:24px}
+  .tab-pedido .esc{display:none}
+}
 </style>
 </head>
 <body>
-
 <header>
-  <div class="container nav">
-    <a href="#inicio" class="logo">
-      <div class="logo-ph">LOGO<br>AQUI</div>
-      <div><strong>Casa Harmonia</strong><small>Decorações</small></div>
-    </a>
-    <button class="hamb" aria-label="Abrir menu" onclick="document.querySelector('.menu').classList.toggle('aberto')"><i class="fa-solid fa-bars"></i></button>
-    <nav class="menu">
-      <a href="#inicio">Início</a>
-      <a href="#sobre">Sobre</a>
-      <a href="#produtos">Produtos</a>
-      <a href="#contato">Contato</a>
-      <a href="#revendedor" class="btn btn-sm"><i class="fa-solid fa-store"></i> Seja um Revendedor</a>
-    </nav>
-  </div>
+<div class="container nav">
+<a class="logo" href="#inicio">
+<div class="logo-ph">LOGO<br/>AQUI</div>
+<div><strong>Casa Harmonia</strong><small>Decorações</small></div>
+</a>
+<button aria-label="Abrir menu" class="hamb" onclick="document.querySelector('.menu').classList.toggle('aberto')"><i class="fa-solid fa-bars"></i></button>
+<nav class="menu">
+<a href="#inicio">Início</a>
+<a href="#sobre">Sobre</a>
+<a href="#produtos">Produtos</a>
+<a href="#atacado">Revenda Atacado</a>
+<a href="#dropshipping">Dropshipping</a>
+<a href="#contato">Contato</a>
+<a class="btn btn-sm" href="#" id="btnArea" onclick="clicarArea(event)"><i class="fa-solid fa-user"></i> <span id="txtArea">Área do revendedor</span></a>
+</nav>
+</div>
 </header>
-
 <main>
 <!-- ======================= INÍCIO ======================= -->
 <div class="page" id="p-inicio">
-  <!-- Banner principal -->
-  <section class="hero">
-    <div class="foto bg"><img data-foto="hero" alt="Sala decorada com papel de parede"></div>
-    <div class="veu"></div>
-    <div class="container">
-      <div class="hero-txt">
-        <span class="tag"><i class="fa-solid fa-award"></i> Desde 1993 · +30 anos de experiência</span>
-        <h1>Transforme seus espaços, <span>inspire sua vida!</span></h1>
-        <p class="sub">Decoração, beleza e personalidade para cada ambiente.</p>
-        <p>Na Casa Harmonia, você encontra papéis de parede, revestimentos adesivos e soluções decorativas que transformam seus espaços com praticidade, qualidade e estilo.</p>
-        <div class="acoes">
-          <a href="#contato" class="btn">Fale Conosco <i class="fa-solid fa-arrow-right"></i></a>
-          <a href="#" data-wpp="Olá! Gostaria de solicitar uma amostra." target="_blank" class="btn btn-vazado"><i class="fa-brands fa-whatsapp"></i> Solicite uma amostra</a>
-        </div>
-        <div class="hero-selos">
-          <div><i class="fa-solid fa-wand-magic-sparkles"></i> 100% personalizável</div>
-          <div><i class="fa-solid fa-industry"></i> Produção própria</div>
-          <div><i class="fa-solid fa-certificate"></i> ISO 9001:2015</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Resumo da empresa -->
-  <section>
-    <div class="container grid-2">
-      <div class="foto-dupla">
-        <div class="foto foto-alta"><img data-foto="sala" alt="Ambiente decorado"></div>
-        <div class="foto menor"><img data-foto="papel" alt="Detalhe de papel de parede"></div>
-      </div>
-      <div>
-        <span class="tag">Quem somos</span>
-        <h2 style="font-size:2.1rem" class="mb">Mais de 30 anos levando harmonia para cada espaço</h2>
-        <p class="txt-suave">A Casa Harmonia Decorações atua há mais de 30 anos no mercado de adesivos e soluções decorativas, unindo experiência, qualidade e inovação. Somos especializados em papéis de parede, revestimentos adesivos e produtos personalizados que transformam ambientes com praticidade, beleza e criatividade. Nossa missão é levar harmonia, estilo e personalidade para cada espaço.</p>
-        <div class="destaque"><i class="fa-solid fa-wand-magic-sparkles"></i> Foco em personalização: tudo pode ser feito sob medida para o seu ambiente.</div>
-        <div class="numeros">
-          <div><strong>30+</strong><span>anos de mercado</span></div>
-          <div><strong>100%</strong><span>produção própria</span></div>
-          <div><strong>ISO</strong><span>9001:2015</span></div>
-        </div>
-        <a href="#sobre" class="btn btn-outline" style="margin-top:26px">Conheça nossa história <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Produtos em destaque (carrossel) -->
-  <section class="sec-creme">
-    <div class="container">
-      <div class="titulo-sec">
-        <span class="tag">Produtos em destaque</span>
-        <h2>Soluções para cada ambiente</h2>
-        <p>Tudo pode ser personalizado: cores, medidas, estampas e acabamentos.</p>
-      </div>
-      <div class="carrossel">
-        <button class="seta esq" aria-label="Anterior" onclick="rolar(this,-1)"><i class="fa-solid fa-chevron-left"></i></button>
-        <div class="trilho">
-          <div class="card"><div class="foto"><img data-foto="papel" alt="Papel de parede"></div><div class="card-corpo"><h3>Papel de Parede</h3><p>Estampas exclusivas, texturas e medidas sob encomenda.</p><a href="#produtos" class="btn btn-sm btn-outline">Saiba mais</a></div></div>
-          <div class="card"><div class="foto"><img data-foto="etiqueta" alt="Etiquetas personalizadas"></div><div class="card-corpo"><h3>Etiquetas Personalizadas</h3><p>Sua marca com acabamento profissional.</p><a href="#produtos" class="btn btn-sm btn-outline">Saiba mais</a></div></div>
-          <div class="card"><div class="foto"><img data-foto="marmore" alt="Mármore adesivo"></div><div class="card-corpo"><h3>Mármores e Granitos</h3><p>O visual sofisticado da pedra, sem obra.</p><a href="#produtos" class="btn btn-sm btn-outline">Saiba mais</a></div></div>
-          <div class="card"><div class="foto"><img data-foto="refletivo" alt="Adesivo refletivo"></div><div class="card-corpo"><h3>Refletivos</h3><p>Visibilidade e segurança com acabamento durável.</p><a href="#produtos" class="btn btn-sm btn-outline">Saiba mais</a></div></div>
-          <div class="card"><div class="foto"><img data-foto="resinado" alt="Adesivo resinado"></div><div class="card-corpo"><h3>Resinados</h3><p>Relevo e brilho que valorizam sua marca.</p><a href="#produtos" class="btn btn-sm btn-outline">Saiba mais</a></div></div>
-        </div>
-        <button class="seta dir" aria-label="Próximo" onclick="rolar(this,1)"><i class="fa-solid fa-chevron-right"></i></button>
-      </div>
-      <div style="text-align:center;margin-top:30px"><a href="#produtos" class="btn">Ver todos os produtos <i class="fa-solid fa-arrow-right"></i></a></div>
-    </div>
-  </section>
-
-  <!-- Faixa Seja um Revendedor -->
-  <section>
-    <div class="container">
-      <div class="faixa-rev">
-        <div class="txt">
-          <span class="tag ouro"><i class="fa-solid fa-store"></i> Novo · Seja um Revendedor</span>
-          <h2>Venda nossos produtos <span>sem ter estoque</span></h2>
-          <p>Você anuncia na sua loja, nós produzimos e enviamos direto para o seu cliente, em todo o Brasil.</p>
-          <ul>
-            <li><i class="fa-solid fa-circle-check"></i> Sem investimento em estoque</li>
-            <li><i class="fa-solid fa-circle-check"></i> Catálogo com fotos, NCM e medidas prontas</li>
-            <li><i class="fa-solid fa-circle-check"></i> Planilha para importar tudo na sua loja</li>
-          </ul>
-          <a href="#revendedor" class="btn">Quero ser revendedor <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="foto"><img data-foto="entrega" alt="Pacotes prontos para envio"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Galeria (carrossel) -->
-  <section class="sec-creme">
-    <div class="container">
-      <div class="titulo-sec"><span class="tag">Galeria</span><h2>Projetos realizados</h2><p>Ambientes reais transformados com nossas soluções.</p></div>
-      <div class="carrossel">
-        <button class="seta esq" aria-label="Anterior" onclick="rolar(this,-1)"><i class="fa-solid fa-chevron-left"></i></button>
-        <div class="trilho tres">
-          <div class="foto"><img data-foto="sala2" alt="Projeto 1"></div>
-          <div class="foto"><img data-foto="quarto" alt="Projeto 2"></div>
-          <div class="foto"><img data-foto="cozinha" alt="Projeto 3"></div>
-          <div class="foto"><img data-foto="sala3" alt="Projeto 4"></div>
-          <div class="foto"><img data-foto="escritorio" alt="Projeto 5"></div>
-          <div class="foto"><img data-foto="quarto2" alt="Projeto 6"></div>
-        </div>
-        <button class="seta dir" aria-label="Próximo" onclick="rolar(this,1)"><i class="fa-solid fa-chevron-right"></i></button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Vídeo -->
-  <section>
-    <div class="container">
-      <div class="titulo-sec"><span class="tag">Vídeo</span><h2>Veja como funciona</h2><p>Aplicação prática, rápida e sem grandes reformas.</p></div>
-      <div class="video">
-        <div class="foto"><img data-foto="sala4" alt="Capa do vídeo"></div>
-        <div class="veu"><div class="play"><i class="fa-solid fa-play"></i></div><small>Vídeo institucional / demonstrativo aqui</small></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Prova social -->
-  <section class="sec-creme">
-    <div class="container">
-      <div class="titulo-sec"><span class="tag">Quem confia na gente</span><h2>Atendimentos especiais</h2><p>Já atendemos diversos famosos, empresas e clientes em todo o Brasil.</p></div>
-      <div class="logos">
-        <div class="ph"><i class="fa-regular fa-image"></i>Logo cliente</div><div class="ph"><i class="fa-regular fa-user"></i>Foto famoso</div><div class="ph"><i class="fa-regular fa-image"></i>Logo cliente</div><div class="ph"><i class="fa-regular fa-user"></i>Foto famoso</div><div class="ph"><i class="fa-regular fa-image"></i>Logo cliente</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA final -->
-  <section>
-    <div class="container">
-      <div class="cta">
-        <h2>Quer renovar seu ambiente?</h2>
-        <p>Nossa equipe está pronta para ajudar você a encontrar a solução ideal. Entre em contato, tire suas dúvidas e solicite um orçamento personalizado.</p>
-        <div class="acoes"><a href="#contato" class="btn btn-branco">Entrar em contato <i class="fa-solid fa-arrow-right"></i></a></div>
-      </div>
-    </div>
-  </section>
-  <div class="container pag-nav" data-pag="inicio"></div>
+<!-- Banner principal -->
+<section class="hero" data-sec="inicio-1">
+<div class="foto bg"><img alt="Sala decorada com papel de parede" data-foto="hero"/></div>
+<div class="veu"></div>
+<div class="container">
+<div class="hero-txt">
+<span class="tag"><i class="fa-solid fa-award"></i> <span data-edit="inicio-1.1">Desde 1993 · +30 anos de experiência</span></span>
+<h1 data-edit="inicio-1.2">Transforme seus espaços, <span>inspire sua vida!</span></h1>
+<p class="sub" data-edit="inicio-1.3">Decoração, beleza e personalidade para cada ambiente.</p>
+<p data-edit="inicio-1.4">Na Casa Harmonia, você encontra papéis de parede, revestimentos adesivos e soluções decorativas que transformam seus espaços com praticidade, qualidade e estilo.</p>
+<div class="acoes">
+<a class="btn" href="#contato"><span data-edit="inicio-1.5">Fale Conosco</span> <i class="fa-solid fa-arrow-right"></i></a>
+<a class="btn btn-vazado" data-wpp="Olá! Gostaria de solicitar uma amostra." href="#" target="_blank"><i class="fa-brands fa-whatsapp"></i> <span data-edit="inicio-1.6">Solicite uma amostra</span></a>
 </div>
-
+<div class="hero-selos">
+<div><i class="fa-solid fa-wand-magic-sparkles"></i> <span data-edit="inicio-1.7">100% personalizável</span></div>
+<div><i class="fa-solid fa-industry"></i> <span data-edit="inicio-1.8">Produção própria</span></div>
+<div><i class="fa-solid fa-certificate"></i> <span data-edit="inicio-1.9">ISO 9001:2015</span></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Resumo da empresa -->
+<section data-sec="inicio-2">
+<div class="container grid-2">
+<div class="foto-dupla">
+<div class="foto foto-alta"><img alt="Ambiente decorado" data-foto="sala"/></div>
+<div class="foto menor"><img alt="Detalhe de papel de parede" data-foto="papel"/></div>
+</div>
+<div>
+<span class="tag" data-edit="inicio-2.1">Quem somos</span>
+<h2 class="mb" data-edit="inicio-2.2" style="font-size:2.1rem">Mais de 30 anos levando harmonia para cada espaço</h2>
+<p class="txt-suave" data-edit="inicio-2.3">A Casa Harmonia Decorações atua há mais de 30 anos no mercado de adesivos e soluções decorativas, unindo experiência, qualidade e inovação. Somos especializados em papéis de parede, revestimentos adesivos e produtos personalizados que transformam ambientes com praticidade, beleza e criatividade. Nossa missão é levar harmonia, estilo e personalidade para cada espaço.</p>
+<div class="destaque"><i class="fa-solid fa-wand-magic-sparkles"></i> <span data-edit="inicio-2.4">Foco em personalização: tudo pode ser feito sob medida para o seu ambiente.</span></div>
+<div class="numeros">
+<div><strong data-edit="inicio-2.5">30+</strong><span data-edit="inicio-2.6">anos de mercado</span></div>
+<div><strong data-edit="inicio-2.7">100%</strong><span data-edit="inicio-2.8">produção própria</span></div>
+<div><strong data-edit="inicio-2.9">ISO</strong><span data-edit="inicio-2.10">9001:2015</span></div>
+</div>
+<a class="btn btn-outline" href="#sobre" style="margin-top:26px"><span data-edit="inicio-2.11">Conheça nossa história</span> <i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</div>
+</section>
+<!-- Produtos em destaque (carrossel) -->
+<section class="sec-creme" data-sec="inicio-3">
+<div class="container">
+<div class="titulo-sec">
+<span class="tag" data-edit="inicio-3.1">Produtos em destaque</span>
+<h2 data-edit="inicio-3.2">Soluções para cada ambiente</h2>
+<p data-edit="inicio-3.3">Tudo pode ser personalizado: cores, medidas, estampas e acabamentos.</p>
+</div>
+<div class="carrossel">
+<button aria-label="Anterior" class="seta esq" onclick="rolar(this,-1)"><i class="fa-solid fa-chevron-left"></i></button>
+<div class="trilho">
+<div class="card"><div class="foto"><img alt="Papel de parede" data-foto="papel"/></div><div class="card-corpo"><h3 data-edit="inicio-3.4">Papel de Parede</h3><p data-edit="inicio-3.5">Estampas exclusivas, texturas e medidas sob encomenda.</p><a class="btn btn-sm btn-outline" data-edit="inicio-3.6" href="#produtos">Saiba mais</a></div></div>
+<div class="card"><div class="foto"><img alt="Etiquetas personalizadas" data-foto="etiqueta"/></div><div class="card-corpo"><h3 data-edit="inicio-3.7">Etiquetas Personalizadas</h3><p data-edit="inicio-3.8">Sua marca com acabamento profissional.</p><a class="btn btn-sm btn-outline" data-edit="inicio-3.9" href="#produtos">Saiba mais</a></div></div>
+<div class="card"><div class="foto"><img alt="Mármore adesivo" data-foto="marmore"/></div><div class="card-corpo"><h3 data-edit="inicio-3.10">Mármores e Granitos</h3><p data-edit="inicio-3.11">O visual sofisticado da pedra, sem obra.</p><a class="btn btn-sm btn-outline" data-edit="inicio-3.12" href="#produtos">Saiba mais</a></div></div>
+<div class="card"><div class="foto"><img alt="Adesivo refletivo" data-foto="refletivo"/></div><div class="card-corpo"><h3 data-edit="inicio-3.13">Refletivos</h3><p data-edit="inicio-3.14">Visibilidade e segurança com acabamento durável.</p><a class="btn btn-sm btn-outline" data-edit="inicio-3.15" href="#produtos">Saiba mais</a></div></div>
+<div class="card"><div class="foto"><img alt="Adesivo resinado" data-foto="resinado"/></div><div class="card-corpo"><h3 data-edit="inicio-3.16">Resinados</h3><p data-edit="inicio-3.17">Relevo e brilho que valorizam sua marca.</p><a class="btn btn-sm btn-outline" data-edit="inicio-3.18" href="#produtos">Saiba mais</a></div></div>
+</div>
+<button aria-label="Próximo" class="seta dir" onclick="rolar(this,1)"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
+<div style="text-align:center;margin-top:30px"><a class="btn" href="#produtos"><span data-edit="inicio-3.19">Ver todos os produtos</span> <i class="fa-solid fa-arrow-right"></i></a></div>
+</div>
+</section>
+<!-- Seja um Revendedor: duas modalidades -->
+<section data-sec="inicio-4">
+<div class="container">
+<div class="titulo-sec"><span class="tag ouro"><i class="fa-solid fa-store"></i> <span data-edit="inicio-4.1">Seja um Revendedor</span></span><h2 data-edit="inicio-4.2">Dois jeitos de revender Casa Harmonia</h2><p data-edit="inicio-4.3">Escolha o modelo que combina com o seu negócio. Todo o atendimento é feito pela equipe Casa Harmonia.</p></div>
+<div class="modalidades">
+<div class="mod-card">
+<div class="foto"><img alt="Loja com produtos de decoração" data-foto="loja"/></div>
+<div class="corpo">
+<span class="tag" data-edit="inicio-4.4">Revenda Atacado</span>
+<h3 data-edit="inicio-4.5">Compre em quantidade e revenda na sua loja</h3>
+<p data-edit="inicio-4.6">Para lojas, decoradores e revendedores que querem ter os produtos em estoque, com preço de atacado.</p>
+<ul>
+<li><i class="fa-solid fa-circle-check"></i> <span data-edit="inicio-4.7">Pedido mínimo de R$ 1.000</span></li>
+<li><i class="fa-solid fa-circle-check"></i> <span data-edit="inicio-4.8">Preços de atacado liberados após o cadastro</span></li>
+<li><i class="fa-solid fa-circle-check"></i> <span data-edit="inicio-4.9">Envio para a sua loja em todo o Brasil</span></li>
+</ul>
+<div class="acoes"><a class="btn" href="#atacado"><span data-edit="inicio-4.10">Conhecer o atacado</span> <i class="fa-solid fa-arrow-right"></i></a></div>
+</div>
+</div>
+<div class="mod-card escuro">
+<div class="foto"><img alt="Pacotes prontos para envio" data-foto="entrega"/></div>
+<div class="corpo">
+<span class="tag ouro" data-edit="inicio-4.11">Dropshipping</span>
+<h3 data-edit="inicio-4.12">Venda sem ter estoque</h3>
+<p data-edit="inicio-4.13">Você anuncia na sua loja virtual, marketplace ou redes sociais. Nós produzimos e enviamos direto para o seu cliente.</p>
+<ul>
+<li><i class="fa-solid fa-circle-check"></i> <span data-edit="inicio-4.14">Sem investimento em estoque</span></li>
+<li><i class="fa-solid fa-circle-check"></i> <span data-edit="inicio-4.15">Envio direto ao seu cliente</span></li>
+<li><i class="fa-solid fa-circle-check"></i> <span data-edit="inicio-4.16">Planilha pronta para cadastrar na sua loja</span></li>
+</ul>
+<div class="acoes"><a class="btn" href="#dropshipping"><span data-edit="inicio-4.17">Conhecer o dropshipping</span> <i class="fa-solid fa-arrow-right"></i></a></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pedidos corporativos -->
+<section class="sec-creme" data-sec="inicio-5" id="corporativo">
+<div class="container grid-2" style="align-items:start">
+<div>
+<span class="tag"><i class="fa-solid fa-building"></i> <span data-edit="inicio-5.1">Para empresas</span></span>
+<h2 class="mb" data-edit="inicio-5.2" style="font-size:2.1rem">Pedidos corporativos</h2>
+<p class="txt-suave" data-edit="inicio-5.3">Sua empresa precisa de decoração, sinalização ou produtos personalizados com a sua marca, em grande quantidade? Desenvolvemos o projeto e produzimos do jeito que o seu negócio precisa.</p>
+<div class="corp-usos">
+<div class="corp-uso"><div class="ic"><i class="fa-solid fa-building"></i></div><div><h4 data-edit="inicio-5.4">Ambientes corporativos</h4><p data-edit="inicio-5.5">Escritórios, lojas, clínicas, hotéis e restaurantes.</p></div></div>
+<div class="corp-uso"><div class="ic"><i class="fa-solid fa-signs-post"></i></div><div><h4 data-edit="inicio-5.6">Sinalização</h4><p data-edit="inicio-5.7">Adesivos de vitrine, refletivos e comunicação visual.</p></div></div>
+<div class="corp-uso"><div class="ic"><i class="fa-solid fa-tag"></i></div><div><h4 data-edit="inicio-5.8">Etiquetas e identificação</h4><p data-edit="inicio-5.9">Etiquetas personalizadas e resinadas para os seus produtos.</p></div></div>
+<div class="corp-uso"><div class="ic"><i class="fa-solid fa-gift"></i></div><div><h4 data-edit="inicio-5.10">Brindes e ações</h4><p data-edit="inicio-5.11">Peças com a sua marca para clientes, equipes e eventos.</p></div></div>
+</div>
+</div>
+<div class="card form-corp">
+<h3 class="mb" data-edit="inicio-5.12" style="font-size:1.4rem">Solicite um orçamento corporativo</h3>
+<form class="form" onsubmit="enviarCorporativo(event)">
+<div class="form-2"><div><label>Empresa</label><input name="empresa" required=""/></div><div><label>Seu nome</label><input name="nome" required=""/></div></div>
+<div class="form-2"><div><label>WhatsApp</label><input name="whats" placeholder="(00) 00000-0000" required="" type="tel"/></div><div><label>E-mail</label><input name="email" type="email"/></div></div>
+<div class="form-2">
+<div><label>O que você precisa?</label><select name="tipo"><option>Decoração de ambiente corporativo</option><option>Sinalização e comunicação visual</option><option>Etiquetas e identificação de produtos</option><option>Brindes personalizados</option><option>Outro</option></select></div>
+<div><label>Quantidade aproximada</label><input name="qtd" placeholder="Ex.: 500 unidades"/></div>
+</div>
+<div><label>Detalhes do pedido</label><textarea name="detalhes" placeholder="Medidas, local de aplicação, prazo desejado..." rows="3"></textarea></div>
+<button class="btn btn-wpp" type="submit"><i class="fa-brands fa-whatsapp"></i> Enviar pelo WhatsApp</button>
+</form>
+</div>
+</div>
+</section>
+<!-- Galeria (carrossel) -->
+<section class="sec-creme" data-sec="inicio-6">
+<div class="container">
+<div class="titulo-sec"><span class="tag" data-edit="inicio-6.1">Galeria</span><h2 data-edit="inicio-6.2">Projetos realizados</h2><p data-edit="inicio-6.3">Ambientes reais transformados com nossas soluções.</p></div>
+<div class="carrossel">
+<button aria-label="Anterior" class="seta esq" onclick="rolar(this,-1)"><i class="fa-solid fa-chevron-left"></i></button>
+<div class="trilho tres">
+<div class="foto"><img alt="Projeto 1" data-foto="sala2"/></div>
+<div class="foto"><img alt="Projeto 2" data-foto="quarto"/></div>
+<div class="foto"><img alt="Projeto 3" data-foto="cozinha"/></div>
+<div class="foto"><img alt="Projeto 4" data-foto="sala3"/></div>
+<div class="foto"><img alt="Projeto 5" data-foto="escritorio"/></div>
+<div class="foto"><img alt="Projeto 6" data-foto="quarto2"/></div>
+</div>
+<button aria-label="Próximo" class="seta dir" onclick="rolar(this,1)"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
+</div>
+</section>
+<!-- Vídeo -->
+<section data-sec="inicio-7">
+<div class="container">
+<div class="titulo-sec"><span class="tag" data-edit="inicio-7.1">Vídeo</span><h2 data-edit="inicio-7.2">Veja como funciona</h2><p data-edit="inicio-7.3">Aplicação prática, rápida e sem grandes reformas.</p></div>
+<div class="video">
+<div class="foto"><img alt="Capa do vídeo" data-foto="sala4"/></div>
+<div class="veu"><div class="play"><i class="fa-solid fa-play"></i></div><small>Vídeo institucional / demonstrativo aqui</small></div>
+</div>
+</div>
+</section>
+<!-- Prova social -->
+<section class="sec-creme" data-sec="inicio-8">
+<div class="container">
+<div class="titulo-sec"><span class="tag" data-edit="inicio-8.1">Quem confia na gente</span><h2 data-edit="inicio-8.2">Atendimentos especiais</h2><p data-edit="inicio-8.3">Já atendemos diversos famosos, empresas e clientes em todo o Brasil.</p></div>
+<div class="logos">
+<div class="ph"><i class="fa-regular fa-image"></i>Logo cliente</div><div class="ph"><i class="fa-regular fa-user"></i>Foto famoso</div><div class="ph"><i class="fa-regular fa-image"></i>Logo cliente</div><div class="ph"><i class="fa-regular fa-user"></i>Foto famoso</div><div class="ph"><i class="fa-regular fa-image"></i>Logo cliente</div>
+</div>
+</div>
+</section>
+<!-- CTA final -->
+<section data-sec="inicio-9">
+<div class="container">
+<div class="cta">
+<h2 data-edit="inicio-9.1">Quer renovar seu ambiente?</h2>
+<p data-edit="inicio-9.2">Nossa equipe está pronta para ajudar você a encontrar a solução ideal. Entre em contato, tire suas dúvidas e solicite um orçamento personalizado.</p>
+<div class="acoes"><a class="btn btn-branco" href="#contato"><span data-edit="inicio-9.3">Entrar em contato</span> <i class="fa-solid fa-arrow-right"></i></a></div>
+</div>
+</div>
+</section>
+<div class="container pag-nav" data-pag="inicio"></div>
+</div>
 <!-- ======================= SOBRE ======================= -->
 <div class="page" id="p-sobre">
-  <div class="page-head">
-    <div class="foto bg"><img data-foto="fabrica" alt=""></div><div class="veu"></div>
-    <div class="conteudo">
-      <span class="tag">Sobre nós</span>
-      <h1>Sobre a Casa Harmonia Decorações</h1>
-      <p>Há mais de 30 anos transformando ambientes e realizando ideias.</p>
-      <div class="migalha"><a href="#inicio">Início</a> › Sobre</div>
-    </div>
-  </div>
-
-  <!-- 1. História -->
-  <section>
-    <div class="container grid-2">
-      <div>
-        <span class="tag">Nossa história</span>
-        <h2 style="font-size:2.1rem" class="mb">Tradição desde 1993</h2>
-        <p class="txt-suave mb">A Casa Harmonia Decorações nasceu da experiência e tradição de uma empresa que atua desde 1993 no segmento de adesivos e soluções personalizadas.</p>
-        <p class="txt-suave mb">Ao longo dessa trajetória, evoluímos constantemente, acompanhando as tendências do mercado e investindo em tecnologia, qualidade e inovação. Hoje, oferecemos uma ampla variedade de produtos, como papéis de parede, revestimentos adesivos, adesivos decorativos, placas decorativas e soluções personalizadas para ambientes residenciais e comerciais.</p>
-        <p class="txt-suave">Nossa paixão é transformar espaços, oferecendo produtos que unem beleza, praticidade e personalidade.</p>
-        <div class="destaque"><i class="fa-solid fa-star"></i> Já realizamos diversos atendimentos para famosos.</div>
-        <div class="linha-tempo">
-          <div><strong>1993</strong><span>Início no segmento de adesivos</span></div>
-          <div><strong>ISO 9001</strong><span>Qualidade certificada</span></div>
-          <div><strong>Hoje</strong><span>Linha completa de decoração</span></div>
-        </div>
-      </div>
-      <div class="foto foto-alta"><img data-foto="fabrica" alt="Produção da empresa"></div>
-    </div>
-  </section>
-
-  <!-- 2. Missão, Visão e Valores -->
-  <section class="sec-creme">
-    <div class="container">
-      <div class="titulo-sec"><span class="tag">Propósito</span><h2>Missão, Visão e Valores</h2></div>
-      <div class="mvv">
-        <div class="card"><div class="ic"><i class="fa-solid fa-bullseye"></i></div><div><h3>Missão</h3><p>Transformar ambientes por meio de soluções decorativas criativas, acessíveis e de qualidade, proporcionando beleza, conforto e satisfação aos nossos clientes.</p></div></div>
-        <div class="card"><div class="ic"><i class="fa-solid fa-binoculars"></i></div><div><h3>Visão</h3><p>Ser referência nacional em adesivos e decoração, reconhecida pela inovação, excelência dos produtos, confiança e compromisso com nossos clientes.</p></div></div>
-      </div>
-      <div class="valores">
-        <div class="card"><div class="ic"><i class="fa-solid fa-gem"></i></div><div><h4>Qualidade</h4><p>Compromisso com materiais, acabamentos e produtos de excelência.</p></div></div>
-        <div class="card"><div class="ic"><i class="fa-solid fa-lightbulb"></i></div><div><h4>Inovação</h4><p>Busca constante por novas tendências, tecnologias e soluções.</p></div></div>
-        <div class="card"><div class="ic"><i class="fa-solid fa-handshake"></i></div><div><h4>Comprometimento</h4><p>Respeito, responsabilidade e dedicação em cada pedido.</p></div></div>
-        <div class="card"><div class="ic"><i class="fa-solid fa-palette"></i></div><div><h4>Criatividade</h4><p>Soluções que valorizam a personalidade de cada ambiente.</p></div></div>
-        <div class="card"><div class="ic"><i class="fa-solid fa-eye"></i></div><div><h4>Transparência</h4><p>Relacionamentos baseados na honestidade e confiança.</p></div></div>
-        <div class="card"><div class="ic"><i class="fa-solid fa-heart"></i></div><div><h4>Satisfação do cliente</h4><p>Atendimento próximo, personalizado e focado nas necessidades de cada pessoa.</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3. Diferenciais -->
-  <section>
-    <div class="container">
-      <div class="titulo-sec"><span class="tag">Diferenciais</span><h2>O que nos destaca</h2></div>
-      <div class="grid-3">
-        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-trophy"></i></div><h3>Mais de 30 anos de experiência</h3><p>Tradição e conhecimento no segmento de adesivos e soluções decorativas.</p></div>
-        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-industry"></i></div><h3>Produção própria e personalizada</h3><p>Flexibilidade para desenvolver produtos que atendam a diferentes estilos, projetos e necessidades.</p></div>
-        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-print"></i></div><h3>Qualidade e tecnologia</h3><p>Impressão com cores vivas, definição e excelente acabamento. Certificação ISO 9001:2015.</p></div>
-        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-layer-group"></i></div><h3>Variedade de produtos</h3><p>Soluções para paredes, móveis, portas, cozinhas, quartos, espaços comerciais e outros ambientes.</p></div>
-        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-bolt"></i></div><h3>Praticidade e versatilidade</h3><p>Renove a decoração sem a necessidade de grandes reformas.</p></div>
-        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-comments"></i></div><h3>Atendimento humanizado</h3><p>Cada cliente é único: atenção, confiança e cuidado em todas as etapas da compra.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. Equipe -->
-  <section class="sec-creme">
-    <div class="container grid-2">
-      <div class="foto foto-media"><img data-foto="equipe" alt="Equipe"></div>
-      <div>
-        <span class="tag">Equipe</span>
-        <h2 style="font-size:2.1rem" class="mb">Pessoas que transformam ideias</h2>
-        <p class="txt-suave mb">Por trás de cada produto existe uma equipe comprometida com a qualidade, a criatividade e a satisfação dos nossos clientes.</p>
-        <p class="txt-suave mb">Contamos com profissionais nas áreas de criação, produção, impressão, acabamento, vendas e atendimento, trabalhando juntos para transformar ideias em produtos que fazem a diferença.</p>
-        <p class="txt-suave">Nossa equipe compartilha o mesmo propósito: oferecer soluções decorativas com dedicação, responsabilidade e atenção aos detalhes.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. Galeria -->
-  <section>
-    <div class="container">
-      <div class="titulo-sec"><span class="tag">Galeria</span><h2>Nossa estrutura e projetos</h2></div>
-      <div class="carrossel">
-        <button class="seta esq" aria-label="Anterior" onclick="rolar(this,-1)"><i class="fa-solid fa-chevron-left"></i></button>
-        <div class="trilho tres">
-          <div class="foto"><img data-foto="impressao" alt="Impressão"></div>
-          <div class="foto"><img data-foto="sala" alt="Projeto"></div>
-          <div class="foto"><img data-foto="fabrica" alt="Produção"></div>
-          <div class="foto"><img data-foto="quarto" alt="Projeto"></div>
-          <div class="foto"><img data-foto="loja" alt="Espaço comercial"></div>
-        </div>
-        <button class="seta dir" aria-label="Próximo" onclick="rolar(this,1)"><i class="fa-solid fa-chevron-right"></i></button>
-      </div>
-    </div>
-  </section>
-
-  <!-- 5. Localização -->
-  <section class="sec-creme">
-    <div class="container">
-      <div class="titulo-sec"><span class="tag"><i class="fa-solid fa-location-dot"></i> Localização</span><h2>Onde estamos</h2><p>Av. Yusaburo Sasazaki, 1870 · Distrito Industrial · Marília/SP · CEP 17512-031</p></div>
-      <iframe class="mapa" loading="lazy" title="Mapa da Casa Harmonia" src="https://maps.google.com/maps?q=Av.%20Yusaburo%20Sasazaki%2C%201870%2C%20Mar%C3%ADlia%20-%20SP&z=15&output=embed"></iframe>
-    </div>
-  </section>
-  <div class="container pag-nav" data-pag="sobre"></div>
+<div class="page-head" data-sec="sobre-1">
+<div class="foto bg"><img alt="" data-foto="fabrica"/></div><div class="veu"></div>
+<div class="conteudo">
+<span class="tag" data-edit="sobre-1.1">Sobre nós</span>
+<h1 data-edit="sobre-1.2">Sobre a Casa Harmonia Decorações</h1>
+<p data-edit="sobre-1.3">Há mais de 30 anos transformando ambientes e realizando ideias.</p>
+<div class="migalha"><a href="#inicio">Início</a> › Sobre</div>
 </div>
-
+</div>
+<!-- 1. História -->
+<section data-sec="sobre-2">
+<div class="container grid-2">
+<div>
+<span class="tag" data-edit="sobre-2.1">Nossa história</span>
+<h2 class="mb" data-edit="sobre-2.2" style="font-size:2.1rem">Tradição desde 1993</h2>
+<p class="txt-suave mb" data-edit="sobre-2.3">A Casa Harmonia Decorações nasceu da experiência e tradição de uma empresa que atua desde 1993 no segmento de adesivos e soluções personalizadas.</p>
+<p class="txt-suave mb" data-edit="sobre-2.4">Ao longo dessa trajetória, evoluímos constantemente, acompanhando as tendências do mercado e investindo em tecnologia, qualidade e inovação. Hoje, oferecemos uma ampla variedade de produtos, como papéis de parede, revestimentos adesivos, adesivos decorativos, placas decorativas e soluções personalizadas para ambientes residenciais e comerciais.</p>
+<p class="txt-suave" data-edit="sobre-2.5">Nossa paixão é transformar espaços, oferecendo produtos que unem beleza, praticidade e personalidade.</p>
+<div class="destaque"><i class="fa-solid fa-star"></i> <span data-edit="sobre-2.6">Já realizamos diversos atendimentos para famosos.</span></div>
+<div class="linha-tempo">
+<div><strong data-edit="sobre-2.7">1993</strong><span data-edit="sobre-2.8">Início no segmento de adesivos</span></div>
+<div><strong data-edit="sobre-2.9">ISO 9001</strong><span data-edit="sobre-2.10">Qualidade certificada</span></div>
+<div><strong data-edit="sobre-2.11">Hoje</strong><span data-edit="sobre-2.12">Linha completa de decoração</span></div>
+</div>
+</div>
+<div class="foto foto-alta"><img alt="Produção da empresa" data-foto="fabrica"/></div>
+</div>
+</section>
+<!-- 2. Missão, Visão e Valores -->
+<section class="sec-creme" data-sec="sobre-3">
+<div class="container">
+<div class="titulo-sec"><span class="tag" data-edit="sobre-3.1">Propósito</span><h2 data-edit="sobre-3.2">Missão, Visão e Valores</h2></div>
+<div class="mvv">
+<div class="card"><div class="ic"><i class="fa-solid fa-bullseye"></i></div><div><h3 data-edit="sobre-3.3">Missão</h3><p data-edit="sobre-3.4">Transformar ambientes por meio de soluções decorativas criativas, acessíveis e de qualidade, proporcionando beleza, conforto e satisfação aos nossos clientes.</p></div></div>
+<div class="card"><div class="ic"><i class="fa-solid fa-binoculars"></i></div><div><h3 data-edit="sobre-3.5">Visão</h3><p data-edit="sobre-3.6">Ser referência nacional em adesivos e decoração, reconhecida pela inovação, excelência dos produtos, confiança e compromisso com nossos clientes.</p></div></div>
+</div>
+<div class="valores">
+<div class="card"><div class="ic"><i class="fa-solid fa-gem"></i></div><div><h4 data-edit="sobre-3.7">Qualidade</h4><p data-edit="sobre-3.8">Compromisso com materiais, acabamentos e produtos de excelência.</p></div></div>
+<div class="card"><div class="ic"><i class="fa-solid fa-lightbulb"></i></div><div><h4 data-edit="sobre-3.9">Inovação</h4><p data-edit="sobre-3.10">Busca constante por novas tendências, tecnologias e soluções.</p></div></div>
+<div class="card"><div class="ic"><i class="fa-solid fa-handshake"></i></div><div><h4 data-edit="sobre-3.11">Comprometimento</h4><p data-edit="sobre-3.12">Respeito, responsabilidade e dedicação em cada pedido.</p></div></div>
+<div class="card"><div class="ic"><i class="fa-solid fa-palette"></i></div><div><h4 data-edit="sobre-3.13">Criatividade</h4><p data-edit="sobre-3.14">Soluções que valorizam a personalidade de cada ambiente.</p></div></div>
+<div class="card"><div class="ic"><i class="fa-solid fa-eye"></i></div><div><h4 data-edit="sobre-3.15">Transparência</h4><p data-edit="sobre-3.16">Relacionamentos baseados na honestidade e confiança.</p></div></div>
+<div class="card"><div class="ic"><i class="fa-solid fa-heart"></i></div><div><h4 data-edit="sobre-3.17">Satisfação do cliente</h4><p data-edit="sobre-3.18">Atendimento próximo, personalizado e focado nas necessidades de cada pessoa.</p></div></div>
+</div>
+</div>
+</section>
+<!-- 3. Diferenciais -->
+<section data-sec="sobre-4">
+<div class="container">
+<div class="titulo-sec"><span class="tag" data-edit="sobre-4.1">Diferenciais</span><h2 data-edit="sobre-4.2">O que nos destaca</h2></div>
+<div class="grid-3">
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-trophy"></i></div><h3 data-edit="sobre-4.3">Mais de 30 anos de experiência</h3><p data-edit="sobre-4.4">Tradição e conhecimento no segmento de adesivos e soluções decorativas.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-industry"></i></div><h3 data-edit="sobre-4.5">Produção própria e personalizada</h3><p data-edit="sobre-4.6">Flexibilidade para desenvolver produtos que atendam a diferentes estilos, projetos e necessidades.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-print"></i></div><h3 data-edit="sobre-4.7">Qualidade e tecnologia</h3><p data-edit="sobre-4.8">Impressão com cores vivas, definição e excelente acabamento. Certificação ISO 9001:2015.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-layer-group"></i></div><h3 data-edit="sobre-4.9">Variedade de produtos</h3><p data-edit="sobre-4.10">Soluções para paredes, móveis, portas, cozinhas, quartos, espaços comerciais e outros ambientes.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-bolt"></i></div><h3 data-edit="sobre-4.11">Praticidade e versatilidade</h3><p data-edit="sobre-4.12">Renove a decoração sem a necessidade de grandes reformas.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-comments"></i></div><h3 data-edit="sobre-4.13">Atendimento humanizado</h3><p data-edit="sobre-4.14">Cada cliente é único: atenção, confiança e cuidado em todas as etapas da compra.</p></div>
+</div>
+</div>
+</section>
+<!-- 4. Equipe -->
+<section class="sec-creme" data-sec="sobre-5">
+<div class="container grid-2">
+<div class="foto foto-media"><img alt="Equipe" data-foto="equipe"/></div>
+<div>
+<span class="tag" data-edit="sobre-5.1">Equipe</span>
+<h2 class="mb" data-edit="sobre-5.2" style="font-size:2.1rem">Pessoas que transformam ideias</h2>
+<p class="txt-suave mb" data-edit="sobre-5.3">Por trás de cada produto existe uma equipe comprometida com a qualidade, a criatividade e a satisfação dos nossos clientes.</p>
+<p class="txt-suave mb" data-edit="sobre-5.4">Contamos com profissionais nas áreas de criação, produção, impressão, acabamento, vendas e atendimento, trabalhando juntos para transformar ideias em produtos que fazem a diferença.</p>
+<p class="txt-suave" data-edit="sobre-5.5">Nossa equipe compartilha o mesmo propósito: oferecer soluções decorativas com dedicação, responsabilidade e atenção aos detalhes.</p>
+</div>
+</div>
+</section>
+<!-- 5. Galeria -->
+<section data-sec="sobre-6">
+<div class="container">
+<div class="titulo-sec"><span class="tag" data-edit="sobre-6.1">Galeria</span><h2 data-edit="sobre-6.2">Nossa estrutura e projetos</h2></div>
+<div class="carrossel">
+<button aria-label="Anterior" class="seta esq" onclick="rolar(this,-1)"><i class="fa-solid fa-chevron-left"></i></button>
+<div class="trilho tres">
+<div class="foto"><img alt="Impressão" data-foto="impressao"/></div>
+<div class="foto"><img alt="Projeto" data-foto="sala"/></div>
+<div class="foto"><img alt="Produção" data-foto="fabrica"/></div>
+<div class="foto"><img alt="Projeto" data-foto="quarto"/></div>
+<div class="foto"><img alt="Espaço comercial" data-foto="loja"/></div>
+</div>
+<button aria-label="Próximo" class="seta dir" onclick="rolar(this,1)"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
+</div>
+</section>
+<!-- 5. Localização -->
+<section class="sec-creme" data-sec="sobre-7">
+<div class="container">
+<div class="titulo-sec"><span class="tag"><i class="fa-solid fa-location-dot"></i> <span data-edit="sobre-7.1">Localização</span></span><h2 data-edit="sobre-7.2">Onde estamos</h2><p><span data-c="endereco_txt">Av. Yusaburo Sasazaki, 1870 · Distrito Industrial · Marília/SP · CEP 17512-031</span></p></div>
+<iframe class="mapa" data-mapa="" loading="lazy" title="Mapa da Casa Harmonia"></iframe>
+</div>
+</section>
+<div class="container pag-nav" data-pag="sobre"></div>
+</div>
 <!-- ======================= PRODUTOS ======================= -->
 <div class="page" id="p-produtos">
-  <div class="page-head">
-    <div class="foto bg"><img data-foto="sala3" alt=""></div><div class="veu"></div>
-    <div class="conteudo">
-      <span class="tag">Produtos e Serviços</span>
-      <h1>Soluções decorativas para cada ambiente</h1>
-      <p>Tudo pode ser personalizado em tamanho, formato e estilo.</p>
-      <div class="migalha"><a href="#inicio">Início</a> › Produtos</div>
-    </div>
-  </div>
-
-  <section>
-    <div class="container grid-3" id="listaServicos"></div>
-  </section>
-
-  <section class="sec-creme">
-    <div class="container">
-      <div class="titulo-sec"><span class="tag">Diferenciais</span><h2>Por que escolher a Casa Harmonia</h2><p>Características presentes em todos os nossos produtos.</p></div>
-      <div class="grid-3">
-        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-trophy"></i></div><h3>Experiência e tradição</h3><p>Mais de 30 anos de conhecimento no segmento de adesivos e soluções personalizadas.</p></div>
-        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-industry"></i></div><h3>Produção própria</h3><p>Maior flexibilidade para projetos em diferentes tamanhos, formatos e estilos.</p></div>
-        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-print"></i></div><h3>Impressão de qualidade</h3><p>Impressão digital com boa definição, cores vivas e acabamento profissional.</p></div>
-        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-wand-magic-sparkles"></i></div><h3>Personalização</h3><p>Produtos adaptados às necessidades de cada cliente.</p></div>
-        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-layer-group"></i></div><h3>Variedade</h3><p>Amplo catálogo de produtos decorativos e soluções para diferentes ambientes.</p></div>
-        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-ruler-combined"></i></div><h3>Atendimento especializado</h3><p>Orientação na escolha de materiais, medidas e soluções adequadas.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="cta">
-        <h2>Quer revender nossos produtos?</h2>
-        <p>Tenha acesso ao catálogo completo com preços, fichas técnicas e planilha para importar na sua loja. Nós produzimos e enviamos direto para o seu cliente.</p>
-        <div class="acoes"><a href="#revendedor" class="btn btn-branco"><i class="fa-solid fa-store"></i> Seja um Revendedor</a></div>
-      </div>
-    </div>
-  </section>
-  <div class="container pag-nav" data-pag="produtos"></div>
+<div class="page-head" data-sec="produtos-1">
+<div class="foto bg"><img alt="" data-foto="sala3"/></div><div class="veu"></div>
+<div class="conteudo">
+<span class="tag" data-edit="produtos-1.1">Produtos e Serviços</span>
+<h1 data-edit="produtos-1.2">Soluções decorativas para cada ambiente</h1>
+<p data-edit="produtos-1.3">Tudo pode ser personalizado em tamanho, formato e estilo.</p>
+<div class="migalha"><a href="#inicio">Início</a> › Produtos</div>
 </div>
-
+</div>
+<section data-sec="produtos-2">
+<div class="container grid-3" id="listaServicos"></div>
+</section>
+<section class="sec-creme" data-sec="produtos-3">
+<div class="container">
+<div class="titulo-sec"><span class="tag" data-edit="produtos-3.1">Diferenciais</span><h2 data-edit="produtos-3.2">Por que escolher a Casa Harmonia</h2><p data-edit="produtos-3.3">Características presentes em todos os nossos produtos.</p></div>
+<div class="grid-3">
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-trophy"></i></div><h3 data-edit="produtos-3.4">Experiência e tradição</h3><p data-edit="produtos-3.5">Mais de 30 anos de conhecimento no segmento de adesivos e soluções personalizadas.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-industry"></i></div><h3 data-edit="produtos-3.6">Produção própria</h3><p data-edit="produtos-3.7">Maior flexibilidade para projetos em diferentes tamanhos, formatos e estilos.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-print"></i></div><h3 data-edit="produtos-3.8">Impressão de qualidade</h3><p data-edit="produtos-3.9">Impressão digital com boa definição, cores vivas e acabamento profissional.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-wand-magic-sparkles"></i></div><h3 data-edit="produtos-3.10">Personalização</h3><p data-edit="produtos-3.11">Produtos adaptados às necessidades de cada cliente.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-layer-group"></i></div><h3 data-edit="produtos-3.12">Variedade</h3><p data-edit="produtos-3.13">Amplo catálogo de produtos decorativos e soluções para diferentes ambientes.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-ruler-combined"></i></div><h3 data-edit="produtos-3.14">Atendimento especializado</h3><p data-edit="produtos-3.15">Orientação na escolha de materiais, medidas e soluções adequadas.</p></div>
+</div>
+</div>
+</section>
+<section data-sec="produtos-4">
+<div class="container">
+<div class="cta">
+<h2 data-edit="produtos-4.1">Quer revender nossos produtos?</h2>
+<p data-edit="produtos-4.2">Compre em quantidade com preço de atacado ou venda sem estoque no dropshipping. Cadastre-se para ver preços e fichas técnicas.</p>
+<div class="acoes"><a class="btn btn-branco" href="#atacado"><i class="fa-solid fa-boxes-stacked"></i> <span data-edit="produtos-4.3">Revenda Atacado</span></a><a class="btn btn-vazado" href="#dropshipping"><i class="fa-solid fa-truck-fast"></i> <span data-edit="produtos-4.4">Dropshipping</span></a></div>
+</div>
+</div>
+</section>
+<div class="container pag-nav" data-pag="produtos"></div>
+</div>
 <!-- ======================= CONTATO ======================= -->
 <div class="page" id="p-contato">
-  <div class="page-head">
-    <div class="foto bg"><img data-foto="sala2" alt=""></div><div class="veu"></div>
-    <div class="conteudo">
-      <span class="tag">Contato</span>
-      <h1>Vamos transformar seu espaço juntos!</h1>
-      <p>Fale com a nossa equipe e solicite um orçamento personalizado.</p>
-      <div class="migalha"><a href="#inicio">Início</a> › Contato</div>
-    </div>
-  </div>
-
-  <section>
-    <div class="container grid-2" style="align-items:start">
-      <div class="card" style="padding:32px">
-        <h2 style="font-size:1.6rem" class="mb">Envie sua mensagem</h2>
-        <form class="form" onsubmit="enviarContato(event)">
-          <div><label>Nome</label><input required name="nome"></div>
-          <div class="form-2">
-            <div><label>Telefone</label><input required name="tel" type="tel" placeholder="(00) 00000-0000"></div>
-            <div><label>E-mail</label><input required name="email" type="email"></div>
-          </div>
-          <div><label>Assunto</label><input required name="assunto"></div>
-          <div><label>Mensagem</label><textarea required name="msg" rows="5"></textarea></div>
-          <button class="btn" type="submit"><i class="fa-solid fa-paper-plane"></i> Enviar mensagem</button>
-        </form>
-      </div>
-      <div class="canais">
-        <a class="canal" href="#" data-wpp="Olá! Gostaria de tirar uma dúvida." target="_blank"><div class="ic wpp"><i class="fa-brands fa-whatsapp"></i></div><div><strong>WhatsApp</strong><small>(14) 99605-8087</small></div><i class="fa-solid fa-arrow-right"></i></a>
-        <a class="canal" href="tel:+551434254843"><div class="ic tel"><i class="fa-solid fa-phone"></i></div><div><strong>Telefone</strong><small>(14) 3425-4843 · (14) 3425-3931</small></div><i class="fa-solid fa-arrow-right"></i></a>
-        <a class="canal" href="https://www.instagram.com/casaharmoniadecor/" target="_blank"><div class="ic insta"><i class="fa-brands fa-instagram"></i></div><div><strong>Instagram</strong><small>@casaharmoniadecor</small></div><i class="fa-solid fa-arrow-right"></i></a>
-        <a class="canal" href="https://www.google.com/maps/search/?api=1&query=Av.+Yusaburo+Sasazaki,+1870,+Mar%C3%ADlia+-+SP" target="_blank"><div class="ic local"><i class="fa-solid fa-location-dot"></i></div><div><strong>Endereço</strong><small>Av. Yusaburo Sasazaki, 1870 · Distrito Industrial · Marília/SP · CEP 17512-031</small></div><i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec-creme">
-    <div class="container">
-      <div class="titulo-sec"><span class="tag"><i class="fa-solid fa-location-dot"></i> Localização</span><h2>Como chegar</h2></div>
-      <iframe class="mapa" loading="lazy" title="Mapa da Casa Harmonia" src="https://maps.google.com/maps?q=Av.%20Yusaburo%20Sasazaki%2C%201870%2C%20Mar%C3%ADlia%20-%20SP&z=15&output=embed"></iframe>
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-      <div class="cta">
-        <h2>Quer renovar seu ambiente com beleza, criatividade e personalidade?</h2>
-        <p>Nossa equipe está pronta para ajudar você a encontrar a solução ideal. Entre em contato, tire suas dúvidas e solicite um orçamento personalizado. Vamos transformar seu espaço juntos!</p>
-        <div class="acoes"><a href="#" data-wpp="Olá! Gostaria de um orçamento personalizado." target="_blank" class="btn btn-branco"><i class="fa-brands fa-whatsapp"></i> Entre em contato</a></div>
-      </div>
-    </div>
-  </section>
-  <div class="container pag-nav" data-pag="contato"></div>
+<div class="page-head" data-sec="contato-1">
+<div class="foto bg"><img alt="" data-foto="sala2"/></div><div class="veu"></div>
+<div class="conteudo">
+<span class="tag" data-edit="contato-1.1">Contato</span>
+<h1 data-edit="contato-1.2">Vamos transformar seu espaço juntos!</h1>
+<p data-edit="contato-1.3">Fale com a nossa equipe e solicite um orçamento personalizado.</p>
+<div class="migalha"><a href="#inicio">Início</a> › Contato</div>
 </div>
-
-<!-- ======================= SEJA UM REVENDEDOR ======================= -->
-<div class="page" id="p-revendedor">
-  <div class="page-head">
-    <div class="foto bg"><img data-foto="entrega" alt=""></div><div class="veu"></div>
-    <div class="conteudo">
-      <span class="tag"><i class="fa-solid fa-store"></i> Seja um Revendedor</span>
-      <h1>Venda nossos produtos sem ter estoque</h1>
-      <p>Você vende na sua loja, a Casa Harmonia produz e envia direto para o seu cliente, em todo o Brasil.</p>
-      <div class="acoes" style="justify-content:center;margin-top:24px">
-        <a href="#catalogo-rev" class="btn btn-branco" onclick="irPara(event,'catalogo-rev')"><i class="fa-solid fa-book-open"></i> Ver catálogo</a>
-        <a href="#como-funciona" class="btn btn-vazado" onclick="irPara(event,'como-funciona')">Como funciona</a>
-      </div>
-      <div class="migalha"><a href="#inicio">Início</a> › Seja um Revendedor</div>
-    </div>
-  </div>
-
-  <!-- O que é -->
-  <section id="como-funciona">
-    <div class="container">
-      <div class="titulo-sec">
-        <span class="tag">O que é a revenda sem estoque?</span>
-        <h2>Você vende. Nós produzimos e entregamos.</h2>
-        <p>Nesse modelo, também chamado de <strong>dropshipping</strong>, você anuncia nossos produtos na sua loja virtual, marketplace ou redes sociais sem comprar nada antes. Quando o seu cliente compra, você repassa o pedido para nós e a gente cuida da produção e do envio.</p>
-      </div>
-      <div class="fluxo">
-        <div class="passo-fluxo"><div class="circ"><i class="fa-solid fa-cart-shopping"></i><b>1</b></div><h4>Seu cliente compra</h4><p>Ele faz o pedido na sua loja, pelo preço que você definiu.</p></div>
-        <div class="passo-fluxo"><div class="circ"><i class="fa-solid fa-paper-plane"></i><b>2</b></div><h4>Você repassa o pedido</h4><p>Envia para a Casa Harmonia com os dados de entrega.</p></div>
-        <div class="passo-fluxo"><div class="circ"><i class="fa-solid fa-industry"></i><b>3</b></div><h4>Nós produzimos</h4><p>Produção própria, com o padrão de qualidade da marca.</p></div>
-        <div class="passo-fluxo"><div class="circ"><i class="fa-solid fa-truck-fast"></i><b>4</b></div><h4>Enviamos ao cliente</h4><p>Entrega direto no endereço do seu cliente, em todo o Brasil.</p></div>
-      </div>
-      <div class="quem">
-        <div class="card"><div class="ic"><i class="fa-solid fa-user-tie"></i></div><div><h4>O que fica com você</h4><ul><li><i class="fa-solid fa-check"></i>Divulgar e vender os produtos</li><li><i class="fa-solid fa-check"></i>Definir o seu preço de venda</li><li><i class="fa-solid fa-check"></i>Atender o seu cliente</li></ul></div></div>
-        <div class="card"><div class="ic"><i class="fa-solid fa-house-chimney"></i></div><div><h4>O que fica com a Casa Harmonia</h4><ul><li><i class="fa-solid fa-check"></i>Produção e personalização</li><li><i class="fa-solid fa-check"></i>Embalagem e envio</li><li><i class="fa-solid fa-check"></i>Fotos, fichas técnicas e NCM</li></ul></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Vantagens -->
-  <section class="sec-creme">
-    <div class="container">
-      <div class="titulo-sec"><span class="tag">Vantagens</span><h2>Por que revender Casa Harmonia</h2></div>
-      <div class="grid-3">
-        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-boxes-stacked"></i></div><h3>Zero estoque</h3><p>Nada de capital parado: você só paga quando vende.</p></div>
-        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-industry"></i></div><h3>Fabricante direto</h3><p>Produção própria há mais de 30 anos, com certificação ISO 9001:2015.</p></div>
-        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-wand-magic-sparkles"></i></div><h3>Produtos personalizáveis</h3><p>Medidas e estampas sob encomenda: um diferencial para a sua loja.</p></div>
-        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-file-csv"></i></div><h3>Planilha pronta</h3><p>Exporte nome, descrição, NCM, medidas e preços para cadastrar tudo de uma vez.</p></div>
-        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-map-location-dot"></i></div><h3>Envio nacional</h3><p>Venda para clientes de qualquer estado do Brasil.</p></div>
-        <div class="card card-icone"><div class="ic"><i class="fa-solid fa-headset"></i></div><h3>Suporte ao revendedor</h3><p>Atendimento dedicado pelo WhatsApp para tirar dúvidas e acompanhar pedidos.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Catálogo -->
-  <section id="catalogo-rev">
-    <div class="container">
-      <div class="titulo-sec"><span class="tag"><i class="fa-solid fa-book-open"></i> Catálogo do revendedor</span><h2>Conheça os produtos</h2><p>Sem cadastro você vê a foto e o nome. Cadastre-se para liberar descrição, preços, NCM, medidas e planilhas.</p></div>
-      <div class="status" id="statusBox"></div>
-
-      <div class="cat-layout">
-        <aside class="filtros" id="painelFiltros">
-          <h4>Categorias</h4>
-          <div id="filtroCats"></div>
-
-          <div class="bloco-trava" id="travaFiltros">
-            <h4>Preço para revenda</h4>
-            <div class="opcoes">
-              <label><input type="radio" name="faixa" value="todas" checked> Todas as faixas</label>
-              <label><input type="radio" name="faixa" value="0-50"> Até R$ 50</label>
-              <label><input type="radio" name="faixa" value="50-100"> R$ 50 a R$ 100</label>
-              <label><input type="radio" name="faixa" value="100-9999"> Acima de R$ 100</label>
-            </div>
-            <h4>Disponibilidade de preço</h4>
-            <div class="opcoes">
-              <label><input type="checkbox" id="soComPreco"> Somente com preço definido</label>
-            </div>
-            <h4>Ambiente</h4>
-            <div class="opcoes">
-              <select id="filtroAmbiente">
-                <option value="">Todos os ambientes</option>
-                <option>Sala</option><option>Quarto</option><option>Cozinha</option><option>Banheiro</option><option>Comercial</option><option>Náutico</option>
-              </select>
-            </div>
-            <div class="trava-msg"><i class="fa-solid fa-lock"></i> Filtros liberados após o cadastro</div>
-          </div>
-          <button class="btn btn-sm btn-outline" style="width:100%;margin-top:18px" onclick="limparFiltros()"><i class="fa-solid fa-rotate-left"></i> Limpar filtros</button>
-        </aside>
-
-        <div>
-          <div class="barra">
-            <button class="btn btn-sm btn-outline btn-filtros" onclick="document.getElementById('painelFiltros').classList.toggle('aberto')"><i class="fa-solid fa-sliders"></i> Filtros</button>
-            <div class="busca"><i class="fa-solid fa-magnifying-glass"></i><input id="busca" type="search" placeholder="Buscar produto..."></div>
-            <select id="ordenar">
-              <option value="nome">Ordenar: nome A-Z</option>
-              <option value="menor">Menor preço</option>
-              <option value="maior">Maior preço</option>
-            </select>
-          </div>
-          <div class="contagem" id="contagem"></div>
-          <div class="grid-prod" id="gridProdutos"></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Planilhas -->
-  <section class="sec-creme" id="planilhas-rev">
-    <div class="container">
-      <div class="titulo-sec"><span class="tag"><i class="fa-solid fa-file-csv"></i> Planilhas</span><h2>Exporte e importe produtos</h2><p>Leve o catálogo para a sua loja em poucos cliques. Os arquivos abrem no Excel e no Google Planilhas.</p></div>
-      <div class="planilhas" id="blocoPlanilhas">
-        <div class="card">
-          <div class="ic"><i class="fa-solid fa-file-export"></i></div>
-          <h3>Exportar catálogo</h3>
-          <p>Escolha uma categoria ou baixe todos os produtos de uma vez.</p>
-          <select id="expCat"></select>
-          <div class="info" id="expInfo"></div>
-          <button class="btn btn-sm" style="width:100%" onclick="exportarSelecionado()"><i class="fa-solid fa-download"></i> Exportar planilha</button>
-        </div>
-        <div class="card">
-          <div class="ic"><i class="fa-solid fa-file-import"></i></div>
-          <h3>Importar produtos</h3>
-          <p>Envie uma planilha no formato do modelo para adicionar ou atualizar produtos pelo código (SKU).</p>
-          <button class="btn btn-sm" style="width:100%" onclick="document.getElementById('arqImport').click()"><i class="fa-solid fa-upload"></i> Importar planilha</button>
-        </div>
-        <div class="card">
-          <div class="ic"><i class="fa-solid fa-table"></i></div>
-          <h3>Modelo de planilha</h3>
-          <p>Baixe o modelo com todas as colunas já organizadas e um exemplo preenchido.</p>
-          <button class="btn btn-sm btn-outline" style="width:100%" onclick="baixarModelo()"><i class="fa-solid fa-download"></i> Baixar modelo</button>
-        </div>
-        <div class="planilhas-trava"><i class="fa-solid fa-lock"></i><strong>Planilhas disponíveis para revendedores</strong><span class="txt-suave">Cadastre-se para exportar e importar o catálogo.</span><button class="btn btn-sm" onclick="abrirModal('mCadastro')">Fazer cadastro</button></div>
-      </div>
-      <div class="colunas" id="colunasInfo"></div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section>
-    <div class="container">
-      <div class="titulo-sec"><span class="tag">Dúvidas</span><h2>Perguntas frequentes</h2></div>
-      <div class="faq">
-        <details><summary>Preciso ter CNPJ para revender?</summary><p>Não é obrigatório. O cadastro aceita CNPJ ou CPF.</p></details>
-        <details><summary>Preciso comprar estoque antes de vender?</summary><p>Não. Você só faz o pedido para a Casa Harmonia depois que o seu cliente compra.</p></details>
-        <details><summary>Quem define o preço de venda?</summary><p>Você. No catálogo mostramos o preço para revenda e um preço sugerido, mas a decisão final é sua.</p></details>
-        <details><summary>Como cadastro os produtos na minha loja?</summary><p>Exporte a planilha com as informações dos produtos (nome, descrição, NCM, medidas, peso e preço) e importe na sua plataforma de vendas.</p></details>
-        <details><summary>Para onde vocês enviam?</summary><p>Para todo o Brasil, direto no endereço do seu cliente.</p></details>
-        <details><summary>Posso vender produtos personalizados?</summary><p>Sim. Fale com nossa equipe pelo WhatsApp para alinhar medidas e estampas sob encomenda.</p></details>
-      </div>
-      <div style="text-align:center;margin-top:30px"><a href="#" data-wpp="Olá! Tenho interesse em ser revendedor Casa Harmonia." target="_blank" class="btn btn-wpp"><i class="fa-brands fa-whatsapp"></i> Falar com o setor de revenda</a></div>
-    </div>
-  </section>
-
-  <div class="container" style="padding-bottom:20px">
-    <div class="destaque" style="background:#FFF6DE;border-color:#E2B84B"><i class="fa-solid fa-flask" style="color:#B8891F"></i><span style="font-size:.85rem">Demonstração: o acesso é liberado na hora e os dados ficam salvos só neste navegador. No site final, o cadastro vai para um painel onde a equipe da URA aprova cada revendedor.</span></div>
-  </div>
-  <div class="container pag-nav" data-pag="revendedor"></div>
+</div>
+<section data-sec="contato-2">
+<div class="container grid-2" style="align-items:start">
+<div class="card" style="padding:32px">
+<h2 class="mb" data-edit="contato-2.1" style="font-size:1.6rem">Envie sua mensagem</h2>
+<form class="form" onsubmit="enviarContato(event)">
+<div><label>Nome</label><input name="nome" required=""/></div>
+<div class="form-2">
+<div><label>Telefone</label><input name="tel" placeholder="(00) 00000-0000" required="" type="tel"/></div>
+<div><label>E-mail</label><input name="email" required="" type="email"/></div>
+</div>
+<div><label>Assunto</label><input name="assunto" required=""/></div>
+<div><label>Mensagem</label><textarea name="msg" required="" rows="5"></textarea></div>
+<button class="btn" type="submit"><i class="fa-solid fa-paper-plane"></i> Enviar mensagem</button>
+</form>
+</div>
+<div class="canais">
+<a class="canal" data-wpp="Olá! Gostaria de tirar uma dúvida." href="#" target="_blank"><div class="ic wpp"><i class="fa-brands fa-whatsapp"></i></div><div><strong>WhatsApp</strong><small><span data-c="whatsapp_txt">(14) 99696-9391</span></small></div><i class="fa-solid fa-arrow-right"></i></a>
+<a class="canal" data-tel="" href="#"><div class="ic tel"><i class="fa-solid fa-phone"></i></div><div><strong>Telefone</strong><small><span data-c="telefones_txt">(14) 3425-4843 · (14) 3425-3931</span></small></div><i class="fa-solid fa-arrow-right"></i></a>
+<a class="canal" data-insta="" href="#" target="_blank"><div class="ic insta"><i class="fa-brands fa-instagram"></i></div><div><strong>Instagram</strong><small data-c="instagram_txt">@casaharmoniadecor</small></div><i class="fa-solid fa-arrow-right"></i></a>
+<a class="canal" data-maps="" href="#" target="_blank"><div class="ic local"><i class="fa-solid fa-location-dot"></i></div><div><strong>Endereço</strong><small><span data-c="endereco_txt">Av. Yusaburo Sasazaki, 1870 · Distrito Industrial · Marília/SP · CEP 17512-031</span></small></div><i class="fa-solid fa-arrow-right"></i></a>
+</div>
+</div>
+</section>
+<section class="sec-creme" data-sec="contato-3">
+<div class="container">
+<div class="titulo-sec"><span class="tag"><i class="fa-solid fa-location-dot"></i> <span data-edit="contato-3.1">Localização</span></span><h2 data-edit="contato-3.2">Como chegar</h2></div>
+<iframe class="mapa" data-mapa="" loading="lazy" title="Mapa da Casa Harmonia"></iframe>
+</div>
+</section>
+<section data-sec="contato-4">
+<div class="container">
+<div class="cta">
+<h2 data-edit="contato-4.1">Quer renovar seu ambiente com beleza, criatividade e personalidade?</h2>
+<p data-edit="contato-4.2">Nossa equipe está pronta para ajudar você a encontrar a solução ideal. Entre em contato, tire suas dúvidas e solicite um orçamento personalizado. Vamos transformar seu espaço juntos!</p>
+<div class="acoes"><a class="btn btn-branco" data-wpp="Olá! Gostaria de um orçamento personalizado." href="#" target="_blank"><i class="fa-brands fa-whatsapp"></i> <span data-edit="contato-4.3">Entre em contato</span></a></div>
+</div>
+</div>
+</section>
+<div class="container pag-nav" data-pag="contato"></div>
+</div>
+<!-- ======================= REVENDA ATACADO ======================= -->
+<div class="page" id="p-atacado">
+<div class="page-head" data-sec="atacado-1">
+<div class="foto bg"><img alt="" data-foto="loja"/></div><div class="veu"></div>
+<div class="conteudo">
+<span class="tag"><i class="fa-solid fa-boxes-stacked"></i> <span data-edit="atacado-1.1">Revenda Atacado</span></span>
+<h1 data-edit="atacado-1.2">Compre em quantidade com preço de atacado</h1>
+<p data-edit="atacado-1.3">Para lojas, decoradores e revendedores que querem ter os produtos Casa Harmonia em estoque. Pedido mínimo de R$ 1.000.</p>
+<div class="acoes" style="justify-content:center;margin-top:24px">
+<a class="btn btn-branco" href="#catalogo-atacado" onclick="irPara(event,'catalogo-atacado')"><i class="fa-solid fa-book-open"></i> <span data-edit="atacado-1.4">Ver catálogo</span></a>
+<a class="btn btn-vazado" data-edit="atacado-1.5" href="#como-atacado" onclick="irPara(event,'como-atacado')">Como funciona</a>
+</div>
+<div class="migalha"><a href="#inicio">Início</a> › Revenda Atacado</div>
+</div>
+</div>
+<section data-sec="atacado-2" id="como-atacado">
+<div class="container">
+<div class="titulo-sec"><span class="tag" data-edit="atacado-2.1">Como funciona o atacado</span><h2 data-edit="atacado-2.2">Você compra em quantidade. Nós produzimos e enviamos.</h2><p data-edit="atacado-2.3">No atacado você compra os produtos com preço especial para revender na sua loja física ou virtual. O pedido mínimo é de <strong>R$ 1.000</strong>, e você pode combinar produtos de categorias diferentes.</p></div>
+<div class="fluxo">
+<div class="passo-fluxo"><div class="circ"><i class="fa-solid fa-user-plus"></i><b>1</b></div><h4 data-edit="atacado-2.4">Faça seu cadastro</h4><p data-edit="atacado-2.5">Preencha seus dados de revendedor aqui no site.</p></div>
+<div class="passo-fluxo"><div class="circ"><i class="fa-solid fa-key"></i><b>2</b></div><h4 data-edit="atacado-2.6">Receba seu acesso</h4><p data-edit="atacado-2.7">A equipe Casa Harmonia libera o seu login com os preços de atacado.</p></div>
+<div class="passo-fluxo"><div class="circ"><i class="fa-solid fa-cart-plus"></i><b>3</b></div><h4 data-edit="atacado-2.8">Monte seu pedido</h4><p data-edit="atacado-2.9">Escolha produtos e quantidades a partir de R$ 1.000 e envie pelo WhatsApp.</p></div>
+<div class="passo-fluxo"><div class="circ"><i class="fa-solid fa-truck-fast"></i><b>4</b></div><h4 data-edit="atacado-2.10">Receba e revenda</h4><p data-edit="atacado-2.11">Produzimos e enviamos para a sua loja. Você revende com a sua margem.</p></div>
+</div>
+<div class="destaque" style="max-width:820px;margin:44px auto 0"><i class="fa-solid fa-circle-info"></i> <span data-edit="atacado-2.12">Frete, formas de pagamento e prazo de entrega são confirmados pela equipe Casa Harmonia no fechamento de cada pedido.</span></div>
+</div>
+</section>
+<section class="sec-creme" data-sec="atacado-3">
+<div class="container">
+<div class="titulo-sec"><span class="tag" data-edit="atacado-3.1">Compare</span><h2 data-edit="atacado-3.2">Atacado ou dropshipping?</h2><p data-edit="atacado-3.3">Veja qual modelo combina mais com o seu negócio. Você pode ter cadastro nos dois.</p></div>
+<div class="comparativo foco-atacado">
+<div class="comp-linha"><p></p><p data-edit="atacado-3.4">Revenda Atacado</p><p data-edit="atacado-3.5">Dropshipping</p></div>
+<div class="comp-linha"><p data-edit="atacado-3.6">Para quem</p><p data-edit="atacado-3.7">Lojas, decoradores e revendedores que querem ter estoque</p><p data-edit="atacado-3.8">Lojas virtuais, marketplaces e quem vende pelas redes sociais</p></div>
+<div class="comp-linha"><p data-edit="atacado-3.9">Como funciona</p><p data-edit="atacado-3.10">Você compra os produtos e revende na sua loja</p><p data-edit="atacado-3.11">Você vende e nós enviamos direto ao seu cliente</p></div>
+<div class="comp-linha"><p data-edit="atacado-3.12">Pedido mínimo</p><p data-edit="atacado-3.13">R$ 1.000 por pedido</p><p data-edit="atacado-3.14">Sem compra antecipada de estoque</p></div>
+<div class="comp-linha"><p data-edit="atacado-3.15">Estoque</p><p data-edit="atacado-3.16">Fica com você</p><p data-edit="atacado-3.17">Fica com a Casa Harmonia</p></div>
+<div class="comp-linha"><p data-edit="atacado-3.18">Entrega</p><p data-edit="atacado-3.19">No endereço da sua loja</p><p data-edit="atacado-3.20">No endereço do seu cliente</p></div>
+<div class="comp-linha"><p data-edit="atacado-3.21">Preço que você vê</p><p data-edit="atacado-3.22">Preço de atacado</p><p data-edit="atacado-3.23">Preço para revenda e preço sugerido de venda</p></div>
+</div>
+<div style="text-align:center;margin-top:26px"><a class="btn btn-outline" href="#dropshipping"><span data-edit="atacado-3.24">Conhecer o dropshipping</span> <i class="fa-solid fa-arrow-right"></i></a></div>
+</div>
+</section>
+<section data-sec="atacado-4">
+<div class="container">
+<div class="titulo-sec"><span class="tag" data-edit="atacado-4.1">Vantagens</span><h2 data-edit="atacado-4.2">Por que comprar no atacado Casa Harmonia</h2></div>
+<div class="grid-3">
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-tags"></i></div><h3 data-edit="atacado-4.3">Preço de atacado</h3><p data-edit="atacado-4.4">Preços especiais para revenda, liberados no seu login.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-industry"></i></div><h3 data-edit="atacado-4.5">Direto do fabricante</h3><p data-edit="atacado-4.6">Produção própria há mais de 30 anos, com certificação ISO 9001:2015.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-layer-group"></i></div><h3 data-edit="atacado-4.7">Mix variado</h3><p data-edit="atacado-4.8">Combine papéis de parede, adesivos, quadros e mais no mesmo pedido.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-wand-magic-sparkles"></i></div><h3 data-edit="atacado-4.9">Produtos personalizáveis</h3><p data-edit="atacado-4.10">Medidas, cores e estampas sob encomenda para a sua loja.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-map-location-dot"></i></div><h3 data-edit="atacado-4.11">Envio nacional</h3><p data-edit="atacado-4.12">Enviamos para lojas de todo o Brasil.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-headset"></i></div><h3 data-edit="atacado-4.13">Atendimento dedicado</h3><p data-edit="atacado-4.14">A equipe Casa Harmonia ajuda você a montar o pedido ideal.</p></div>
+</div>
+</div>
+</section>
+<section class="sec-creme" data-sec="atacado-5" id="catalogo-atacado">
+<div class="container">
+<div class="titulo-sec"><span class="tag"><i class="fa-solid fa-book-open"></i> <span data-edit="atacado-5.1">Catálogo atacado</span></span><h2 data-edit="atacado-5.2">Monte o seu pedido</h2><p data-edit="atacado-5.3">Sem cadastro você vê a foto e o nome. Com o acesso liberado aparecem os preços de atacado e você monta o pedido a partir de R$ 1.000.</p></div>
+<div class="status" data-js="" id="status-atacado"></div>
+<div class="cat-layout">
+<aside class="filtros" id="filtros-atacado">
+<h4 data-edit="atacado-5.4">Categorias</h4>
+<div data-js="" id="cats-atacado"></div>
+<div class="bloco-trava" id="trava-atacado">
+<h4 data-edit="atacado-5.5">Faixa de preço</h4>
+<div class="opcoes">
+<label><input checked="" name="faixa-atacado" type="radio" value="todas"/> Todas as faixas</label>
+<label><input name="faixa-atacado" type="radio" value="0-50"/> Até R$ 50</label>
+<label><input name="faixa-atacado" type="radio" value="50-100"/> R$ 50 a R$ 100</label>
+<label><input name="faixa-atacado" type="radio" value="100-999999"/> Acima de R$ 100</label>
+</div>
+<h4 data-edit="atacado-5.6">Disponibilidade de preço</h4>
+<div class="opcoes"><label><input id="soPreco-atacado" type="checkbox"/> Somente com preço definido</label></div>
+<h4 data-edit="atacado-5.7">Ambiente</h4>
+<div class="opcoes"><select id="amb-atacado"></select></div>
+<div class="trava-msg"><i class="fa-solid fa-lock"></i> Filtros liberados após o cadastro</div>
+</div>
+<button class="btn btn-sm btn-outline" onclick="limparFiltros('atacado')" style="width:100%;margin-top:18px"><i class="fa-solid fa-rotate-left"></i> <span data-edit="atacado-5.8">Limpar filtros</span></button>
+</aside>
+<div>
+<div class="barra">
+<button class="btn btn-sm btn-outline btn-filtros" onclick="document.getElementById('filtros-atacado').classList.toggle('aberto')"><i class="fa-solid fa-sliders"></i> <span data-edit="atacado-5.9">Filtros</span></button>
+<div class="busca"><i class="fa-solid fa-magnifying-glass"></i><input id="busca-atacado" placeholder="Buscar produto..." type="search"/></div>
+<select id="ordem-atacado"><option value="nome">Ordenar: nome A-Z</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option></select>
+</div>
+<div class="contagem" data-js="" id="cont-atacado"></div>
+<div class="grid-prod" data-js="" id="grid-atacado"></div>
+</div>
+</div>
+</div>
+</section>
+<section data-sec="atacado-6" id="planilhas-atacado">
+<div class="container">
+<div class="titulo-sec"><span class="tag"><i class="fa-solid fa-file-csv"></i> <span data-edit="atacado-6.1">Tabela de preços</span></span><h2 data-edit="atacado-6.2">Baixe a tabela de atacado</h2><p data-edit="atacado-6.3">Exporte os produtos com preços e fichas técnicas, por categoria ou completa. O arquivo abre no Excel e no Google Planilhas.</p></div>
+<div class="planilhas dois" id="plan-atacado">
+<div class="card">
+<div class="ic"><i class="fa-solid fa-file-export"></i></div>
+<h3 data-edit="atacado-6.4">Exportar tabela de preços</h3>
+<p data-edit="atacado-6.5">Escolha uma categoria ou baixe todos os produtos de uma vez.</p>
+<select id="expCat-atacado"></select>
+<div class="info" data-js="" id="expInfo-atacado"></div>
+<button class="btn btn-sm" onclick="exportarSelecionado('atacado')" style="width:100%"><i class="fa-solid fa-download"></i> <span data-edit="atacado-6.6">Exportar planilha</span></button>
+</div>
+<div class="card">
+<div class="ic"><i class="fa-brands fa-whatsapp"></i></div>
+<h3 data-edit="atacado-6.7">Prefere montar o pedido com a gente?</h3>
+<p data-edit="atacado-6.8">Fale com o atendimento Casa Harmonia e receba ajuda para escolher produtos e quantidades.</p>
+<a class="btn btn-sm btn-wpp" data-wppmsg="atacado" href="#" style="width:100%" target="_blank"><i class="fa-brands fa-whatsapp"></i> <span data-edit="atacado-6.9">Falar sobre atacado</span></a>
+</div>
+<div class="planilhas-trava"><i class="fa-solid fa-lock"></i><strong>Disponível para revendedores cadastrados</strong><span class="txt-suave">Cadastre-se para baixar as planilhas com preços e fichas técnicas.</span><button class="btn btn-sm" onclick="abrirCadastro('atacado')">Fazer cadastro</button></div>
+</div>
+<div class="colunas" data-js="" id="cols-atacado"></div>
+</div>
+</section>
+<section class="sec-creme" data-sec="atacado-7">
+<div class="container">
+<div class="titulo-sec"><span class="tag" data-edit="atacado-7.1">Dúvidas</span><h2 data-edit="atacado-7.2">Perguntas frequentes sobre o atacado</h2></div>
+<div class="faq">
+<details><summary data-edit="atacado-7.3">Qual é o pedido mínimo?</summary><p data-edit="atacado-7.4">R$ 1.000 por pedido. Você pode combinar produtos de categorias diferentes para chegar ao valor.</p></details>
+<details><summary data-edit="atacado-7.5">Preciso ter CNPJ?</summary><p data-edit="atacado-7.6">Não é obrigatório. O cadastro aceita CNPJ ou CPF.</p></details>
+<details><summary data-edit="atacado-7.7">Como recebo o meu acesso?</summary><p data-edit="atacado-7.8">Depois do cadastro, a equipe Casa Harmonia analisa e libera o seu login. Com ele você vê os preços de atacado e monta o pedido.</p></details>
+<details><summary data-edit="atacado-7.9">Como faço o pedido?</summary><p data-edit="atacado-7.10">Monte o pedido no catálogo e envie pelo WhatsApp. A equipe confirma disponibilidade, frete, forma de pagamento e prazo.</p></details>
+<details><summary data-edit="atacado-7.11">Posso pedir produtos personalizados?</summary><p data-edit="atacado-7.12">Sim. Fale com a equipe pelo WhatsApp para alinhar medidas, cores e estampas.</p></details>
+<details><summary data-edit="atacado-7.13">Também posso fazer dropshipping?</summary><p data-edit="atacado-7.14">Sim. Você pode ter cadastro nas duas modalidades.</p></details>
+</div>
+<div style="text-align:center;margin-top:30px"><a class="btn btn-wpp" data-wppmsg="atacado" href="#" target="_blank"><i class="fa-brands fa-whatsapp"></i> <span data-edit="atacado-7.15">Falar sobre Revenda Atacado</span></a></div>
+</div>
+</section>
+<div class="container" style="padding-bottom:20px">
+<div class="destaque" style="background:#FFF6DE;border-color:#E2B84B"><i class="fa-solid fa-flask" style="color:#B8891F"></i><span style="font-size:.85rem">Protótipo: os cadastros e pedidos ficam salvos neste navegador. Na versão final, os dados ficam num banco de dados e a equipe comercial aprova cada revendedor pelo painel.</span></div>
+</div>
+<div class="container pag-nav" data-pag="atacado"></div>
+</div>
+<!-- ======================= DROPSHIPPING ======================= -->
+<div class="page" id="p-dropshipping">
+<div class="page-head" data-sec="dropshipping-1">
+<div class="foto bg"><img alt="" data-foto="entrega"/></div><div class="veu"></div>
+<div class="conteudo">
+<span class="tag"><i class="fa-solid fa-truck-fast"></i> <span data-edit="dropshipping-1.1">Dropshipping</span></span>
+<h1 data-edit="dropshipping-1.2">Venda nossos produtos sem ter estoque</h1>
+<p data-edit="dropshipping-1.3">Você vende na sua loja virtual, marketplace ou redes sociais. A Casa Harmonia produz e envia direto para o seu cliente, em todo o Brasil.</p>
+<div class="acoes" style="justify-content:center;margin-top:24px">
+<a class="btn btn-branco" href="#catalogo-dropshipping" onclick="irPara(event,'catalogo-dropshipping')"><i class="fa-solid fa-book-open"></i> <span data-edit="dropshipping-1.4">Ver catálogo</span></a>
+<a class="btn btn-vazado" data-edit="dropshipping-1.5" href="#como-drop" onclick="irPara(event,'como-drop')">Como funciona</a>
+</div>
+<div class="migalha"><a href="#inicio">Início</a> › Dropshipping</div>
+</div>
+</div>
+<section data-sec="dropshipping-2" id="como-drop">
+<div class="container">
+<div class="titulo-sec">
+<span class="tag" data-edit="dropshipping-2.1">O que é dropshipping?</span>
+<h2 data-edit="dropshipping-2.2">Você vende. Nós produzimos e entregamos.</h2>
+<p data-edit="dropshipping-2.3">No dropshipping você anuncia nossos produtos na sua loja virtual, marketplace ou redes sociais sem comprar estoque antes. Quando o seu cliente compra, você repassa o pedido para a Casa Harmonia e a gente cuida da produção e do envio.</p>
+</div>
+<div class="fluxo">
+<div class="passo-fluxo"><div class="circ"><i class="fa-solid fa-cart-shopping"></i><b>1</b></div><h4 data-edit="dropshipping-2.4">Seu cliente compra</h4><p data-edit="dropshipping-2.5">Ele faz o pedido na sua loja, pelo preço que você definiu.</p></div>
+<div class="passo-fluxo"><div class="circ"><i class="fa-solid fa-paper-plane"></i><b>2</b></div><h4 data-edit="dropshipping-2.6">Você repassa o pedido</h4><p data-edit="dropshipping-2.7">Envia para a Casa Harmonia com os dados de entrega.</p></div>
+<div class="passo-fluxo"><div class="circ"><i class="fa-solid fa-industry"></i><b>3</b></div><h4 data-edit="dropshipping-2.8">Nós produzimos</h4><p data-edit="dropshipping-2.9">Produção própria, com o padrão de qualidade da marca.</p></div>
+<div class="passo-fluxo"><div class="circ"><i class="fa-solid fa-truck-fast"></i><b>4</b></div><h4 data-edit="dropshipping-2.10">Enviamos ao cliente</h4><p data-edit="dropshipping-2.11">Entrega direto no endereço do seu cliente, em todo o Brasil.</p></div>
+</div>
+<div class="quem">
+<div class="card"><div class="ic"><i class="fa-solid fa-user-tie"></i></div><div><h4 data-edit="dropshipping-2.12">O que fica com você</h4><ul><li><i class="fa-solid fa-check"></i><span data-edit="dropshipping-2.13">Divulgar e vender os produtos</span></li><li><i class="fa-solid fa-check"></i><span data-edit="dropshipping-2.14">Definir o seu preço de venda</span></li><li><i class="fa-solid fa-check"></i><span data-edit="dropshipping-2.15">Atender o seu cliente</span></li></ul></div></div>
+<div class="card"><div class="ic"><i class="fa-solid fa-house-chimney"></i></div><div><h4 data-edit="dropshipping-2.16">O que fica com a Casa Harmonia</h4><ul><li><i class="fa-solid fa-check"></i><span data-edit="dropshipping-2.17">Produção e personalização</span></li><li><i class="fa-solid fa-check"></i><span data-edit="dropshipping-2.18">Embalagem e envio</span></li><li><i class="fa-solid fa-check"></i><span data-edit="dropshipping-2.19">Fotos, fichas técnicas e NCM</span></li></ul></div></div>
+</div>
+</div>
+</section>
+<section class="sec-creme" data-sec="dropshipping-3">
+<div class="container">
+<div class="titulo-sec"><span class="tag" data-edit="dropshipping-3.1">Compare</span><h2 data-edit="dropshipping-3.2">Atacado ou dropshipping?</h2><p data-edit="dropshipping-3.3">Veja qual modelo combina mais com o seu negócio. Você pode ter cadastro nos dois.</p></div>
+<div class="comparativo foco-dropshipping">
+<div class="comp-linha"><p></p><p data-edit="dropshipping-3.4">Revenda Atacado</p><p data-edit="dropshipping-3.5">Dropshipping</p></div>
+<div class="comp-linha"><p data-edit="dropshipping-3.6">Para quem</p><p data-edit="dropshipping-3.7">Lojas, decoradores e revendedores que querem ter estoque</p><p data-edit="dropshipping-3.8">Lojas virtuais, marketplaces e quem vende pelas redes sociais</p></div>
+<div class="comp-linha"><p data-edit="dropshipping-3.9">Como funciona</p><p data-edit="dropshipping-3.10">Você compra os produtos e revende na sua loja</p><p data-edit="dropshipping-3.11">Você vende e nós enviamos direto ao seu cliente</p></div>
+<div class="comp-linha"><p data-edit="dropshipping-3.12">Pedido mínimo</p><p data-edit="dropshipping-3.13">R$ 1.000 por pedido</p><p data-edit="dropshipping-3.14">Sem compra antecipada de estoque</p></div>
+<div class="comp-linha"><p data-edit="dropshipping-3.15">Estoque</p><p data-edit="dropshipping-3.16">Fica com você</p><p data-edit="dropshipping-3.17">Fica com a Casa Harmonia</p></div>
+<div class="comp-linha"><p data-edit="dropshipping-3.18">Entrega</p><p data-edit="dropshipping-3.19">No endereço da sua loja</p><p data-edit="dropshipping-3.20">No endereço do seu cliente</p></div>
+<div class="comp-linha"><p data-edit="dropshipping-3.21">Preço que você vê</p><p data-edit="dropshipping-3.22">Preço de atacado</p><p data-edit="dropshipping-3.23">Preço para revenda e preço sugerido de venda</p></div>
+</div>
+<div style="text-align:center;margin-top:26px"><a class="btn btn-outline" href="#atacado"><span data-edit="dropshipping-3.24">Conhecer a Revenda Atacado</span> <i class="fa-solid fa-arrow-right"></i></a></div>
+</div>
+</section>
+<section data-sec="dropshipping-4">
+<div class="container">
+<div class="titulo-sec"><span class="tag" data-edit="dropshipping-4.1">Vantagens</span><h2 data-edit="dropshipping-4.2">Por que fazer dropshipping com a Casa Harmonia</h2></div>
+<div class="grid-3">
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-boxes-stacked"></i></div><h3 data-edit="dropshipping-4.3">Zero estoque</h3><p data-edit="dropshipping-4.4">Nada de capital parado: você só faz o pedido quando vende.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-industry"></i></div><h3 data-edit="dropshipping-4.5">Fabricante direto</h3><p data-edit="dropshipping-4.6">Produção própria há mais de 30 anos, com certificação ISO 9001:2015.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-wand-magic-sparkles"></i></div><h3 data-edit="dropshipping-4.7">Produtos personalizáveis</h3><p data-edit="dropshipping-4.8">Medidas e estampas sob encomenda: um diferencial para a sua loja.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-file-csv"></i></div><h3 data-edit="dropshipping-4.9">Planilha pronta</h3><p data-edit="dropshipping-4.10">Exporte nome, descrição, NCM, medidas e preços para cadastrar tudo de uma vez.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-map-location-dot"></i></div><h3 data-edit="dropshipping-4.11">Envio nacional</h3><p data-edit="dropshipping-4.12">Venda para clientes de qualquer estado do Brasil.</p></div>
+<div class="card card-icone"><div class="ic"><i class="fa-solid fa-headset"></i></div><h3 data-edit="dropshipping-4.13">Suporte ao revendedor</h3><p data-edit="dropshipping-4.14">Atendimento Casa Harmonia pelo WhatsApp para tirar dúvidas e acompanhar pedidos.</p></div>
+</div>
+</div>
+</section>
+<section class="sec-creme" data-sec="dropshipping-5" id="catalogo-dropshipping">
+<div class="container">
+<div class="titulo-sec"><span class="tag"><i class="fa-solid fa-book-open"></i> <span data-edit="dropshipping-5.1">Catálogo dropshipping</span></span><h2 data-edit="dropshipping-5.2">Conheça os produtos</h2><p data-edit="dropshipping-5.3">Sem cadastro você vê a foto e o nome. Cadastre-se para liberar descrição, preços, NCM, medidas e planilhas.</p></div>
+<div class="status" data-js="" id="status-dropshipping"></div>
+<div class="cat-layout">
+<aside class="filtros" id="filtros-dropshipping">
+<h4 data-edit="dropshipping-5.4">Categorias</h4>
+<div data-js="" id="cats-dropshipping"></div>
+<div class="bloco-trava" id="trava-dropshipping">
+<h4 data-edit="dropshipping-5.5">Faixa de preço</h4>
+<div class="opcoes">
+<label><input checked="" name="faixa-dropshipping" type="radio" value="todas"/> Todas as faixas</label>
+<label><input name="faixa-dropshipping" type="radio" value="0-50"/> Até R$ 50</label>
+<label><input name="faixa-dropshipping" type="radio" value="50-100"/> R$ 50 a R$ 100</label>
+<label><input name="faixa-dropshipping" type="radio" value="100-999999"/> Acima de R$ 100</label>
+</div>
+<h4 data-edit="dropshipping-5.6">Disponibilidade de preço</h4>
+<div class="opcoes"><label><input id="soPreco-dropshipping" type="checkbox"/> Somente com preço definido</label></div>
+<h4 data-edit="dropshipping-5.7">Ambiente</h4>
+<div class="opcoes"><select id="amb-dropshipping"></select></div>
+<div class="trava-msg"><i class="fa-solid fa-lock"></i> Filtros liberados após o cadastro</div>
+</div>
+<button class="btn btn-sm btn-outline" onclick="limparFiltros('dropshipping')" style="width:100%;margin-top:18px"><i class="fa-solid fa-rotate-left"></i> <span data-edit="dropshipping-5.8">Limpar filtros</span></button>
+</aside>
+<div>
+<div class="barra">
+<button class="btn btn-sm btn-outline btn-filtros" onclick="document.getElementById('filtros-dropshipping').classList.toggle('aberto')"><i class="fa-solid fa-sliders"></i> <span data-edit="dropshipping-5.9">Filtros</span></button>
+<div class="busca"><i class="fa-solid fa-magnifying-glass"></i><input id="busca-dropshipping" placeholder="Buscar produto..." type="search"/></div>
+<select id="ordem-dropshipping"><option value="nome">Ordenar: nome A-Z</option><option value="menor">Menor preço</option><option value="maior">Maior preço</option></select>
+</div>
+<div class="contagem" data-js="" id="cont-dropshipping"></div>
+<div class="grid-prod" data-js="" id="grid-dropshipping"></div>
+</div>
+</div>
+</div>
+</section>
+<section data-sec="dropshipping-6" id="planilhas-dropshipping">
+<div class="container">
+<div class="titulo-sec"><span class="tag"><i class="fa-solid fa-file-csv"></i> <span data-edit="dropshipping-6.1">Planilhas</span></span><h2 data-edit="dropshipping-6.2">Exporte e importe produtos</h2><p data-edit="dropshipping-6.3">Leve o catálogo para a sua loja em poucos cliques. Os arquivos abrem no Excel e no Google Planilhas.</p></div>
+<div class="planilhas" id="plan-dropshipping">
+<div class="card">
+<div class="ic"><i class="fa-solid fa-file-export"></i></div>
+<h3 data-edit="dropshipping-6.4">Exportar catálogo</h3>
+<p data-edit="dropshipping-6.5">Escolha uma categoria ou baixe todos os produtos de uma vez.</p>
+<select id="expCat-dropshipping"></select>
+<div class="info" data-js="" id="expInfo-dropshipping"></div>
+<button class="btn btn-sm" onclick="exportarSelecionado('dropshipping')" style="width:100%"><i class="fa-solid fa-download"></i> <span data-edit="dropshipping-6.6">Exportar planilha</span></button>
+</div>
+<div class="card">
+<div class="ic"><i class="fa-solid fa-file-import"></i></div>
+<h3 data-edit="dropshipping-6.7">Importar produtos</h3>
+<p data-edit="dropshipping-6.8">Envie uma planilha no formato do modelo para conferir os produtos antes de cadastrar na sua loja.</p>
+<button class="btn btn-sm" onclick="document.getElementById('arqImport').click()" style="width:100%"><i class="fa-solid fa-upload"></i> <span data-edit="dropshipping-6.9">Importar planilha</span></button>
+</div>
+<div class="card">
+<div class="ic"><i class="fa-solid fa-table"></i></div>
+<h3 data-edit="dropshipping-6.10">Modelo de planilha</h3>
+<p data-edit="dropshipping-6.11">Baixe o modelo com todas as colunas já organizadas e um exemplo preenchido.</p>
+<button class="btn btn-sm btn-outline" onclick="baixarModelo()" style="width:100%"><i class="fa-solid fa-download"></i> <span data-edit="dropshipping-6.12">Baixar modelo</span></button>
+</div>
+<div class="planilhas-trava"><i class="fa-solid fa-lock"></i><strong>Disponível para revendedores cadastrados</strong><span class="txt-suave">Cadastre-se para baixar as planilhas com preços e fichas técnicas.</span><button class="btn btn-sm" onclick="abrirCadastro('dropshipping')">Fazer cadastro</button></div>
+</div>
+<div class="colunas" data-js="" id="cols-dropshipping"></div>
+</div>
+</section>
+<section class="sec-creme" data-sec="dropshipping-7">
+<div class="container">
+<div class="titulo-sec"><span class="tag" data-edit="dropshipping-7.1">Dúvidas</span><h2 data-edit="dropshipping-7.2">Perguntas frequentes sobre dropshipping</h2></div>
+<div class="faq">
+<details><summary data-edit="dropshipping-7.3">Preciso ter CNPJ para revender?</summary><p data-edit="dropshipping-7.4">Não é obrigatório. O cadastro aceita CNPJ ou CPF.</p></details>
+<details><summary data-edit="dropshipping-7.5">Preciso comprar estoque antes de vender?</summary><p data-edit="dropshipping-7.6">Não. Você só faz o pedido para a Casa Harmonia depois que o seu cliente compra.</p></details>
+<details><summary data-edit="dropshipping-7.7">Quem define o preço de venda?</summary><p data-edit="dropshipping-7.8">Você. No catálogo mostramos o preço para revenda e um preço sugerido, mas a decisão final é sua.</p></details>
+<details><summary data-edit="dropshipping-7.9">Como cadastro os produtos na minha loja?</summary><p data-edit="dropshipping-7.10">Exporte a planilha com as informações dos produtos (nome, descrição, NCM, medidas, peso e preço) e importe na sua plataforma de vendas.</p></details>
+<details><summary data-edit="dropshipping-7.11">Para onde vocês enviam?</summary><p data-edit="dropshipping-7.12">Para todo o Brasil, direto no endereço do seu cliente.</p></details>
+<details><summary data-edit="dropshipping-7.13">Também posso comprar no atacado?</summary><p data-edit="dropshipping-7.14">Sim. Você pode ter cadastro nas duas modalidades.</p></details>
+</div>
+<div style="text-align:center;margin-top:30px"><a class="btn btn-wpp" data-wppmsg="dropshipping" href="#" target="_blank"><i class="fa-brands fa-whatsapp"></i> <span data-edit="dropshipping-7.15">Falar sobre Dropshipping</span></a></div>
+</div>
+</section>
+<div class="container" style="padding-bottom:20px">
+<div class="destaque" style="background:#FFF6DE;border-color:#E2B84B"><i class="fa-solid fa-flask" style="color:#B8891F"></i><span style="font-size:.85rem">Protótipo: os cadastros e pedidos ficam salvos neste navegador. Na versão final, os dados ficam num banco de dados e a equipe comercial aprova cada revendedor pelo painel.</span></div>
+</div>
+<div class="container pag-nav" data-pag="dropshipping"></div>
 </div>
 </main>
-
-<footer>
-  <div class="container">
-    <div class="foot">
-      <div>
-        <h4>Casa Harmonia Decorações</h4>
-        <p>Decoração, beleza e personalidade para cada ambiente. Papéis de parede, revestimentos adesivos e soluções personalizadas desde 1993.</p>
-        <div class="redes">
-          <a href="#" data-wpp="Olá! Tenho interesse em seus produtos." target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-          <a href="https://www.instagram.com/casaharmoniadecor/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-          <a href="https://www.google.com/maps/search/?api=1&query=Av.+Yusaburo+Sasazaki,+1870,+Mar%C3%ADlia+-+SP" target="_blank" aria-label="Localização"><i class="fa-solid fa-location-dot"></i></a>
-        </div>
-      </div>
-      <div>
-        <h4>Navegação</h4>
-        <a href="#inicio"><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i> Início</a>
-        <a href="#sobre"><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i> Sobre</a>
-        <a href="#produtos"><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i> Produtos</a>
-        <a href="#contato"><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i> Contato</a>
-        <a href="#revendedor"><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i> Seja um Revendedor</a>
-      </div>
-      <div class="contato-rod">
-        <h4>Contato</h4>
-        <a href="#" data-wpp="Olá! Tenho interesse em seus produtos." target="_blank"><i class="fa-brands fa-whatsapp"></i> (14) 99605-8087</a>
-        <a href="tel:+551434254843"><i class="fa-solid fa-phone"></i> (14) 3425-4843</a>
-        <a href="https://www.instagram.com/casaharmoniadecor/" target="_blank"><i class="fa-brands fa-instagram"></i> @casaharmoniadecor</a>
-        <p><i class="fa-solid fa-location-dot"></i> Av. Yusaburo Sasazaki, 1870 · Distrito Industrial · Marília/SP · CEP 17512-031</p>
-      </div>
-    </div>
-    <div class="rodape-mapa" id="rodapeMapa">
-      <iframe loading="lazy" title="Mapa" src="https://maps.google.com/maps?q=Av.%20Yusaburo%20Sasazaki%2C%201870%2C%20Mar%C3%ADlia%20-%20SP&z=15&output=embed"></iframe>
-    </div>
-    <div class="copy">
-      <span>© 2026 Casa Harmonia Decorações. Todos os direitos reservados.</span>
-      <!-- Troque o href abaixo pelo endereço do site da Jota Solutions -->
-      <span>Desenvolvido por <a id="linkJota" href="https://www.jotasolutions.com.br" target="_blank" rel="noopener">Jota Solutions</a></span>
-    </div>
-  </div>
+<footer data-sec="geral-rodape">
+<div class="container">
+<div class="foot">
+<div>
+<h4 data-edit="geral-rodape.1">Casa Harmonia Decorações</h4>
+<p data-edit="geral-rodape.2">Decoração, beleza e personalidade para cada ambiente. Papéis de parede, revestimentos adesivos e soluções personalizadas desde 1993.</p>
+<div class="redes">
+<a aria-label="WhatsApp" data-wpp="Olá! Tenho interesse em seus produtos." href="#" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+<a aria-label="Instagram" data-insta="" href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+<a aria-label="Localização" data-maps="" href="#" target="_blank"><i class="fa-solid fa-location-dot"></i></a>
+</div>
+</div>
+<div>
+<h4 data-edit="geral-rodape.3">Navegação</h4>
+<a href="#inicio"><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i> Início</a>
+<a href="#sobre"><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i> Sobre</a>
+<a href="#produtos"><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i> Produtos</a>
+<a href="#atacado"><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i> Revenda Atacado</a>
+<a href="#dropshipping"><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i> Dropshipping</a>
+<a href="#contato"><i class="fa-solid fa-chevron-right" style="font-size:.7rem"></i> Contato</a>
+</div>
+<div class="contato-rod">
+<h4 data-edit="geral-rodape.4">Contato</h4>
+<a data-wpp="Olá! Tenho interesse em seus produtos." href="#" target="_blank"><i class="fa-brands fa-whatsapp"></i> <span data-c="whatsapp_txt">(14) 99696-9391</span></a>
+<a data-tel="" href="#"><i class="fa-solid fa-phone"></i> <span data-c="telefone_txt">(14) 3425-4843</span></a>
+<a data-insta="" href="#" target="_blank"><i class="fa-brands fa-instagram"></i> <span data-c="instagram_txt">@casaharmoniadecor</span></a>
+<p><i class="fa-solid fa-location-dot"></i> <span data-c="endereco_txt">Av. Yusaburo Sasazaki, 1870 · Distrito Industrial · Marília/SP · CEP 17512-031</span></p>
+</div>
+</div>
+<div class="rodape-mapa" id="rodapeMapa">
+<iframe data-mapa="" loading="lazy" title="Mapa"></iframe>
+</div>
+<div class="copy">
+<span>© 2026 Casa Harmonia Decorações. Todos os direitos reservados.</span>
+<span class="creditos">Marketing: Inteligência Digital Mind Marketing · Desenvolvido por <a href="https://jotasolutions.com.br" id="linkJota" rel="noopener" target="_blank">Jota Solutions</a></span>
+</div>
+</div>
 </footer>
-
 <div class="flutuantes">
-  <button class="f-topo" id="btnTopo" aria-label="Voltar ao topo" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-arrow-up"></i></button>
-  <a class="f-insta" href="https://www.instagram.com/casaharmoniadecor/" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-  <a class="f-wpp" href="#" data-wpp="Olá! Tenho interesse em seus produtos." target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+<button aria-label="Voltar ao topo" class="f-topo" id="btnTopo" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fa-solid fa-arrow-up"></i></button>
+<a aria-label="Instagram" class="f-insta" data-insta="" href="#" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+<a aria-label="WhatsApp" class="f-wpp" data-wpp="Olá! Tenho interesse em seus produtos." href="#" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
 </div>
 <div class="toast" id="toast"></div>
-
 <!-- Modal: cadastro -->
 <div class="modal" id="mCadastro">
-  <div class="modal-box">
-    <button class="fechar" aria-label="Fechar" onclick="fecharModal('mCadastro')"><i class="fa-solid fa-xmark"></i></button>
-    <span class="tag"><i class="fa-solid fa-store"></i> Seja um Revendedor</span>
-    <h2>Cadastro de revendedor</h2>
-    <p>Preencha seus dados para liberar preços, fichas técnicas, filtros e planilhas.</p>
-    <div class="beneficios-modal"><span><i class="fa-solid fa-tag"></i> Preços de revenda</span><span><i class="fa-solid fa-file-lines"></i> Fichas técnicas e NCM</span><span><i class="fa-solid fa-file-csv"></i> Planilhas</span></div>
-    <form class="form" onsubmit="enviarCadastro(event)">
-      <div><label>Nome completo</label><input required name="nome"></div>
-      <div><label>Empresa / Loja</label><input required name="empresa"></div>
-      <div><label>CNPJ ou CPF</label><input required name="doc" placeholder="00.000.000/0000-00 ou 000.000.000-00"></div>
-      <div class="form-2">
-        <div><label>WhatsApp</label><input required name="whats" type="tel" placeholder="(00) 00000-0000"></div>
-        <div><label>E-mail</label><input required name="email" type="email"></div>
-      </div>
-      <button class="btn" type="submit"><i class="fa-solid fa-unlock"></i> Liberar meu acesso</button>
-    </form>
-  </div>
+<div class="modal-box">
+<button aria-label="Fechar" class="fechar" onclick="fecharModal('mCadastro')"><i class="fa-solid fa-xmark"></i></button>
+<span class="tag"><i class="fa-solid fa-store"></i> <span data-edit="geral-cadastro.1">Seja um Revendedor</span></span>
+<h2 data-edit="geral-cadastro.2">Cadastro de revendedor</h2>
+<div class="cad-tipo" data-js="" id="cadTipo"></div>
+<p data-edit="geral-cadastro.3">Preencha seus dados para solicitar acesso aos preços, fichas técnicas e planilhas.</p>
+<div class="beneficios-modal"><span><i class="fa-solid fa-tag"></i> Preços de revenda</span><span><i class="fa-solid fa-file-lines"></i> Fichas técnicas e NCM</span><span><i class="fa-solid fa-file-csv"></i> Planilhas</span></div>
+<form class="form" id="formCadastro" onsubmit="enviarCadastro(event)">
+<input name="tipo" type="hidden" value="dropshipping"/>
+<div><label>Nome completo</label><input name="nome" required=""/></div>
+<div><label>Empresa / Loja</label><input name="empresa" required=""/></div>
+<div><label>CNPJ ou CPF</label><input name="doc" placeholder="00.000.000/0000-00 ou 000.000.000-00" required=""/></div>
+<div class="form-2">
+<div><label>WhatsApp</label><input name="whats" placeholder="(00) 00000-0000" required="" type="tel"/></div>
+<div><label>E-mail</label><input name="email" required="" type="email"/></div>
 </div>
-
+<button class="btn" type="submit"><i class="fa-solid fa-paper-plane"></i> Enviar cadastro</button>
+</form>
+<div class="alterna" data-js="">Já tem cadastro? <button class="link-sec" onclick="fecharModal('mCadastro');abrirLogin()">Entrar</button></div>
+</div>
+</div>
+<!-- Modal: login do revendedor -->
+<div class="modal" id="mLogin">
+<div class="modal-box">
+<button aria-label="Fechar" class="fechar" onclick="fecharModal('mLogin')"><i class="fa-solid fa-xmark"></i></button>
+<span class="tag"><i class="fa-solid fa-user"></i> Área do revendedor</span>
+<h2>Entrar</h2>
+<p>Use o e-mail do cadastro e a senha enviada pela equipe Casa Harmonia.</p>
+<form class="form" onsubmit="entrarRevendedor(event)">
+<div><label>E-mail</label><input autocomplete="username" name="email" required="" type="email"/></div>
+<div><label>Senha</label><input autocomplete="current-password" name="senha" required="" type="password"/></div>
+<div class="erro-login" id="erroLoginRev"></div>
+<button class="btn" type="submit"><i class="fa-solid fa-right-to-bracket"></i> Entrar</button>
+</form>
+<div class="alterna">Ainda não tem cadastro?<br/><button class="link-sec" onclick="fecharModal('mLogin');abrirCadastro('atacado')">Revenda Atacado</button> · <button class="link-sec" onclick="fecharModal('mLogin');abrirCadastro('dropshipping')">Dropshipping</button></div>
+</div>
+</div>
+<!-- Modal: pedido do atacado -->
+<div class="modal" id="mPedido">
+<div class="modal-box largo">
+<button aria-label="Fechar" class="fechar" onclick="fecharModal('mPedido')"><i class="fa-solid fa-xmark"></i></button>
+<div id="pedidoConteudo"></div>
+</div>
+</div>
+<div class="pedido-bar" id="pedidoBar"></div>
 <!-- Modal: produto -->
 <div class="modal" id="mProduto">
-  <div class="modal-box largo">
-    <button class="fechar" aria-label="Fechar" onclick="fecharModal('mProduto')"><i class="fa-solid fa-xmark"></i></button>
-    <div id="detalhe"></div>
-  </div>
+<div class="modal-box largo">
+<button aria-label="Fechar" class="fechar" onclick="fecharModal('mProduto')"><i class="fa-solid fa-xmark"></i></button>
+<div id="detalhe"></div>
 </div>
-
-<input type="file" id="arqImport" accept=".csv,text/csv" style="display:none" onchange="importarCSV(this)">
-
+</div>
+<input accept=".csv,text/csv" id="arqImport" onchange="importarCSV(this)" style="display:none" type="file"/>
+<script src="dados-padrao.js"></script>
 <script>
-/* ========= Configurações ========= */
-const WHATS='5514996058087';
-
-/* Fotos demonstrativas: u = foto do Unsplash, k = palavras-chave de reserva */
-const FOTOS={
-  hero:{u:'1586023492125-27b2c045efd7',k:'livingroom,interior'},
-  sala:{u:'1618221195710-dd6b41faaea6',k:'interior,design'},
-  sala2:{u:'1513694203232-719a280e022f',k:'livingroom'},
-  sala3:{u:'1600210492486-724fe5c67fb0',k:'interior'},
-  sala4:{u:'1616486338812-3dadae4b4ace',k:'livingroom'},
-  quarto:{u:'1505691938895-1758d7feb511',k:'bedroom'},
-  quarto2:{u:'1560448204-e02f11c3d0e2',k:'bedroom'},
-  cozinha:{u:'1556909114-f6e7ad7d3136',k:'kitchen'},
-  escritorio:{u:'1497366216548-37526070297c',k:'office'},
-  loja:{u:'1524758631624-e2822e304c36',k:'office,plants'},
-  papel:{k:'wallpaper,pattern'},
-  papel2:{k:'wallpaper,floral'},
-  marmore:{k:'marble,texture'},
-  pvc:{k:'brickwall'},
-  adesivo:{k:'wallsticker,wall'},
-  vidro:{k:'stainedglass'},
-  quadro:{k:'wallart,frame'},
-  etiqueta:{k:'sticker,label'},
-  refletivo:{k:'reflective,sign'},
-  resinado:{k:'sticker,logo'},
-  nautico:{k:'boat,yacht'},
-  impressao:{k:'printing,printer'},
-  equipe:{k:'team,workshop'},
-  fabrica:{k:'printing,factory'},
-  entrega:{k:'package,delivery'}
+/* ========= Dados (padrão + painel admin + dados.json publicado) ========= */
+const P=window.CH_PADRAO;
+let D=CH.montar(CH.salvos());
+const esc=CH.esc;
+const MODS={
+  atacado:{nome:'Revenda Atacado',preco:'preco_atacado',rotuloPreco:'Atacado',icone:'fa-boxes-stacked'},
+  dropshipping:{nome:'Dropshipping',preco:'preco_revenda',rotuloPreco:'Revenda',icone:'fa-truck-fast'}
 };
-function urlLF(k,w,lock){return `https://loremflickr.com/${w}/${Math.round(w*.72)}/${k}?lock=${lock}`}
-function urlFoto(key,w,lock){
-  if(/^https?:\/\//.test(key))return key;
-  const f=FOTOS[key]||{k:'interior'};
-  return f.u?`https://images.unsplash.com/photo-${f.u}?auto=format&fit=crop&w=${w}&q=70`:urlLF(f.k,w,lock);
-}
+const MOD_LIST=Object.keys(MODS);
+const minimo=()=>Number(D.config.pedidoMinimoAtacado)||1000;
+
+/* ---------- Fotos ---------- */
 let lockSeq=1;
 function carregarFoto(img){
   const key=img.dataset.foto,w=img.closest('.hero,.page-head')?1600:800,lock=lockSeq++;
   img.loading='lazy';
   img.onerror=()=>{
-    if(!img.dataset.t&&!/^https?:/.test(key)){img.dataset.t='1';img.src=urlLF((FOTOS[key]||{k:'interior'}).k,w,lock);return}
-    const ph=document.createElement('div');ph.className='ph';ph.innerHTML=`<i class="fa-regular fa-image"></i>${img.alt||'Imagem aqui'}`;
+    const f=P.fotos[key];
+    if(!img.dataset.t&&f&&!D.fotos[key]){img.dataset.t='1';img.src=CH.urlLF(f.k,w,lock);return}
+    const ph=document.createElement('div');ph.className='ph';ph.innerHTML=`<i class="fa-regular fa-image"></i>${esc(img.alt||'Imagem aqui')}`;
     img.replaceWith(ph);
   };
-  img.src=urlFoto(key,w,lock);
+  img.src=CH.urlFoto(key,w,lock,D.fotos);
 }
 function ativarFotos(raiz){(raiz||document).querySelectorAll('img[data-foto]:not([src])').forEach(carregarFoto)}
 
-/* Links de WhatsApp */
-function linkWpp(msg){return `https://wa.me/${WHATS}?text=${encodeURIComponent(msg)}`}
-function ativarWpp(raiz){(raiz||document).querySelectorAll('[data-wpp]').forEach(a=>a.href=linkWpp(a.dataset.wpp))}
+/* ---------- Rastreamento (Google Analytics, Tag Manager, Pixel da Meta) ---------- */
+function ativarRastreamento(){
+  const r=D.rastreamento||{};if(!r.ativo)return;
+  if(r.gtm){(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});const f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+encodeURIComponent(i);f.parentNode.insertBefore(j,f)})(window,document,'script','dataLayer',r.gtm)}
+  if(r.ga4){const s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+encodeURIComponent(r.ga4);document.head.appendChild(s);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config',r.ga4)}
+  if(r.pixel){!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init',r.pixel);fbq('track','PageView')}
+}
+function evento(nome,dados){try{if(window.gtag)gtag('event',nome,dados||{});if(window.fbq)fbq('trackCustom',nome,dados||{})}catch(e){}}
 
-/* ========= Produtos e serviços (página Produtos) ========= */
-const SERVICOS=[
-  ['papel','Papéis de Parede','Estampas exclusivas, texturas e medidas sob encomenda.'],
-  ['pvc','Placas Decorativas de PVC Adesivadas','Leves, resistentes e fáceis de aplicar.'],
-  ['adesivo','Adesivos Decorativos Personalizados','Para paredes, móveis, portas e cozinhas.'],
-  ['vidro','Adesivos para Vidros e Vitrais','Privacidade e decoração com efeito jateado ou vitral.'],
-  ['quadro','Quadros e Painéis Decorativos','Peças exclusivas para destacar qualquer ambiente.'],
-  ['nautico','Adesivos Náuticos e Embarcações','Personalização de embarcações com alta resistência.'],
-  ['marmore','Mármores e Granitos Adesivos','O visual sofisticado da pedra, sem obra.'],
-  ['etiqueta','Etiquetas, Refletivos e Resinados','Acabamento em relevo, brilho e durabilidade.'],
-  ['impressao','Impressão Digital e Projetos Personalizados','Do seu projeto à peça pronta.']
-];
-document.getElementById('listaServicos').innerHTML=SERVICOS.map(([f,n,d])=>`
-  <div class="card"><div class="foto"><img data-foto="${f}" alt="${n}"></div><div class="card-corpo"><h3>${n}</h3><p>${d}</p>
-  <div class="acoes"><a class="btn btn-sm btn-wpp" target="_blank" data-wpp="Olá! Quero um orçamento de ${n}."><i class="fa-brands fa-whatsapp"></i> Orçamento</a>
-  <a class="btn btn-sm btn-outline" href="#revendedor">Revender</a></div></div></div>`).join('');
+/* ---------- Contato, links, cores, logo, textos e seções ---------- */
+const linkWpp=msg=>`https://wa.me/${D.contato.whatsapp_numero}?text=${encodeURIComponent(msg)}`;
+function aplicarSite(){
+  const c=D.contato,r=document.documentElement.style;
+  r.setProperty('--pri',D.cores.pri);r.setProperty('--pri-esc',D.cores.priEsc);r.setProperty('--pri-claro',D.cores.priClaro);
+  r.setProperty('--creme',D.cores.creme);r.setProperty('--ouro',D.cores.ouro);r.setProperty('--rodape',D.cores.rodape);
+  document.querySelectorAll('[data-c]').forEach(e=>{if(c[e.dataset.c]!==undefined)e.textContent=c[e.dataset.c]});
+  document.querySelectorAll('[data-wpp]').forEach(a=>a.href=linkWpp(a.dataset.wpp));
+  document.querySelectorAll('.f-wpp,.redes [data-wpp]').forEach(a=>a.href=linkWpp(c.msg_geral));
+  document.querySelectorAll('[data-wppmsg]').forEach(a=>{a.href=linkWpp(c['msg_'+a.dataset.wppmsg]||c.msg_geral);a.addEventListener('click',()=>evento('whatsapp_'+a.dataset.wppmsg))});
+  document.querySelectorAll('[data-insta]').forEach(a=>{a.href=c.instagram_url;a.target='_blank'});
+  document.querySelectorAll('[data-tel]').forEach(a=>a.href='tel:+'+c.telefone_numero);
+  document.querySelectorAll('[data-maps]').forEach(a=>{a.href='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(c.mapa_busca);a.target='_blank'});
+  document.querySelectorAll('[data-mapa]').forEach(f=>f.src='https://maps.google.com/maps?q='+encodeURIComponent(c.mapa_busca)+'&z=15&output=embed');
+  document.getElementById('linkJota').href=c.jota_url;
+  const lp=document.querySelector('.logo-ph');
+  if(D.logo&&lp)lp.outerHTML=`<img src="${esc(D.logo)}" alt="Logo" style="height:52px;width:auto;max-width:160px;object-fit:contain">`;
+  document.querySelectorAll('[data-edit]').forEach(e=>{
+    const v=D.textos[e.dataset.edit];if(v===undefined)return;
+    const t=P.textos.find(x=>x.key===e.dataset.edit);
+    if(t&&t.mode==='html')e.innerHTML=v;else e.textContent=v;
+  });
+  document.querySelectorAll('[data-sec]').forEach(s=>s.style.display=D.ocultas[s.dataset.sec]?'none':'');
+  document.getElementById('listaServicos').innerHTML=D.servicos.map(s=>`
+    <div class="card"><div class="foto"><img data-foto="${esc(s.foto)}" alt="${esc(s.nome)}"></div><div class="card-corpo"><h3>${esc(s.nome)}</h3><p>${esc(s.descricao)}</p>
+    <div class="acoes"><a class="btn btn-sm btn-wpp" target="_blank" href="${linkWpp('Olá! Quero um orçamento de '+s.nome+'.')}"><i class="fa-brands fa-whatsapp"></i> Orçamento</a>
+    <a class="btn btn-sm btn-outline" href="#atacado">Revender</a></div></div></div>`).join('');
+}
 
-/* ========= Catálogo do revendedor ========= */
-const COLS=['sku','nome','categoria','ambiente','descricao','material','acabamento','ncm','largura_cm','altura_cm','espessura_mm','peso_g','prazo_producao_dias','preco_revenda','preco_sugerido','imagem'];
-const ROTULOS={sku:'Código (SKU)',nome:'Nome',categoria:'Categoria',ambiente:'Ambiente indicado',descricao:'Descrição',material:'Material',acabamento:'Acabamento',ncm:'NCM',largura_cm:'Largura (cm)',altura_cm:'Altura / comprimento (cm)',espessura_mm:'Espessura (mm)',peso_g:'Peso (g)',prazo_producao_dias:'Prazo de produção (dias úteis)',preco_revenda:'Preço para revenda (R$)',preco_sugerido:'Preço sugerido de venda (R$)',imagem:'Imagem (link)'};
-const P=(sku,nome,categoria,ambiente,descricao,material,acabamento,ncm,l,a,e,peso,prazo,pr,ps,imagem)=>({sku,nome,categoria,ambiente,descricao,material,acabamento,ncm,largura_cm:l,altura_cm:a,espessura_mm:e,peso_g:peso,prazo_producao_dias:prazo,preco_revenda:pr,preco_sugerido:ps,imagem});
-const PADRAO=[
-  P('CH-PP-001','Papel de Parede Floral Rosé','Papéis de Parede','Quarto','Papel de parede vinílico com estampa floral em tons rosé. Lavável e fácil de aplicar.','Vinil autoadesivo','Fosco','4814.90.00','53','1000','0.15','900','3','89.90','159.90','papel2'),
-  P('CH-PP-002','Papel de Parede Linho Natural','Papéis de Parede','Sala','Textura que imita linho, ideal para salas e quartos com estilo aconchegante.','Vinil autoadesivo','Texturizado','4814.90.00','53','1000','0.15','900','3','94.90','169.90','papel'),
-  P('CH-PP-003','Papel de Parede Geométrico Off-White','Papéis de Parede','Comercial','Estampa geométrica discreta para escritórios, lojas e consultórios.','Vinil autoadesivo','Acetinado','4814.90.00','53','1000','0.15','900','3','92.90','164.90','sala3'),
-  P('CH-MG-001','Adesivo Mármore Carrara','Mármores e Granitos','Cozinha','Revestimento adesivo com efeito mármore para bancadas, mesas e móveis.','Vinil laminado','Brilho','3919.90.00','61','200','0.10','350','2','69.90','119.90','marmore'),
-  P('CH-MG-002','Adesivo Granito Preto São Gabriel','Mármores e Granitos','Cozinha','Efeito granito escuro para renovar bancadas sem obra.','Vinil laminado','Brilho','3919.90.00','61','200','0.10','350','2','72.90','124.90','cozinha'),
-  P('CH-PV-001','Placa PVC Adesivada Tijolinho','Placas de PVC','Sala','Placa decorativa leve com efeito tijolinho, autoadesiva.','PVC expandido','Fosco','3921.90.19','30','30','3','180','4','24.90','44.90','pvc'),
-  P('CH-AD-001','Adesivo de Parede Frase Personalizada','Adesivos Decorativos','Sala','Adesivo de recorte em vinil, com frase e cor à escolha do cliente.','Vinil de recorte','Fosco','3919.90.00','90','30','0.08','120','2','39.90','69.90','adesivo'),
-  P('CH-AD-002','Adesivo Infantil Nuvens e Estrelas','Adesivos Decorativos','Quarto','Kit de adesivos para quarto infantil, com cores personalizáveis.','Vinil de recorte','Fosco','3919.90.00','100','60','0.08','150','2','44.90','79.90','quarto2'),
-  P('CH-VD-001','Adesivo Jateado para Vidro','Vidros e Vitrais','Banheiro','Película com efeito jateado para privacidade em boxes, portas e janelas.','Vinil jateado','Translúcido','3919.90.00','100','100','0.08','200','3','','','vidro'),
-  P('CH-QD-001','Quadro Decorativo Abstrato','Quadros e Painéis','Sala','Quadro em MDF com impressão digital de alta definição.','MDF 3 mm','Acetinado','4421.99.00','40','60','3','700','5','119.90','199.90','quadro'),
-  P('CH-QD-002','Painel Decorativo Paisagem','Quadros e Painéis','Comercial','Painel de grande formato para recepções e espaços comerciais.','MDF 6 mm','Fosco','4421.99.00','120','80','6','4200','7','','','sala4'),
-  P('CH-RS-001','Etiqueta Resinada Personalizada','Etiquetas e Resinados','Comercial','Etiqueta com resina em relevo e brilho, alta durabilidade. Pedido mínimo sob consulta.','Vinil + resina poliuretano','Resinado brilho','3919.90.00','5','5','2','5','5','2.90','5.90','resinado'),
-  P('CH-RF-001','Adesivo Refletivo Personalizado','Refletivos','Comercial','Adesivo refletivo para sinalização e identificação com alta visibilidade.','Vinil refletivo','Refletivo','3919.90.00','30','10','0.12','20','4','14.90','27.90','refletivo'),
-  P('CH-NA-001','Kit Adesivo Náutico','Adesivos Náuticos','Náutico','Adesivos resistentes à água salgada e ao sol para embarcações.','Vinil náutico','Brilho UV','3919.90.00','120','40','0.10','250','5','','','nautico')
-];
-const AMBIENTE_EXTRA={Sala:'sala',Quarto:'quarto',Cozinha:'cozinha',Banheiro:'sala3',Comercial:'loja','Náutico':'nautico'};
-
-function ler(k,p){try{const v=localStorage.getItem(k);return v===null?p:JSON.parse(v)}catch(e){return p}}
-function gravar(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
-let produtos=ler('ch2_produtos',null)||PADRAO.map(p=>({...p}));
-let acesso=ler('ch2_acesso','bloqueado');
-let cadastro=ler('ch2_cadastro',null);
-const filtro={cat:'Todas',busca:'',faixa:'todas',soComPreco:false,ambiente:'',ordem:'nome'};
-
-function salvar(){gravar('ch2_produtos',produtos);gravar('ch2_acesso',acesso);gravar('ch2_cadastro',cadastro)}
-function toast(t){const e=document.getElementById('toast');e.textContent=t;e.style.display='block';clearTimeout(e._t);e._t=setTimeout(()=>e.style.display='none',3200)}
+/* ---------- Utilidades de tela ---------- */
+function toast(t,ms){const e=document.getElementById('toast');e.textContent=t;e.style.display='block';clearTimeout(e._t);e._t=setTimeout(()=>e.style.display='none',ms||3400)}
 function abrirModal(id){document.getElementById(id).classList.add('ativo');document.body.style.overflow='hidden'}
-function fecharModal(id){document.getElementById(id).classList.remove('ativo');document.body.style.overflow=''}
+function fecharModal(id){document.getElementById(id).classList.remove('ativo');if(!document.querySelector('.modal.ativo'))document.body.style.overflow=''}
 document.querySelectorAll('.modal').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)fecharModal(m.id)}));
 document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelectorAll('.modal.ativo').forEach(m=>fecharModal(m.id))});
-function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-function num(v){const n=parseFloat(String(v??'').replace(/\./g,m=>m).replace(',','.'));return isNaN(n)?null:n}
-function moeda(v){const n=num(v);return n===null?'':n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'})}
-function temPreco(p){return num(p.preco_revenda)!==null}
-const liberado=()=>acesso==='liberado';
 
-/* Navegação entre páginas */
-const ORDEM=[['inicio','Início'],['sobre','Sobre'],['produtos','Produtos'],['contato','Contato'],['revendedor','Seja um Revendedor']];
+/* ---------- Navegação entre páginas ---------- */
+const ORDEM=[['inicio','Início'],['sobre','Sobre'],['produtos','Produtos'],['atacado','Revenda Atacado'],['dropshipping','Dropshipping'],['contato','Contato']];
+let paginaAtual='inicio';
 function montarPagNav(){
   document.querySelectorAll('.pag-nav').forEach(el=>{
     const i=ORDEM.findIndex(o=>o[0]===el.dataset.pag);
@@ -1161,127 +1395,262 @@ function montarPagNav(){
 }
 function rota(){
   let h=(location.hash||'#inicio').slice(1);
-  if(!document.getElementById('p-'+h))h='inicio';
+  if(h==='revendedor')h='dropshipping';
+  if(!document.getElementById('p-'+h)){
+    const alvo=document.getElementById(h);
+    if(alvo&&alvo.closest('.page')){const pg=alvo.closest('.page').id.slice(2);mostrarPagina(pg);setTimeout(()=>alvo.scrollIntoView({behavior:'smooth'}),60);return}
+    h='inicio';
+  }
+  mostrarPagina(h);window.scrollTo(0,0);
+}
+function mostrarPagina(h){
+  paginaAtual=h;
   document.querySelectorAll('.page').forEach(p=>p.classList.toggle('ativo',p.id==='p-'+h));
   document.querySelectorAll('.menu a').forEach(a=>a.classList.toggle('ativo',a.getAttribute('href')==='#'+h));
   document.querySelector('.menu').classList.remove('aberto');
   document.getElementById('rodapeMapa').style.display=(h==='sobre'||h==='contato')?'none':'block';
-  window.scrollTo(0,0);
+  renderPedidoBar();
 }
 window.addEventListener('hashchange',rota);
 function irPara(e,id){e.preventDefault();document.getElementById(id).scrollIntoView({behavior:'smooth'})}
 function rolar(btn,d){const t=btn.parentElement.querySelector('.trilho');t.scrollBy({left:d*t.clientWidth*.85,behavior:'smooth'})}
 window.addEventListener('scroll',()=>document.getElementById('btnTopo').classList.toggle('ver',scrollY>500));
 
-/* Status e travas */
-function renderStatus(){
-  const s=document.getElementById('statusBox');
-  if(!liberado()){
-    s.className='status bloqueado';
-    s.innerHTML=`<div class="txt"><div class="ic"><i class="fa-solid fa-lock"></i></div><div><h3>Preços, fichas técnicas e planilhas bloqueados</h3><p>Faça o cadastro gratuito para liberar o acesso completo ao catálogo.</p></div></div>
-      <button class="btn" onclick="abrirModal('mCadastro')"><i class="fa-solid fa-unlock"></i> Quero ser revendedor</button>`;
-  }else{
-    s.className='status liberado';
-    s.innerHTML=`<div class="txt"><div class="ic"><i class="fa-solid fa-circle-check"></i></div><div><h3>Olá${cadastro?', '+esc(cadastro.nome.split(' ')[0]):''}! Seu acesso está liberado</h3><p>${cadastro?esc(cadastro.empresa)+' · ':''}Preços, fichas técnicas, filtros e planilhas disponíveis.</p></div></div>
-      <div class="acoes"><a href="#planilhas-rev" class="btn btn-sm" onclick="irPara(event,'planilhas-rev')"><i class="fa-solid fa-file-csv"></i> Planilhas</a><button class="btn btn-sm btn-outline" onclick="sairDemo()"><i class="fa-solid fa-right-from-bracket"></i> Sair (demo)</button></div>`;
+/* =====================================================================
+   Revendedores: cadastro, login e acesso por modalidade
+   Cada cadastro tem tipo (atacado ou dropshipping) e status
+   (pendente, aprovado ou recusado). A sessão guarda o e-mail.
+   ===================================================================== */
+const sessao=()=>CH.ler('ch3_sessao',null);
+const mesmoEmail=(a,b)=>String(a||'').trim().toLowerCase()===String(b||'').trim().toLowerCase();
+function cadastrosDe(email){return CH.revendedores().filter(r=>mesmoEmail(r.email,email))}
+function cadastro(mod){const s=sessao();return s?cadastrosDe(s.email).filter(r=>r.tipo===mod).pop()||null:null}
+function situacao(mod){
+  const s=sessao();if(!s)return 'sem';
+  const r=cadastro(mod);
+  if(!r)return s.logado&&cadastrosDe(s.email).some(x=>x.status==='aprovado')?'outra':'sem';
+  if(r.status==='aprovado')return s.logado?'liberado':'aprovado';
+  return r.status;
+}
+const liberado=mod=>situacao(mod)==='liberado';
+const produtosAtivos=()=>D.produtos.filter(CH.ativo);
+const temPreco=(p,mod)=>CH.num(p[MODS[mod].preco])!==null;
+const primeiroNome=n=>esc(String(n||'').split(' ')[0]);
+
+function atualizarBotaoArea(){
+  const s=sessao(),t=document.getElementById('txtArea');
+  const r=s&&s.logado?cadastrosDe(s.email).find(x=>x.status==='aprovado'):null;
+  t.textContent=r?'Olá, '+String(r.nome).split(' ')[0]:'Área do revendedor';
+}
+function clicarArea(e){
+  e.preventDefault();
+  const s=sessao();
+  if(s&&s.logado){const r=cadastrosDe(s.email).find(x=>x.status==='aprovado');if(r){location.hash='catalogo-'+r.tipo;return}}
+  abrirLogin();
+}
+function abrirLogin(){document.getElementById('erroLoginRev').textContent='';abrirModal('mLogin')}
+function abrirCadastro(mod){
+  const f=document.getElementById('formCadastro');f.reset();f.elements.tipo.value=mod;
+  document.getElementById('cadTipo').innerHTML=`<i class="fa-solid ${MODS[mod].icone}"></i> ${MODS[mod].nome}`;
+  /* já tem cadastro em outra modalidade: preenche os dados */
+  const s=sessao(),outro=s?cadastrosDe(s.email)[0]:null;
+  if(outro)['nome','empresa','doc','whats','email'].forEach(k=>f.elements[k].value=outro[k]||'');
+  abrirModal('mCadastro');
+}
+function gerarSenha(){const c='abcdefghjkmnpqrstuvwxyz23456789';let s='';for(let i=0;i<6;i++)s+=c[Math.floor(Math.random()*c.length)];return s}
+function enviarCadastro(e){
+  e.preventDefault();
+  const d=Object.fromEntries(new FormData(e.target));d.email=d.email.trim().toLowerCase();
+  const lista=CH.revendedores();
+  if(lista.some(r=>mesmoEmail(r.email,d.email)&&r.tipo===d.tipo)){
+    toast('Já existe um cadastro com este e-mail em '+MODS[d.tipo].nome+'. Use o botão Entrar.');return;
   }
-  document.getElementById('travaFiltros').classList.toggle('travado',!liberado());
-  document.getElementById('blocoPlanilhas').classList.toggle('travado',!liberado());
-  document.getElementById('travaFiltros').querySelectorAll('input,select').forEach(i=>i.disabled=!liberado());
-  document.getElementById('ordenar').querySelectorAll('option').forEach(o=>{if(o.value!=='nome')o.disabled=!liberado()});
+  const auto=D.config.aprovacao!=='manual';
+  const existente=lista.find(r=>mesmoEmail(r.email,d.email)&&r.senha);
+  const r={id:'r'+Date.now().toString(36),...d,data:new Date().toISOString(),status:auto?'aprovado':'pendente',senha:auto?(existente?existente.senha:gerarSenha()):'',senhaAuto:auto&&!existente};
+  lista.push(r);CH.salvarRevendedores(lista);
+  CH.gravar('ch3_sessao',{email:d.email,logado:auto});
+  fecharModal('mCadastro');e.target.reset();
+  evento('cadastro_revendedor',{modalidade:d.tipo});
+  renderRevenda();
+  toast(auto?'Acesso liberado! Agora você vê preços, fichas e planilhas.':'Cadastro enviado! A equipe Casa Harmonia vai liberar o seu acesso.');
+  location.hash='catalogo-'+d.tipo;
+}
+function entrarRevendedor(e){
+  e.preventDefault();
+  const d=Object.fromEntries(new FormData(e.target)),err=document.getElementById('erroLoginRev');
+  const regs=cadastrosDe(d.email);
+  const ok=regs.find(r=>r.status==='aprovado'&&r.senha&&r.senha===d.senha.trim());
+  if(ok){
+    CH.gravar('ch3_sessao',{email:ok.email,logado:true});fecharModal('mLogin');e.target.reset();
+    renderRevenda();toast('Bem-vindo(a), '+String(ok.nome).split(' ')[0]+'!');location.hash='catalogo-'+ok.tipo;return;
+  }
+  if(!regs.length)err.textContent='E-mail não encontrado. Faça o seu cadastro.';
+  else if(regs.every(r=>r.status==='pendente'))err.textContent='Seu cadastro ainda está em análise pela equipe Casa Harmonia.';
+  else if(regs.every(r=>r.status==='recusado'))err.textContent='Cadastro não aprovado. Fale com a equipe pelo WhatsApp.';
+  else if(regs.some(r=>r.status==='aprovado'&&!r.senha))err.textContent='Seu login ainda não foi criado. A equipe vai enviar a senha pelo WhatsApp.';
+  else err.textContent='Senha incorreta.';
+}
+function solicitarOutra(mod){
+  const s=sessao(),base=cadastrosDe(s.email)[0];if(!base)return abrirCadastro(mod);
+  const auto=D.config.aprovacao!=='manual',lista=CH.revendedores();
+  lista.push({id:'r'+Date.now().toString(36),tipo:mod,nome:base.nome,empresa:base.empresa,doc:base.doc,whats:base.whats,email:base.email,data:new Date().toISOString(),status:auto?'aprovado':'pendente',senha:base.senha||''});
+  CH.salvarRevendedores(lista);renderRevenda();
+  toast(auto?'Acesso a '+MODS[mod].nome+' liberado!':'Solicitação enviada! A equipe vai analisar o seu acesso a '+MODS[mod].nome+'.');
+}
+function sair(){try{localStorage.removeItem('ch3_sessao')}catch(e){}renderRevenda();toast('Você saiu da área do revendedor.')}
+
+/* ---------- Status por modalidade ---------- */
+function renderStatus(mod){
+  const s=document.getElementById('status-'+mod),st=situacao(mod),r=cadastro(mod),M=MODS[mod];
+  const outra=MOD_LIST.find(m=>m!==mod);
+  const sairBt=`<button class="btn btn-sm btn-outline" onclick="sair()"><i class="fa-solid fa-right-from-bracket"></i> Sair</button>`;
+  const html={
+    sem:['bloqueado','fa-lock','Preços e fichas técnicas bloqueados',`Cadastre-se no ${M.nome} para liberar ${mod==='atacado'?'os preços de atacado e montar o seu pedido':'preços, fichas técnicas e planilhas'}.`,
+      `<button class="btn" onclick="abrirCadastro('${mod}')"><i class="fa-solid fa-user-plus"></i> Quero me cadastrar</button><button class="btn btn-outline" onclick="abrirLogin()"><i class="fa-solid fa-right-to-bracket"></i> Já tenho cadastro</button>`],
+    pendente:['pendente','fa-hourglass-half','Cadastro em análise',`Recebemos seus dados${r?', '+primeiroNome(r.nome):''}. A equipe Casa Harmonia vai analisar e enviar o seu login pelo WhatsApp e e-mail.`,
+      `<a class="btn btn-sm btn-wpp" target="_blank" href="${linkWpp(D.contato['msg_'+mod]+' Fiz meu cadastro'+(r?' ('+r.empresa+')':'')+' e gostaria de acompanhar a liberação.')}"><i class="fa-brands fa-whatsapp"></i> Acompanhar</a>${sairBt}`],
+    aprovado:['aprovado','fa-circle-check','Cadastro aprovado!','Entre com o seu e-mail e a senha enviada pela equipe Casa Harmonia.',
+      `<button class="btn" onclick="abrirLogin()"><i class="fa-solid fa-right-to-bracket"></i> Entrar</button>`],
+    recusado:['bloqueado','fa-circle-xmark','Cadastro não aprovado','Fale com a equipe Casa Harmonia para entender os próximos passos.',
+      `<a class="btn btn-sm btn-wpp" target="_blank" href="${linkWpp('Olá! Meu cadastro em '+M.nome+' não foi aprovado e gostaria de mais informações.')}"><i class="fa-brands fa-whatsapp"></i> Falar com a equipe</a>${sairBt}`],
+    outra:['aprovado','fa-circle-info',`Você já é revendedor ${MODS[outra].nome}`,`Quer acesso ao ${M.nome} também? Usamos os mesmos dados do seu cadastro.`,
+      `<button class="btn" onclick="solicitarOutra('${mod}')"><i class="fa-solid fa-plus"></i> Solicitar acesso</button>${sairBt}`],
+    liberado:['liberado','fa-circle-check',`Olá, ${r?primeiroNome(r.nome):''}! Seu acesso está liberado`,`${r?esc(r.empresa)+' · ':''}${mod==='atacado'?'Preços de atacado liberados. Monte o seu pedido a partir de '+CH.moeda(minimo())+'.':'Preços, fichas técnicas, filtros e planilhas disponíveis.'}${r&&r.senhaAuto?` <br><small>Seu login: <b>${esc(r.email)}</b> · senha: <b>${esc(r.senha)}</b> (anote para entrar depois)</small>`:''}`,
+      (mod==='atacado'?`<button class="btn btn-sm" onclick="abrirPedido()"><i class="fa-solid fa-cart-shopping"></i> Meu pedido</button>`:`<a href="#planilhas-dropshipping" class="btn btn-sm" onclick="irPara(event,'planilhas-dropshipping')"><i class="fa-solid fa-file-csv"></i> Planilhas</a>`)+sairBt]
+  }[st];
+  s.className='status '+html[0];
+  s.innerHTML=`<div class="txt"><div class="ic"><i class="fa-solid ${html[1]}"></i></div><div><h3>${html[2]}</h3><p>${html[3]}</p></div></div><div class="acoes">${html[4]}</div>`;
+  const lib=st==='liberado';
+  const trava=document.getElementById('trava-'+mod);trava.classList.toggle('travado',!lib);
+  trava.querySelectorAll('input,select').forEach(i=>i.disabled=!lib);
+  document.getElementById('ordem-'+mod).querySelectorAll('option').forEach(o=>{if(o.value!=='nome')o.disabled=!lib});
+  const plan=document.getElementById('plan-'+mod);plan.classList.toggle('travado',!lib);
+  const pt=plan.querySelector('.planilhas-trava');
+  pt.querySelector('.txt-suave').textContent=st==='pendente'?'Seu cadastro está em análise. As planilhas serão liberadas após a aprovação.':st==='aprovado'?'Entre com o seu login para baixar as planilhas.':'Cadastre-se para baixar as planilhas com preços e fichas técnicas.';
+  const bt=pt.querySelector('button');bt.style.display=st==='pendente'||st==='recusado'?'none':'';
+  bt.textContent=st==='aprovado'?'Entrar':st==='outra'?'Solicitar acesso':'Fazer cadastro';
+  bt.onclick=()=>st==='aprovado'?abrirLogin():st==='outra'?solicitarOutra(mod):abrirCadastro(mod);
 }
 
-/* Filtros */
-function categorias(){return [...new Set(produtos.map(p=>p.categoria).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'pt-BR'))}
-function renderCats(){
-  const cats=categorias();if(filtro.cat!=='Todas'&&!cats.includes(filtro.cat))filtro.cat='Todas';
-  const cont=c=>c==='Todas'?produtos.length:produtos.filter(p=>p.categoria===c).length;
-  document.getElementById('filtroCats').innerHTML=['Todas',...cats].map(c=>`<button class="filtro-cat ${c===filtro.cat?'ativo':''}" data-c="${esc(c)}">${c==='Todas'?'Todas as categorias':esc(c)}<span>${cont(c)}</span></button>`).join('');
-  document.querySelectorAll('#filtroCats .filtro-cat').forEach(b=>b.onclick=()=>{filtro.cat=b.dataset.c;renderCats();renderGrid();sincronizarExport()});
-  const sel=document.getElementById('expCat'),atual=sel.value;
-  sel.innerHTML=`<option value="Todas">Todos os produtos (${produtos.length})</option>`+cats.map(c=>`<option value="${esc(c)}">${esc(c)} (${cont(c)})</option>`).join('');
+/* ---------- Filtros e catálogo ---------- */
+const F={};MOD_LIST.forEach(m=>F[m]={cat:'Todas',busca:'',faixa:'todas',soComPreco:false,ambiente:'',ordem:'nome'});
+function categorias(){return [...new Set(produtosAtivos().map(p=>p.categoria).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'pt-BR'))}
+function renderCats(mod){
+  const f=F[mod],cats=categorias(),lista=produtosAtivos();if(f.cat!=='Todas'&&!cats.includes(f.cat))f.cat='Todas';
+  const cont=c=>c==='Todas'?lista.length:lista.filter(p=>p.categoria===c).length;
+  const box=document.getElementById('cats-'+mod);
+  box.innerHTML=['Todas',...cats].map(c=>`<button class="filtro-cat ${c===f.cat?'ativo':''}" data-c2="${esc(c)}">${c==='Todas'?'Todas as categorias':esc(c)}<span>${cont(c)}</span></button>`).join('');
+  box.querySelectorAll('.filtro-cat').forEach(b=>b.onclick=()=>{f.cat=b.dataset.c2;renderCats(mod);renderGrid(mod);sincronizarExport(mod)});
+  const sel=document.getElementById('expCat-'+mod),atual=sel.value;
+  sel.innerHTML=`<option value="Todas">Todos os produtos (${lista.length})</option>`+cats.map(c=>`<option value="${esc(c)}">${esc(c)} (${cont(c)})</option>`).join('');
   sel.value=[...sel.options].some(o=>o.value===atual)?atual:'Todas';
-  atualizarExpInfo();
+  atualizarExpInfo(mod);
+  const amb=document.getElementById('amb-'+mod),va=amb.value;
+  amb.innerHTML='<option value="">Todos os ambientes</option>'+[...new Set([...P.ambientes,...lista.map(p=>p.ambiente).filter(Boolean)])].map(a=>`<option>${esc(a)}</option>`).join('');
+  amb.value=va;
 }
-function produtosFiltrados(){
-  let l=produtos.filter(p=>(filtro.cat==='Todas'||p.categoria===filtro.cat)&&(!filtro.busca||(p.nome+' '+p.categoria).toLowerCase().includes(filtro.busca)));
-  if(liberado()){
-    if(filtro.soComPreco)l=l.filter(temPreco);
-    if(filtro.ambiente)l=l.filter(p=>p.ambiente===filtro.ambiente);
-    if(filtro.faixa!=='todas'){const[a,b]=filtro.faixa.split('-').map(Number);l=l.filter(p=>{const n=num(p.preco_revenda);return n!==null&&n>=a&&n<=b})}
-    if(filtro.ordem!=='nome'){const m=filtro.ordem==='menor'?1:-1;return l.sort((x,y)=>{const a=num(x.preco_revenda),b=num(y.preco_revenda);if(a===null)return 1;if(b===null)return -1;return(a-b)*m})}
+function produtosFiltrados(mod){
+  const f=F[mod],campo=MODS[mod].preco;
+  let l=produtosAtivos().filter(p=>(f.cat==='Todas'||p.categoria===f.cat)&&(!f.busca||(p.nome+' '+p.categoria+' '+p.sku).toLowerCase().includes(f.busca)));
+  if(liberado(mod)){
+    if(f.soComPreco)l=l.filter(p=>temPreco(p,mod));
+    if(f.ambiente)l=l.filter(p=>p.ambiente===f.ambiente);
+    if(f.faixa!=='todas'){const[a,b]=f.faixa.split('-').map(Number);l=l.filter(p=>{const n=CH.num(p[campo]);return n!==null&&n>=a&&n<=b})}
+    if(f.ordem!=='nome'){const m=f.ordem==='menor'?1:-1;return l.sort((x,y)=>{const a=CH.num(x[campo]),b=CH.num(y[campo]);if(a===null)return 1;if(b===null)return -1;return(a-b)*m})}
   }
   return l.sort((a,b)=>a.nome.localeCompare(b.nome,'pt-BR'));
 }
-function limparFiltros(){
-  Object.assign(filtro,{cat:'Todas',busca:'',faixa:'todas',soComPreco:false,ambiente:'',ordem:'nome'});
-  document.getElementById('busca').value='';document.getElementById('ordenar').value='nome';
-  document.getElementById('soComPreco').checked=false;document.getElementById('filtroAmbiente').value='';
-  document.querySelector('input[name=faixa][value=todas]').checked=true;
-  renderCats();renderGrid();sincronizarExport();
+function limparFiltros(mod){
+  Object.assign(F[mod],{cat:'Todas',busca:'',faixa:'todas',soComPreco:false,ambiente:'',ordem:'nome'});
+  document.getElementById('busca-'+mod).value='';document.getElementById('ordem-'+mod).value='nome';
+  document.getElementById('soPreco-'+mod).checked=false;document.getElementById('amb-'+mod).value='';
+  document.querySelector(`input[name="faixa-${mod}"][value=todas]`).checked=true;
+  renderCats(mod);renderGrid(mod);sincronizarExport(mod);
 }
-
-/* Cards */
-function renderGrid(){
-  const lista=produtosFiltrados(),g=document.getElementById('gridProdutos');
-  document.getElementById('contagem').textContent=`${lista.length} produto${lista.length===1?'':'s'} encontrado${lista.length===1?'':'s'}${filtro.cat!=='Todas'?' em '+filtro.cat:''}`;
+function renderGrid(mod){
+  const lista=produtosFiltrados(mod),g=document.getElementById('grid-'+mod),f=F[mod],st=situacao(mod),campo=MODS[mod].preco;
+  document.getElementById('cont-'+mod).textContent=`${lista.length} produto${lista.length===1?'':'s'} encontrado${lista.length===1?'':'s'}${f.cat!=='Todas'?' em '+f.cat:''}`;
   if(!lista.length){g.innerHTML='<div class="vazio"><i class="fa-solid fa-magnifying-glass"></i><p>Nenhum produto encontrado com esses filtros.</p></div>';return}
+  const msgTrava={pendente:'Aguardando liberação',aprovado:'Entre para ver',outra:'Solicite acesso para ver',recusado:'Acesso não liberado'}[st]||'Cadastre-se para ver';
+  const acaoTrava={aprovado:`abrirLogin()`,outra:`solicitarOutra('${mod}')`}[st]||`abrirCadastro('${mod}')`;
   g.innerHTML=lista.map(p=>{
-    const i=produtos.indexOf(p);
-    const foto=`<div class="foto"><img data-foto="${esc(p.imagem||'interior')}" alt="${esc(p.nome)}"></div>`;
-    if(!liberado()){
+    const i=D.produtos.indexOf(p);
+    const foto=`<div class="foto"><img data-foto="${esc(p.imagem||'sala')}" alt="${esc(p.nome)}"></div>`;
+    if(st!=='liberado'){
       return `<div class="card prod">${foto}<div class="card-corpo">
         <h3>${esc(p.nome)}</h3>
-        <div class="trancado"><div class="borrado">Preço revenda R$ 00,00<br>NCM 0000.00.00 · 00 × 00 cm</div><div class="cadeado"><i class="fa-solid fa-lock"></i> Cadastre-se para ver</div></div>
-        <button class="btn btn-sm btn-outline" onclick="abrirModal('mCadastro')"><i class="fa-solid fa-unlock"></i> Liberar informações</button>
+        <div class="trancado"><div class="borrado">Preço ${mod==='atacado'?'atacado':'revenda'} R$ 00,00<br>NCM 0000.00.00 · 00 × 00 cm</div><div class="cadeado"><i class="fa-solid fa-lock"></i> ${msgTrava}</div></div>
+        ${st==='pendente'||st==='recusado'?'':`<button class="btn btn-sm btn-outline" onclick="${acaoTrava}"><i class="fa-solid fa-unlock"></i> Liberar informações</button>`}
       </div></div>`;
+    }
+    let preco;
+    if(mod==='atacado'){
+      preco=temPreco(p,mod)
+        ?`<div class="precos"><div><small>Preço atacado</small><strong>${CH.moeda(p.preco_atacado)}</strong></div></div>
+          <div class="linha-compra">${qtdHTML(p.sku)}<button class="btn btn-sm" onclick="addPedido('${esc(p.sku)}')"><i class="fa-solid fa-cart-plus"></i> Adicionar</button></div>
+          ${pedido[p.sku]?`<div class="no-pedido"><i class="fa-solid fa-check"></i> ${pedido[p.sku]} no pedido</div>`:''}`
+        :`<div class="consulta"><i class="fa-regular fa-comment-dots"></i> Preço sob consulta</div>
+          <a class="btn btn-sm btn-wpp" style="margin-bottom:10px" target="_blank" href="${linkWpp(D.contato.msg_atacado+' Quero consultar o preço de '+p.nome+' ('+p.sku+').')}"><i class="fa-brands fa-whatsapp"></i> Consultar preço</a>`;
+    }else{
+      preco=temPreco(p,mod)
+        ?`<div class="precos"><div><small>Revenda</small><strong>${CH.moeda(p.preco_revenda)}</strong></div>${CH.num(p.preco_sugerido)!==null?`<div class="sug"><small>Sugerido</small><strong>${CH.moeda(p.preco_sugerido)}</strong></div>`:''}</div>`
+        :`<div class="consulta"><i class="fa-regular fa-comment-dots"></i> Preço sob consulta</div>`;
     }
     return `<div class="card prod"><div style="position:relative"><span class="selo-cat">${esc(p.categoria)}</span>${foto}</div><div class="card-corpo">
       <h3>${esc(p.nome)}</h3>
       <p class="desc">${esc(p.descricao)}</p>
-      ${temPreco(p)?`<div class="precos"><div><small>Revenda</small><strong>${moeda(p.preco_revenda)}</strong></div>${num(p.preco_sugerido)!==null?`<div class="sug"><small>Sugerido</small><strong>${moeda(p.preco_sugerido)}</strong></div>`:''}</div>`:`<div class="consulta"><i class="fa-regular fa-comment-dots"></i> Preço sob consulta</div>`}
+      ${preco}
       <div class="mini-ficha"><div><span>SKU</span><b>${esc(p.sku)}</b></div><div><span>NCM</span><b>${esc(p.ncm)}</b></div><div><span>Medidas</span><b>${esc(p.largura_cm)} × ${esc(p.altura_cm)} cm</b></div></div>
-      <button class="btn btn-sm" onclick="verProduto(${i})"><i class="fa-solid fa-circle-info"></i> Ver ficha completa</button>
+      <button class="btn btn-sm ${mod==='atacado'?'btn-outline':''}" onclick="verProduto(${i},'${mod}')"><i class="fa-solid fa-circle-info"></i> Ver ficha completa</button>
     </div></div>`;
   }).join('');
   ativarFotos(g);
 }
 
-/* Ficha do produto */
+/* ---------- Ficha do produto ---------- */
+const AMBIENTE_FOTO={Sala:'sala',Quarto:'quarto',Cozinha:'cozinha',Banheiro:'sala3',Comercial:'loja','Náutico':'nautico'};
 let galeriaAtual=[],galeriaIdx=0;
-function verProduto(i){
-  const p=produtos[i];
-  galeriaAtual=[p.imagem||'interior',AMBIENTE_EXTRA[p.ambiente]||'sala',p.imagem&&!/^https?:/.test(p.imagem)?'sala2':'sala'];
+function verProduto(i,mod){
+  if(!liberado(mod)){abrirCadastro(mod);return}
+  const p=D.produtos[i];
+  galeriaAtual=[...new Set([p.imagem||'sala',AMBIENTE_FOTO[p.ambiente]||'sala','sala2'])];
   galeriaIdx=0;
-  const linhas=['sku','categoria','ambiente','material','acabamento','ncm'].map(c=>`<tr><td>${ROTULOS[c]}</td><td>${esc(p[c])||'—'}</td></tr>`).join('')+
+  const linhas=['sku','categoria','ambiente','material','acabamento','ncm'].map(c=>`<tr><td>${P.rotulos[c]}</td><td>${esc(p[c])||'—'}</td></tr>`).join('')+
     `<tr><td>Dimensões (L × A)</td><td>${esc(p.largura_cm)} × ${esc(p.altura_cm)} cm</td></tr>
      <tr><td>Espessura</td><td>${esc(p.espessura_mm)} mm</td></tr>
      <tr><td>Peso</td><td>${esc(p.peso_g)} g</td></tr>
      <tr><td>Prazo de produção</td><td>${esc(p.prazo_producao_dias)} dias úteis</td></tr>`;
-  const pr=num(p.preco_revenda),ps=num(p.preco_sugerido);
-  const margem=pr!==null&&ps!==null&&ps>pr?Math.round((ps-pr)/ps*100):null;
+  let precoHTML;
+  if(mod==='atacado'){
+    const pa=CH.num(p.preco_atacado);
+    precoHTML=pa!==null
+      ?`<div class="precos" style="padding:14px 16px"><div><small>Preço atacado (unidade)</small><strong style="font-size:1.5rem">${CH.moeda(pa)}</strong></div></div>
+        <div class="linha-compra">${qtdHTML(p.sku,'ficha')}<button class="btn btn-sm" onclick="addPedido('${esc(p.sku)}','ficha')"><i class="fa-solid fa-cart-plus"></i> Adicionar ao pedido</button></div>`
+      :`<div class="consulta"><i class="fa-regular fa-comment-dots"></i> Preço sob consulta: fale com a equipe Casa Harmonia</div>`;
+  }else{
+    const pr=CH.num(p.preco_revenda),ps=CH.num(p.preco_sugerido);
+    const margem=pr!==null&&ps!==null&&ps>pr?Math.round((ps-pr)/ps*100):null;
+    precoHTML=pr!==null?`<div class="precos" style="padding:14px 16px"><div><small>Preço para revenda</small><strong style="font-size:1.5rem">${CH.moeda(pr)}</strong></div>${ps!==null?`<div class="sug"><small>Preço sugerido</small><strong>${CH.moeda(ps)}</strong></div>`:''}</div>${margem!==null?`<span class="margem"><i class="fa-solid fa-arrow-trend-up"></i> Margem estimada de ${margem}%</span>`:''}`:`<div class="consulta"><i class="fa-regular fa-comment-dots"></i> Preço sob consulta: fale com a equipe Casa Harmonia</div>`;
+  }
   document.getElementById('detalhe').innerHTML=`<div class="det-grid">
-    <div class="galeria-prod">
-      <div class="foto principal" id="fotoPrincipal"></div>
-      <div class="miniaturas" id="miniaturas"></div>
-    </div>
+    <div class="galeria-prod"><div class="foto principal" id="fotoPrincipal"></div><div class="miniaturas" id="miniaturas"></div></div>
     <div>
       <span class="tag">${esc(p.categoria)}</span>
       <h2>${esc(p.nome)}</h2>
       <p class="txt-suave" style="margin:8px 0 14px">${esc(p.descricao)}</p>
-      ${pr!==null?`<div class="precos" style="padding:14px 16px"><div><small>Preço para revenda</small><strong style="font-size:1.5rem">${moeda(pr)}</strong></div>${ps!==null?`<div class="sug"><small>Preço sugerido</small><strong>${moeda(ps)}</strong></div>`:''}</div>${margem!==null?`<span class="margem"><i class="fa-solid fa-arrow-trend-up"></i> Margem estimada de ${margem}%</span>`:''}`:`<div class="consulta"><i class="fa-regular fa-comment-dots"></i> Preço sob consulta: fale com o setor de revenda</div>`}
+      ${precoHTML}
       <table class="tabela">${linhas}</table>
       <div class="acoes" style="margin-top:18px">
-        <button class="btn btn-sm" onclick="exportarCSV([produtos[${i}]],'${esc(p.sku)}.csv')"><i class="fa-solid fa-download"></i> Exportar ficha</button>
-        <a class="btn btn-sm btn-wpp" target="_blank" href="${linkWpp('Olá! Sou revendedor e tenho uma dúvida sobre o produto '+p.sku+' - '+p.nome+'.')}"><i class="fa-brands fa-whatsapp"></i> Tirar dúvida</a>
+        <button class="btn btn-sm btn-outline" onclick="exportarCSV([D.produtos[${i}]],'${esc(CH.slug(p.sku||p.nome))}.csv','${mod}')"><i class="fa-solid fa-download"></i> Exportar ficha</button>
+        <a class="btn btn-sm btn-wpp" target="_blank" href="${linkWpp(D.contato['msg_'+mod]+' Tenho uma dúvida sobre o produto '+p.sku+' - '+p.nome+'.')}"><i class="fa-brands fa-whatsapp"></i> Tirar dúvida</a>
       </div>
     </div></div>`;
   mostrarFotoGaleria();
   abrirModal('mProduto');
 }
 function mostrarFotoGaleria(){
-  const pr=document.getElementById('fotoPrincipal');
-  pr.innerHTML=`<img data-foto="${esc(galeriaAtual[galeriaIdx])}" alt="Foto ${galeriaIdx+1}">
+  document.getElementById('fotoPrincipal').innerHTML=`<img data-foto="${esc(galeriaAtual[galeriaIdx])}" alt="Foto ${galeriaIdx+1}">
     <button class="seta esq" aria-label="Foto anterior" onclick="mudarFoto(-1)"><i class="fa-solid fa-chevron-left"></i></button>
     <button class="seta dir" aria-label="Próxima foto" onclick="mudarFoto(1)"><i class="fa-solid fa-chevron-right"></i></button>`;
   document.getElementById('miniaturas').innerHTML=galeriaAtual.map((f,i)=>`<button class="${i===galeriaIdx?'ativo':''}" onclick="galeriaIdx=${i};mostrarFotoGaleria()"><div class="foto"><img data-foto="${esc(f)}" alt="Miniatura ${i+1}"></div></button>`).join('');
@@ -1289,103 +1658,146 @@ function mostrarFotoGaleria(){
 }
 function mudarFoto(d){galeriaIdx=(galeriaIdx+d+galeriaAtual.length)%galeriaAtual.length;mostrarFotoGaleria()}
 
-/* Cadastro (demo: libera na hora) */
-function enviarCadastro(e){
-  e.preventDefault();
-  cadastro=Object.fromEntries(new FormData(e.target));
-  acesso='liberado';salvar();fecharModal('mCadastro');e.target.reset();
-  renderStatus();renderGrid();
-  toast('Acesso liberado! Agora você vê preços, fichas e planilhas.');
-  document.getElementById('catalogo-rev').scrollIntoView({behavior:'smooth'});
+/* =====================================================================
+   Pedido do atacado (mínimo configurável, padrão R$ 1.000)
+   ===================================================================== */
+let pedido=CH.ler('ch3_pedido',{});
+const prodSku=sku=>D.produtos.find(p=>p.sku===sku);
+function salvarPedido(){CH.gravar('ch3_pedido',pedido)}
+function qtdHTML(sku,ctx){
+  const id=`q-${ctx||'card'}-${CH.slug(sku)}`;
+  return `<div class="qtd"><button type="button" aria-label="Menos" onclick="passo('${id}',-1)"><i class="fa-solid fa-minus"></i></button><input type="number" min="1" value="${pedido[sku]||1}" id="${id}" aria-label="Quantidade"><button type="button" aria-label="Mais" onclick="passo('${id}',1)"><i class="fa-solid fa-plus"></i></button></div>`;
 }
-function sairDemo(){
-  if(!confirm('Sair e voltar a demonstração ao estado inicial?'))return;
-  acesso='bloqueado';cadastro=null;produtos=PADRAO.map(p=>({...p}));salvar();limparFiltros();renderStatus();
+function passo(id,d){const i=document.getElementById(id);i.value=Math.max(1,(parseInt(i.value)||1)+d)}
+function addPedido(sku,ctx){
+  const i=document.getElementById(`q-${ctx||'card'}-${CH.slug(sku)}`),q=Math.max(1,parseInt(i&&i.value)||1);
+  pedido[sku]=q;salvarPedido();renderGrid('atacado');renderPedidoBar();
+  toast(`${q} × ${prodSku(sku).nome} no pedido`);
+  if(ctx==='ficha')fecharModal('mProduto');
+}
+function itensPedido(){
+  return Object.entries(pedido).map(([sku,q])=>{const p=prodSku(sku);if(!p||!CH.ativo(p))return null;const pr=CH.num(p.preco_atacado);return pr===null?null:{p,q,pr,sub:pr*q}}).filter(Boolean);
+}
+const totalPedido=()=>itensPedido().reduce((s,i)=>s+i.sub,0);
+function renderPedidoBar(){
+  const bar=document.getElementById('pedidoBar'),itens=itensPedido();
+  const ver=paginaAtual==='atacado'&&liberado('atacado')&&itens.length>0;
+  bar.classList.toggle('ver',ver);document.body.classList.toggle('com-pedido',ver);
+  if(!ver)return;
+  const tot=totalPedido(),min=minimo(),ok=tot>=min,pct=Math.min(100,tot/min*100);
+  const qtd=itens.reduce((s,i)=>s+i.q,0);
+  bar.innerHTML=`<div class="resumo"><strong><i class="fa-solid fa-cart-shopping" style="color:var(--pri)"></i> ${qtd} ite${qtd===1?'m':'ns'} · ${CH.moeda(tot)}</strong>
+    <div class="barra-min ${ok?'ok':''}"><div style="width:${pct}%"></div></div>
+    <small>${ok?'<i class="fa-solid fa-circle-check" style="color:#1E8A4A"></i> Pedido mínimo atingido':'Faltam '+CH.moeda(min-tot)+' para o pedido mínimo de '+CH.moeda(min)}</small></div>
+    <div class="acoes"><button class="btn btn-sm btn-outline" onclick="abrirPedido()">Revisar</button><button class="btn btn-sm btn-wpp" ${ok?'':'disabled'} onclick="enviarPedido()"><i class="fa-brands fa-whatsapp"></i> Enviar pedido</button></div>`;
+}
+function abrirPedido(){renderPedidoModal();abrirModal('mPedido')}
+function renderPedidoModal(){
+  const itens=itensPedido(),tot=totalPedido(),min=minimo(),ok=tot>=min,c=document.getElementById('pedidoConteudo');
+  if(!itens.length){c.innerHTML=`<span class="tag"><i class="fa-solid fa-cart-shopping"></i> Revenda Atacado</span><h2>Seu pedido está vazio</h2><p class="txt-suave" style="margin:10px 0 20px">Escolha as quantidades no catálogo e clique em Adicionar. O pedido mínimo é de ${CH.moeda(min)}.</p><button class="btn" onclick="fecharModal('mPedido');location.hash='catalogo-atacado'">Ver catálogo</button>`;return}
+  c.innerHTML=`<span class="tag"><i class="fa-solid fa-cart-shopping"></i> Revenda Atacado</span><h2>Revise o seu pedido</h2>
+    <div style="overflow-x:auto"><table class="tab-pedido"><thead><tr><th>Produto</th><th>Quantidade</th><th class="esc">Unidade</th><th>Subtotal</th><th></th></tr></thead><tbody>
+    ${itens.map(({p,q,pr,sub})=>`<tr><td><b>${esc(p.nome)}</b><small>${esc(p.sku)}</small></td>
+      <td><div class="qtd"><button onclick="mudarQtd('${esc(p.sku)}',-1)"><i class="fa-solid fa-minus"></i></button><input type="number" min="1" value="${q}" onchange="definirQtd('${esc(p.sku)}',this.value)"><button onclick="mudarQtd('${esc(p.sku)}',1)"><i class="fa-solid fa-plus"></i></button></div></td>
+      <td class="esc">${CH.moeda(pr)}</td><td><b>${CH.moeda(sub)}</b></td><td><button class="rem" title="Remover" onclick="removerItem('${esc(p.sku)}')"><i class="fa-solid fa-trash"></i></button></td></tr>`).join('')}
+    </tbody></table></div>
+    <div class="total-pedido"><span>Total</span><strong>${CH.moeda(tot)}</strong></div>
+    <div class="aviso-min ${ok?'ok':'falta'}"><i class="fa-solid ${ok?'fa-circle-check':'fa-circle-info'}"></i> ${ok?'Pedido mínimo atingido. Envie para a equipe confirmar frete, pagamento e prazo.':'Faltam '+CH.moeda(min-tot)+' para atingir o pedido mínimo de '+CH.moeda(min)+'.'}</div>
+    <div class="form"><div><label>Observações (opcional)</label><textarea id="obsPedido" rows="2" placeholder="Personalização, prazo desejado, endereço de entrega...">${esc(CH.ler('ch3_obs',''))}</textarea></div></div>
+    <div class="acoes" style="margin-top:16px;justify-content:space-between">
+      <button class="btn btn-sm btn-outline" onclick="limparPedido()"><i class="fa-solid fa-trash"></i> Esvaziar</button>
+      <div class="acoes"><button class="btn btn-sm btn-outline" onclick="fecharModal('mPedido');location.hash='catalogo-atacado'">Continuar comprando</button><button class="btn btn-wpp" ${ok?'':'disabled'} onclick="enviarPedido()"><i class="fa-brands fa-whatsapp"></i> Enviar pedido pelo WhatsApp</button></div>
+    </div>`;
+  document.getElementById('obsPedido').addEventListener('input',e=>CH.gravar('ch3_obs',e.target.value));
+}
+function mudarQtd(sku,d){definirQtd(sku,(pedido[sku]||1)+d)}
+function definirQtd(sku,v){const q=parseInt(v)||0;if(q<1)delete pedido[sku];else pedido[sku]=q;salvarPedido();renderPedidoModal();renderPedidoBar();renderGrid('atacado')}
+function removerItem(sku){delete pedido[sku];salvarPedido();renderPedidoModal();renderPedidoBar();renderGrid('atacado')}
+function limparPedido(){if(!confirm('Esvaziar o pedido?'))return;pedido={};salvarPedido();renderPedidoModal();renderPedidoBar();renderGrid('atacado')}
+function enviarPedido(){
+  const itens=itensPedido(),tot=totalPedido();if(tot<minimo())return;
+  const r=cadastro('atacado'),obs=CH.ler('ch3_obs','');
+  const txt=`Olá! Sou revendedor da Revenda Atacado Casa Harmonia e quero fazer um pedido.\n\n`+
+    (r?`Revendedor: ${r.nome}\nEmpresa: ${r.empresa}\nCNPJ/CPF: ${r.doc}\n\n`:'')+
+    `Itens:\n`+itens.map(({p,q,pr,sub})=>`• ${q} × ${p.nome} (${p.sku}) · ${CH.moeda(pr)} un. = ${CH.moeda(sub)}`).join('\n')+
+    `\n\nTotal: ${CH.moeda(tot)}`+(obs?`\n\nObservações: ${obs}`:'');
+  evento('pedido_atacado',{valor:tot});
+  window.open(linkWpp(txt),'_blank');
 }
 
-/* Planilhas */
-function sincronizarExport(){document.getElementById('expCat').value=filtro.cat;atualizarExpInfo()}
-function atualizarExpInfo(){
-  const c=document.getElementById('expCat').value;
-  const n=c==='Todas'?produtos.length:produtos.filter(p=>p.categoria===c).length;
-  document.getElementById('expInfo').innerHTML=`<i class="fa-solid fa-circle-info"></i> ${n} produto${n===1?'':'s'} · ${COLS.length} colunas`;
+/* ---------- Planilhas ---------- */
+const COLS_MOD={
+  atacado:P.colunas.filter(c=>!['ativo','preco_revenda','preco_sugerido'].includes(c)),
+  dropshipping:P.colunas.filter(c=>!['ativo','preco_atacado'].includes(c))
+};
+function sincronizarExport(mod){document.getElementById('expCat-'+mod).value=F[mod].cat;atualizarExpInfo(mod)}
+function atualizarExpInfo(mod){
+  const c=document.getElementById('expCat-'+mod).value,l=produtosAtivos();
+  const n=c==='Todas'?l.length:l.filter(p=>p.categoria===c).length;
+  document.getElementById('expInfo-'+mod).innerHTML=`<i class="fa-solid fa-circle-info"></i> ${n} produto${n===1?'':'s'} · ${COLS_MOD[mod].length} colunas`;
 }
-document.getElementById('expCat').addEventListener('change',atualizarExpInfo);
-document.getElementById('colunasInfo').innerHTML='<span style="border:none;background:none;font-weight:600">Colunas da planilha:</span>'+COLS.map(c=>`<span>${ROTULOS[c]}</span>`).join('');
-function csvCampo(v){v=String(v??'');return /[;"\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}
-function baixar(nome,texto){
-  const blob=new Blob(['﻿'+texto],{type:'text/csv;charset=utf-8'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=nome;document.body.appendChild(a);a.click();a.remove();
+function exportarCSV(lista,nome,mod){
+  if(!liberado(mod)){abrirCadastro(mod);return}
+  const cols=COLS_MOD[mod];
+  const linhas=[cols.map(c=>P.rotulos[c]).join(';'),...lista.map(p=>cols.map(c=>CH.csvCampo(c==='imagem'?(p.imagem&&!/^data:/.test(p.imagem)?CH.urlFoto(p.imagem,1200,1,D.fotos):''):p[c])).join(';'))];
+  CH.baixar(nome,linhas.join('\r\n'));toast(`Planilha exportada com ${lista.length} produto${lista.length===1?'':'s'}.`);
+  evento('exportar_planilha',{modalidade:mod});
 }
-function exportarCSV(lista,nome){
-  if(!liberado()){abrirModal('mCadastro');return}
-  const linhas=[COLS.join(';'),...lista.map(p=>COLS.map(c=>csvCampo(c==='imagem'&&p.imagem&&!/^https?:/.test(p.imagem)?urlFoto(p.imagem,1200,1):p[c])).join(';'))];
-  baixar(nome,linhas.join('\r\n'));toast(`Planilha exportada com ${lista.length} produto${lista.length===1?'':'s'}.`);
-}
-function slug(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
-function exportarSelecionado(){
-  const c=document.getElementById('expCat').value;
-  const lista=c==='Todas'?produtos:produtos.filter(p=>p.categoria===c);
-  exportarCSV(lista,`casa-harmonia-${c==='Todas'?'todos-os-produtos':slug(c)}.csv`);
+function exportarSelecionado(mod){
+  const c=document.getElementById('expCat-'+mod).value,l=produtosAtivos();
+  exportarCSV(c==='Todas'?l:l.filter(p=>p.categoria===c),`casa-harmonia-${mod}-${c==='Todas'?'todos-os-produtos':CH.slug(c)}.csv`,mod);
 }
 function baixarModelo(){
-  if(!liberado()){abrirModal('mCadastro');return}
-  baixar('modelo-importacao-casa-harmonia.csv',COLS.join(';')+'\r\n'+'CH-XX-001;Nome do produto;Categoria;Sala;Descrição do produto;Vinil autoadesivo;Fosco;0000.00.00;50;100;0.10;300;3;49.90;89.90;https://link-da-imagem.jpg');
-}
-function parseCSV(txt){
-  txt=txt.replace(/^﻿/,'');
-  const l0=txt.split('\n')[0];
-  const sep=(l0.match(/;/g)||[]).length>=(l0.match(/,/g)||[]).length?';':',';
-  const rows=[];let row=[],cur='',q=false;
-  for(let i=0;i<txt.length;i++){
-    const ch=txt[i];
-    if(q){if(ch==='"'){if(txt[i+1]==='"'){cur+='"';i++}else q=false}else cur+=ch}
-    else if(ch==='"')q=true;
-    else if(ch===sep){row.push(cur);cur=''}
-    else if(ch==='\n'){row.push(cur);rows.push(row);row=[];cur=''}
-    else if(ch!=='\r')cur+=ch;
-  }
-  if(cur||row.length){row.push(cur);rows.push(row)}
-  return rows.filter(r=>r.some(c=>c.trim()!==''));
+  if(!liberado('dropshipping')){abrirCadastro('dropshipping');return}
+  const cols=COLS_MOD.dropshipping;
+  CH.baixar('modelo-importacao-casa-harmonia.csv',cols.map(c=>P.rotulos[c]).join(';')+'\r\n'+'CH-XX-001;Nome do produto;Categoria;Sala;Descrição do produto;Vinil autoadesivo;Fosco;0000.00.00;50;100;0.10;300;3;49.90;89.90;https://link-da-imagem.jpg');
 }
 function importarCSV(inp){
   const f=inp.files[0];if(!f)return;
   const r=new FileReader();
-  r.onload=()=>{
-    const rows=parseCSV(r.result);inp.value='';
-    if(rows.length<2){toast('Planilha vazia ou inválida.');return}
-    const head=rows[0].map(h=>h.trim().toLowerCase());
-    if(!head.includes('nome')){toast('A planilha precisa ter a coluna "nome". Use o modelo.');return}
-    let novos=0,atual=0;
-    rows.slice(1).forEach(cols=>{
-      const p={};COLS.forEach(c=>{const k=head.indexOf(c);p[c]=k>=0?(cols[k]||'').trim():''});
-      if(!p.nome)return;
-      const ix=p.sku?produtos.findIndex(x=>x.sku===p.sku):-1;
-      if(ix>=0){produtos[ix]=p;atual++}else{produtos.push(p);novos++}
-    });
-    salvar();renderCats();renderGrid();
-    toast(`Importação concluída: ${novos} novo${novos===1?'':'s'}, ${atual} atualizado${atual===1?'':'s'}.`);
-  };
+  r.onload=()=>{inp.value='';try{const novos=CH.produtosDoCSV(r.result);CH.gravar('ch3_minha_importacao',novos);toast(`Planilha lida: ${novos.length} produto${novos.length===1?'':'s'} prontos para a sua loja.`)}catch(err){toast(err.message)}};
   r.readAsText(f,'UTF-8');
 }
 
-/* Contato */
+/* ---------- Contato e pedidos corporativos ---------- */
 function enviarContato(e){
   e.preventDefault();
   const d=Object.fromEntries(new FormData(e.target));
   window.open(linkWpp(`Olá! Meu nome é ${d.nome}.\nTelefone: ${d.tel}\nE-mail: ${d.email}\nAssunto: ${d.assunto}\n\n${d.msg}`),'_blank');
-  e.target.reset();toast('Mensagem preparada no WhatsApp.');
+  e.target.reset();toast('Mensagem preparada no WhatsApp.');evento('contato');
+}
+function enviarCorporativo(e){
+  e.preventDefault();
+  const d=Object.fromEntries(new FormData(e.target));
+  const txt=`${D.contato.msg_corporativo}\n\nEmpresa: ${d.empresa}\nNome: ${d.nome}\nWhatsApp: ${d.whats}`+(d.email?`\nE-mail: ${d.email}`:'')+`\nNecessidade: ${d.tipo}`+(d.qtd?`\nQuantidade aproximada: ${d.qtd}`:'')+(d.detalhes?`\n\nDetalhes: ${d.detalhes}`:'');
+  window.open(linkWpp(txt),'_blank');e.target.reset();toast('Pedido de orçamento preparado no WhatsApp.');evento('orcamento_corporativo');
 }
 
-/* Eventos dos filtros */
-document.getElementById('busca').addEventListener('input',e=>{filtro.busca=e.target.value.toLowerCase().trim();renderGrid()});
-document.getElementById('ordenar').addEventListener('change',e=>{filtro.ordem=e.target.value;renderGrid()});
-document.getElementById('soComPreco').addEventListener('change',e=>{filtro.soComPreco=e.target.checked;renderGrid()});
-document.getElementById('filtroAmbiente').addEventListener('change',e=>{filtro.ambiente=e.target.value;renderGrid()});
-document.querySelectorAll('input[name=faixa]').forEach(r=>r.addEventListener('change',e=>{filtro.faixa=e.target.value;renderGrid()}));
+/* ---------- Eventos dos filtros ---------- */
+MOD_LIST.forEach(mod=>{
+  const f=F[mod],g=()=>renderGrid(mod);
+  document.getElementById('busca-'+mod).addEventListener('input',e=>{f.busca=e.target.value.toLowerCase().trim();g()});
+  document.getElementById('ordem-'+mod).addEventListener('change',e=>{f.ordem=e.target.value;g()});
+  document.getElementById('soPreco-'+mod).addEventListener('change',e=>{f.soComPreco=e.target.checked;g()});
+  document.getElementById('amb-'+mod).addEventListener('change',e=>{f.ambiente=e.target.value;g()});
+  document.querySelectorAll(`input[name="faixa-${mod}"]`).forEach(r=>r.addEventListener('change',e=>{f.faixa=e.target.value;g()}));
+  document.getElementById('expCat-'+mod).addEventListener('change',()=>atualizarExpInfo(mod));
+  document.getElementById('cols-'+mod).innerHTML='<span style="border:none;background:none;font-weight:600">Colunas da planilha:</span>'+COLS_MOD[mod].map(c=>`<span>${P.rotulos[c]}</span>`).join('');
+});
+function renderRevenda(){MOD_LIST.forEach(m=>{renderStatus(m);renderCats(m);renderGrid(m)});atualizarBotaoArea();renderPedidoBar()}
 
-/* Início */
-montarPagNav();ativarWpp();renderStatus();renderCats();renderGrid();ativarFotos();rota();
+/* Painel aberto em outra aba: atualiza o site quando algo muda */
+window.addEventListener('storage',e=>{
+  if(e.key===CH.CHAVE)location.reload();
+  if(e.key===CH.CHAVE_REV||e.key==='ch3_sessao')renderRevenda();
+});
+
+/* Início: usa o que foi salvo no painel; se não houver, tenta o dados.json publicado */
+function iniciar(){montarPagNav();aplicarSite();ativarRastreamento();renderRevenda();ativarFotos();rota()}
+if(CH.salvos()){iniciar()}
+else{
+  fetch('dados.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{if(j)D=CH.montar(j)}).catch(()=>{}).finally(iniciar);
+}
 </script>
 </body>
 </html>
